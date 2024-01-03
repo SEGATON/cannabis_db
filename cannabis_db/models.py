@@ -90,6 +90,10 @@ class FeelingReport(models.Model):
 	def __str__(self):
 		return self.title
 
+	class Meta:
+		verbose_name_plural = 'Feelings'
+
+
 class FeelingReportList(models.Model):
 	feeling_report_list = models.ManyToManyField(FeelingReport)
 

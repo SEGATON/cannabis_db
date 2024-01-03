@@ -141,9 +141,9 @@ class HelpsWithReportListSetAdmin(ImportExportModelAdmin):
 
 @admin.register(FeelingReport)
 class FeelingReportAdmin(ImportExportModelAdmin):
-	list_display = ['id','title','type_of_feelings']
+	list_display = ['id','title','slug','description','type_of_feelings','feeling_icon']
 	list_display_links = ['id']
-	list_editable = ['title','type_of_feelings']
+	list_editable = ['title','slug','type_of_feelings','feeling_icon']
 
 @admin.register(FeelingReportList)
 class FeelingReportListAdmin(ImportExportModelAdmin):

@@ -237,6 +237,6 @@ hr{
 }
 
 .strain_details_card{
-  min-height: 75px;
-  padding-top: 20px;
+  min-height: 85px;
+  padding: 20px ;
 }

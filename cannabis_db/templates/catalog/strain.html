@@ -7,22 +7,12 @@
 					<div class="filler"></div>
 
 <!--				<img src="{{strain.featured_image.url}}" class="img-fluid"> -->
-
-
 				<div class="fotorama" data-allowfullscreen="true" data-keyboard="true" data-width="100%" data-nav="thumbs">
-
 {% for gallery_images in strain.image_galley.images.images.all %}
 					{{gallery_images.image.url}}
 					<a href="{{gallery_images.image.url}}"><img src="{{gallery_images.image.url}}" width="144" height="96"></a>
 				{% endfor %}
-
-				  
-
 				</div>
-
-
-
-
 				</div>
 				<div class="col-md-6">
 					<div class="filler"></div>
@@ -51,11 +41,8 @@
 								<i class="fa-solid fa-heart"></i> 
 								<i class="fa-regular fa-heart"></i> |
 
-							({{ratings.count}})</a> reviews 
-								
-					
+							({{ratings.count}})</a> reviews 													
 							</p>
-
 							<hr class="cdb_hr_bk">
 								{% if strain.details_list %}
 									<p>{{strain.strain_details_list}}</p>
@@ -66,21 +53,20 @@
 								{% endfor %}
 							</p>
 						<hr>
-
 						<p>{{strain.description|safe}}</p>
-
-
 						<hr>
 <!-- --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------->		
 						<h5>Feelings</h5>
-
-
 						<div class="row g-1">
 							{% for feeling in  strain.feelings_reports.feeling_report_list_set.feeling_report_list.all %}
 									{% if feeling.type_of_feelings == 'generic' %}				
 										<div class="col-md-4">
 											<div class="card strain_details_card text-center">
-												<p>{{feeling.title}}</p>
+												<div class="center">
+													{% load thumbnail %}
+													<img src="{% thumbnail feeling.feeling_icon 200x200 crop %}" height="30" width="30" class="img-fluid">
+												</div>
+												<p><b>{{feeling.title}}</b></p>
 												<p class="feeling_desc">{{feeling.description}}</p>
 											</div>
 										</div>
@@ -95,6 +81,7 @@
 									{% if feeling.type_of_feelings == 'positive' %}		
 									<div class="col-md-4">		
 										<div class="card strain_details_card text-center">
+
 										<p>{{feeling.title}}</p>
 											<p class="feeling_desc">{{feeling.description}}</p>
 										</div>
