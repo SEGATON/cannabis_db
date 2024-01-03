@@ -34,6 +34,29 @@ class StrainDetailsList(models.Model):
 
 ##################################################################################################################################
 
+
+class StrainKeywords(models.Model):
+	keyword 			= models.CharField(max_length=300)
+
+	def __str__(self):
+		return str(self.keyword)
+
+class StrainKeywordsSet(models.Model):
+	keywords 			= models.ManyToManyField(StrainKeywords)
+
+	def __str__(self):
+		return str(self.keywords)
+
+class StrainMetas(models.Model):
+	strain_meta_title 	= models.CharField(max_length=60)
+	strain_meta_description = models.TextField(max_length=160)
+	strain_meta_keywords 	= models.ForeignKey(StrainKeywordsSet, on_delete=models.CASCADE ,max_length=300)
+
+	def __str__(self):
+		return str(self.strain_meta_title)
+
+##################################################################################################################################
+
 class HelpsWithReport(models.Model):
 	title = models.CharField(max_length=50, null=True,blank=True)
 	slug = models.SlugField(max_length=50, null=True,blank=True)
@@ -225,6 +248,9 @@ class Vendor(models.Model):
 
 class Strain(models.Model):
 	user = models.ForeignKey(CustomUser, on_delete=models.CASCADE, null=True, blank=True)
+
+	strain_metas_set = models.ForeignKey(StrainMetas, on_delete=models.CASCADE, related_name='strain_metas',null=True, blank=True)
+
 	STRAIN_TYPE = {
 		('indica','Indica'),
 		('sativa','Sativa'),

@@ -37,7 +37,32 @@ from .models import AromasListSet
 from .models import AromasDetailsList
 from .models import AromasDetails
 from .models import Rating
+
+from .models import StrainKeywords
+from .models import StrainKeywordsSet
+from .models import StrainMetas
+
 from import_export.admin import ImportExportModelAdmin
+
+
+
+@admin.register(StrainKeywords)
+class StrainKeywordsAdmin(admin.ModelAdmin):
+	pass
+@admin.register(StrainKeywordsSet)
+class StrainKeywordsSetAdmin(admin.ModelAdmin):
+	pass
+@admin.register(StrainMetas)
+class StrainMetasAdmin(admin.ModelAdmin):
+	pass
+
+
+
+
+
+
+
+
 @admin.register(Rating)
 class RatingAdmin(admin.ModelAdmin):
 	list_display = ['title','slug']
