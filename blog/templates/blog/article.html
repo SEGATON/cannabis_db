@@ -1,0 +1,52 @@
+{% extends 'django_experiments_app/base.html' %}
+	{% block content %}
+
+
+	<div class="container">
+		<div class="row">
+			<div class="col-md-2">
+			2
+			</div>
+			<div class="col-md-8">
+				<h1>{{article.title}}</h1>
+				<div class="card">
+					<p>
+						<b>Author: </b> {{article.author.first_name}} {{article.author.last_name}} 
+						<b>Email: </b> {{article.author.email}} 
+						<b>Date published: </b> {{article.date_published}} 
+						<b>Date updated: </b> {{article.date_updated}}
+						<b>In: </b> 
+						{% for kaa in article.category.all %}
+							<a href="{{article.get_absolute_url}}">{{kaa}}</a>
+						{% endfor %}
+					</p>
+				</div>
+
+				<div class="card">
+					<img src="{{article.featured_image.url}}">
+				</div>
+				<div class="card">
+					<p>{{article.introduction|safe}}</p>
+					<p>{{article.main_paragraph|safe}}</p>
+					<p>{{article.conclusion|safe}}</p>
+				</div>
+				<div class="card">
+
+				</div>
+				<p>
+					{% for koo in category.all %}
+						<a href="{{koo.article.koo.category.get_absolute_url}}">{{koo}}</a>
+					{% endfor %}
+				</p>
+
+				<hr>
+				{{related_articles}}
+			</div>
+			<div class="col-md-2">
+			2
+			</div>
+		</div>
+	</div>
+
+
+	{% endblock %}

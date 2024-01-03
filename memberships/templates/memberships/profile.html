@@ -1,0 +1,32 @@
+{% include 'template_parts/header.html' %}
+	{% block content %}
+		<div class="container">
+			<div class="row">
+				<div class="col-md-1">
+					{% load thumbnail %}
+					<img src="{% thumbnail user.profile.profile_photo 70x70 crop %}" class="border_radius_sm">
+				</div>
+				<div class="col-md-9">
+					{{user}}
+					<br><br>
+					{{user.profile.biography|safe}}
+					
+					<a href="{}">View profile live</a>
+				</div>
+				<div class="col-md-2">			
+					{{user.profile.website_url}}<br>
+					{{user.profile.twitter}}<br>
+					{{user.profile.facebook}}<br>
+					{{user.profile.youtube}}<br>
+					{{user.profile.instagram}}<br>
+				</div>
+			</div>
+		</div>
+	{% endblock %}
+
+
+
+
+
+
+

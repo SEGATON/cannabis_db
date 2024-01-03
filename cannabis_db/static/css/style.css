@@ -1,0 +1,242 @@
+#map {
+  height: 100%;
+}
+
+/* 
+ * Optional: Makes the sample page fill the window. 
+ */
+html{
+  height: 100%;
+}
+body {
+  height: 100%;
+  margin: 0;
+  padding: 0;
+font-family: 'Roboto Slab', serif;
+  background: #fafafa;
+}
+
+
+b{
+  font-weight: 800;
+}
+
+hr{
+  padding: 0;
+  margin: 0;
+}
+h1,h2,h3,h4,h5,h6{
+  font-weight: 600;
+    padding: 0;
+  margin: 0;
+}
+
+p{
+  font-size: 12px ;
+}
+.border_radius_sm{
+  border-radius: 5px;
+}
+
+
+
+
+
+
+
+
+.main_footer{
+  height: 500px;
+}
+
+
+
+
+
+/**********************************/
+.form-control{
+  margin-bottom: 3px;
+}
+.login_form_table tr td{
+  padding: 0;
+  border:none;
+}
+.login_form_card{
+  margin: 200px 0;
+  padding: 20px;
+}
+.login_btn{
+  background: #000;
+  color: white;
+  width: 100%;
+  margin-bottom: 10px;
+  margin-top: 10px;
+}
+.login_btn:hover{
+  background: #000;
+  color: white;
+  width: 100%;
+  margin-bottom: 10px;
+}
+.f-btn{
+  background: #1877f2;
+  color: white;
+  width: 100%;
+  margin-bottom: 3px;
+}
+.f-btn:hover{
+  background: #1877f2;
+  color: white;
+  width: 100%;
+  margin-bottom: 3px;
+}
+.g-btn{
+  background: #ea4335;
+  color: white;
+  width: 100%;
+  margin-bottom: 3px;
+}
+.g-btn:hover{
+  background: #ea4335;
+  color: white;
+  width: 100%;
+  margin-bottom: 3px;
+}
+.t-btn{
+  background: #1da1f2;
+  color: white;
+  width: 100%;
+  margin-bottom: 3px;
+}
+.t-btn:hover{
+  background: #1da1f2;
+  color: white;
+  width: 100%;
+  margin-bottom: 3px;
+}
+/**********************************/
+
+
+
+
+
+
+
+
+
+
+
+/************** cannabis_db styles starts here ******************************/
+
+.title_heading{
+  color: #000;
+  padding: 0;
+  margin: 0;
+  font-weight: 900;
+}
+.headline{
+
+}
+p{
+  padding: 0;
+  margin: 0;
+}
+
+hr{
+  border-top:1px solid #000;
+  padding: 0;
+  margin: 0;
+}
+#strain_type_badge_HYBRID{
+  background: green;
+  color: #FFFFFF;
+  padding: 3px 10px;
+  font-size: 12px;
+  text-decoration: none;
+  border-radius: 3px;
+}
+#strain_type_badge_SATIVA{
+  background: green;
+  color: #FFFFFF;
+  padding: 3px 10px;
+  font-size: 12px;
+  text-decoration: none;
+  border-radius: 3px;
+}
+#strain_type_badge_INDICA{
+  background: #26c92e;
+  color: #FFFFFF;
+  padding: 3px 10px;
+  font-size: 12px;
+  text-decoration: none;
+  border-radius: 3px;
+}
+.feeling_desc{
+  font-size: 10px;
+  color: #666;
+}
+.review_rating_card{
+  margin: 5px 0px;
+}
+.review_rating_card_header{
+  padding: 0;
+  margin: 0;
+  border-bottom: 1px solid #EEE;
+}
+.review_rating_card_body{
+  padding: 0;
+  margin: 0;
+}
+.review_rating_card_footer{
+  padding: 0;
+  margin: 0;
+  border-top: 1px solid #EEE;
+}
+.review_rating_card p {
+  font-size: 12px;
+    padding: 0;
+  margin: 0;
+}
+/************** cannabis_db styles ends here ******************************/
+
+.filler{
+  height: 30px;
+}
+.custom_tf{
+  width: 100%;
+  border-radius: 3px;
+  border:1px solid #DDD;
+  padding: 3px 5px;
+  font-size: 12px;
+  margin-bottom: 3px;
+}
+.custom_ta{
+  width: 100%;
+  border-radius: 3px;
+  border:1px solid #DDD;
+  padding: 3px 5px;
+  font-size: 12px;
+  transition: all .5s ease-out ;
+
+}
+.custom_ta:hover{
+  width: 100%;
+  border-radius: 3px;
+  border:1px solid #DDD;
+  padding: 3px 5px;
+  font-size: 12px;
+  height: 200px;
+  transition: all .5s ease-out ;
+}
+
+.card{
+  border: none;
+}
+.custom_card{
+  margin: 6px 0;
+}
+
+.strain_details_card{
+  min-height: 75px;
+  padding-top: 20px;
+}
