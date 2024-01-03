@@ -42,9 +42,37 @@ from .models import StrainKeywords
 from .models import StrainKeywordsSet
 from .models import StrainMetas
 
+from .models import Dispensary
+
+from .models import DispensarySocialFollowURL
+from .models import DispensarySocialFollowURLS
+from .models import DispensarySocialFollows
+
+
+
 from import_export.admin import ImportExportModelAdmin
 
 
+@admin.register(DispensarySocialFollowURL)
+class DispensarySocialFollowURLAdmin(admin.ModelAdmin):
+	pass
+@admin.register(DispensarySocialFollowURLS)
+class DispensarySocialFollowURLSAdmin(admin.ModelAdmin):
+	pass
+@admin.register(DispensarySocialFollows)
+class DispensarySocialFollowsAdmin(admin.ModelAdmin):
+	pass
+
+
+
+
+
+
+
+
+@admin.register(Dispensary)
+class DispensaryAdmin(admin.ModelAdmin):
+	pass
 
 @admin.register(StrainKeywords)
 class StrainKeywordsAdmin(admin.ModelAdmin):
