@@ -98,9 +98,14 @@
 									{% if feeling.type_of_feelings == 'negative' %}
 									<div class="col-md-4">	
 										<div class="card strain_details_card text-center">
-										<p>{{feeling.title}}</p>
-										<p class="feeling_desc">{{feeling.description}}</p>
-									</div>
+											<div class="center">
+												{% load thumbnail %}
+													<img src="{% thumbnail feeling.feeling_icon 200x200 crop %}" height="30" width="30" class="img-fluid">
+											</div>
+												<p><b>{{feeling.title}}</b></p>
+												<p class="feeling_desc">{{feeling.description}}</p>
+											
+										</div>
 									</div>
 									{% endif %}
 							{% endfor %}
@@ -112,13 +117,13 @@
 							
 									<div class="col-md-4">	
 										<div class="card strain_details_card text-center">
-										<p>{{helps_with.title}}</p>
+										<div class="center">
+												{% load thumbnail %}
+													<img src="{% thumbnail helps_with.helps_with_icon 200x200 crop %}" height="30" width="30" class="img-fluid">
+											</div>
+										<p><b>{{helps_with.title}}</b></p>
 										<p class="feeling_desc">{{helps_with.description}}</p>
-										{% if helps_with.helps_with_icon %}
-										<img src="{{helps_with.helps_with_icon.url}}">
-										{% else %}
-											<p>helps with icon not available</p>
-										{% endif %}
+										
 										</div>
 									</div>
 							
@@ -143,7 +148,7 @@
 							{% for flavor in strain.flavor_reports.flavors_list_set.flavors_list.all %}
 								<div class="col-md-2">
 									<div class="card strain_details_card text-center">
-									<p>{{flavor.title}}</p>
+									<p><b>{{flavor.title}}</b></p>
 									<br>
 									{%  load thumbnail %}
 									<img src="{% thumbnail flavor.flavor_icon 30x30 crop %}" class="img-fluid">

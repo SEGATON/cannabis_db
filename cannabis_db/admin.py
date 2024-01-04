@@ -130,7 +130,9 @@ class FlavorsDetailsAdmin(ImportExportModelAdmin):
 
 @admin.register(HelpsWithReport)
 class HelpsWithReportAdmin(ImportExportModelAdmin):
-	pass
+	list_display = ['id','title','slug','description','helps_with_icon']
+	list_display_links = ['id']
+	list_editable = ['title','slug','helps_with_icon']
 @admin.register(HelpsWithReportList)
 class HelpsWithReportListAdmin(ImportExportModelAdmin):
 	pass
