@@ -22,6 +22,7 @@
 				</div>
 				<div class="col-md-5">
 					<div class="filler"></div>
+<div class="card p-2">
 						<h1 class="title_heading">{{strain.title}}</h1>
 						<h5 class="headline">{{strain.headline}}</h5>
 						<hr class="cdb_hr_bk">
@@ -60,8 +61,12 @@
 							</p>
 						<hr>
 						<p>{{strain.description|safe}}</p>
-						<hr>
+						
+</div>
+			
 <!-- --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------->		
+
+
 						<h5>Feelings</h5>
 						<div class="row g-1">
 							{% for feeling in  strain.feelings_reports.feeling_report_list_set.feeling_report_list.all %}
@@ -152,13 +157,18 @@
 						<div class="row g-1">
 							<h5>Flavors</h5>
 							{% for flavor in strain.flavor_reports.flavors_list_set.flavors_list.all %}
-								<div class="col-md-2">
-									<div class="card strain_details_card text-center">
-									<p><b>{{flavor.title}}</b></p>
-									<br>
-									{%  load thumbnail %}
-									<img src="{% thumbnail flavor.flavor_icon 30x30 crop %}" class="img-fluid">
-									</div>
+								<div class="col-md-4">
+								
+										<div class="card strain_details_card text-center">
+											
+											
+											{%  load thumbnail %}
+											<div class="text-center">
+											<img src="{% thumbnail flavor.flavor_icon 30x30 crop %}" height="30" width="30" class="img-fluid text-center">
+											<p><b>{{flavor.title}}</b></p>
+										</div>
+										</div>
+							
 								</div>
 							{% endfor %}
 						</div>

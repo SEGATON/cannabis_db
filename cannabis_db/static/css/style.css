@@ -13,7 +13,7 @@ body {
   margin: 0;
   padding: 0;
 font-family: 'Roboto Slab', serif;
-  background: #fafafa;
+  background: #e6e6e6;
 }
 .sidebar_ul{
   padding: 0;
@@ -31,18 +31,19 @@ font-family: 'Roboto Slab', serif;
 .sidebar_card_for_flavors_menu{
   padding: 10px;
   margin-top: 20px;
-  max-height: 260px;
+  max-height: 290px;
   overflow-y: scroll;
+overflow-wrap:normal;
 }
 .sidebar_card_for_feelings_menu{
   padding: 10px;
-  max-height: 260px;
+  max-height: 290px;
   overflow-y: scroll;
   margin-top: 20px;
 }
 .sidebar_card_for_helps_with_menu{
   padding: 10px;
-  max-height: 260px;
+  max-height: 290px;
   overflow-y: scroll;
   margin-top: 20px;
 }
@@ -50,7 +51,9 @@ font-family: 'Roboto Slab', serif;
   width: 90%;
 }
 .navigation{
-  background: #058c00;
+  background: #fff;
+  padding-top: 3px;
+  padding-bottom: 4px;
 }
 b{
   font-weight: 800;
@@ -201,7 +204,7 @@ hr{
   padding: 3px 10px;
   font-size: 12px;
   text-decoration: none;
-  border-radius: 3px;
+  border-radius: 0px;
 }
 #strain_type_badge_SATIVA{
   background: green;
@@ -209,15 +212,15 @@ hr{
   padding: 3px 10px;
   font-size: 12px;
   text-decoration: none;
-  border-radius: 3px;
+   border-radius: 0px;
 }
 #strain_type_badge_INDICA{
-  background: #26c92e;
+  background: #00af0f;
   color: #FFFFFF;
   padding: 3px 10px;
   font-size: 12px;
   text-decoration: none;
-  border-radius: 3px;
+  border-radius: 0px;
 }
 .feeling_desc{
   font-size: 10px;
@@ -275,6 +278,8 @@ hr{
 
 .card{
   border: none;
+  box-shadow: 1px 1px 1px 1px #ddd;
+  border-radius: 3px;
 }
 .custom_card{
   margin: 6px 0;
@@ -282,7 +287,7 @@ hr{
 }
 
 .strain_details_card{
-  min-height: 85px;
+  min-height: 140px;
   padding: 20px ;
 }
 .custom_card_for_reviews_form{
@@ -337,3 +342,33 @@ hr{
 }
 
 /************** cannabis_db styles for review rate form ends here ******************************/
+
+
+
+
+
+
+
+
+
+
+/* width */
+::-webkit-scrollbar {
+  width: 10px;
+  border-radius: 5px;
+}
+
+/* Track */
+::-webkit-scrollbar-track {
+  background: #ddd; 
+}
+ 
+/* Handle */
+::-webkit-scrollbar-thumb {
+  background: #999; 
+}
+
+/* Handle on hover */
+::-webkit-scrollbar-thumb:hover {
+  background: green; 
+}

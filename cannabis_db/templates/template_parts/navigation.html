@@ -1,7 +1,8 @@
 <div class="navigation">
 	<div class="container">
 		<div class="row">
-			<div class="col-md-3">Cannabis DB</div>
+			<div class="col-md-3"><button class="btn btn-primary" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasWithBothOptions" aria-controls="offcanvasWithBothOptions">Enable both scrolling & backdrop</button>
+ Cannabis DB</div>
 			<div class="col-md-6">
 					<form action="" method="POST" id="search_form">
 						<input type="text" name="" id="search_form_tf">
@@ -16,4 +17,15 @@
 			</div>
 		</div>
 	</div>
+</div>
+
+
+<div class="offcanvas offcanvas-start" data-bs-scroll="true" tabindex="-1" id="offcanvasWithBothOptions" aria-labelledby="offcanvasWithBothOptionsLabel">
+  <div class="offcanvas-header">
+    <h5 class="offcanvas-title" id="offcanvasWithBothOptionsLabel">Backdrop with scrolling</h5>
+    <button type="button" class="btn-close" data-bs-dismiss="offcanvas" aria-label="Close"></button>
+  </div>
+  <div class="offcanvas-body">
+{% include 'template_parts/sidebar.html' %}
+  </div>
 </div>
