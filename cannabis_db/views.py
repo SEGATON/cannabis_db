@@ -66,10 +66,17 @@ def strain(request, slug):
 	for rating_value in ratings_values:
 		rating_value
 	
+	for sss in strain.strain_specifications.specifications_set.specifications.all():
+		pass
+
+
+	 
 	return render(request, 'catalog/strain.html', {
 			'strain':strain,
 			'ratings':ratings,
 			'ratings_values':ratings_values,
+			'title': strain.title + ' | ' + 'Cannabis strain' + ' | ' + str(strain.get_strain_type_label_display())
+			
 		
 
 	
