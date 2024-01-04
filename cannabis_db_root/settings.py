@@ -111,6 +111,10 @@ TEMPLATES = [
                 'django.contrib.auth.context_processors.auth',
                 'django.contrib.messages.context_processors.messages',
                 "dynamic_breadcrumbs.context_processors.breadcrumbs",
+                
+                'cannabis_db.views.flavors_menu',
+                'cannabis_db.views.feelings_menu',
+                'cannabis_db.views.helps_with_menu',
             ],
         },
     },

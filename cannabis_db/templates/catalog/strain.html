@@ -1,10 +1,16 @@
 {% extends 'cannabis_db/base.html' %}
 
 	{% block content %}
+	
 		<div class="container">
 			<div class="row">
-				<div class="col-md-6">
+				<div class="col-md-2">
+					{% include 'template_parts/sidebar.html' %}
+				</div>
+				<div class="col-md-5">
 					<div class="filler"></div>
+	
+	
 
 <!--				<img src="{{strain.featured_image.url}}" class="img-fluid"> -->
 				<div class="fotorama" data-allowfullscreen="true" data-keyboard="true" data-width="100%" data-nav="thumbs">
@@ -14,7 +20,7 @@
 				{% endfor %}
 				</div>
 				</div>
-				<div class="col-md-6">
+				<div class="col-md-5">
 					<div class="filler"></div>
 						<h1 class="title_heading">{{strain.title}}</h1>
 						<h5 class="headline">{{strain.headline}}</h5>
@@ -159,25 +165,30 @@
 						
 <!-- --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------->			
 
-						<div class="card p-2 custom_card">
+						<div class="card  custom_card custom_card_for_reviews_box">
 							<div class="darkster">
 							<p><a href="">({{ratings.count}})</a> reviews</p>
 							
 								{% for rating in ratings.all %}
-									<div class="card review_rating_card ">
+									<div class="card review_rating_card p-1 ">
 
 										<div class="review_rating_card_header p-1">
 											<p><b>{{rating.title}}</b> | <i>{{rating.headline}}</i> | ({{rating.rating}}) | 	
 
-							<a href="{% url 'cannabis_db:delete_review_rating' rating.pk %}"> <i class="fa-solid fa-trash-can"></i></a>
-							<a  href="{% url 'cannabis_db:delete_review_rating' rating.pk %}"><i class="fa-solid fa-flag"></i></a>
+							
+							
 						</p>
 										</div>
 										<div class="review_rating_card_body p-1">
 											<p>{{rating.comment}}</p>
 										</div>
 										<div class="review_rating_card_footer p-1">
-											<p><b>Date submitted: </b>{{rating.date_published}} | <b>by</b> <a href="">{{rating.user}}</a></p>
+											<p><b>Date submitted: </b>{{rating.date_published}} | <b>by</b> <a href="">{{rating.user}}</a> | 
+											<a class="tiny_font" href="{% url 'cannabis_db:delete_review_rating' rating.pk %}"> <i class="fa-solid fa-trash-can"></i></a> | 
+							<a class="tiny_font" href="{% url 'cannabis_db:delete_review_rating' rating.pk %}"><i class="fa-solid fa-flag"></i></a> | 
+							<a class="tiny_font" href=""><i class="fa-solid fa-thumbs-up"></i></a>
+							<a class="tiny_font" href=""><i class="fa-solid fa-thumbs-down"></i></a> | 
+							<a class="tiny_font" href=""><i class="fa-solid fa-reply"></i></a></p>
 										</div>
 									</div>
 								{% endfor %}
@@ -186,7 +197,7 @@
 
 
 					
-						<div class="card p-2 custom_card">
+						<div class="card p-2 custom_card custom_card_for_reviews_form">
 							
 							
 						{% if user.is_authenticated %}				

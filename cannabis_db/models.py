@@ -11,7 +11,51 @@ class StrainType(models.Model):
 
 	def __str__(self):
 			return self.title
+
+
 ##################################################################################################################################
+
+
+class StrainLineageDetailsListItem(models.Model):
+	title = models.CharField(max_length=50, null=True,blank=True)
+	slug = models.SlugField(max_length=50, null=True,blank=True)	
+	STRAIN_LINEAGE = {
+		('sativa','Sativa'),
+		('indica','Indica'),
+		('hybrid','Hybrid'),
+	}
+	strain_lineage_01 = models.CharField(choices=STRAIN_LINEAGE, max_length=50, null=True,blank=True)
+	strain_lineage_value_01 = models.DecimalField(max_digits=9, decimal_places=2, null=True,blank=True)
+
+	strain_lineage_02 = models.CharField(choices=STRAIN_LINEAGE, max_length=50, null=True,blank=True)
+	strain_lineage_value_02 = models.DecimalField(max_digits=9, decimal_places=2, null=True,blank=True)
+
+
+
+	def __str__(self):
+		return self.title
+
+class StrainLineageDetailsListItems(models.Model):
+	strain_lineage_details_list_items = models.ManyToManyField(StrainLineageDetailsListItem)	
+
+class StrainLineageDetailsList(models.Model):
+	title = models.CharField(max_length=50, null=True,blank=True)
+	slug = models.SlugField(max_length=50, null=True,blank=True)
+
+	strain_lineage_details_list_items = models.ForeignKey(StrainLineageDetailsListItems, on_delete=models.CASCADE, null=True,blank=True)	
+	
+	def __str__(self):
+		return self.title
+
+
+##################################################################################################################################
+
+
+
+
+
+
+
 
 class StrainDetailsListItem(models.Model):
 	title = models.CharField(max_length=50, null=True,blank=True)
@@ -150,7 +194,17 @@ class AromasListSet(models.Model):
 class FlavorsDetails(models.Model):
 	title = models.CharField(max_length=50, null=True,blank=True)
 	slug = models.SlugField(max_length=50, null=True,blank=True)
-	flavor_icon = models.ImageField(upload_to='media/CANNABIS_DB/GALLERY_IMAGES/', null=True, blank=True, max_length=500)	
+	flavor_icon = models.ImageField(upload_to='media/CANNABIS_DB/FLAVORS_ICONS/', null=True, blank=True, max_length=500)	
+
+	def get_absolute_url(self):
+		return reverse('cannabis_db:flavor', args=[self.slug])
+
+	def __str__(self):
+		return self.title
+
+	class Meta:
+		verbose_name_plural = 'Flavors'
+
 
 class FlavorsDetailsList(models.Model):
 	flavors_list = models.ManyToManyField(FlavorsDetails)
@@ -280,6 +334,7 @@ class Strain(models.Model):
 	aromas_reports = models.ForeignKey(AromasListSet, on_delete=models.CASCADE,null=True, blank=True )
 	helps_with_reports = models.ForeignKey(HelpsWithReportListSet, on_delete=models.CASCADE,null=True, blank=True )
 	
+	strain_lineage_details_list = models.ForeignKey(StrainLineageDetailsList, on_delete=models.CASCADE, null=True,blank=True)
 
 
 	vendors = models.ManyToManyField(Vendor)

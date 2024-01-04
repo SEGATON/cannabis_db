@@ -113,3 +113,29 @@ def delete_review_rating(request, pk):
 	rating.delete()
 
 	return HttpResponseRedirect(request.META['HTTP_REFERER'])
+
+
+def flavors(request):
+	flavors = FlavorsDetails.objects.all()
+	return render(request, 'catalog/flavors.html', {
+			'flavors':flavors
+		})
+
+def flavor(request, slug):
+	flavors = get_object_or_404(FlavorsDetails, slug=slug)
+	return render(request, 'catalog/flavors.html', {
+			'flavors':flavors
+		})
+
+def flavors_menu(request):
+	return {
+		'flavors_menu':FlavorsDetails.objects.all()
+	}
+def feelings_menu(request):
+	return {
+		'feelings_menu':FeelingReport.objects.all()
+	}
+def helps_with_menu(request):
+	return {
+		'helps_with_menu':HelpsWithReport.objects.all()
+	}

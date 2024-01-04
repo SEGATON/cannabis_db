@@ -1,0 +1,14 @@
+{% for flavor in flavors.all %}
+
+
+<ul class="">
+	<li>
+		{% load thumbnail %}
+		<a href="{{flavor.get_absolute_url}}"> <img src="{% thumbnail flavor.flavor_icon 30x30 crop %}"> {{flavor.title}} </a>
+		
+	</li>
+</ul>
+
+
+
+{% endfor %}

@@ -48,9 +48,31 @@ from .models import DispensarySocialFollowURL
 from .models import DispensarySocialFollowURLS
 from .models import DispensarySocialFollows
 
-
+from .models import StrainLineageDetailsList
+from .models import StrainLineageDetailsListItems
+from .models import StrainLineageDetailsListItem
 
 from import_export.admin import ImportExportModelAdmin
+
+
+@admin.register(StrainLineageDetailsList)
+class StrainLineageDetailsListAdmin(admin.ModelAdmin):
+	list_display = ['title','slug']
+	prepopulated_fields = {
+		'slug':('title',)
+	}
+@admin.register(StrainLineageDetailsListItems)
+class StrainLineageDetailsListItemsAdmin(admin.ModelAdmin):
+	pass
+@admin.register(StrainLineageDetailsListItem)
+class StrainLineageDetailsListItemAdmin(admin.ModelAdmin):
+	list_display = ['title','slug']
+	prepopulated_fields = {
+		'slug':('title',)
+	}
+
+
+
 
 
 @admin.register(DispensarySocialFollowURL)
@@ -123,8 +145,12 @@ class FlavorsDetailsListAdmin(ImportExportModelAdmin):
 	pass
 @admin.register(FlavorsDetails)
 class FlavorsDetailsAdmin(ImportExportModelAdmin):
-	pass
-
+	list_display = ['id','title','slug','flavor_icon']
+	prepopulated_fields = {
+		'slug':('title',)
+	}
+	list_display_links = ['id']
+	list_editable = ['title','slug','flavor_icon']
 
 
 
