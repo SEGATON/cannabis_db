@@ -66,8 +66,7 @@ def strain(request, slug):
 	for rating_value in ratings_values:
 		rating_value
 	
-	for sss in strain.strain_specifications.specifications_set.specifications.all():
-		pass
+
 
 
 	 

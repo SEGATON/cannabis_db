@@ -341,6 +341,8 @@ class Strain(models.Model):
 
 	ratings = models.ManyToManyField('Rating', null=True, blank=True)
 
+	likes = models.ManyToManyField(CustomUser, related_name='strain_likes')
+
 	def __str__(self):
 		return self.title
 

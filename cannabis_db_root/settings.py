@@ -65,19 +65,12 @@ INSTALLED_APPS = [
     'django_comments',
     'dynamic_breadcrumbs',
 
-    'chatterbot.ext.django_chatterbot',
+
     'rest_framework',
 
 ]
 
-CHATTERBOT = {
-    'name': 'Tech Support Bot',
-    'logic_adapters': [
-        'chatterbot.logic.MathematicalEvaluation',
-        'chatterbot.logic.TimeLogicAdapter',
-        'chatterbot.logic.BestMatch'
-    ]
-}
+
 REST_FRAMEWORK = {
     # Use Django's standard `django.contrib.auth` permissions,
     # or allow read-only access for unauthenticated users.

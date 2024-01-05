@@ -1,7 +1,11 @@
 {% extends 'cannabis_db/base.html' %}
 
 	{% block content %}
-	{{title_spec}}
+
+	({{strain.likes.count}}) likes
+	{% for like in strain.likes.all %}
+		{{like}}
+	{% endfor %}
 		<div class="container">
 			<div class="row">
 				<div class="col-md-2">
@@ -9,11 +13,13 @@
 				</div>
 				<div class="col-md-5">
 					<div class="filler"></div>
-
-	
 	
 
-<!--				<img src="{{strain.featured_image.url}}" class="img-fluid"> -->
+
+	
+
+				<img src="{{strain.featured_image.url}}" class="img-fluid"> 
+				<br><br>
 				<div class="fotorama" data-allowfullscreen="true" data-keyboard="true" data-width="100%" data-nav="thumbs">
 {% for gallery_images in strain.image_galley.images.images.all %}
 					{{gallery_images.image.url}}
