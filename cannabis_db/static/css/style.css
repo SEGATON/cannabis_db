@@ -15,7 +15,22 @@ body {
 font-family: 'Roboto Slab', serif;
   background: #e6e6e6;
 }
-
+a{
+  font-weight: 700;
+}
+.thumbnail_image_card{
+  border:1px solid #ddd;
+    padding: 0;
+  margin: 0;
+}
+.strains_title{
+  font-size: 11px;
+  font-weight: 800;
+  text-decoration: none;
+  color: #333;
+  padding: 0;
+  margin: 0;
+}
 .sidebar_ul{
   padding: 0;
   margin: 0;
@@ -31,7 +46,7 @@ font-family: 'Roboto Slab', serif;
 }
 .sidebar_card_for_flavors_menu{
   padding: 10px;
-  margin-top: 20px;
+  margin-bottom: 20px;
   max-height: 290px;
   overflow-y: scroll;
 overflow-wrap:normal;
@@ -40,13 +55,13 @@ overflow-wrap:normal;
   padding: 10px;
   max-height: 290px;
   overflow-y: scroll;
-  margin-top: 20px;
+  margin-bottom: 20px;
 }
 .sidebar_card_for_helps_with_menu{
   padding: 10px;
   max-height: 290px;
   overflow-y: scroll;
-  margin-top: 20px;
+  margin-bottom: 20px;
 }
 #search_form_tf{
   width: 90%;
@@ -72,13 +87,15 @@ h1,h2,h3,h4,h5,h6{
 .nav{
   padding: 0;
   margin: 0;
+  float: right;
   list-style: none;
 }
 .nav li {
   display: inline;
+  margin-left: 20px;
 }
 .nav li a {
-  color: #FFF;
+  color: #111;
     display: inline;
 }
 p{

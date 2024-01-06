@@ -16,5 +16,14 @@ urlpatterns = [
 	path('flavors/', views.flavors, name='flavors'),
 	path('flavor/<slug:slug>/', views.flavor, name='flavor'),
 
+	path('like-strain/<int:pk>/', views.like_strain, name='like_strain'),
+	path('unlike-strain/<int:pk>/', views.unlike_strain, name='unlike_strain'),
+
+	path('save-strain/<int:pk>/', views.save_strain, name='save_strain'),
+	path('unsave-strain/<int:pk>/', views.unsave_strain, name='unsave_strain'),
+
+	path('dislike-strain/<int:pk>/', views.dislike_strain, name='dislike_strain'),
+	path('undislike-strain/<int:pk>/', views.undislike_strain, name='undislike_strain'),
+
 ]
 

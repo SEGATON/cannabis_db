@@ -5,6 +5,9 @@ from django.urls import reverse
 from ckeditor.fields import RichTextField
 from accounts.models import CustomUser
 from django.template.defaultfilters import slugify
+
+
+
 class StrainType(models.Model):
 	title = models.CharField(max_length=50)
 	slug = models.SlugField(max_length=50)
@@ -49,12 +52,6 @@ class StrainLineageDetailsList(models.Model):
 
 
 ##################################################################################################################################
-
-
-
-
-
-
 
 
 class StrainDetailsListItem(models.Model):
@@ -317,7 +314,7 @@ class Strain(models.Model):
 	strain_type_label = models.CharField(max_length=70, choices=STRAIN_TYPE)
 	title = models.CharField(max_length=50)
 	slug = models.SlugField(max_length=50)
-	headline = models.CharField(max_length=50)
+	headline = models.CharField(max_length=150, null=True, blank=True)
 	strain_type = models.ForeignKey(StrainType, on_delete=models.CASCADE, null=True, blank=True)
 	brand = models.ForeignKey(Brand, on_delete=models.CASCADE, null=True, blank=True)
 	strain_details_list = models.ForeignKey(StrainDetailsList, on_delete=models.CASCADE, null=True,blank=True)
@@ -337,11 +334,14 @@ class Strain(models.Model):
 	strain_lineage_details_list = models.ForeignKey(StrainLineageDetailsList, on_delete=models.CASCADE, null=True,blank=True)
 
 
-	vendors = models.ManyToManyField(Vendor)
+	vendors = models.ManyToManyField(Vendor, null=True, blank=True)
 
 	ratings = models.ManyToManyField('Rating', null=True, blank=True)
 
-	likes = models.ManyToManyField(CustomUser, related_name='strain_likes')
+	likes = models.ManyToManyField(CustomUser, related_name='strain_likes', null=True,blank=True)
+	dislikes = models.ManyToManyField(CustomUser, related_name='strain_dislikes', null=True,blank=True)
+	
+
 
 	def __str__(self):
 		return self.title
@@ -352,9 +352,6 @@ class Strain(models.Model):
 
 	def get_total_ratings(self):
 		pass
-
-		
-
 
 class Rating(models.Model):
 	user = models.ForeignKey(CustomUser, on_delete=models.CASCADE, null=True, blank=True, related_name='strain_rating')
@@ -385,10 +382,6 @@ class Rating(models.Model):
 	def save(self, *args, **kwargs):
 		self.slug = slugify(self.title)
 		super(Rating, self).save(*args, **kwargs)
-
-
-
-
 
 class DispensarySocialFollowURL(models.Model):
 	dispensary_social_profile_name= models.CharField(max_length=300, null=True, blank=True)

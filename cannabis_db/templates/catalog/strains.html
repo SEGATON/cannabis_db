@@ -1,1 +1,32 @@
-{{strains}}
+{% extends 'cannabis_db/base.html' %}
+	{% block content %}
+
+
+		<div class="container">
+			<div class="row">
+				<div class="col-md-2">
+					<div class="filler"></div>
+				{% include 'template_parts/sidebar.html' %}
+
+				</div>
+				<div class="col-md-10">
+					<div class="filler"></div>
+						<div class="row g-1">
+							{% for strain in strains %}
+								<div class="col-md-2 ">
+
+									{% load thumbnail %}
+									<a href="{{strain.get_absolute_url}}">
+										<img src="{% thumbnail strain.featured_image 300x300 crop %}" class="img-fluid border_radius_sm thumbnail_image_card"></a>
+									<a href="{{strain.get_absolute_url}}" class="strains_title">{{strain|truncatechars:30}}</a>
+									
+								</div>
+							{% endfor %}
+						</div>
+				</div>
+				
+			</div>
+		</div>
+
+
+	{% endblock %}

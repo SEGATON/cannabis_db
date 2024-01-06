@@ -1,3 +1,6 @@
-{% for strain in strains %}
-		<a href="{{strain.get_absolute_url}}">{{strain}}</a>
-{% endfor %}
+{% extends 'cannabis_db/base.html' %}
+	{% block content %}
+		{% for strain in strains %}
+			<a href="{{strain.get_absolute_url}}">{{strain}}</a>
+		{% endfor %}
+	{% endblock %}

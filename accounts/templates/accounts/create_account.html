@@ -1,4 +1,4 @@
-{% extends 'ds_mp_app/base.html' %}
+{% extends 'cannabis_db/base.html' %}
 	{% block content %}
 
 
@@ -21,17 +21,11 @@
 
 
         <tr><td>{{create_account_form.username}}</td></tr>
-
         <tr><td>{{create_account_form.email}}</td></tr>
-
         <tr><td>{{create_account_form.account_type}}</td>
-
         <tr><td>{{create_account_form.password1}}</td></tr>
-
         <tr><td>{{create_account_form.password2}}</td></tr>
         <tr><td><button class="create_account_btn">create account</button></td></tr>
-
-
         <tr><td><p>Have an account? <a href="{% url 'accounts:login' %}">login</a></p></td></tr>
 
       </form>
