@@ -185,7 +185,45 @@ p{
 
 
 
-
+.custom_thumbnail_badge_hy{
+  background: #0E8B16;
+  color: white;
+  font-size: 10px;
+  width: 19px;
+  height: 17px;
+  padding-left:  2px;
+  border-radius: 2px;
+  margin-left: 5px;
+  margin-top: 5px;
+  position: absolute;
+  font-weight: 700;
+}
+.custom_thumbnail_badge_in{
+  background: #00D90E;
+  color: white;
+  font-size: 10px;
+  width: 19px;
+  height: 17px;
+  padding-left:  2px;
+  border-radius: 2px;
+  margin-left: 5px;
+  margin-top: 5px;
+  position: absolute;
+  font-weight: 700;
+}
+.custom_thumbnail_badge_st{
+    background: #00AC0B;
+  color: white;
+  font-size: 10px;
+  width: 19px;
+  height: 17px;
+  padding-left:  2px;
+  border-radius: 2px;
+  margin-left: 5px;
+  margin-top: 5px;
+  position: absolute;
+  font-weight: 700;
+}
 
 
 

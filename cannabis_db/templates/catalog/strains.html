@@ -14,7 +14,16 @@
 						<div class="row g-1">
 							{% for strain in strains %}
 								<div class="col-md-2 ">
-
+									<span class="custom_thumbnail_badge">
+										{% if strain.strain_type_label == 'hybrid' %}
+											<span class="custom_thumbnail_badge_hy">Hy</span>
+										{% elif strain.strain_type_label == 'sativa' %}
+										    <span class="custom_thumbnail_badge_st">St</span>
+										 {% elif strain.strain_type_label == 'indica' %}
+  											<span class="custom_thumbnail_badge_in">In</span>
+										{% endif %}
+								
+									
 									{% load thumbnail %}
 									<a href="{{strain.get_absolute_url}}">
 										<img src="{% thumbnail strain.featured_image 300x300 crop %}" class="img-fluid border_radius_sm thumbnail_image_card"></a>
