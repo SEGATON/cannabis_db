@@ -127,9 +127,8 @@ class FeelingReport(models.Model):
 	slug = models.SlugField(max_length=50, null=True,blank=True)
 	description = models.TextField(max_length=500, null=True,blank=True)
 	feeling_icon = models.ImageField(upload_to='media/CANNABIS_DB/FEELINGS_ICONS/', null=True, blank=True, max_length=500)	
-
 	def __str__(self):
-		return self.title
+		return str(self.title)
 
 	class Meta:
 		verbose_name_plural = 'Feelings'
@@ -137,9 +136,17 @@ class FeelingReport(models.Model):
 
 class FeelingReportList(models.Model):
 	feeling_report_list = models.ManyToManyField(FeelingReport)
+	def __str__(self):
+		return str(self.feeling_report_list)
 
 class FeelingReportListSet(models.Model):
 	feeling_report_list_set = models.ForeignKey(FeelingReportList, on_delete=models.CASCADE,null=True, blank=True )
+
+	def __str__(self):
+		return str(self.feeling_report_list_set.feeling_report_list)
+
+
+
 
 ##################################################################################################################################
 
@@ -161,15 +168,18 @@ class StrainImageGallery(models.Model):
 class TerpeneDetails(models.Model):
 	terpene_name 	= models.CharField(max_length=1000)
 	terpene_value = models.CharField(max_length=1000)
-
+	def __str__(self):
+		return self.terpene_name
 
 class TerpeneDetailsList(models.Model):
 	terpenes = models.ManyToManyField(TerpeneDetails)
-
+	def __str__(self):
+		return str(self.terpenes)
 class TerpeneDetailsListSet(models.Model):
 	terpene_set_name = models.CharField(max_length=1000)
 	terpene_set 	= models.ForeignKey(TerpeneDetailsList, on_delete=models.CASCADE)
-
+	def __str__(self):
+		return self.terpene_set_name
 ##################################################################################################################################
 
 class AromasDetails(models.Model):
@@ -216,7 +226,9 @@ class StrainSpecification(models.Model):
 	SPEC_NAME = {
 		('thc','THC'),
 		('cbd','CBD'),
-		('cbg','CBG ')
+		('cbg','CBG '),
+		('htcv','THCV ')
+
 	}
 	specification_name 	= models.CharField(max_length=1000, choices=SPEC_NAME)
 	specification_value = models.DecimalField(max_digits=10, decimal_places=2,max_length=1000)
@@ -227,11 +239,15 @@ class StrainSpecification(models.Model):
 class StrainSpecifications(models.Model):
 	specifications = models.ManyToManyField(StrainSpecification)
 
+	def __str__(self):
+		return str(self.specifications) 
+
 class StrainSpecificationsSets(models.Model):
 	specifications_set_name = models.CharField(max_length=1000)
 	specifications_set 	= models.ForeignKey(StrainSpecifications, on_delete=models.CASCADE)
 
-
+	def __str__(self):
+		return str(self.specifications_set_name) 
 ##################################################################################################################################
 class BrandSocialFollowURL(models.Model):
 	brand_social_profile_name		= models.CharField(max_length=300, null=True, blank=True)
@@ -321,7 +337,7 @@ class Strain(models.Model):
 	strain_specifications = models.ForeignKey(StrainSpecificationsSets, on_delete=models.CASCADE, null=True,blank=True)
 	description = RichTextField(max_length=5000, null=True,blank=True)
 	
-	featured_image = models.ImageField(upload_to='media/CANNABIS_DB/STRAINS/FEATURED_IMAGES/', null=True, blank=True)
+	featured_image = models.ImageField(default='media/default.jpg', upload_to='media/CANNABIS_DB/STRAINS/FEATURED_IMAGES/', null=True, blank=True)
 
 	image_galley= models.ForeignKey(StrainImageGallery, on_delete=models.CASCADE, related_name='product_image_gallery',null=True, blank=True)
 

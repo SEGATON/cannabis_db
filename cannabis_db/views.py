@@ -154,7 +154,7 @@ def like_strain(request, pk):
 		pass
 	else:
 		strain.likes.add(request.user)
-		
+
 
 
 
@@ -210,3 +210,10 @@ def unsave_strain(request, pk):
 	strain = get_object_or_404(Strain, pk=pk)
 
 	return HttpResponseRedirect(request.META['HTTP_REFERER'])
+
+
+
+
+
+
+

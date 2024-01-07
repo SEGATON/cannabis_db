@@ -245,10 +245,13 @@ class StrainDetailsListAdmin(ImportExportModelAdmin):
 
 @admin.register(Strain)
 class StrainAdmin(ImportExportModelAdmin):
-	list_display = ['title','slug']
+	list_display = ['id','title','slug','featured_image']
+	list_display_links = ['id']
 	prepopulated_fields = {
 		'slug':('title',)
 	}
+	list_editable = ['title','slug','featured_image']
+	search_fields = ['title','slug'] 
 
 @admin.register(StrainType)
 class StrainTypeAdmin(ImportExportModelAdmin):

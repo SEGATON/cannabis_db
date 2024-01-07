@@ -1,22 +1,30 @@
 <div class="navigation">
 	<div class="container">
 		<div class="row">
-			<div class="col-md-3"><button class="btn btn-primary" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasWithBothOptions" aria-controls="offcanvasWithBothOptions"><i class="fa-solid fa-bars"></i></button>
+			<div class="col-md-2"><button class="howtoga" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasWithBothOptions" aria-controls="offcanvasWithBothOptions"><i class="fa-solid fa-bars"></i></button>
  Cannabis DB</div>
-			<div class="col-md-3">
+			<div class="col-md-5">
+				<div class="search_form_container">
 					<form action="" method="POST" id="search_form">
-						<input type="text" name="" id=" search_form_tf">
-						<button><i class="fa-solid fa-magnifying-glass"></i></button>
+						<input type="text" name="" id=" search_form_tf" class="kokokok">
+						<button id="search_app_btn"><i class="fa-solid fa-magnifying-glass" ></i></button>
 					</form>
+				</div>
 			</div>
-			<div class="col-md-6">
+			<div class="col-md-5">
 				<ul class="nav">
 					<li><a href="{% url 'cannabis_db:strains' %}">browse strains</a></li>
+
+					<li><a href="{% url 'cannabis_db:flavors' %}">flavors</a></li>
+
+
+					{% if user.is_authenticated %}
+							<li><a href="{% url 'account_logout' %}">logout</a></li>
+							<li><a href="{% url 'memberships:profile' %}">profile</a></li>
+					{% else %}
 					<li><a href="{% url 'account_login' %}">login</a></li>
 					<li><a href="{% url 'account_signup' %}">create account</a></li>
-					<li><a href="{% url 'memberships:profile' %}">profile</a></li>
-					<li><a href="{% url 'account_logout' %}">logout</a></li>
-					<li><a href="{% url 'cannabis_db:flavors' %}">flavors</a></li>
+					{% endif %}
 
 				</ul>
 			</div>
