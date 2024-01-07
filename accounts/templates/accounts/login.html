@@ -13,14 +13,12 @@
 
 
 
-
-<div class="container padding_200">
+<div class="chobbo">
+  <div class="container padding_200">
   <div class="row">
-    <div class="col-md-4">
-      
-    </div>
-    <div class="col-md-4">
-<div class="card login_form_card">
+
+    <div class="col-lg-12">
+<div class="card text-center login_form_card">
 <h3>Login</h3>
 <br>
 <hr>
@@ -28,9 +26,9 @@
 {% get_providers as socialaccount_providers %}
     <p class="">Login with</p>
 
-    <a href="{% provider_login_url "facebook"  %}"  class="btn btn-kok f-btn"><i class="fa-brands fa-facebook"></i> Login with Facebook</a>
-    <a href="{% provider_login_url "twitter"  %}"  class="btn btn-kok t-btn"><i class="fa-brands fa-twitter"></i> Login with Twitter</a>
-    <a href="{% provider_login_url "google"  %}"  class="btn btn-kok g-btn"><i class="fa-brands fa-google"></i> Login with Google</a>
+    <a href="{% provider_login_url "facebook"  %}"  class="btn btn-kok f-btn"><i class="fa-brands fa-facebook"></i> Login with Facebook</a><br>
+    <a href="{% provider_login_url "twitter"  %}"  class="btn btn-kok t-btn"><i class="fa-brands fa-twitter"></i> Login with Twitter</a><br>
+    <a href="{% provider_login_url "google"  %}"  class="btn btn-kok g-btn"><i class="fa-brands fa-google"></i> Login with Google</a><br>
 
 <br>
 
@@ -61,11 +59,13 @@
 
 
 
-    <div class="col-md-4">
-      
-    </div>
+
   </div>
 </div>
+</div>
 
+<div class="chabba">
+
+</div>
 
 {% endblock %}

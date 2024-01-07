@@ -3,17 +3,20 @@
 		<div class="container">
 			<div class="row">
 				<div class="col-md-1">
+					<div class="filler"></div>
 					{% load thumbnail %}
 					<img src="{% thumbnail user.profile.profile_photo 70x70 crop %}" class="border_radius_sm">
 				</div>
 				<div class="col-md-9">
+					<div class="filler"></div>
 					{{user}}
 					<br><br>
 					{{user.profile.biography|safe}}
 					
 					<a href="{}">View profile live</a>
 				</div>
-				<div class="col-md-2">			
+				<div class="col-md-2">	
+				<div class="filler"></div>		
 					{{user.profile.website_url}}<br>
 					{{user.profile.twitter}}<br>
 					{{user.profile.facebook}}<br>

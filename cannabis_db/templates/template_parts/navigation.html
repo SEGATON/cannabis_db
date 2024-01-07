@@ -35,8 +35,12 @@
 
 <div class="offcanvas offcanvas-start" data-bs-scroll="true" tabindex="-1" id="offcanvasWithBothOptions" aria-labelledby="offcanvasWithBothOptionsLabel">
   <div class="offcanvas-header">
-    <h5 class="offcanvas-title" id="offcanvasWithBothOptionsLabel">Backdrop with scrolling</h5>
-    <button type="button" class="btn-close" data-bs-dismiss="offcanvas" aria-label="Close"></button>
+  	<div class="p-2">
+
+  	<p class="sidebar_profile_menu">  		{% load thumbnail %}
+  		<a href="{% url 'memberships:profile' %}"><img src="{% thumbnail user.profile.profile_photo 20x20 crop %}"  class="border_radius_sm"></a>&nbsp;<b>Welcome back: </b>{{user}} | <a href="{% url 'account_logout' %}">Logout <i class="fa-solid fa-arrow-right-from-bracket"></i></a></p>
+  </div>
+    <button type="button" class="btn close_btn" data-bs-dismiss="offcanvas" ><i class="fa-solid fa-xmark"></i></button>
   </div>
   <div class="offcanvas-body">
 {% include 'template_parts/sidebar.html' %}
