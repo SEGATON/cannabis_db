@@ -152,6 +152,7 @@ h1,h2,h3,h4,h5,h6{
     padding: 0;
   margin: 0;
 }
+
 .howtoga{
   background: green;
   color: white;
@@ -173,7 +174,7 @@ h1,h2,h3,h4,h5,h6{
   color: #111;
     display: inline;
     text-decoration: none;
-    text-transform: uppercase;
+    text-transform: capitalize;
     font-size: 13px;
     font-weight: 700;
 }
@@ -346,6 +347,9 @@ position: absolute;
 .headline{
 
 }
+.text-right{
+  text-align: right;
+}
 p{
   padding: 0;
   margin: 0;
@@ -409,7 +413,10 @@ hr{
   margin: 0;
 }
 .custom_card_for_reviews_box{
-
+  margin-top: 3px;
+}
+.description_p{
+  margin: 5px 0 ;
 }
 /************** cannabis_db styles ends here ******************************/
 
@@ -691,3 +698,20 @@ h2 {
 .control--checkbox input:disabled:checked ~ .control__indicator {
   background-color: #7e0cf5;
   opacity: .2; }
+
+
+
+
+
+
+
+
+
+.misc_box{
+  padding: 10px 0;
+}
+}
+
+.like_btns_box{
+  float: right;
+}

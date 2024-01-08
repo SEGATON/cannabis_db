@@ -22,14 +22,105 @@
 
 
 
+<br>
+	<div class="card  p-2 custom_card_for_reviews_box">
+		<p><a href="">({{ratings.count}})</a> reviews</p>
+	</div>
 
+						<div class="card  custom_card custom_card_for_reviews_box">
+					
+							
+							
+								{% for rating in ratings.all %}
+									<div class="card review_rating_card p-1 ">
+
+										<div class="review_rating_card_header p-1">
+											<p><b>{{rating.title}}</b> | <i>{{rating.headline}}</i> | ({{rating.rating}}) | </p>
+										</div>
+										<div class="review_rating_card_body p-1">
+											<p>{{rating.comment}}</p>
+										</div>
+										<div class="review_rating_card_footer p-1">
+											<p><b>Date submitted: </b>{{rating.date_published}} | <b>by</b> <a href="">{{rating.user}}</a> | 
+											<a class="tiny_font" href="{% url 'cannabis_db:delete_review_rating' rating.pk %}"> <i class="fa-solid fa-trash-can"></i></a> | 
+							<a class="tiny_font" href="{% url 'cannabis_db:delete_review_rating' rating.pk %}"><i class="fa-solid fa-flag"></i></a> | 
+							<a class="tiny_font" href=""><i class="fa-solid fa-thumbs-up"></i></a>
+							<a class="tiny_font" href=""><i class="fa-solid fa-thumbs-down"></i></a> | 
+							<a class="tiny_font" href=""><i class="fa-solid fa-reply"></i></a> |
+							<a class="tiny_font" href="">edit</a></p> 
+										</div>
+									</div>
+								{% endfor %}
+						
+					</div>
+
+
+						<div class="card p-2 custom_card custom_card_for_reviews_form">	
+
+
+						{% if user.is_authenticated %}				
+							<div id="five_star_rating_system_wrapper">
+								<form action="{% url 'cannabis_db:process_strain_review' strain.pk %}" method="POST">
+								{% csrf_token %}
+								<div id="five_star_rating_box_outer">
+									<div id="five_star_rating_box">
+										
+										<input type="text" name="title" id='title' class="custom_tf " placeholder="title"><br>
+										
+										<input type="text" name="headline" id='headline' class="custom_tf" placeholder="headline"><br>
+										<div class="rate">
+											<input type="radio" id="star5" name="rate" value="5" />
+											<label for="star5" title="text">5 stars</label>
+											<input type="radio" id="star4" name="rate" value="4" />
+											<label for="star4" title="text">4 stars</label>
+											<input type="radio" id="star3" name="rate" value="3" />
+											<label for="star3" title="text">3 stars</label>
+											<input type="radio" id="star2" name="rate" value="2" />
+											<label for="star2" title="text">2 stars</label>
+											<input type="radio" id="star1" name="rate" value="1" />
+											<label for="star1" title="text">1 star</label>
+										</div>
+									</div>
+								</div>
+								<div id="five_star_rating_comment_box">
+								  <textarea placeholder="Write review..." name="five_star_rating_comment_ta" class="custom_ta" id="five_star_rating_comment_ta"></textarea>
+								</div>
+								<div id="">
+									<button id="submit_review_btn">Submit review</button>
+								</div>
+								</form>
+							</div>
+							{% else %}
+								<p>Please login to rate and review recipe. <a href="{% url 'accounts:login' %}">Login</a></p>
+						{% endif %}
+						</div>
 
 
 				</div>
 				<div class="col-md-5">
 					<div class="filler"></div>
 					<div class="card p-2">
-						<h1 class="title_heading">{{strain.title}}</h1>
+
+						<div class=" card_header ">
+							<div class="row ">
+									<div class="col-md-9">
+										<h1 class="title_heading">{{strain.title}}</h1>
+									</div>
+									<div class="col-md-3  text-right">
+											{% if user.is_authenticated %}
+			{% if saved %}
+			<a class="rate_link" href="{% url 'cannabis_db:save_strain' strain.pk %}"><i class="fa-solid fa-bookmark"></i></a>
+											
+			{% else %}
+					<a class="rate_link" href="{% url 'cannabis_db:save_strain' strain.pk %}"><i class="fa-regular fa-bookmark"></i></a>					
+			{% endif %}
+	{% endif %}
+	<b><a href="">({{strain.saves.count}})</a></b> saves
+									</div>
+							</div>
+
+						
+						</div>
 						<h5 class="headline">{{strain.headline}}</h5>
 						<hr class="cdb_hr_bk">
 						{% if strain.strain_type_label == 'hybrid' %}
@@ -48,21 +139,23 @@
 
 
 
-
-
+<div class="misc_box">
+							<div class="row">
+								<div class="col-md-8">
 							<p style="padding:0; margin: 0;">
 
 
 
 								<b>By: </b><a href="{{strain.brand.get_absolute_url}}">{{strain.brand}}</a> | 
-								<b>submitted by: </b> <a href="">{{strain.user}}</a> |  
+								<b>submitted by: </b> <a href="">{{strain.user}}</a> 
 								{% for vendor in strain.vendors.all %}
 									<b>Vendor: </b><a href="">{{vendor}}</a>
 								{% endfor %}
 
-								|
 								
-							
+								</p>
+							</div>
+								<div class="col-md-4 text-right">
 									<a href="{% url 'cannabis_db:like_strain' strain.pk %}"><i class="fa-regular fa-thumbs-up"></i></a></i> 
 									({{strain.likes.count}})
 
@@ -73,36 +166,20 @@
 
 
 								<a href="{% url 'cannabis_db:dislike_strain' strain.pk %}"><i class="fa-regular fa-thumbs-down"></i></a>
-								({{strain.dislikes.count}})|
+								({{strain.dislikes.count}})
 
 
-
-
-
-(
-	{% if user.is_authenticated %}
-			{% if saved %}
-			<a class="rate_link" href="{% url 'cannabis_db:save_strain' strain.pk %}">unsave</a>
-											
-			{% else %}
-					(<a class="rate_link" href="{% url 'cannabis_db:save_strain' strain.pk %}">save</a>					
-			{% endif %}
-	{% endif %}
-	({{strain.saves.count}})
-	|
-
-							({{ratings.count}})</a> reviews | 
-
-
-
-							</p>
-
+</div>
+			</div>				
+						</div>
 
 							<hr class="cdb_hr_bk">
 
 
 
-
+<div class="misc_box">
+							<div class="row">
+								<div class="col-lg-12">
 
 
 
@@ -114,8 +191,12 @@
 										<b>{{strain_spec.get_specification_name_display}}</b> {{strain_spec.specification_value}}%
 								{% endfor %}
 							</p>
+		</div>
+	</div>
+</div>
 						<hr>
-						<p>{{strain.description|safe}}</p>
+					
+						<p class="description_p">{{strain.description|safe}}</p>
 						
 			</div>
 			
@@ -185,35 +266,35 @@
 								<h5>Helps with</h5>
 								{% for helps_with in  strain.helps_with_reports.helps_with_report_list.helps_with_report_list.all %}																	
 								
-										<div class="col-md-4">	
-											<div class="card strain_details_card text-center">
+										<div class="col-md-6">	
+											<div class="card  ">
 											<div class="center">
 													{% load thumbnail %}
 														<img src="{% thumbnail helps_with.helps_with_icon 200x200 crop %}" height="30" width="30" class="img-fluid">
-												</div>
+												
 											<p><b>{{helps_with.title}}</b></p>
 											<p class="feeling_desc">{{helps_with.description}}</p>
-											
+											</div>
 											</div>
 										</div>
 								
 								{% endfor %}
 							{% endif %}
 						</div>
-					
+					<div class="">
 						<div class="row g-1">
 							{% if strain.terpenes_reports %}
 								<h5>Terpenes</h5>
 								{% for terpene in strain.terpenes_reports.terpene_set.terpenes.all %}
-									<div class="col-lg-12">
-										<div class="card strain_details_card text-center">
+									<div class="col-md-4">
+										<div class="card  ">
 											<p><b>{{terpene.terpene_name}} </b><i>{{terpene.terpene_value}}</i></p>
 										</div>
 									</div>
 								{% endfor %}
 							{% endif %}
 						</div>
-			
+				</div>
 
 
 						<div class="row g-1">
@@ -237,75 +318,10 @@
 							{% endif %}
 						</div>
 						
-<!-- --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------->			
-
-						<div class="card  custom_card custom_card_for_reviews_box">
-							<div class="darkster">
-							<p><a href="">({{ratings.count}})</a> reviews</p>
-							
-								{% for rating in ratings.all %}
-									<div class="card review_rating_card p-1 ">
-
-										<div class="review_rating_card_header p-1">
-											<p><b>{{rating.title}}</b> | <i>{{rating.headline}}</i> | ({{rating.rating}}) | </p>
-										</div>
-										<div class="review_rating_card_body p-1">
-											<p>{{rating.comment}}</p>
-										</div>
-										<div class="review_rating_card_footer p-1">
-											<p><b>Date submitted: </b>{{rating.date_published}} | <b>by</b> <a href="">{{rating.user}}</a> | 
-											<a class="tiny_font" href="{% url 'cannabis_db:delete_review_rating' rating.pk %}"> <i class="fa-solid fa-trash-can"></i></a> | 
-							<a class="tiny_font" href="{% url 'cannabis_db:delete_review_rating' rating.pk %}"><i class="fa-solid fa-flag"></i></a> | 
-							<a class="tiny_font" href=""><i class="fa-solid fa-thumbs-up"></i></a>
-							<a class="tiny_font" href=""><i class="fa-solid fa-thumbs-down"></i></a> | 
-							<a class="tiny_font" href=""><i class="fa-solid fa-reply"></i></a> |
-							<a class="tiny_font" href="">edit</a></p> 
-										</div>
-									</div>
-								{% endfor %}
-						</div>
-					</div>
 
 
-						<div class="card p-2 custom_card custom_card_for_reviews_form">	
 
 
-						{% if user.is_authenticated %}				
-							<div id="five_star_rating_system_wrapper">
-								<form action="{% url 'cannabis_db:process_strain_review' strain.pk %}" method="POST">
-								{% csrf_token %}
-								<div id="five_star_rating_box_outer">
-									<div id="five_star_rating_box">
-										
-										<input type="text" name="title" id='title' class="custom_tf " placeholder="title"><br>
-										
-										<input type="text" name="headline" id='headline' class="custom_tf" placeholder="headline"><br>
-										<div class="rate">
-											<input type="radio" id="star5" name="rate" value="5" />
-											<label for="star5" title="text">5 stars</label>
-											<input type="radio" id="star4" name="rate" value="4" />
-											<label for="star4" title="text">4 stars</label>
-											<input type="radio" id="star3" name="rate" value="3" />
-											<label for="star3" title="text">3 stars</label>
-											<input type="radio" id="star2" name="rate" value="2" />
-											<label for="star2" title="text">2 stars</label>
-											<input type="radio" id="star1" name="rate" value="1" />
-											<label for="star1" title="text">1 star</label>
-										</div>
-									</div>
-								</div>
-								<div id="five_star_rating_comment_box">
-								  <textarea placeholder="Write review..." name="five_star_rating_comment_ta" class="custom_ta" id="five_star_rating_comment_ta"></textarea>
-								</div>
-								<div id="">
-									<button id="submit_review_btn">Submit review</button>
-								</div>
-								</form>
-							</div>
-							{% else %}
-								<p>Please login to rate and review recipe. <a href="{% url 'accounts:login' %}">Login</a></p>
-						{% endif %}
-						</div>
 
 
 
