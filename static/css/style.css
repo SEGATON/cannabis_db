@@ -23,6 +23,8 @@ a{
   border:1px solid #ddd;
     padding: 0;
   margin: 0;
+}.image_full_width{
+  width: 100%;
 }
 .strains_title{
   font-size: 11px;
@@ -75,9 +77,9 @@ overflow-wrap:normal;
   border-top-right-radius: 5px;
 
   border-left: none;
-  border-top: 1px solid #888;
-  border-bottom: 1px solid #888;
-  border-right: 1px solid #888;
+  border-top: 2px solid green;
+  border-bottom: 2px solid green;
+  border-right: 2px solid green;
 
 
 }
@@ -89,9 +91,9 @@ overflow-wrap:normal;
   padding-left: 10px;
 
   border-right: none;
-  border-top: 1px solid #888;
-  border-bottom: 1px solid #888;
-  border-left: 1px solid #888;
+  border-top: 2px solid green;
+  border-bottom: 2px solid green;
+  border-left: 2px solid green;
 
 }
 .kokokok:hover{
@@ -131,7 +133,7 @@ outline: none;
   background: #fff;
   padding-top: 3px;
   padding-bottom: 4px;
-    box-shadow: 1px 1px 3px 1px #555;
+    box-shadow: 3px -10px 13px 1px #666;
 
     width: 100%;
     position: fixed;
@@ -150,6 +152,7 @@ h1,h2,h3,h4,h5,h6{
     padding: 0;
   margin: 0;
 }
+
 .howtoga{
   background: green;
   color: white;
@@ -171,8 +174,9 @@ h1,h2,h3,h4,h5,h6{
   color: #111;
     display: inline;
     text-decoration: none;
-    text-transform: uppercase;
+    text-transform: capitalize;
     font-size: 13px;
+    font-weight: 700;
 }
 p{
   font-size: 12px ;
@@ -205,11 +209,13 @@ p{
   border:none;
 }
 .login_form_card{
-  margin: 200px 0;
+  margin: 280px 0;
   padding: 20px;
-  width: 50%;
-  margin-left:76%;
+  width: 40%;
+  margin-left:81%;
   position: relative;
+  box-shadow: 1px 1px 21px -13px #000;
+  background: white;
 }
 .login_btn{
   background: green;
@@ -341,9 +347,13 @@ position: absolute;
 .headline{
 
 }
+.text-right{
+  text-align: right;
+}
 p{
   padding: 0;
   margin: 0;
+font-family: 'Roboto Slab', serif;
 }
 
 hr{
@@ -403,7 +413,10 @@ hr{
   margin: 0;
 }
 .custom_card_for_reviews_box{
-
+  margin-top: 3px;
+}
+.description_p{
+  margin: 5px 0 ;
 }
 /************** cannabis_db styles ends here ******************************/
 
@@ -685,3 +698,20 @@ h2 {
 .control--checkbox input:disabled:checked ~ .control__indicator {
   background-color: #7e0cf5;
   opacity: .2; }
+
+
+
+
+
+
+
+
+
+.misc_box{
+  padding: 10px 0;
+}
+}
+
+.like_btns_box{
+  float: right;
+}
