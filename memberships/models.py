@@ -1,7 +1,7 @@
 from django.db import models
 
 from django.conf import settings
-
+from cannabis_db.models import Strain
 # Create your models here.
 from ckeditor.fields import RichTextField
 
@@ -20,7 +20,7 @@ class Profile(models.Model):
           youtube = models.URLField(max_length=1000,null=True, blank=True)
           instagram = models.URLField(max_length=1000,null=True, blank=True)
 
-          
+          saved_strains = models.ManyToManyField(Strain,null=True, blank=True)
 
           def __str__(self):
                     return str(self.user)

@@ -4,19 +4,11 @@
 	<ul class="sidebar_ul">
 		<li><a href="{% url 'memberships:profile' %}">My profile</a></li>
 		<li><a href="">My account</a></li>
-
-
+		{% if user.is_authenticated %}
+		<li><a href="{% url 'cannabis_db:saved_strains' user.pk %}">My saved strains</a></li>
+		{% endif %}
 	</ul>
 </div>
-
-
-
-
-
-
-
-
-
 
 
 

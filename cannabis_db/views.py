@@ -36,6 +36,8 @@ from .models import Vendor
 # Create your views here.
 from .models import Rating
 
+from memberships.models import Profile
+
 from django.http import HttpResponseRedirect
 
 from django.contrib.auth.decorators import login_required
@@ -62,8 +64,9 @@ def strain(request, slug):
 	ratings = Rating.objects.filter(strain_to_rate=strain)
 	ratings_values = Rating.objects.filter(strain_to_rate=strain)
 
-	liked = bool
-	unliked = bool
+	saved = bool
+	if strain.saves.filter(id=request.user.id).exists():
+		saved = True
 
 
 	for rating_value in ratings_values:
@@ -75,8 +78,8 @@ def strain(request, slug):
 			'ratings_values':ratings_values,
 			'title': strain.title + ' | ' + 'Cannabis strain' + ' | ' + str(strain.get_strain_type_label_display()),
 
-			'liked':liked,
-			'unliked':unliked
+			'saved':saved,
+
 	
 	
 		})
@@ -197,14 +200,31 @@ def undislike_strain(request, pk):
 
 
 
+@login_required
+def saved_strains(request, pk):
+	profile = get_object_or_404(Profile,pk=pk)
+
+	
+	return render(request, 'catalog/saved_strains.html', {
+			'profile':profile,
+
+		})
 
 
+
+
+@login_required
 def save_strain(request, pk):
 	strain = get_object_or_404(Strain, pk=pk)
+	if strain.saves.filter(id=request.user.id).exists():
+		strain.saves.remove(request.user.profile)
+	else:
+		strain.saves.add(request.user.profile)
 
-	user = strain
 
 	return HttpResponseRedirect(request.META['HTTP_REFERER'])
+
+
 
 def unsave_strain(request, pk):
 	strain = get_object_or_404(Strain, pk=pk)

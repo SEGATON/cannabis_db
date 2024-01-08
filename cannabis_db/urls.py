@@ -24,6 +24,7 @@ urlpatterns = [
 
 	path('dislike-strain/<int:pk>/', views.dislike_strain, name='dislike_strain'),
 	path('undislike-strain/<int:pk>/', views.undislike_strain, name='undislike_strain'),
+	path('saved-strains/<int:pk>/', views.saved_strains, name='saved_strains'),
 
 ]
 

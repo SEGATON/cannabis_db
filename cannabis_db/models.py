@@ -357,7 +357,7 @@ class Strain(models.Model):
 	likes = models.ManyToManyField(CustomUser, related_name='strain_likes', null=True,blank=True)
 	dislikes = models.ManyToManyField(CustomUser, related_name='strain_dislikes', null=True,blank=True)
 	
-
+	saves = models.ManyToManyField('memberships.Profile', null=True,blank=True, related_name='strain_saves')
 
 	def __str__(self):
 		return self.title

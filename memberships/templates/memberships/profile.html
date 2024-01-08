@@ -9,11 +9,19 @@
 				</div>
 				<div class="col-md-9">
 					<div class="filler"></div>
-					{{user}}
+					{{user}} |
+					{% if user.is_authenticated %}
+					<a href="{% url 'cannabis_db:saved_strains' user.pk %}">My saved strains</a>
+					{% endif %}
 					<br><br>
 					{{user.profile.biography|safe}}
 					
 					<a href="{}">View profile live</a>
+
+
+					<hr>
+
+
 				</div>
 				<div class="col-md-2">	
 				<div class="filler"></div>		
