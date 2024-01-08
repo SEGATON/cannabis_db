@@ -202,11 +202,11 @@ def undislike_strain(request, pk):
 
 @login_required
 def saved_strains(request, pk):
-	profile = get_object_or_404(Profile,pk=pk)
+	saved_strains = Strain.objects.filter(saves=request.user.profile)
 
 	
 	return render(request, 'catalog/saved_strains.html', {
-			'profile':profile,
+			'saved_strains':saved_strains,
 
 		})
 

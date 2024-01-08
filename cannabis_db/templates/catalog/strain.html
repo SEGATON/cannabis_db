@@ -79,15 +79,17 @@
 
 
 
-
+(
 	{% if user.is_authenticated %}
 			{% if saved %}
-			<a class="rate_link" href="{% url 'cannabis_db:save_strain' strain.pk %}">unsave</a>) 
+			<a class="rate_link" href="{% url 'cannabis_db:save_strain' strain.pk %}">unsave</a>
 											
 			{% else %}
 					(<a class="rate_link" href="{% url 'cannabis_db:save_strain' strain.pk %}">save</a>					
 			{% endif %}
 	{% endif %}
+	({{strain.saves.count}})
+	|
 
 							({{ratings.count}})</a> reviews | 
 
