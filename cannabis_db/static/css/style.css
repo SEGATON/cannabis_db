@@ -72,6 +72,12 @@ a{
   overflow-y: scroll;
   margin-bottom: 20px;
 }
+.sidebar_card_for_footer_menu{
+  padding: 10px 0px 30px 10px;
+  max-height: 290px;
+
+  margin-bottom: 20px;
+}
 #search_app_btn{
   background: none;
   color: #ddd;
@@ -199,6 +205,7 @@ p{
 
 .main_footer{
   height: 500px;
+  background: green;
 }
 
 
