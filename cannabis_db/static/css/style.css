@@ -49,20 +49,25 @@ a{
  font-size: 13px;
 }
 .sidebar_card_for_flavors_menu{
-  padding: 10px;
-  margin-bottom: 20px;
+  padding: 10px 0px 30px 10px;
   max-height: 290px;
   overflow-y: scroll;
-overflow-wrap:normal;
+  margin-bottom: 20px;
 }
 .sidebar_card_for_feelings_menu{
-  padding: 10px;
+  padding: 10px 0px 30px 10px;
   max-height: 290px;
   overflow-y: scroll;
   margin-bottom: 20px;
 }
 .sidebar_card_for_helps_with_menu{
-  padding: 10px;
+  padding: 10px 0px 30px 10px;
+  max-height: 290px;
+  overflow-y: scroll;
+  margin-bottom: 20px;
+}
+.sidebar_card_for_terpenes_menu{
+  padding: 10px 0px 30px 10px;
   max-height: 290px;
   overflow-y: scroll;
   margin-bottom: 20px;

@@ -13,6 +13,9 @@
 
 
 <div class="card sidebar_card_for_flavors_menu">
+	<h6>Flavors</h6>
+	<hr>
+		<br>
 	<ul class="sidebar_ul">
 		{% for flavor_menu_item in flavors_menu.all %}
 				{% load thumbnail %}
@@ -23,6 +26,9 @@
 
 
 <div class="card sidebar_card_for_feelings_menu">
+	<h6>Feelings</h6>
+	<hr>
+		<br>
 	<ul class="sidebar_ul">
 	{% for feelings_menu_item in feelings_menu.all %}
 			{% load thumbnail %}
@@ -35,8 +41,27 @@
 
 
 
+<div class="card sidebar_card_for_terpenes_menu">
+	<h6>Terpenes</h6>
+	<hr>
+		<br>
+	<ul class="sidebar_ul">
+		{% for terpenes_menu_item in terpenes_menu.all %}
+				
+				<li><a href="{{terpenes_menu_item.get_absolute_url}}">  {{terpenes_menu_item.terpene_name}} </a></li>
+		{% endfor %}
+	</ul>
+</div>
+
+
+
+
+
 
 <div class="card sidebar_card_for_helps_with_menu">
+	<h6>Helps with</h6>
+	<hr>
+	<br>
 	<ul class="sidebar_ul">
 	{% for helps_with_menu_item in helps_with_menu.all %}
 			{% load thumbnail %}

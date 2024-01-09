@@ -145,7 +145,10 @@ def helps_with_menu(request):
 		'helps_with_menu':HelpsWithReport.objects.all()
 	}
 
-
+def terpenes_menu(request):
+	return {
+		'terpenes_menu':TerpeneDetails.objects.all()
+	}
 
 
 

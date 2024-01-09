@@ -108,6 +108,7 @@ TEMPLATES = [
                 'cannabis_db.views.flavors_menu',
                 'cannabis_db.views.feelings_menu',
                 'cannabis_db.views.helps_with_menu',
+                'cannabis_db.views.terpenes_menu',
 
 
             ],
