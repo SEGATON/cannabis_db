@@ -9,6 +9,9 @@ urlpatterns = [
 
 	path('strain/<slug:slug>/', views.strain, name='strain'),
 
+	path('dispensaries/', views.dispensaries, name='dispensaries'),
+	path('dispensary/<slug:slug>/', views.dispensary, name='dispensary'),
+
 	path('brands/', views.brands, name='brands'),
 	path('brand/<slug:slug>/', views.brand, name='brand'),
 	path('process_strain_review/<int:pk>/', views.process_strain_review, name='process_strain_review'),

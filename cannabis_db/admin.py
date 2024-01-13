@@ -94,7 +94,10 @@ class DispensarySocialFollowsAdmin(admin.ModelAdmin):
 
 @admin.register(Dispensary)
 class DispensaryAdmin(admin.ModelAdmin):
-	pass
+	list_display = ['title','slug']
+	prepopulated_fields = {
+		'slug':('title',)
+	}
 
 @admin.register(StrainKeywords)
 class StrainKeywordsAdmin(admin.ModelAdmin):
@@ -172,6 +175,7 @@ class FeelingReportAdmin(ImportExportModelAdmin):
 	list_display = ['id','title','slug','description','type_of_feelings','feeling_icon']
 	list_display_links = ['id']
 	list_editable = ['title','slug','type_of_feelings','feeling_icon']
+	search_fields = ['title','slug','type_of_feelings','feeling_icon']
 
 @admin.register(FeelingReportList)
 class FeelingReportListAdmin(ImportExportModelAdmin):

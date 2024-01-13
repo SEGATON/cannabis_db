@@ -29,6 +29,13 @@ from .models import FeelingReport
 from .models import FeelingReportList
 from .models import FeelingReportListSet
 
+from .models import Dispensary
+
+from .models import DispensarySocialFollowURL
+from .models import DispensarySocialFollowURLS
+from .models import DispensarySocialFollows
+
+
 from .models import HelpsWithReport
 from .models import HelpsWithReportList
 from .models import HelpsWithReportListSet
@@ -238,5 +245,17 @@ def unsave_strain(request, pk):
 
 
 
+def dispensaries(request):
+
+	dispensaries = Dispensary.objects.all()
+	return render(request, 'catalog/dispensaries/dispensaries.html', {
+				'dispensaries':dispensaries
+		})
 
 
+def dispensary(request, slug):
+
+	dispensary = get_object_or_404(Dispensary, slug=slug)
+	return render(request, 'catalog/dispensaries/dispensary.html', {
+				'dispensary':dispensary
+		})

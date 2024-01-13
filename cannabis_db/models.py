@@ -287,6 +287,60 @@ class Brand(models.Model):
 
 ##################################################################################################################################
 
+
+class DispensarySocialFollowURL(models.Model):
+	dispensary_social_profile_name		= models.CharField(max_length=300, null=True, blank=True)
+	dispensary_social_profile_URL		= models.URLField(null=True, blank=True)
+
+class DispensarySocialFollowURLS(models.Model):
+	dispensary_profiles_URLS 		= models.ManyToManyField(DispensarySocialFollowURL,  blank=True)
+
+	def __str__(self):
+		return str(self.social_profiles_URLS) 
+
+class DispensarySocialFollows(models.Model):
+	dispensary_social_follows_name	= models.CharField(max_length=300, null=True, blank=True)
+	social_profiles_URLS = models.ForeignKey(DispensarySocialFollowURLS, on_delete=models.CASCADE, blank=True)
+
+	def __str__(self):
+		return str(self.social_profiles_URLS) 
+
+class Dispensary(models.Model):
+	title = models.CharField(max_length=1000)
+	slug = models.SlugField(max_length=1000)
+	tagline = models.CharField(max_length=1000)
+	websiteURL = models.URLField(max_length=300, null=True, blank=True)
+	phone_number = models.CharField(max_length=300, null=True, blank=True)
+	email_address = models.EmailField(max_length=300, null=True, blank=True)
+	dispensary_logo	= models.ImageField(upload_to='media/CANNABIS_DB/BRAND_LOGOS/', null=True, blank=True)
+	dispensary_cover = models.ImageField(upload_to='media/CANNABIS_DB/BRAND_COVERS/', null=True, blank=True)
+	dispensary_description = RichTextField(null=True, blank=True)
+	dispensary_social_follow = models.ForeignKey(DispensarySocialFollows, on_delete=models.CASCADE, null=True, blank=True)
+	dispensary_products = models.ManyToManyField('Strain', related_name='dispensary', null=True, blank=True)
+	dispensary_followers	= models.ManyToManyField(CustomUser, related_name='dispensary_followers')
+
+	def get_absolute_url(self):
+		return reverse('cannabis_db:dispensary', args=[self.slug])
+
+	def __str__(self):
+		return str(self.title) 
+
+
+
+
+##################################################################################################################################
+
+
+
+
+
+
+
+
+
+
+
+
 class Vendor(models.Model):
 	user = models.OneToOneField(CustomUser, null=True, blank=True, on_delete=models.CASCADE)
 	name = models.CharField(max_length=300, null=True, blank=True)
@@ -359,6 +413,7 @@ class Strain(models.Model):
 	
 	saves = models.ManyToManyField('memberships.Profile', null=True,blank=True, related_name='strain_saves')
 
+	date_created = models.DateTimeField(auto_now_add=True)
 	def __str__(self):
 		return self.title
 
@@ -368,6 +423,9 @@ class Strain(models.Model):
 
 	def get_total_ratings(self):
 		pass
+
+	class Meta:
+		ordering = ('-date_created',)
 
 class Rating(models.Model):
 	user = models.ForeignKey(CustomUser, on_delete=models.CASCADE, null=True, blank=True, related_name='strain_rating')
@@ -399,38 +457,7 @@ class Rating(models.Model):
 		self.slug = slugify(self.title)
 		super(Rating, self).save(*args, **kwargs)
 
-class DispensarySocialFollowURL(models.Model):
-	dispensary_social_profile_name= models.CharField(max_length=300, null=True, blank=True)
-	dispensary_social_profile_URL= models.URLField(null=True, blank=True)
 
-class DispensarySocialFollowURLS(models.Model):
-	social_profiles_URLS = models.ManyToManyField(DispensarySocialFollowURL,  blank=True)
 
-	def __str__(self):
-		return str(self.social_profiles_URLS) 
 
-class DispensarySocialFollows(models.Model):
-	dispensary_social_follows_name= models.CharField(max_length=300, null=True, blank=True)
-	social_profiles_URLS = models.ForeignKey(DispensarySocialFollowURLS, on_delete=models.CASCADE, blank=True)
 
-	def __str__(self):
-		return str(self.social_profiles_URLS) 
-
-class Dispensary(models.Model):
-	title = models.CharField(max_length=1000)
-	slug = models.SlugField(max_length=1000)
-	tagline = models.CharField(max_length=1000)
-	websiteURL = models.URLField(max_length=300, null=True, blank=True)
-	phone_number = models.CharField(max_length=300, null=True, blank=True)
-	email_address = models.EmailField(max_length=300, null=True, blank=True)
-	dispensary_logo	= models.ImageField(upload_to='media/CANNABIS_DB/BRAND_LOGOS/', null=True, blank=True)
-	dispensary_cover_image	= models.ImageField(upload_to='media/CANNABIS_DB/BRAND_COVERS/', null=True, blank=True)
-	dispensarydescription = RichTextField(null=True, blank=True)
-	dispensary_social_follow	= models.ForeignKey(BrandSocialFollows, on_delete=models.CASCADE, null=True, blank=True)
-	dispensary_products = models.ManyToManyField('Strain', null=True, blank=True)
-	dispensary_followers	= models.ManyToManyField(CustomUser)
-
-	def get_absolute_url(self):
-		return reverse('cannabis_db:dispensary', args=[self.slug])
-	def __str__(self):
-		return str(self.title) 
