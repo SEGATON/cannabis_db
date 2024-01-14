@@ -12,7 +12,7 @@
 
 					<hr>
 					{% for dispensary in dispensaries %}
-							{{dispensary.title}}
+							<a href="{{dispensary.get_absolute_url}}">{{dispensary.title}}</a>
 							{{dispensary.tagline}}
 							{{dispensary.websiteURL}}
 							{{dispensary.phone_number}}

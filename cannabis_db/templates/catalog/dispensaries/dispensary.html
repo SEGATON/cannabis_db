@@ -1,18 +1,35 @@
 {% include 'template_parts/header.html' %}
 	{% block content %}
 		<div class="container">
-			<div class="row">
-				<div class="col-md-1">
-					<div class="filler"></div>
-					
-				</div>
+			<div class="row g-1">
+
 				<div class="col-md-9">
 					<div class="filler"></div>
-					{{dispensary}}
+					<div class="card p-3">
+						<img src="{{ dispensary.dispensary_logo.url }}" class="img-fluid" width="200">
+					<br><h5> {{dispensary.title}}</h5>
+					<br>
+					<hr>
+					<p>
+							<i class="fa-solid fa-globe"></i> {{dispensary.websiteURL}} | 
+							<i class="fa-solid fa-phone"></i> {{dispensary.phone_number}} | 
+							<i class="fa-solid fa-envelope"></i> {{dispensary.email_address}}
+						</p>
+						<hr>
+						<br>
+					{{dispensary.tagline}}
+					<br>
+					{{dispensary.dispensary_description|safe}}
+					<br>
+					{{dispensary.dispensary_products}}
 				</div>
-				<div class="col-md-2">	
-				<div class="filler"></div>		
-
+				</div>
+				<div class="col-md-3">	
+				<div class="filler"></div>	
+				<div class="card p-3">	
+				{{dispensary.dispensary_followers}}<br>
+				{{dispensary.dispensary_social_follow}}
+</div>
 				</div>
 			</div>
 		</div>
