@@ -8,7 +8,24 @@
 				</div>
 				<div class="col-md-9">
 					<div class="filler"></div>
-					{{dispensaries}}
+					<a href="{% url 'cannabis_db:add_dispensary' %}">add dispensary</a>
+
+					<hr>
+					{% for dispensary in dispensaries %}
+							{{dispensary.title}}
+							{{dispensary.tagline}}
+							{{dispensary.websiteURL}}
+							{{dispensary.phone_number}}
+							{{dispensary.email_address}}
+							{{dispensary.dispensary_logo}}
+							{{dispensary.dispensary_cover}}
+							{{dispensary.dispensary_description}}
+							{{dispensary.dispensary_social_follow}}
+							{{dispensary.dispensary_products}}
+							{{dispensary.dispensary_followers}}
+
+							<a href="{% url 'cannabis_db:remove_dispensary' dispensary.pk  %}">remove dispensary from directory</a>
+					{% endfor %}
 				</div>
 				<div class="col-md-2">	
 				<div class="filler"></div>		

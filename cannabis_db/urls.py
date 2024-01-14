@@ -11,6 +11,8 @@ urlpatterns = [
 
 	path('dispensaries/', views.dispensaries, name='dispensaries'),
 	path('dispensary/<slug:slug>/', views.dispensary, name='dispensary'),
+	path('add_dispensary/', views.add_dispensary, name='add_dispensary'),
+	path('remove_dispensary/<int:pk>/', views.remove_dispensary, name='remove_dispensary'),
 
 	path('brands/', views.brands, name='brands'),
 	path('brand/<slug:slug>/', views.brand, name='brand'),

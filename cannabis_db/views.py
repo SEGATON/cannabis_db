@@ -1,4 +1,5 @@
 from django.shortcuts import render
+from django.shortcuts import redirect
 from django.shortcuts import get_object_or_404
 
 from .models import Strain
@@ -48,6 +49,9 @@ from memberships.models import Profile
 from django.http import HttpResponseRedirect
 
 from django.contrib.auth.decorators import login_required
+
+
+from .forms import AddDispensaryForm
 
 def front_page(request):
 	strains = Strain.objects.all()
@@ -259,3 +263,24 @@ def dispensary(request, slug):
 	return render(request, 'catalog/dispensaries/dispensary.html', {
 				'dispensary':dispensary
 		})
+
+def add_dispensary(request):
+
+	if request.method == 'POST':
+		add_dispensary_form = AddDispensaryForm(request.POST)
+		if add_dispensary_form.is_valid():
+			add_dispensary_form.save()
+			return redirect('cannabis_db:dispensaries')
+	else:
+		add_dispensary_form = AddDispensaryForm()
+	return render(request, 'catalog/dispensaries/add_dispensary.html', {
+				'add_dispensary_form':add_dispensary_form
+		})
+
+
+def remove_dispensary(request, pk):
+
+	dispensary = get_object_or_404(Dispensary, pk=pk)
+	dispensary.delete()
+
+	return redirect('cannabis_db:dispensaries')
