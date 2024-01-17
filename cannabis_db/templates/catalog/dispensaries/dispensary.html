@@ -10,13 +10,40 @@
 						<img src="{{ dispensary.dispensary_logo.url }}" class="img-fluid" width="200">
 						{% endif %}
 					<br><h5> {{dispensary.title}}</h5>
+					<a href="">claim profile</a>
 					<br>
+					<p class=" type_of_dispensary_label_style">
+										{% if dispensary.type_of_dispensary == 'medical' %}
+										Medical <i class="fa-solid fa-check"></i>
+									{% elif dispensary.type_of_dispensary == 'recreational' %}
+										Recreational <i class="fa-solid fa-check"></i>
+									{% elif dispensary.type_of_dispensary == 'medical_recreational' %}
+									<p>Medical & Recreational <i class="fa-solid fa-check"></i>
+									{% endif %}
+									
+									</p>
 					<hr>
+
 					<p>
 							<i class="fa-solid fa-globe"></i> 
 							<a href="{{dispensary.websiteURL}}">{{dispensary.websiteURL}}</a> | 
 							<i class="fa-solid fa-phone"></i> {{dispensary.phone_number}} | 
-							<i class="fa-solid fa-envelope"></i> {{dispensary.email_address}}
+							<i class="fa-solid fa-envelope"></i> {{dispensary.email_address}} | 
+
+
+							{% if dispensary.dispensary_address.all %}
+									
+									<p class="dispensaries_list_item_description_text">
+										<b>Address:</b><br>
+										{% for address in dispensary.dispensary_address.all %}
+											{{address.street_name_01}}
+											{{address.street_name_02}}<br>
+											{{address.street_city}}
+											{{address.street_state}}
+											{{address.street_zip_code}}
+										{% endfor %}
+									</p>
+									{% endif %}
 						</p>
 						<hr>
 						<br>
@@ -37,6 +64,6 @@
 			</div>
 		</div>
 
-		{{dispensary.dispensary_address.all}}
+	
 	{% endblock %}
 

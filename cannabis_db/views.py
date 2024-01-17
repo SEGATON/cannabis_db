@@ -284,3 +284,10 @@ def remove_dispensary(request, pk):
 	dispensary.delete()
 
 	return redirect('cannabis_db:dispensaries')
+
+
+
+def faq_page(request):
+	return render(request, 'static_pages/faq.html', {
+
+		})

@@ -774,3 +774,16 @@ h2 {
   height: 50px;
   border-bottom:1px solid #ddd;
 }
+
+.modal-content{
+  padding: 0px;
+}
+
+.modal-ku {
+  width: 850px;
+  margin: auto;
+}
+
+.bujaj{
+  width: 80%;
+}
