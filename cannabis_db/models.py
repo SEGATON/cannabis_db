@@ -388,6 +388,13 @@ class DispensarySocialFollows(models.Model):
 		return str(self.social_profiles_URLS) 
 
 class Dispensary(models.Model):
+	TYPE_OF_DISPENSARY = {
+		('medical','Medical'),
+		('recreational','Recreational'),
+		('Medical_recreational','Medical & Recreational'),
+	}
+	type_of_dispensary = models.CharField(max_length=50, choices=TYPE_OF_DISPENSARY, null=True, blank=True)
+	
 	title = models.CharField(max_length=1000)
 	slug = models.SlugField(max_length=1000)
 	tagline = models.CharField(max_length=1000)

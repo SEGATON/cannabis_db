@@ -743,12 +743,34 @@ h2 {
 }
 
 .dispensaries_list_item_card{
-
-  padding-bottom: 5px;
+  margin-bottom: 2px;
+  padding-bottom: 20px;
+  padding-top: 10px;
 }
 .dispensaries_list_item_title_link{
   font-size: 11px;
 }
 .dispensaries_list_item_description_text{
   font-size: 10px;
+}
+
+.float_right{
+  float: right;
+}
+
+.type_of_dispensary_label_style{
+  background: green;
+  color: white;
+  font-size: 8px;
+  text-transform: capitalize;
+  text-align: center;
+  padding: 0px;
+  width: 70px;
+  float: right;
+  border-radius: 2px;
+  margin: 3px 0;
+}
+.dis_type_box{
+  height: 50px;
+  border-bottom:1px solid #ddd;
 }
