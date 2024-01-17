@@ -2,25 +2,61 @@
 	{% block content %}
 		<div class="container">
 			<div class="row ">
-
-				<div class="col-md-9">
+				<div class="col-md-2">
+					<div class="filler"></div>	
+					<div class="card ">
+						lets do!
+					</div>
+				</div>
+				<div class="col-md-7">
 					<div class="filler"></div>
 
 					{% for dispensary in dispensaries %}
-					<div class="row">
+					<div class="card dispensaries_list_item_card">
+						<div class="row">
 
-						<div class="col-md-10">
-							<div class="row">
-								
-									<div class="col-lg-12">
-										<a href="{{dispensary.get_absolute_url}}">{{dispensary}}</a>
-									</div>
-
-								
+							<div class="col-auto text-wrap custom_width_column_for_dispensaries_list_counter">
+								<p class="text-wrap dispensaries_list_item_description_text p-3">{{forloop.counter}}</p>
 							</div>
+							<div class="col-auto p-2">
+								{% if dispensary.dispensary_logo %}
+									<img src="{{dispensary.dispensary_logo.url}}"  width="30" class="img-fluid">
+								{% endif %}
+							</div>
+							<div class="col-md-7">
+								<a class="dispensaries_list_item_title_link" href="{{dispensary.get_absolute_url}}">{{dispensary.title}}</a>
+								<p class="dispensaries_list_item_description_text">{{dispensary.dispensary_description|truncatechars:100|safe}}</p>
+								<hr>
+								<p class="dispensaries_list_item_description_text">
+									{% if dispensary.websiteURL %}
+										<i class="fa-solid fa-globe"></i> <a href="{{dispensary.websiteURL}}">{{dispensary.websiteURL}} </a> 
+									{% elif dispensary.email_address %}
+									|
+										<i class="fa-solid fa-envelope"></i>{{dispensary.email_address}} 
+									{% elif dispensary.phone_number %}
+									|
+										<i class="fa-solid fa-square-phone-flip"></i> {{dispensary.phone_number}}
+									{% endif %}
+									{% if dispensary.dispensary_address.all %}
+									|
+										<i class="fa-solid fa-square-phone-flip"></i> 
+										{% for address in dispensary.dispensary_address.all %}
+											{{address.street_name_01}}
+											{{address.street_name_02}}
+											{{address.street_city}}
+											{{address.street_state}}
+											{{address.street_zip_code}}
+										{% endfor %}
+									{% endif %}
+								</p>
+							</div>
+							<div class="col-md-2">
+fdfdf
+							</div>
+
+</div>
 						</div>
-					</div>
-				{% endfor %}
+					{% endfor %}
 				</div>
 				<div class="col-md-3">	
 				<div class="filler"></div>	

@@ -737,3 +737,18 @@ h2 {
 .edit_section_link{
   font-size: 10px;
 }
+
+.custom_width_column_for_dispensaries_list_counter{
+  min-width: 2%;
+}
+
+.dispensaries_list_item_card{
+
+  padding-bottom: 5px;
+}
+.dispensaries_list_item_title_link{
+  font-size: 11px;
+}
+.dispensaries_list_item_description_text{
+  font-size: 10px;
+}
