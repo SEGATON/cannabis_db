@@ -267,7 +267,7 @@ def dispensary(request, slug):
 def add_dispensary(request):
 
 	if request.method == 'POST':
-		add_dispensary_form = AddDispensaryForm(request.POST)
+		add_dispensary_form = AddDispensaryForm(request.POST, request.FILES)
 		if add_dispensary_form.is_valid():
 			add_dispensary_form.save()
 			return redirect('cannabis_db:dispensaries')

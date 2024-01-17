@@ -727,3 +727,13 @@ h2 {
 .like_btns_box{
   float: right;
 }
+
+
+.dispensary_list_item{
+  margin-bottom: 4px;
+}
+
+
+.edit_section_link{
+  font-size: 10px;
+}

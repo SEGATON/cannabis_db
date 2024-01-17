@@ -6,12 +6,15 @@
 				<div class="col-md-9">
 					<div class="filler"></div>
 					<div class="card p-3">
+						{% if dispensary.featured_image %}
 						<img src="{{ dispensary.dispensary_logo.url }}" class="img-fluid" width="200">
+						{% endif %}
 					<br><h5> {{dispensary.title}}</h5>
 					<br>
 					<hr>
 					<p>
-							<i class="fa-solid fa-globe"></i> {{dispensary.websiteURL}} | 
+							<i class="fa-solid fa-globe"></i> 
+							<a href="{{dispensary.websiteURL}}">{{dispensary.websiteURL}}</a> | 
 							<i class="fa-solid fa-phone"></i> {{dispensary.phone_number}} | 
 							<i class="fa-solid fa-envelope"></i> {{dispensary.email_address}}
 						</p>

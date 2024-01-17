@@ -13,6 +13,53 @@ from localflavor.us.models import USPostalCodeField
 from localflavor.us.models import USSocialSecurityNumberField
 from django.conf import settings
 
+
+
+
+
+
+
+
+class Address(models.Model):
+	user = models.ForeignKey(settings.AUTH_USER_MODEL, on_delete=models.CASCADE,null=True,blank=True)
+	dispensary_name = models.CharField(max_length=300, null=True, blank=True)
+	phone_number = models.CharField(max_length=300, null=True, blank=True)
+	address_id_name = models.CharField(max_length=1000)
+
+	TYPE_OF_ADDRESS = (
+				('billing_address','Billing address'),
+				('shipping_address','Shipping address'),
+				('p_o_box_number','Post office box number'),
+				('physical_address','Physical Address'),
+			)
+
+	type_of_address	=	models.CharField(max_length=1000, choices=TYPE_OF_ADDRESS)
+
+	#order = models.ForeignKey('orders.Order', on_delete=models.CASCADE, related_name='order_address',null=True,blank=True)
+	
+	street_name_01	=	models.CharField(max_length=1000, null=True, blank=True)
+	street_name_02	=	models.CharField(max_length=1000, null=True, blank=True)
+	street_city		=	models.CharField(max_length=1000, null=True, blank=True)
+	street_state	=  USStateField()
+	street_zip_code	=	USZipCodeField()
+
+	default_address = models.BooleanField(default=False,null=True, blank=True)
+
+	date_created = models.DateTimeField(auto_now_add=True)
+
+	def __str__(self):
+		return self.address_id_name
+
+
+
+
+
+
+
+
+
+
+
 class StrainType(models.Model):
 	title = models.CharField(max_length=50)
 	slug = models.SlugField(max_length=50)
@@ -353,6 +400,8 @@ class Dispensary(models.Model):
 	dispensary_social_follow = models.ForeignKey(DispensarySocialFollows, on_delete=models.CASCADE, null=True, blank=True)
 	dispensary_products = models.ManyToManyField('Strain', related_name='dispensary', null=True, blank=True)
 	dispensary_followers = models.ManyToManyField(CustomUser, related_name='dispensary_followers')
+
+	dispensary_address = models.ManyToManyField(Address)
 
 
 	def get_absolute_url(self):

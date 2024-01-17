@@ -32,6 +32,7 @@ from .models import HelpsWithReportList
 from .models import HelpsWithReportListSet
 from .models import Vendor
 
+from .models import Address
 
 from .models import AromasListSet
 from .models import AromasDetailsList
@@ -53,6 +54,13 @@ from .models import StrainLineageDetailsListItems
 from .models import StrainLineageDetailsListItem
 
 from import_export.admin import ImportExportModelAdmin
+
+
+
+@admin.register(Address)
+class AddressAdmin(ImportExportModelAdmin):
+	pass
+
 
 
 @admin.register(StrainLineageDetailsList)
@@ -93,7 +101,7 @@ class DispensarySocialFollowsAdmin(admin.ModelAdmin):
 
 
 @admin.register(Dispensary)
-class DispensaryAdmin(admin.ModelAdmin):
+class DispensaryAdmin(ImportExportModelAdmin):
 	list_display = ['title','slug']
 	prepopulated_fields = {
 		'slug':('title',)

@@ -27,9 +27,9 @@ class CustomUserManager(BaseUserManager):
 		extra_fields.setdefault('is_active', True)
 
 		if extra_fields.get('is_staff') is not True:
-			raise ValueError(_("ffffffffffff"))
+			raise ValueError(_("contact webmaster"))
 		if extra_fields.get('is_superuser') is not True:
-			raise ValueError(_("dddddddd"))
+			raise ValueError(_("contact webmaster"))
 		return self.create_user(email, password, **extra_fields)
 
 
@@ -39,10 +39,10 @@ class CustomUser(AbstractUser):
 			('dropshipper_account','Dropshipper account'),
 			('vendor_and_dropshipper','Vendor and dropshipper'),
 		)
-	account_type 			= models.CharField(max_length=300, choices=ACCOUNT_TYPE, null=True, blank=True)
+	account_type = models.CharField(max_length=300, choices=ACCOUNT_TYPE, null=True, blank=True)
 
-	email 			= models.EmailField(_("email address"), unique=True)
-	phone_number 			= models.CharField(max_length=100,null=True,blank=True)
+	email = models.EmailField(_("email address"), unique=True)
+	phone_number = models.CharField(max_length=100,null=True,blank=True)
 
 	business_lega_name 		= models.CharField(max_length=100,null=True,blank=True)
 	d_b_a 			= models.CharField(max_length=100,null=True,blank=True)
