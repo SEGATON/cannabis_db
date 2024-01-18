@@ -30,7 +30,7 @@
 	<li><a href="{% url 'account_logout' %}"><i class="fa-solid fa-right-from-bracket"></i></a></li>
 					{% else %}
 					<li><a href="{% url 'account_login' %}">login</a></li>
-					<li><a href="{% url 'account_signup' %}">create account</a></li>
+					<li><a href="{% url 'accounts:create_account' %}">create account</a></li>
 					{% endif %}
 
 				</ul>

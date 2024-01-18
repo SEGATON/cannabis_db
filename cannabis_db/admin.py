@@ -102,11 +102,13 @@ class DispensarySocialFollowsAdmin(admin.ModelAdmin):
 
 @admin.register(Dispensary)
 class DispensaryAdmin(ImportExportModelAdmin):
-	list_display = ['title','slug']
+	list_display = ['id','title','slug','dispensary_logo']
 	prepopulated_fields = {
 		'slug':('title',)
 	}
-
+	list_display_links = ['id']
+	list_editable = ['title','slug','dispensary_logo']
+	search_fields = ['id','title','slug','dispensary_logo']
 @admin.register(StrainKeywords)
 class StrainKeywordsAdmin(admin.ModelAdmin):
 	pass

@@ -19,6 +19,7 @@ def create_account(request):
 		create_account_form = CreateAccountForm(request.POST)
 		if create_account_form.is_valid():
 			create_account_form.save()
+			return redirect('accounts:login')
 	else:
 		create_account_form = CreateAccountForm()
 	return render(request, 'accounts/create_account.html', {
