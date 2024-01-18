@@ -13,20 +13,25 @@
 			</div>
 			<div class="col-md-5">
 				<ul class="nav">
-					<li><a href="{% url 'cannabis_db:strains' %}">browse strains</a></li>
+					<li><a href="{% url 'cannabis_db:strains' %}">strains</a></li>
 
-					<li><a href="{% url 'cannabis_db:flavors' %}">flavors</a></li>
+<li><a href="{% url 'blog:front_page' %}">blog</a></li>
+<li><a href="{% url 'cannabis_db:dispensaries' %}">dispensaries</a></li>
+
 
 
 					{% if user.is_authenticated %}
-							<li><a href="{% url 'account_logout' %}">logout</a></li>
-							<li><a href="{% url 'memberships:profile' %}">profile</a></li>
+						
+							<li><a id="profile_nav_button" href="{% url 'memberships:profile' %}">
+								{% load thumbnail %}
+								<img src="{% thumbnail user.profile.profile_photo 25x25 crop %}" class="border_radius_sm">
+							</a></li>
+<li><a href="">	<i class="fa-solid fa-location-dot"></i></a></li>
+	<li><a href="{% url 'account_logout' %}"><i class="fa-solid fa-right-from-bracket"></i></a></li>
 					{% else %}
 					<li><a href="{% url 'account_login' %}">login</a></li>
 					<li><a href="{% url 'account_signup' %}">create account</a></li>
 					{% endif %}
-<li><a href="{% url 'blog:front_page' %}">blog</a></li>
-<li><a href="{% url 'cannabis_db:dispensaries' %}">dispensaries</a></li>
 
 				</ul>
 			</div>

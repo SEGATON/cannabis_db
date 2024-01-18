@@ -171,10 +171,11 @@ h1,h2,h3,h4,h5,h6{
   margin-top: 9px;
 }
 .nav{
-  padding: 10px 0;
+  padding-top: 8px;
   margin-top: 0px;
   float: right;
   list-style: none;
+  height: 40px;
 
 }
 .nav li {
@@ -955,3 +956,9 @@ color: white;
   display: inline;
   font-size: 8px;
 } 
+
+.dispensary_title{
+  font-weight: 900;
+}
+#profile_nav_button{
+}
