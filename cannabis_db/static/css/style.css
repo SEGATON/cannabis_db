@@ -518,7 +518,7 @@ hr{
   padding: 5px 10px;
     font-size: 8px;
 
-  transition: all .5s ease-out ;
+  transition: all 3.0s ease-out ;
   min-height: 150px;
   box-shadow: inset 1px 1px 3px 0px #444;
   outline: none;
@@ -529,9 +529,10 @@ hr{
   border:none;
   padding: 5px 10px;
   font-size: 8px;
-  transition: all .5s ease-out ;
+  transition: all 2s ease-out ;
   min-height: 150px;
-  box-shadow: inset 1px 1px 3px 0px #999;
+  box-shadow: inset 1px 1px 3px 0px #444;
+  outline: none;
 }
 .offcanvas-header{
   background: green;

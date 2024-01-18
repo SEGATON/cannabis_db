@@ -395,6 +395,13 @@ class Dispensary(models.Model):
 	}
 	type_of_dispensary = models.CharField(max_length=50, choices=TYPE_OF_DISPENSARY, null=True, blank=True)
 	
+	SHOPPING_OPTIONS = {
+		('all','All'),
+		('pickup','Pickup'),
+		('delivery','Delivery'),
+	}
+	shopping_options = models.CharField(max_length=50, choices=SHOPPING_OPTIONS, null=True, blank=True)
+	
 	title = models.CharField(max_length=1000)
 	slug = models.SlugField(max_length=1000)
 	tagline = models.CharField(max_length=1000)

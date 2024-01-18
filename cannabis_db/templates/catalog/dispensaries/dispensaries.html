@@ -40,10 +40,23 @@
 									{% elif dispensary.type_of_dispensary == 'recreational' %}
 										Recreational <i class="fa-solid fa-check"></i>
 									{% elif dispensary.type_of_dispensary == 'medical_recreational' %}
-									<p>Medical & Recreational <i class="fa-solid fa-check"></i>
+									Medical & Recreational <i class="fa-solid fa-check"></i>
 									{% endif %}
 									
 									</p>
+
+
+									{% if dispensary.shopping_options == 'all'  %}
+											all
+									{% elif dispensary.shopping_options == 'delivery'  %}
+											delivery
+									{% elif dispensary.shopping_options == 'pickup'  %}
+											pickup
+									{% endif %}
+
+
+
+
 									</div>
 									<hr>
 									<div class="col-lg-12 p-0">
