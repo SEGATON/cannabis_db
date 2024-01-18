@@ -472,7 +472,7 @@ hr{
 }
 .custom_card{
   margin: 6px 0;
-  background: none;
+  background: #fff;
 }
 
 .strain_details_card{
@@ -786,4 +786,27 @@ h2 {
 
 .bujaj{
   width: 80%;
+}
+#profile_photo_box{
+  text-align: center;
+}
+#profile_greeting_headline span{
+  font-weight: 300;
+}
+
+.profile_links{
+  padding: 0;
+  margin: 0;
+  list-style: none;
+}
+.profile_links li {
+
+}
+.profile_links li a{
+  font-size: 12px;
+}
+
+#little_link{
+  font-size: 10px;
+  text-align: left;
 }

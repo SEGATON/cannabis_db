@@ -33,23 +33,45 @@
 					
 					<div class="filler"></div>
 					<div class="card p-3">
-						<h5 id="profile_greeting_headline"><b>Welcome back:</b> <span>{{user}}</span></h5>
+						<h5 id="profile_greeting_headline"><b>Edit profile:</b> <span>{{user}}</span></h5>
 						<hr>
 						<br>
-						<p>{{user.profile.biography|safe}}&nbsp; <a href="{% url 'memberships:edit_profile' user.pk %}" id="little_link"><i class="fa-solid fa-pen-to-square"></i> Edit</a></p>
-						<br>
-			
+
+						<div class="row">
+
+
+					<div class="col-md-6">
+						<table class="table">
+							<form method="POST">
+								{% csrf_token %}
+						<tr><td>{{edit_profile_form}}</td></tr>
+						<tr><td><button>edit biography</button></td></tr>
+					</form>
+						<hr>
+					</table>
+				
+						
+						<table class="table">
+							<form method="POST">
+								{% csrf_token %}
+						<tr><td>{{edit_profile_social_profiles_form.website_url}}</td></tr>
+						<tr><td>{{edit_profile_social_profiles_form.twitter}}</td></tr>
+						<tr><td>{{edit_profile_social_profiles_form.facebook}}</td></tr>
+						<tr><td>{{edit_profile_social_profiles_form.youtube}}</td></tr>
+						<tr><td>{{edit_profile_social_profiles_form.instagram}}</td></tr>
+						<tr><td><button>edit social profiles</button></td></tr>
+					</form>
+						</table>
+
+					
+						</div>
 
 
 					</div>
 				</div>
 				<div class="col-md-2">	
 				<div class="filler"></div>		
-					{{user.profile.website_url}}<br>
-					{{user.profile.twitter}}<br>
-					{{user.profile.facebook}}<br>
-					{{user.profile.youtube}}<br>
-					{{user.profile.instagram}}<br>
+
 				</div>
 			</div>
 		</div>

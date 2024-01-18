@@ -20,6 +20,9 @@ class Profile(models.Model):
           youtube = models.URLField(max_length=1000,null=True, blank=True)
           instagram = models.URLField(max_length=1000,null=True, blank=True)
 
+
+
+
           saved_strains = models.ManyToManyField(Strain,null=True, blank=True)
 
           def __str__(self):

@@ -1,9 +1,16 @@
 from django.shortcuts import render
+from django.shortcuts import redirect
 from django.shortcuts import get_object_or_404
 from django.views import generic
 # Create your views here.
+from .forms import EditProfileForm
+from .forms import EditProfileSocialProfilesForm
 
 from .models import Profile
+
+
+
+
 def profile(request):
 
 	return render(request, 'memberships/profile.html', {
@@ -43,3 +50,27 @@ def delete_profile(request, pk):
 
 def follow_profile(request, pk):
 	pass
+
+
+
+def edit_profile(request, pk):
+
+	if request.method == 'POST':
+
+		instance = get_object_or_404(Profile, pk=pk)
+		edit_profile_form = EditProfileForm(request.POST, instance=instance)
+
+		if edit_profile_form.is_valid():
+			chuchut = edit_profile_form.save(commit=True)
+			chuchut.user = request.user
+			chuchut.save()
+			return redirect('memberships:profile')
+	else:
+		edit_profile_form = EditProfileForm()
+
+
+	edit_profile_social_profiles_form = EditProfileSocialProfilesForm()
+	return render(request, 'manage_profile/edit_profile.html', {
+			'edit_profile_form':edit_profile_form,
+			'edit_profile_social_profiles_form':edit_profile_social_profiles_form,
+		})
