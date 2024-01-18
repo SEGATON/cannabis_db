@@ -412,7 +412,8 @@ class Dispensary(models.Model):
 	dispensary_cover = models.ImageField(upload_to='media/CANNABIS_DB/DISPENSARY_COVERS/', null=True, blank=True)
 	dispensary_description = RichTextField(null=True, blank=True)
 	dispensary_social_follow = models.ForeignKey(DispensarySocialFollows, on_delete=models.CASCADE, null=True, blank=True)
-	dispensary_products = models.ManyToManyField('Strain', related_name='dispensary', null=True, blank=True)
+	dispensary_products = models.ManyToManyField('Strain', related_name='dispensary_products', null=True, blank=True)
+	dispensary_brands = models.ManyToManyField(Brand, related_name='dispensary_brands', null=True, blank=True)
 	dispensary_followers = models.ManyToManyField(CustomUser, related_name='dispensary_followers')
 
 	dispensary_address = models.ManyToManyField(Address)
@@ -517,6 +518,8 @@ class Strain(models.Model):
 	saves = models.ManyToManyField('memberships.Profile', null=True,blank=True, related_name='strain_saves')
 
 	date_created = models.DateTimeField(auto_now_add=True)
+
+	dispensary = models.ManyToManyField(Dispensary)
 	def __str__(self):
 		return self.title
 

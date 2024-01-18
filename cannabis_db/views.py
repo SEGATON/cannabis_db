@@ -104,6 +104,12 @@ def brands(request):
 def brand(request, slug):
 	return render(request, 'catalog/brands/brand.html', {
 		})
+
+def brands_menu(request):
+	return {
+		'brands_menu': Brand.objects.all()
+	}
+
 @login_required
 def process_strain_review(request, pk):
 
@@ -260,8 +266,10 @@ def dispensaries(request):
 def dispensary(request, slug):
 
 	dispensary = get_object_or_404(Dispensary, slug=slug)
+
 	return render(request, 'catalog/dispensaries/dispensary.html', {
-				'dispensary':dispensary
+				'dispensary':dispensary,
+			
 		})
 
 def add_dispensary(request):
@@ -291,3 +299,8 @@ def faq_page(request):
 	return render(request, 'static_pages/faq.html', {
 
 		})
+
+
+
+
+
