@@ -1,14 +1,50 @@
+
+
+
+
+
+
+
+
+
+
+
 {% include 'template_parts/header.html' %}
 	{% block content %}
 		<div class="container">
 			<div class="row g-1">
 
-				<div class="col-md-9">
+
+
+
+
+
+
+				<div class="col-md-2">
 					<div class="filler"></div>
-					<div class="card p-3">
-						{% if dispensary.featured_image %}
+					<div class="card  p-3">
+{% if dispensary.dispensary_logo %}
 						<img src="{{ dispensary.dispensary_logo.url }}" class="img-fluid" width="200">
 						{% endif %}
+					</div>
+
+					<div class="card custom_card p-3">
+
+
+					</div>
+				</div>
+
+
+
+
+
+
+
+
+				<div class="col-md-6">
+					
+					<div class="filler"></div>
+					<div class="card p-3">
 					<br><h5> {{dispensary.title}}</h5>
 					<a href="">claim profile</a>
 					<br>
@@ -22,9 +58,29 @@
 									{% endif %}
 									
 									</p>
-					<hr>
 
-					<p>
+
+							<hr>
+							<ul class="shopping_options_list">
+							{% if dispensary.shopping_options == 'all'  %}
+									<li><p><span class="badge shopping_options_badge">All</span></p></li>
+									<li><p><span class="badge shopping_options_badge shopping_options_badge_faded">Delivery</span></p></li>
+									<li><p><span class="badge shopping_options_badge shopping_options_badge_faded">Pickup</span></p></li>
+							{% elif dispensary.shopping_options == 'delivery'  %}
+									<li><p><span class="badge shopping_options_badge shopping_options_badge_faded">All</span></p></li>
+									<li><p><span class="badge shopping_options_badge">Delivery</span></p></li>
+									<li><p><span class="badge shopping_options_badge shopping_options_badge_faded">Pickup</span></p></li>
+							{% elif dispensary.shopping_options == 'pickup'  %}
+									<li><p><span class="badge shopping_options_badge shopping_options_badge_faded">All</span></p></li>
+									<li><p><span class="badge shopping_options_badge shopping_options_badge_faded">Delivery</span></p></li>
+									<li><p><span class="badge shopping_options_badge">Pickup</span></p></li>
+							{% endif %}
+							</ul>
+							<hr>
+
+
+
+							<p>
 							<i class="fa-solid fa-globe"></i> 
 							<a href="{{dispensary.websiteURL}}">{{dispensary.websiteURL}}</a> | 
 							<i class="fa-solid fa-phone"></i> {{dispensary.phone_number}} | 
@@ -59,11 +115,35 @@
 				<div class="card p-3">	
 				{{dispensary.dispensary_followers}}<br>
 				{{dispensary.dispensary_social_follow}}
-</div>
+
+					</div>
+				</div>
+
+
+
+
+
+				<div class="col-md-2">	
+				<div class="filler"></div>		
+
 				</div>
 			</div>
 		</div>
-
-	
 	{% endblock %}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
