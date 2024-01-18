@@ -553,6 +553,7 @@ hr{
   font-size: 10px;
    border:none;
    border-radius: 2px;
+   padding: 5px 20px;
 }
 .official_green_button_lg{
     background: green;
