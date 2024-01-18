@@ -435,26 +435,130 @@ hr{
 .filler{
   height: 70px;
 }
+
 .custom_tf{
   width: 100%;
-  border-radius: 3px;
-  border:1px solid #DDD;
-  padding: 3px 5px;
-  font-size: 12px;
+  border-radius: 2px;
+  border:none;
+  padding: 5px 10px;
+  font-size: 8px;
   margin-bottom: 3px;
+  box-shadow: inset 1px 1px 3px 0px #999;
+}
+.custom_tf:hover{
+  width: 100%;
+  border-radius: 2px;
+  border:none;
+  padding: 5px 10px;
+  font-size: 8px;
+  margin-bottom: 3px;
+  box-shadow: inset 1px 1px 3px 0px #999;
+}
+.custom_tf:focus{
+  width: 100%;
+  border-radius: 2px;
+  border:none;
+  padding: 5px 10px;
+  font-size: 8px;
+  margin-bottom: 3px;
+  box-shadow: inset 1px 1px 3px 0px #444;
+  outline: none;
+  transition: all .6s;
+  color: black;
+}
+::placeholder:focus {
+  color: black;
+}
+.custom_tf:focus{
+  width: 100%;
+  border-radius: 2px;
+  border:none;
+  padding: 5px 10px;
+  font-size: 8px;
+  margin-bottom: 3px;
+  box-shadow: inset 1px 1px 3px 0px #444;
+  outline: none;
+  transition: all .6s;
+  color: black;
+}
+.custom_tf:active{
+  width: 100%;
+  border-radius: 2px;
+  border:none;
+  padding: 5px 10px;
+  font-size: 8px;
+  margin-bottom: 3px;
+  box-shadow: inset 1px 1px 3px 0px #999;
 }
 .custom_ta{
   width: 100%;
-  border-radius: 3px;
-  border:1px solid #DDD;
-  padding: 3px 5px;
-  font-size: 12px;
+  border-radius: 2px;
+  border:none;
+  padding: 5px 10px;
+  font-size: 8px;
+  transition: all .5s ease-out ;
+  height: 50px;
+  min-height: 50px;
+  box-shadow: inset 1px 1px 3px 0px #999;
+}
+.custom_ta:hover{
+  width: 100%;
+  border-radius: 2px;
+  border:none;
+  padding: 5px 10px;
+  font-size: 8px;
   transition: all .5s ease-out ;
   min-height: 150px;
+  box-shadow: inset 1px 1px 3px 0px #999;
+}
+.custom_ta:focus{
+  width: 100%;
+  border-radius: 2px;
+  border:none;
+  padding: 5px 10px;
+    font-size: 8px;
+
+  transition: all .5s ease-out ;
+  min-height: 150px;
+  box-shadow: inset 1px 1px 3px 0px #444;
+  outline: none;
+}
+.custom_ta:active{
+  width: 100%;
+  border-radius: 2px;
+  border:none;
+  padding: 5px 10px;
+  font-size: 8px;
+  transition: all .5s ease-out ;
+  min-height: 150px;
+  box-shadow: inset 1px 1px 3px 0px #999;
 }
 .offcanvas-header{
   background: green;
   color: white;
+
+}
+.official_green_button_sm{
+  background: green;
+  color: white;
+   text-transform: capitalize;
+   font-size: 10px;
+   border:none;
+    border-radius: 2px;
+}
+.official_green_button_m{
+    background: green;
+  color: white;
+  text-transform: capitalize;
+  font-size: 10px;
+   border:none;
+   border-radius: 2px;
+}
+.official_green_button_lg{
+    background: green;
+  color: white;
+   text-transform: capitalize;
+    border:none;
 }
 .close_btn{
   color: white;
@@ -809,4 +913,16 @@ h2 {
 #little_link{
   font-size: 10px;
   text-align: left;
+}
+
+.profile_social_profiles_links_menu{
+  padding: 0;
+  margin: 0;
+  list-style: none;
+}
+.profile_social_profiles_links_menu li {
+  display: inline;
+}
+.profile_social_profiles_links_menu li a {
+  font-size: 12px;
 }

@@ -69,7 +69,19 @@ def edit_profile(request, pk):
 		edit_profile_form = EditProfileForm()
 
 
-	edit_profile_social_profiles_form = EditProfileSocialProfilesForm()
+	if request.method == 'POST':
+
+		instance = get_object_or_404(Profile, pk=pk)
+		edit_profile_social_profiles_form = EditProfileSocialProfilesForm(request.POST, instance=instance)
+
+		if edit_profile_social_profiles_form.is_valid():
+			chagga = edit_profile_social_profiles_form.save(commit=None)
+			chagga.user = request.user 
+			chagga.save()
+			return redirect('memberships:profile')
+	else:
+		edit_profile_social_profiles_form = EditProfileSocialProfilesForm()
+
 	return render(request, 'manage_profile/edit_profile.html', {
 			'edit_profile_form':edit_profile_form,
 			'edit_profile_social_profiles_form':edit_profile_social_profiles_form,

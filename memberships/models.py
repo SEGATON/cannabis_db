@@ -25,5 +25,7 @@ class Profile(models.Model):
 
           saved_strains = models.ManyToManyField(Strain,null=True, blank=True)
 
+          followers = models.ManyToManyField('self')
+
           def __str__(self):
                     return str(self.user)
