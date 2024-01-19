@@ -11,7 +11,7 @@ urlpatterns = [
     path('account-settings/', views.account_settings, name='account_settings'),
     path('privacy-settings/', views.privacy_settings, name='privacy_settings'),
     path('vendor-application/', views.vendor_application, name='vendor_application'),
-
+    
     path('login/', auth_views.LoginView.as_view(template_name='accounts/login.html', form_class=LoginForm), name="login"),
 
 ]

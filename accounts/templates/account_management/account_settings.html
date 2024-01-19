@@ -2,7 +2,11 @@
 	{% block content %}
 	<div class="container-fluid ">
 		<div class="row">
-
+			<div class="filler"></div>
+			<form method="POST">
+				{% csrf_token %}
+{{change_password_form}}
+<button>change password</button>
 		</div>
 	</div>	
 
