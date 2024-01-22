@@ -190,3 +190,4 @@ LOGIN_REDIRECT_URL = 'memberships:profile'
 
 
 
+ACCOUNT_FORMS = {'change_password': 'accounts.forms.MyCustomChangePasswordForm'}

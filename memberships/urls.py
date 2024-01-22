@@ -16,4 +16,6 @@ urlpatterns = [
 	path('follow-user/<int:pk>/', views.follow_user, name='follow_user'),
 	path('submit-strain/<int:pk>/', views.submit_strain, name='submit_strain'),
 	path('my-strains/<int:pk>/', views.my_strains, name='my_strains'),
+	path('my-reviews/<int:pk>/', views.my_reviews, name='my_reviews'),
+	path('settings/<int:pk>/', views.settings, name='settings'),
 ]

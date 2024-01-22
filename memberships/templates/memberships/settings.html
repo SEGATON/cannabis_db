@@ -15,12 +15,24 @@
 				<div class="col-md-2">
 					<div class="filler"></div>
 					<div class="card  p-3">
-
+					<div id="profile_photo_box">
+						{% load thumbnail %}
+						<img src="{% thumbnail user.profile.profile_photo 500x500 crop %}" class="  border_radius_sm img-fluid" >
+						<br>
+						
+					</div>
 					</div>
 
 					<div class="card custom_card p-3">
 
 
+						({{user.profile.followers.count}}) follower <br>
+						<a href="{% url 'memberships:follow_user' user.pk %}">follow<a><br>
+							<a href="{% url 'memberships:submit_strain' user.pk %}">submit strain</a>
+
+							<hr>
+
+						{% include 'components/sidebar_menu.html' %}
 
 					</div>
 				</div>
@@ -36,12 +48,13 @@
 					
 					<div class="filler"></div>
 					<div class="card p-3">
-						<h5 id="profile_greeting_headline"><b>Welcome back:</b> <span>{{user}}</span></h5>
+						<h5 id="profile_greeting_headline">Settings</h5>
 						<hr>
-
-					
-
-
+						<form method="POST">
+							{% csrf_token %}
+							{{change_password_form.as_p}}
+							<button>change password</button>
+						</form>
 					</div>
 				</div>
 
@@ -51,7 +64,7 @@
 
 				<div class="col-md-2">	
 					<div class="filler"></div>		
-
+				
 				</div>
 
 

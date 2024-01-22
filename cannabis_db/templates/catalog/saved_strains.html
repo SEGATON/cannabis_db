@@ -19,20 +19,7 @@
 
 					<div class="card custom_card p-3">
 
-							<ul class="profile_links">
-						
-							<li><a href="{% url 'memberships:edit_profile' user.pk %}"><i class="fa-solid fa-pen-to-square"></i> Edit profile</a></li>
-							<li><a href="{% url 'accounts:account_settings' %}"><i class="fa-solid fa-sliders"></i> Settings</a></li>
-							<li><a href=""><i class="fa-solid fa-message"></i> My reviews</a></li>
-							<li><a href="{% url 'cannabis_db:saved_dispensaries' user.pk %}"><i class="fa-solid fa-message"></i> My saved dispensaries</a></li>
-							<li>
-								{% if user.is_authenticated %}
-									<i class="fa-solid fa-bookmark"></i> <a href="{% url 'cannabis_db:saved_strains' user.pk %}">My saved strains</a>
-								{% endif %}
-							</li>
-							<li><a href="{% url 'memberships:my_strains' user.pk %}"><i class="fa-solid fa-message"></i> My submitted strains</a></li>
-					
-						</ul>
+{% include 'components/sidebar_menu.html' %}
 					</div>
 				</div>
 				<div class="col-md-6">

@@ -92,3 +92,17 @@ class VendorApplicationForm(forms.ModelForm):
 
 
 		]
+
+
+
+from allauth.account.forms import ChangePasswordForm
+class MyCustomChangePasswordForm(ChangePasswordForm):
+
+    def save(self):
+
+        # Ensure you call the parent class's save.
+        # .save() does not return anything
+        super(MyCustomChangePasswordForm, self).save()
+
+        # Add your own processing here.
+		

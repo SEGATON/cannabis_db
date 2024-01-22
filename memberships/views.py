@@ -12,6 +12,10 @@ from .models import Profile
 from django.contrib.auth.decorators import login_required
 from django.http import HttpResponseRedirect
 
+
+
+from django.contrib.auth.forms import PasswordChangeForm
+
 def profile(request):
 
 	return render(request, 'memberships/profile.html', {
@@ -104,9 +108,33 @@ def submit_strain(request, pk):
 			'submit_strain_form':submit_strain_form
 		})
 
+
+@login_required
+def my_reviews(request, pk):
+
+	return render(request, 'memberships/my_reviews.html', {
+
+		})
+
 @login_required
 def my_strains(request, pk):
 
 	return render(request, 'memberships/my_strains.html', {
 
+		})
+
+
+
+def settings(request, pk):
+	if request.method == 'POST':
+		change_password_form = PasswordChangeForm(user=request.user)
+		if change_password_form.is_valid():
+			poppo = change_password_form.save(commit=False)
+			poppo.user = request.user
+			poppo.save()
+			return HttpResponseRedirect(request.META['HTTP_REFERER'])
+	else:
+		change_password_form = PasswordChangeForm(user=request.user)
+	return render(request, 'memberships/settings.html', {
+				'change_password_form':change_password_form
 		})
