@@ -98,7 +98,8 @@ def follow_user(request, pk):
 def submit_strain(request, pk):
 	if request.method == 'POST':
 		submit_strain_form = SubmitStrainForm()
-
+	else:
+		submit_strain_form = SubmitStrainForm()
 	return render(request, 'memberships/submit_strain.html', {
 			'submit_strain_form':submit_strain_form
 		})
