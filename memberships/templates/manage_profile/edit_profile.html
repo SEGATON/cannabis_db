@@ -1,39 +1,42 @@
+
+
+
+
+
 {% extends 'cannabis_db/base.html' %}
 	{% block content %}
 		<div class="container">
-			<div class="row g-1">
+			<div class="row">
+<!--###################################################################################################################### -->
 				<div class="col-md-2">
 					<div class="filler"></div>
-					<div class="card  p-3">
-					<div id="profile_photo_box">
-						{% load thumbnail %}
-						<img src="{% thumbnail user.profile.profile_photo 500x500 crop %}" class="  border_radius_sm img-fluid" >
-						<br>
+					<div class="card">
+						<div id="profile_photo_box">
+							{% load thumbnail %}
+							<img src="{% thumbnail user.profile.profile_photo 500x500 crop %}" class="img-fluid" >
+							
+						</div>
+					</div>
+					<div class="card">
+						({{user.profile.followers.count}}) follower 
 						
-					</div>
-					</div>
-
-					<div class="card custom_card p-3">
+						<a href="{% url 'memberships:follow_user' user.pk %}">follow<a>
+						<a href="{% url 'memberships:submit_strain' user.pk %}">submit strain</a>
+						<hr>
 						{% include 'components/sidebar_menu.html' %}
 					</div>
 				</div>
-				<div class="col-md-6">
-					
+<!--###################################################################################################################### -->
+				<div class="col-md-6">				
 					<div class="filler"></div>
-					<div class="card p-3">
-						<h5 id="profile_greeting_headline"><b>Edit profile:</b> <span>{{user}}</span></h5>
-						<hr>
-						<br>
-						<p>Here you can edit your basic information such as biography, follow links, etc.</p>
-						<br>
+					<div class="card">
+							<h5>edit profile</h5>
 
-						<div class="row">
+						{% include 'misc/profile_social_links.html' %}
 
 
-					<div class="col-lg-12">
 
-
-						<table class="table table-borderless ">
+												<table class="table table-borderless ">
 
 							<form method="POST">
 
@@ -66,15 +69,15 @@
 
 						</table>
 
-					
-						</div>
-
 
 					</div>
 				</div>
+<!--###################################################################################################################### -->
 				<div class="col-md-2">	
-				<div class="filler"></div>		
+					<div class="filler"></div>		
+					<div class="card">
 
+					</div>
 				</div>
 			</div>
 		</div>

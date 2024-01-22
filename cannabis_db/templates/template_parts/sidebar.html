@@ -1,54 +1,4 @@
 
-
-<div class="card sidebar_card_for_flavors_menu">
-	<ul class="sidebar_ul">
-		<li><a href="{% url 'memberships:profile' %}">My profile</a></li>
-		<li><a href="">My account</a></li>
-		{% if user.is_authenticated %}
-		<li><a href="{% url 'cannabis_db:saved_strains' user.pk %}">My saved strains</a></li>
-									<li><a href="{% url 'memberships:edit_profile' user.pk %}"><i class="fa-solid fa-pen-to-square"></i> Edit profile</a></li>
-							<li><a href="{% url 'accounts:account_settings' %}"><i class="fa-solid fa-sliders"></i> Settings</a></li>
-							<li><a href=""><i class="fa-solid fa-message"></i> My reviews</a></li>
-							<li><a href="{% url 'cannabis_db:saved_dispensaries' user.pk %}"><i class="fa-solid fa-message"></i> My saved dispensaries</a></li>
-							<li>
-								{% if user.is_authenticated %}
-									<i class="fa-solid fa-bookmark"></i> <a href="{% url 'cannabis_db:saved_strains' user.pk %}">My saved strains</a>
-								{% endif %}
-							</li>
-							<li><a href="{% url 'memberships:my_strains' user.pk %}"><i class="fa-solid fa-message"></i> My submitted strains</a></li>
-		{% endif %}
-	</ul>
-
-
-
-</div>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 <div class="card sidebar_card_for_flavors_menu">
 	<h6>Flavors</h6>
 	<hr>
@@ -85,7 +35,7 @@
 	<ul class="sidebar_ul">
 		{% for terpenes_menu_item in terpenes_menu.all %}
 				
-				<li><a href="{{terpenes_menu_item.get_absolute_url}}">  {{terpenes_menu_item.terpene_name}} </a></li>
+		<li><a href="{{terpenes_menu_item.get_absolute_url}}">  {{terpenes_menu_item.terpene_name}} </a></li>
 		{% endfor %}
 	</ul>
 </div>

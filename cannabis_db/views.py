@@ -54,16 +54,7 @@ from django.contrib.auth.decorators import login_required
 from .forms import AddDispensaryForm
 
 
-
 from .filters import StrainFilter
-
-
-
-
-
-
-
-
 
 
 
@@ -81,7 +72,6 @@ def strains(request):
 
 		})
 ####################################################################################################################################################################
-
 
 
 def strain(request, slug):
@@ -109,8 +99,6 @@ def strain(request, slug):
 			'saved':saved,
 			'filter':f
 
-	
-	
 		})
 
 
@@ -186,8 +174,6 @@ def terpenes_menu(request):
 	}
 
 
-
-
 def like_strain(request, pk):
 	strain = get_object_or_404(Strain, pk=pk)
 
@@ -196,19 +182,7 @@ def like_strain(request, pk):
 	else:
 		strain.likes.add(request.user)
 
-
-
-
 	return HttpResponseRedirect(request.META['HTTP_REFERER'])
-
-
-
-
-
-
-
-
-
 
 
 def unlike_strain(request, pk):
@@ -234,10 +208,6 @@ def undislike_strain(request, pk):
 		pass
 	return HttpResponseRedirect(request.META['HTTP_REFERER'])
 
-
-
-
-
 @login_required
 def saved_strains(request, pk):
 	saved_strains = Strain.objects.filter(saves=request.user.profile)
@@ -247,9 +217,6 @@ def saved_strains(request, pk):
 			'saved_strains':saved_strains,
 
 		})
-
-
-
 
 @login_required
 def save_strain(request, pk):
@@ -261,12 +228,6 @@ def save_strain(request, pk):
 
 
 	return HttpResponseRedirect(request.META['HTTP_REFERER'])
-
-
-
-
-
-
 
 
 @login_required
@@ -290,7 +251,6 @@ def saved_dispensaries(request, pk):
 			'saved_dispensaries':saved_dispensaries,
 
 		})
-
 
 def dispensaries(request):
 
