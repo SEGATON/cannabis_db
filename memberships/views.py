@@ -5,13 +5,12 @@ from django.views import generic
 # Create your views here.
 from .forms import EditProfileForm
 from .forms import EditProfileSocialProfilesForm
+from .forms import SubmitStrainForm
 
 from .models import Profile
 
 from django.contrib.auth.decorators import login_required
 from django.http import HttpResponseRedirect
-
-
 
 def profile(request):
 
@@ -93,3 +92,20 @@ def edit_profile(request, pk):
 def follow_user(request, pk):
 
 	return HttpResponseRedirect(request.META['HTTP_REFERER'])
+
+
+@login_required
+def submit_strain(request, pk):
+	if request.method == 'POST':
+		submit_strain_form = SubmitStrainForm()
+
+	return render(request, 'memberships/submit_strain.html', {
+			'submit_strain_form':submit_strain_form
+		})
+
+@login_required
+def my_strains(request, pk):
+
+	return render(request, 'memberships/my_strains.html', {
+
+		})

@@ -1,6 +1,7 @@
 from django import forms
 
 from .models import Profile
+from cannabis_db.models import Strain
 
 class EditProfileForm(forms.ModelForm):
 	
@@ -21,3 +22,9 @@ class EditProfileSocialProfilesForm(forms.ModelForm):
 	class Meta:
 		model = Profile 
 		fields = ['website_url','twitter','facebook','youtube','instagram']
+
+class SubmitStrainForm(forms.ModelForm):
+
+	class Meta:
+		model = Strain
+		fields = '__all__'

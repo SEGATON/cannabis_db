@@ -14,4 +14,6 @@ urlpatterns = [
 	path('edit-profile/<int:pk>/', views.edit_profile, name='edit_profile'),
 
 	path('follow-user/<int:pk>/', views.follow_user, name='follow_user'),
+	path('submit-strain/<int:pk>/', views.submit_strain, name='submit_strain'),
+	path('my-strains/<int:pk>/', views.my_strains, name='my_strains'),
 ]
