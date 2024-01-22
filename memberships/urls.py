@@ -13,5 +13,5 @@ urlpatterns = [
 
 	path('edit-profile/<int:pk>/', views.edit_profile, name='edit_profile'),
 
-
+	path('follow-user/<int:pk>/', views.follow_user, name='follow_user'),
 ]

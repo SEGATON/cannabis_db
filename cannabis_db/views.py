@@ -53,6 +53,20 @@ from django.contrib.auth.decorators import login_required
 
 from .forms import AddDispensaryForm
 
+
+
+from .filters import StrainFilter
+
+
+
+
+
+
+
+
+
+
+
 def front_page(request):
 	strains = Strain.objects.all()
 	return render(request, 'cannabis_db/front_page.html', {
@@ -82,6 +96,9 @@ def strain(request, slug):
 
 	for rating_value in ratings_values:
 		rating_value
+
+
+	f = StrainFilter(request.GET, queryset=Strain.objects.all())
 	
 	return render(request, 'catalog/strain.html', {
 			'strain':strain,
@@ -90,6 +107,7 @@ def strain(request, slug):
 			'title': strain.title + ' | ' + 'Cannabis strain' + ' | ' + str(strain.get_strain_type_label_display()),
 
 			'saved':saved,
+			'filter':f
 
 	
 	

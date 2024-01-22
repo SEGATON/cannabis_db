@@ -8,6 +8,8 @@ from .forms import EditProfileSocialProfilesForm
 
 from .models import Profile
 
+from django.contrib.auth.decorators import login_required
+from django.http import HttpResponseRedirect
 
 
 
@@ -86,3 +88,8 @@ def edit_profile(request, pk):
 			'edit_profile_form':edit_profile_form,
 			'edit_profile_social_profiles_form':edit_profile_social_profiles_form,
 		})
+
+@login_required
+def follow_user(request, pk):
+
+	return HttpResponseRedirect(request.META['HTTP_REFERER'])

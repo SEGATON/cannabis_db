@@ -2,6 +2,16 @@
 	{% block content %}
 		<div class="container">
 			<div class="row g-1">
+
+
+
+
+
+<!--###################################################################################################################### -->
+
+
+
+
 				<div class="col-md-2">
 					<div class="filler"></div>
 					<div class="card  p-3">
@@ -15,9 +25,16 @@
 
 					<div class="card custom_card p-3">
 
-						<ul class="profile_links">
+
+						({{user.profile.followers.count}}) follower <br>
+						<a href="{% url 'memberships:follow_user' user.pk %}">follow<a>
+
+							<hr>
+
+						{% include 'widgets/sidebar.html' %}
+							<ul class="profile_links">
 						
-							<li><a href=""><i class="fa-solid fa-pen-to-square"></i> Edit profile</a></li>
+							<li><a href="{% url 'memberships:edit_profile' user.pk %}"><i class="fa-solid fa-pen-to-square"></i> Edit profile</a></li>
 							<li><a href="{% url 'accounts:account_settings' %}"><i class="fa-solid fa-sliders"></i> Settings</a></li>
 							<li><a href=""><i class="fa-solid fa-message"></i> My reviews</a></li>
 							<li><a href="{% url 'cannabis_db:saved_dispensaries' user.pk %}"><i class="fa-solid fa-message"></i> My saved dispensaries</a></li>
@@ -30,6 +47,14 @@
 						</ul>
 					</div>
 				</div>
+
+
+
+
+<!--###################################################################################################################### -->
+
+
+
 				<div class="col-md-6">
 					
 					<div class="filler"></div>
@@ -67,10 +92,22 @@
 
 					</div>
 				</div>
+
+
+<!--###################################################################################################################### -->
+
+
 				<div class="col-md-2">	
-				<div class="filler"></div>		
-				{{ user.profile.followers.all }}
+					<div class="filler"></div>		
+					{% for follower in user.profile.followers.all %}
+						<a href="">{{follower}}</a>
+
+					{% endfor %}
 				</div>
+
+
+
+
 			</div>
 		</div>
 	{% endblock %}

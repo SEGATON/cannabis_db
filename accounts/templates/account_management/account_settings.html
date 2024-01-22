@@ -1,14 +1,23 @@
 {% extends 'cannabis_db/base.html' %}
 	{% block content %}
-	<div class="container-fluid ">
-		<div class="row">
+
+
+<div class="container">
+	<div class="row">
+		<div class="col-md-2">
+		2
+		</div>
+		<div class="col-md-8">
 			<div class="filler"></div>
 			<form method="POST">
 				{% csrf_token %}
 {{change_password_form}}
 <button>change password</button>
 		</div>
-	</div>	
-
+		<div class="col-md-2">
+		2
+		</div>
+	</div>
+</div>
 
 	{% endblock %}

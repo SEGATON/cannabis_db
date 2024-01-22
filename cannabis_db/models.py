@@ -408,6 +408,7 @@ class Dispensary(models.Model):
 	websiteURL = models.URLField(max_length=300, null=True, blank=True)
 	phone_number = models.CharField(max_length=300, null=True, blank=True)
 	email_address = models.EmailField(max_length=300, null=True, blank=True)
+	
 	dispensary_logo	= models.ImageField(default='media/default.jpg', upload_to='media/CANNABIS_DB/BRAND_LOGOS/', null=True, blank=True)
 	dispensary_cover = models.ImageField(upload_to='media/CANNABIS_DB/DISPENSARY_COVERS/', null=True, blank=True)
 	dispensary_description = RichTextField(null=True, blank=True)
