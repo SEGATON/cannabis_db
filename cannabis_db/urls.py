@@ -25,11 +25,13 @@ urlpatterns = [
 	path('unlike-strain/<int:pk>/', views.unlike_strain, name='unlike_strain'),
 
 	path('save-strain/<int:pk>/', views.save_strain, name='save_strain'),
-	path('unsave-strain/<int:pk>/', views.unsave_strain, name='unsave_strain'),
+	path('save-dispensary/<int:pk>/', views.save_dispensary, name='save_dispensary'),
 
 	path('dislike-strain/<int:pk>/', views.dislike_strain, name='dislike_strain'),
 	path('undislike-strain/<int:pk>/', views.undislike_strain, name='undislike_strain'),
 	path('saved-strains/<int:pk>/', views.saved_strains, name='saved_strains'),
+
+	path('saved-dispensaries/<int:pk>/', views.saved_dispensaries, name='saved_dispensaries'),
 
 ]
 

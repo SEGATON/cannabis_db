@@ -419,6 +419,8 @@ class Dispensary(models.Model):
 	dispensary_address = models.ManyToManyField(Address)
 
 
+	saves = models.ManyToManyField('memberships.Profile', null=True,blank=True, related_name='dispensary_saves')
+
 	def get_absolute_url(self):
 		return reverse('cannabis_db:dispensary', args=[self.slug])
 

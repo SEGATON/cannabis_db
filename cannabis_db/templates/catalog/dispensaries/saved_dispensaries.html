@@ -1,17 +1,53 @@
+
+
+
+
 {% extends 'cannabis_db/base.html' %}
 	{% block content %}
 		<div class="container">
 			<div class="row g-1">
 				<div class="col-md-2">
-					<div class="filler"></div>	
-					<div class="card ">
-						lets do!
+					<div class="filler"></div>
+					<div class="card  p-3">
+					<div id="profile_photo_box">
+						{% load thumbnail %}
+						<img src="{% thumbnail user.profile.profile_photo 500x500 crop %}" class="  border_radius_sm img-fluid" >
+						<br>
+						
+					</div>
+					</div>
+
+					<div class="card custom_card p-3">
+
+						<ul class="profile_links">
+						
+							<li><a href=""><i class="fa-solid fa-pen-to-square"></i> Edit profile</a></li>
+							<li><a href=""><i class="fa-solid fa-sliders"></i> Settings</a></li>
+							<li><a href=""><i class="fa-solid fa-message"></i> My reviews</a></li>
+							<li><a href=""><i class="fa-solid fa-message"></i> My saved dispensaries</a></li>
+							<li>
+								{% if user.is_authenticated %}
+									<i class="fa-solid fa-bookmark"></i> <a href="{% url 'cannabis_db:saved_strains' user.pk %}">My saved strains</a>
+								{% endif %}
+							</li>
+					
+						</ul>
 					</div>
 				</div>
-				<div class="col-md-7">
+				<div class="col-md-6">
+					
 					<div class="filler"></div>
+					<div class="card p-3">
+<h5>My saved dispensaries</h5>
+							<hr>
+							{% if saved_dispensaries %}
 
-					{% for dispensary in dispensaries %}
+
+
+
+
+
+					{% for dispensary in saved_dispensaries %}
 					<div class="card dispensaries_list_item_card">
 						<div class="row">
 
@@ -127,7 +163,24 @@
 					{% endfor %}
 				</div>
 
+
+
+
+
+
+
+								{% endif %}
+
+					</div>
+				</div>
+			
 			</div>
 		</div>
 	{% endblock %}
+
+
+
+
+
+
 

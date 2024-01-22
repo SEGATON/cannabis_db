@@ -246,18 +246,38 @@ def save_strain(request, pk):
 
 
 
-def unsave_strain(request, pk):
-	strain = get_object_or_404(Strain, pk=pk)
+
+
+
+
+
+@login_required
+def save_dispensary(request, pk):
+	dispensary = get_object_or_404(Dispensary, pk=pk)
+
+	if dispensary.saves.filter(id=request.user.id).exists():
+		dispensary.saves.remove(request.user.profile)
+	else:
+		dispensary.saves.add(request.user.profile)
 
 	return HttpResponseRedirect(request.META['HTTP_REFERER'])
 
 
+@login_required
+def saved_dispensaries(request, pk):
+	saved_dispensaries = Dispensary.objects.filter(saves=request.user.profile)
 
+	
+	return render(request, 'catalog/dispensaries/saved_dispensaries.html', {
+			'saved_dispensaries':saved_dispensaries,
+
+		})
 
 
 def dispensaries(request):
 
 	dispensaries = Dispensary.objects.all()
+
 	return render(request, 'catalog/dispensaries/dispensaries.html', {
 				'dispensaries':dispensaries
 		})
