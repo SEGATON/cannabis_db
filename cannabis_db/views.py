@@ -57,6 +57,9 @@ from .forms import AddDispensaryForm
 from .filters import StrainFilter
 
 
+from django.views import generic
+
+
 
 def front_page(request):
 	strains = Strain.objects.all()
@@ -71,7 +74,19 @@ def strains(request):
 			'strains':strains,
 
 		})
+
+
 ####################################################################################################################################################################
+
+class Strains(generic.ListView):
+	template_name = 'catalog/strains.html'
+	model = Strain 
+	object_context_name = 'strains'
+
+
+	def get_queryset(self):
+		pass
+
 
 
 def strain(request, slug):
@@ -83,6 +98,13 @@ def strain(request, slug):
 	if strain.saves.filter(id=request.user.id).exists():
 		saved = True
 
+	liked = bool
+	if strain.likes.filter(id=request.user.id).exists():
+		liked = True
+
+	disliked = bool
+	if strain.dislikes.filter(id=request.user.id).exists():
+		disliked = True
 
 	for rating_value in ratings_values:
 		rating_value
@@ -97,6 +119,9 @@ def strain(request, slug):
 			'title': strain.title + ' | ' + 'Cannabis strain' + ' | ' + str(strain.get_strain_type_label_display()),
 
 			'saved':saved,
+			'liked':liked,
+			'disliked':disliked,
+
 			'filter':f
 
 		})
@@ -288,8 +313,6 @@ def faq_page(request):
 	return render(request, 'static_pages/faq.html', {
 
 		})
-
-
 
 
 

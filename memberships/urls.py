@@ -1,7 +1,7 @@
 from django.urls import path
 from . import views  
-from .views import PublicProfile
-
+from .views import PublicProfile, PasswordChangeView
+from django.contrib.auth import views as auth_views
 app_name = 'memberships'
 
 urlpatterns = [
@@ -16,4 +16,7 @@ urlpatterns = [
 	path('my-strains/<int:pk>/', views.my_strains, name='my_strains'),
 	path('my-reviews/<int:pk>/', views.my_reviews, name='my_reviews'),
 	path('settings/<int:pk>/', views.settings, name='settings'),
+	path('password/', auth_views.PasswordChangeView.as_view(template_name='memberships/change_password.html'), name='password'),
+	path('accounts-password-change/',views.password_changed_success, name='account_change_password'),
+	#path('password/', auth_views.PasswordChangeView.as_view(template_name='memberships/change_password.html'), name='password'),
 ]

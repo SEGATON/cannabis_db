@@ -44,7 +44,7 @@ from .models import StrainKeywordsSet
 from .models import StrainMetas
 
 from .models import Dispensary
-
+from .models import Comment
 from .models import DispensarySocialFollowURL
 from .models import DispensarySocialFollowURLS
 from .models import DispensarySocialFollows
@@ -55,7 +55,9 @@ from .models import StrainLineageDetailsListItem
 
 from import_export.admin import ImportExportModelAdmin
 
-
+@admin.register(Comment)
+class CommentAdmin(ImportExportModelAdmin):
+	pass
 
 @admin.register(Address)
 class AddressAdmin(ImportExportModelAdmin):

@@ -558,6 +558,46 @@ class Rating(models.Model):
 
 	date_published = models.DateTimeField(auto_now_add=True)
 	date_updated = models.DateTimeField(auto_now_add=True)
+
+
+	replies = models.ManyToManyField('self')
+	
+	def __str__(self):
+		return self.title
+
+	def save(self, *args, **kwargs):
+		self.slug = slugify(self.title)
+		super(Rating, self).save(*args, **kwargs)
+
+
+
+
+
+class Comment(models.Model):
+	user = models.ForeignKey(CustomUser, on_delete=models.CASCADE, null=True, blank=True, related_name='strain_discussion_comment')
+	strain_to_rate = models.ForeignKey(Strain, on_delete=models.CASCADE, null=True, blank=True)
+
+	title = models.CharField(max_length=300)
+	slug = models.CharField(max_length=300)
+
+	headline = models.CharField(max_length=300)
+
+	RATING = {
+		('1','1'),
+		('2','2'),
+		('3','3'),
+		('4','4'),
+		('5','5'),
+	}
+
+	rating = models.CharField(max_length=5, choices=RATING)
+	comment = models.TextField(max_length=500, null=True, blank=True)
+
+	date_published = models.DateTimeField(auto_now_add=True)
+	date_updated = models.DateTimeField(auto_now_add=True)
+
+
+	replies = models.ManyToManyField('self')
 	
 	def __str__(self):
 		return self.title

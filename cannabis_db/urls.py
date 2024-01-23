@@ -1,11 +1,14 @@
 from django.urls import path
 from . import views  
-
+from .views import Strains
 app_name = 'cannabis_db'
 
 urlpatterns = [
 	path('', views.front_page, name='front_page'),
 	path('strains/', views.strains, name='strains'),
+
+	path('strains/', Strains.as_view(), name='strains'),
+
 	path('strain/<slug:slug>/', views.strain, name='strain'),
 	path('dispensaries/', views.dispensaries, name='dispensaries'),
 	path('dispensary/<slug:slug>/', views.dispensary, name='dispensary'),

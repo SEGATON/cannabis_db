@@ -6,13 +6,13 @@ from django.views import generic
 from .forms import EditProfileForm
 from .forms import EditProfileSocialProfilesForm
 from .forms import SubmitStrainForm
-
+from django.contrib.auth.views import PasswordChangeView
 from .models import Profile
 
 from django.contrib.auth.decorators import login_required
 from django.http import HttpResponseRedirect
 
-
+from django.urls import reverse_lazy
 
 from django.contrib.auth.forms import PasswordChangeForm
 
@@ -138,3 +138,13 @@ def settings(request, pk):
 	return render(request, 'memberships/settings.html', {
 				'change_password_form':change_password_form
 		})
+
+
+
+class PasswordChange(PasswordChangeView):
+	form_class = PasswordChangeForm
+	success_url = reverse_lazy('memberships:profile')
+
+
+def password_changed_success(request):
+	pass

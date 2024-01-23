@@ -24,9 +24,10 @@ urlpatterns = [
     path('', include('cannabis_db.urls')),
     path('accounts/', include('accounts.urls')),
     path('accounts/', include('allauth.urls')),
+    path('comments/', include('django_comments_xtd.urls')),
     path('blog/', include('blog.urls')),
     path('memberships/', include('memberships.urls')),
-
+    path('avatar/', include('avatar.urls')),
 ]
 if settings.DEBUG:
     urlpatterns+=static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)

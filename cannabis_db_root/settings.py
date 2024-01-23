@@ -40,6 +40,7 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'django.contrib.sites',
 
+    'avatar',
 
 
     'blog.apps.BlogConfig',
@@ -60,7 +61,6 @@ INSTALLED_APPS = [
     'allauth.socialaccount.providers.google',
 
     'django_filters',
-
     'django_comments_xtd',
     'django_comments',
     'dynamic_breadcrumbs',
@@ -110,6 +110,8 @@ TEMPLATES = [
                 'cannabis_db.views.helps_with_menu',
                 'cannabis_db.views.terpenes_menu',
                 'cannabis_db.views.brands_menu'
+
+
 
 
             ],
@@ -191,3 +193,35 @@ LOGIN_REDIRECT_URL = 'memberships:profile'
 
 
 ACCOUNT_FORMS = {'change_password': 'accounts.forms.MyCustomChangePasswordForm'}
+
+
+EMAIL_HOST = "smtp.mail.com"
+EMAIL_PORT = "587"
+EMAIL_HOST_USER = "alias@mail.com"
+EMAIL_HOST_PASSWORD = "yourpassword"
+EMAIL_USE_TLS = True
+DEFAULT_FROM_EMAIL = "Helpdesk <helpdesk@yourdomain>"
+
+COMMENTS_XTD_MAX_THREAD_LEVEL = 24  # site wide default
+
+
+#  To help obfuscating comments before they are sent for confirmation.
+COMMENTS_XTD_SALT = (b"Timendi causa est nescire. "
+                     b"Aequam memento rebus in arduis servare mentem.")
+
+# Source mail address used for notifications.
+COMMENTS_XTD_FROM_EMAIL = "noreply@example.com"
+
+# Contact mail address to show in messages.
+COMMENTS_XTD_CONTACT_EMAIL = "helpdesk@example.com"
+
+
+COMMENTS_XTD_APP_MODEL_OPTIONS = {
+    'default': {
+        'allow_flagging': True,
+        'allow_feedback': True,
+        'show_feedback': True,
+        'who_can_post': 'users'  # Valid values: 'all', users'
+    }
+}
+
