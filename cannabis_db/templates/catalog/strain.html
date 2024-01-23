@@ -155,6 +155,7 @@
 								
 								</p>
 							</div>
+					
 								<div class="col-md-4 text-right">
 									<a href="{% url 'cannabis_db:like_strain' strain.pk %}"><i class="fa-regular fa-thumbs-up"></i></a></i> 
 									({{strain.likes.count}})
@@ -167,7 +168,7 @@
 
 								<a href="{% url 'cannabis_db:dislike_strain' strain.pk %}"><i class="fa-regular fa-thumbs-down"></i></a>
 								({{strain.dislikes.count}})
-
+					
 
 </div>
 			</div>				

@@ -173,41 +173,32 @@ def terpenes_menu(request):
 		'terpenes_menu':TerpeneDetails.objects.all()
 	}
 
+# ------------------------------------------------------------------------------------------------------- #
 
 def like_strain(request, pk):
 	strain = get_object_or_404(Strain, pk=pk)
 
 	if request.user in strain.likes.all():
-		pass
+		strain.likes.remove(request.user)
 	else:
 		strain.likes.add(request.user)
 
 	return HttpResponseRedirect(request.META['HTTP_REFERER'])
 
 
-def unlike_strain(request, pk):
-	strain = get_object_or_404(Strain, pk=pk)
-
-
-	return HttpResponseRedirect(request.META['HTTP_REFERER'])
-
-
+#######################
+@login_required
 def dislike_strain(request, pk):
 	strain = get_object_or_404(Strain, pk=pk)
 
 	if request.user in strain.dislikes.all():
-		pass
+		strain.dislikes.remove(request.user)
 	else:
 		strain.dislikes.add(request.user)
 	return HttpResponseRedirect(request.META['HTTP_REFERER'])
 
-def undislike_strain(request, pk):
-	strain = get_object_or_404(Strain, pk=pk)
 
-	if request.user in strain.dislikes.all():
-		pass
-	return HttpResponseRedirect(request.META['HTTP_REFERER'])
-
+# ------------------------------------------------------------------------------------------------------- #
 @login_required
 def saved_strains(request, pk):
 	saved_strains = Strain.objects.filter(saves=request.user.profile)
