@@ -125,23 +125,11 @@ def my_strains(request, pk):
 
 
 
-def settings(request, pk):
-	if request.method == 'POST':
-		change_password_form = PasswordChangeForm(user=request.user)
-		if change_password_form.is_valid():
-			poppo = change_password_form.save(commit=False)
-			poppo.user = request.user
-			poppo.save()
-			return HttpResponseRedirect(request.META['HTTP_REFERER'])
-	else:
-		change_password_form = PasswordChangeForm(user=request.user)
-	return render(request, 'memberships/settings.html', {
-				'change_password_form':change_password_form
-		})
 
 
 
-class PasswordChange(PasswordChangeView):
+
+class Settings(PasswordChangeView):
 	form_class = PasswordChangeForm
 	success_url = reverse_lazy('memberships:profile')
 

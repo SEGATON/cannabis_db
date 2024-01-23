@@ -1,7 +1,7 @@
 <ul class="profile_links">
 
 	<li><a href="{% url 'memberships:edit_profile' user.pk %}">Edit profile</a></li>
-	<li><a href="{% url 'memberships:settings' user.pk %}"> Settings</a></li>
+	<li><a href="{% url 'memberships:settings' %}"> Settings</a></li>
 	<li><a href="{% url 'memberships:my_reviews' user.pk %}"> My reviews</a></li>
 	<li><a href="{% url 'cannabis_db:saved_dispensaries' user.pk %}"> My saved dispensaries</a></li>
 	<li>

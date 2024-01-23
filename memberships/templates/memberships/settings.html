@@ -29,6 +29,15 @@
 						<hr>
 			
 						{% include 'misc/profile_social_links.html' %}
+
+
+
+						
+<form method="POST">
+	{% csrf_token %}
+	{{form}}
+	<button>change password</button>
+</form>
 						
 
 					
