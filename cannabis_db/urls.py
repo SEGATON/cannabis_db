@@ -19,6 +19,7 @@ urlpatterns = [
 	path('process_strain_review/<int:pk>/', views.process_strain_review, name='process_strain_review'),
 	path('delete-review-rating/<int:pk>/', views.delete_review_rating, name='delete_review_rating'),
 	path('flavors/', views.flavors, name='flavors'),
+	path('search-results/', views.search_results, name='search_results'),
 	path('flavor/<slug:slug>/', views.flavor, name='flavor'),
 	path('like-strain/<int:pk>/', views.like_strain, name='like_strain'),
 	path('save-strain/<int:pk>/', views.save_strain, name='save_strain'),

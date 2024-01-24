@@ -31,6 +31,10 @@
 
 
 						{% if reviews %}
+							{% for review in reviews %}
+									{{review}}
+									{{review.strain_to_rate}}
+							{% endfor %}
 
 						{% else %}
 							<p>You submitted 0 reviews.</p>

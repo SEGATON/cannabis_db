@@ -8,10 +8,10 @@ from .forms import EditProfileSocialProfilesForm
 from .forms import SubmitStrainForm
 from django.contrib.auth.views import PasswordChangeView
 from .models import Profile
-
+from cannabis_db.models import Rating
 from django.contrib.auth.decorators import login_required
 from django.http import HttpResponseRedirect
-
+from .forms import ChangeUsernameForm
 from django.urls import reverse_lazy
 
 from django.contrib.auth.forms import PasswordChangeForm
@@ -112,8 +112,9 @@ def submit_strain(request, pk):
 @login_required
 def my_reviews(request, pk):
 
+	reviews = Rating.objects.filter(user=request.user)
 	return render(request, 'memberships/my_reviews.html', {
-
+			'reviews':reviews
 		})
 
 @login_required
@@ -129,9 +130,15 @@ def my_strains(request, pk):
 
 
 
-class Settings(PasswordChangeView):
+class ChangePassView(PasswordChangeView):
 	form_class = PasswordChangeForm
+	#messages.success(request, "Password changed successfully!")
 	success_url = reverse_lazy('memberships:profile')
+
+
+
+
+
 
 
 def password_changed_success(request):

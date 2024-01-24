@@ -121,23 +121,7 @@ TEMPLATES = [
 
 WSGI_APPLICATION = 'cannabis_db_root.wsgi.application'
 
-COMMENTS_APP = 'django_comments_xtd'
-EMAIL_HOST = "smtp.mail.com"
-EMAIL_PORT = "587"
-EMAIL_HOST_USER = "alias@mail.com"
-EMAIL_HOST_PASSWORD = "yourpassword"
-DEFAULT_FROM_EMAIL = "Helpdesk <helpdesk@yourdomain>"
-# Database
-# https://docs.djangoproject.com/en/4.2/ref/settings/#databases
-#  To help obfuscating comments before they are sent for confirmation.
-COMMENTS_XTD_SALT = (b"Timendi causa est nescire. "
-                     b"Aequam memento rebus in arduis servare mentem.")
 
-# Source mail address used for notifications.
-COMMENTS_XTD_FROM_EMAIL = "noreply@example.com"
-
-# Contact mail address to show in messages.
-COMMENTS_XTD_CONTACT_EMAIL = "helpdesk@example.com"
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.sqlite3',
@@ -193,6 +177,22 @@ LOGIN_REDIRECT_URL = 'memberships:profile'
 
 
 ACCOUNT_FORMS = {'change_password': 'accounts.forms.MyCustomChangePasswordForm'}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 EMAIL_HOST = "smtp.mail.com"

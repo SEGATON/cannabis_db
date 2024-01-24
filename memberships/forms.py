@@ -2,6 +2,7 @@ from django import forms
 
 from .models import Profile
 from cannabis_db.models import Strain
+from accounts.models import CustomUser
 
 class EditProfileForm(forms.ModelForm):
 	
@@ -27,4 +28,11 @@ class SubmitStrainForm(forms.ModelForm):
 
 	class Meta:
 		model = Strain
+		fields = '__all__'
+
+
+
+class ChangeUsernameForm(forms.ModelForm):
+	class Meta:
+		model = CustomUser
 		fields = '__all__'

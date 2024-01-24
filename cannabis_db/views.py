@@ -55,7 +55,7 @@ from .forms import AddDispensaryForm
 
 
 from .filters import StrainFilter
-
+from django.db.models import Q
 
 from django.views import generic
 
@@ -316,3 +316,17 @@ def faq_page(request):
 
 
 
+def search(request):
+	return render(request, 'components/search_form.html', {
+
+		})
+
+
+def search_results(request):
+	query = request.GET.get('s_query')
+	strain_search_results_qs = Strain.objects.filter(Q(title__icontains=query))
+	dispensary_search_results_qs = Dispensary.objects.filter(Q(title__icontains=query))
+	return render(request, 'components/search_results.html', {
+			'strain_search_results_qs':strain_search_results_qs,
+			'dispensary_search_results_qs':dispensary_search_results_qs
+		})

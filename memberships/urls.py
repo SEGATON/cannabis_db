@@ -1,6 +1,6 @@
 from django.urls import path
 from . import views  
-from .views import PublicProfile, PasswordChangeView,Settings
+from .views import PublicProfile, PasswordChangeView,ChangePassView
 from django.contrib.auth import views as auth_views
 app_name = 'memberships'
 
@@ -17,7 +17,8 @@ urlpatterns = [
 	path('my-reviews/<int:pk>/', views.my_reviews, name='my_reviews'),
 	#path('settings/<int:pk>/', views.settings, name='settings'),
 	
-	path('password/', Settings.as_view(template_name='memberships/settings.html'), name='settings'),
+	path('password/', ChangePassView.as_view(template_name='memberships/settings.html'), name='settings'),
+
 	
 
 	
