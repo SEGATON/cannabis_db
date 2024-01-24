@@ -10,10 +10,10 @@
 				<div class="col-md-7">
 					<div class="filler"></div>
 					
-				<img src="{{strain.featured_image.url}}" class="img-fluid image_full_width">
+
 
 				 
-				<br><br>
+		
 				<div class="fotorama" data-allowfullscreen="true" data-keyboard="true" data-width="100%" data-nav="thumbs">
 					{% for gallery_images in strain.image_galley.images.images.all %}
 					{{gallery_images.image.url}}

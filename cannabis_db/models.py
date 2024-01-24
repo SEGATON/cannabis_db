@@ -1,9 +1,10 @@
 from django.db import models
 from django.urls import reverse
-# Create your models here.
+
 
 from ckeditor.fields import RichTextField
 from accounts.models import CustomUser
+
 from django.template.defaultfilters import slugify
 
 
@@ -11,13 +12,10 @@ from localflavor.us.models import USStateField
 from localflavor.us.models import USZipCodeField
 from localflavor.us.models import USPostalCodeField
 from localflavor.us.models import USSocialSecurityNumberField
+
 from django.conf import settings
 
-
-
-
-
-
+#__________________________________________________________________________________________________________________________________
 
 
 class Address(models.Model):
@@ -51,15 +49,6 @@ class Address(models.Model):
 		return self.address_id_name
 
 
-
-
-
-
-
-
-
-
-
 class StrainType(models.Model):
 	title = models.CharField(max_length=50)
 	slug = models.SlugField(max_length=50)
@@ -68,8 +57,7 @@ class StrainType(models.Model):
 			return self.title
 
 
-##################################################################################################################################
-
+#__________________________________________________________________________________________________________________________________
 
 
 class StrainLineageDetailsListItem(models.Model):
@@ -86,13 +74,13 @@ class StrainLineageDetailsListItem(models.Model):
 	strain_lineage_02 = models.CharField(choices=STRAIN_LINEAGE, max_length=50, null=True,blank=True)
 	strain_lineage_value_02 = models.DecimalField(max_digits=9, decimal_places=2, null=True,blank=True)
 
-
-
 	def __str__(self):
 		return self.title
 
+
 class StrainLineageDetailsListItems(models.Model):
 	strain_lineage_details_list_items = models.ManyToManyField(StrainLineageDetailsListItem)	
+
 
 class StrainLineageDetailsList(models.Model):
 	title = models.CharField(max_length=50, null=True,blank=True)
@@ -104,7 +92,7 @@ class StrainLineageDetailsList(models.Model):
 		return self.title
 
 
-##################################################################################################################################
+#__________________________________________________________________________________________________________________________________
 
 
 class StrainDetailsListItem(models.Model):
@@ -114,8 +102,10 @@ class StrainDetailsListItem(models.Model):
 	def __str__(self):
 		return self.title
 
+
 class StrainDetailsListItems(models.Model):
 	strain_details_list_items = models.ManyToManyField(StrainDetailsListItem)	
+
 
 class StrainDetailsList(models.Model):
 	title = models.CharField(max_length=50, null=True,blank=True)
@@ -126,7 +116,8 @@ class StrainDetailsList(models.Model):
 	def __str__(self):
 		return self.title
 
-##################################################################################################################################
+
+#__________________________________________________________________________________________________________________________________
 
 
 class StrainKeywords(models.Model):
@@ -135,11 +126,13 @@ class StrainKeywords(models.Model):
 	def __str__(self):
 		return str(self.keyword)
 
+
 class StrainKeywordsSet(models.Model):
 	keywords 			= models.ManyToManyField(StrainKeywords)
 
 	def __str__(self):
 		return str(self.keywords)
+
 
 class StrainMetas(models.Model):
 	strain_meta_title 	= models.CharField(max_length=60)
@@ -149,7 +142,9 @@ class StrainMetas(models.Model):
 	def __str__(self):
 		return str(self.strain_meta_title)
 
-##################################################################################################################################
+
+#__________________________________________________________________________________________________________________________________
+
 
 class HelpsWithReport(models.Model):
 	title = models.CharField(max_length=50, null=True,blank=True)
@@ -160,13 +155,17 @@ class HelpsWithReport(models.Model):
 	def __str__(self):
 		return self.title
 
+
 class HelpsWithReportList(models.Model):
 	helps_with_report_list = models.ManyToManyField(HelpsWithReport)
+
 
 class HelpsWithReportListSet(models.Model):
 	helps_with_report_list = models.ForeignKey(HelpsWithReportList, on_delete=models.CASCADE,null=True, blank=True )
 
-##################################################################################################################################
+
+#__________________________________________________________________________________________________________________________________
+
 
 class FeelingReport(models.Model):
 	TYPE_OF_FEELING = {
@@ -199,23 +198,24 @@ class FeelingReportListSet(models.Model):
 		return str(self.feeling_report_list_set.feeling_report_list)
 
 
+#__________________________________________________________________________________________________________________________________
 
-
-##################################################################################################################################
 
 class StrainGalleryImage(models.Model):
 	image_name = models.CharField(max_length=300)
 	image = models.ImageField(upload_to='media/CANNABIS_DB/GALLERY_IMAGES/', null=True, blank=True, max_length=500)	
 
+
 class StrainGalleryImagesSet(models.Model):
 	images = models.ManyToManyField(StrainGalleryImage) 	
+
 
 class StrainImageGallery(models.Model):
 	gallery_name = models.CharField(max_length=300)
 	images = models.ForeignKey(StrainGalleryImagesSet, on_delete=models.CASCADE)
 
 
-##################################################################################################################################
+#__________________________________________________________________________________________________________________________________
 
 
 class TerpeneDetails(models.Model):
@@ -224,31 +224,39 @@ class TerpeneDetails(models.Model):
 	def __str__(self):
 		return self.terpene_name
 
+
 class TerpeneDetailsList(models.Model):
 	terpenes = models.ManyToManyField(TerpeneDetails)
 	def __str__(self):
 		return str(self.terpenes)
+
+
 class TerpeneDetailsListSet(models.Model):
 	terpene_set_name = models.CharField(max_length=1000)
 	terpene_set 	= models.ForeignKey(TerpeneDetailsList, on_delete=models.CASCADE)
 	def __str__(self):
 		return self.terpene_set_name
-##################################################################################################################################
+
+
+#__________________________________________________________________________________________________________________________________
+
 
 class AromasDetails(models.Model):
 	title = models.CharField(max_length=50, null=True,blank=True)
 	slug = models.SlugField(max_length=50, null=True,blank=True)
 	aromas_icon = models.ImageField(upload_to='media/CANNABIS_DB/GALLERY_IMAGES/', null=True, blank=True, max_length=500)	
 
+
 class AromasDetailsList(models.Model):
 	aromas_list = models.ManyToManyField(AromasDetails)
+
 
 class AromasListSet(models.Model):
 	aromas_list_set_name = models.CharField(max_length=1000)
 	aromas_list_set 	= models.ForeignKey(AromasDetailsList, on_delete=models.CASCADE)
 
-##################################################################################################################################
 
+#__________________________________________________________________________________________________________________________________
 
 
 class FlavorsDetails(models.Model):
@@ -269,11 +277,14 @@ class FlavorsDetails(models.Model):
 class FlavorsDetailsList(models.Model):
 	flavors_list = models.ManyToManyField(FlavorsDetails)
 
+
 class FlavorsDetailsListSet(models.Model):
 	flavors_list_set_name = models.CharField(max_length=1000)
 	flavors_list_set 	= models.ForeignKey(FlavorsDetailsList, on_delete=models.CASCADE)
 
-##################################################################################################################################
+
+#__________________________________________________________________________________________________________________________________
+
 
 class StrainSpecification(models.Model):
 	SPEC_NAME = {
@@ -289,11 +300,13 @@ class StrainSpecification(models.Model):
 	def __str__(self):
 		return f'{self.specification_name} | {self.specification_value}'
 
+
 class StrainSpecifications(models.Model):
 	specifications = models.ManyToManyField(StrainSpecification)
 
 	def __str__(self):
 		return str(self.specifications) 
+
 
 class StrainSpecificationsSets(models.Model):
 	specifications_set_name = models.CharField(max_length=1000)
@@ -301,10 +314,15 @@ class StrainSpecificationsSets(models.Model):
 
 	def __str__(self):
 		return str(self.specifications_set_name) 
-##################################################################################################################################
+
+
+#__________________________________________________________________________________________________________________________________
+
+
 class BrandSocialFollowURL(models.Model):
 	brand_social_profile_name		= models.CharField(max_length=300, null=True, blank=True)
 	brand_social_profile_URL		= models.URLField(null=True, blank=True)
+
 
 class BrandSocialFollowURLS(models.Model):
 	social_profiles_URLS 		= models.ManyToManyField(BrandSocialFollowURL,  blank=True)
@@ -312,12 +330,14 @@ class BrandSocialFollowURLS(models.Model):
 	def __str__(self):
 		return str(self.social_profiles_URLS) 
 
+
 class BrandSocialFollows(models.Model):
 	brand_social_follows_name	= models.CharField(max_length=300, null=True, blank=True)
 	social_profiles_URLS 		= models.ForeignKey(BrandSocialFollowURLS, on_delete=models.CASCADE, blank=True)
 
 	def __str__(self):
 		return str(self.social_profiles_URLS) 
+
 
 class Brand(models.Model):
 	title = models.CharField(max_length=1000)
@@ -338,7 +358,9 @@ class Brand(models.Model):
 	def __str__(self):
 		return str(self.title) 
 
-##################################################################################################################################
+
+#__________________________________________________________________________________________________________________________________
+
 
 class Address(models.Model):
 	user = models.ForeignKey(settings.AUTH_USER_MODEL, on_delete=models.CASCADE,null=True,blank=True)
@@ -370,6 +392,9 @@ class Address(models.Model):
 		return self.address_id_name
 
 
+#__________________________________________________________________________________________________________________________________
+
+
 class DispensarySocialFollowURL(models.Model):
 	dispensary_social_profile_name		= models.CharField(max_length=300, null=True, blank=True)
 	dispensary_social_profile_URL		= models.URLField(null=True, blank=True)
@@ -378,14 +403,16 @@ class DispensarySocialFollowURLS(models.Model):
 	dispensary_profiles_URLS 		= models.ManyToManyField(DispensarySocialFollowURL,  blank=True)
 
 	def __str__(self):
-		return str(self.social_profiles_URLS) 
+		return str(self.id)
+
 
 class DispensarySocialFollows(models.Model):
 	dispensary_social_follows_name	= models.CharField(max_length=300, null=True, blank=True)
 	social_profiles_URLS = models.ForeignKey(DispensarySocialFollowURLS, on_delete=models.CASCADE, blank=True)
 
 	def __str__(self):
-		return str(self.social_profiles_URLS) 
+		return self.dispensary_social_follows_name
+
 
 class Dispensary(models.Model):
 	TYPE_OF_DISPENSARY = {
@@ -421,6 +448,7 @@ class Dispensary(models.Model):
 
 
 	saves = models.ManyToManyField('memberships.Profile', null=True,blank=True, related_name='dispensary_saves')
+	followers = models.ManyToManyField('memberships.Profile', related_name='dispensary_followers')
 
 	def get_absolute_url(self):
 		return reverse('cannabis_db:dispensary', args=[self.slug])
@@ -433,19 +461,7 @@ class Dispensary(models.Model):
 		super(Dispensary, self).save(*args, **kwargs)
 
 
-
-
-##################################################################################################################################
-
-
-
-
-
-
-
-
-
-
+#__________________________________________________________________________________________________________________________________
 
 
 class Vendor(models.Model):
@@ -476,7 +492,9 @@ class Vendor(models.Model):
 	def __str__(self):
 		return str(self.user)
 
-##################################################################################################################################
+
+#__________________________________________________________________________________________________________________________________
+
 
 class Strain(models.Model):
 	user = models.ForeignKey(CustomUser, on_delete=models.CASCADE, null=True, blank=True)
@@ -536,6 +554,10 @@ class Strain(models.Model):
 	class Meta:
 		ordering = ('-date_created',)
 
+
+#__________________________________________________________________________________________________________________________________
+
+
 class Rating(models.Model):
 	user = models.ForeignKey(CustomUser, on_delete=models.CASCADE, null=True, blank=True, related_name='strain_rating')
 	strain_to_rate = models.ForeignKey(Strain, on_delete=models.CASCADE, null=True, blank=True)
@@ -568,9 +590,6 @@ class Rating(models.Model):
 	def save(self, *args, **kwargs):
 		self.slug = slugify(self.title)
 		super(Rating, self).save(*args, **kwargs)
-
-
-
 
 
 class Comment(models.Model):

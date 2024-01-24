@@ -47,6 +47,8 @@ from .models import Rating
 from memberships.models import Profile
 
 from django.http import HttpResponseRedirect
+from django.http import JsonResponse
+
 
 from django.contrib.auth.decorators import login_required
 
@@ -323,10 +325,19 @@ def search(request):
 
 
 def search_results(request):
+
+	search_qs = {}
+
+	begins_with = ''
+
 	query = request.GET.get('s_query')
+
 	strain_search_results_qs = Strain.objects.filter(Q(title__icontains=query))
+
 	dispensary_search_results_qs = Dispensary.objects.filter(Q(title__icontains=query))
-	return render(request, 'components/search_results.html', {
-			'strain_search_results_qs':strain_search_results_qs,
-			'dispensary_search_results_qs':dispensary_search_results_qs
-		})
+
+	items = Strain.objects.all()
+
+
+
+	return JsonResponse(search_qs)

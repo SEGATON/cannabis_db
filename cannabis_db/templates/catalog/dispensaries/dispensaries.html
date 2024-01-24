@@ -46,14 +46,21 @@
 									</p>
 
 
-									{% if dispensary.shopping_options == 'all'  %}
-											all
-									{% elif dispensary.shopping_options == 'delivery'  %}
-											delivery
-									{% elif dispensary.shopping_options == 'pickup'  %}
-											pickup
-									{% endif %}
-
+							<ul class="shopping_options_list">
+							{% if dispensary.shopping_options == 'all'  %}
+									<li><p><span class="badge shopping_options_badge">All</span></p></li>
+									<li><p><span class="badge shopping_options_badge shopping_options_badge_faded">Delivery</span></p></li>
+									<li><p><span class="badge shopping_options_badge shopping_options_badge_faded">Pickup</span></p></li>
+							{% elif dispensary.shopping_options == 'delivery'  %}
+									<li><p><span class="badge shopping_options_badge shopping_options_badge_faded">All</span></p></li>
+									<li><p><span class="badge shopping_options_badge">Delivery</span></p></li>
+									<li><p><span class="badge shopping_options_badge shopping_options_badge_faded">Pickup</span></p></li>
+							{% elif dispensary.shopping_options == 'pickup'  %}
+									<li><p><span class="badge shopping_options_badge shopping_options_badge_faded">All</span></p></li>
+									<li><p><span class="badge shopping_options_badge shopping_options_badge_faded">Delivery</span></p></li>
+									<li><p><span class="badge shopping_options_badge">Pickup</span></p></li>
+							{% endif %}
+							</ul>
 
 
 
