@@ -27,6 +27,7 @@ urlpatterns = [
 	path('dislike-strain/<int:pk>/', views.dislike_strain, name='dislike_strain'),
 	path('saved-strains/<int:pk>/', views.saved_strains, name='saved_strains'),
 	path('saved-dispensaries/<int:pk>/', views.saved_dispensaries, name='saved_dispensaries'),
+	path('maps/', views.maps, name='maps'),
 
 ]
 

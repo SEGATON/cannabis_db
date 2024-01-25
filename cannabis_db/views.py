@@ -341,3 +341,10 @@ def search_results(request):
 
 
 	return JsonResponse(search_qs)
+
+
+
+def maps(request):
+	return render(request, 'catalog/maps.html', {
+		
+		})

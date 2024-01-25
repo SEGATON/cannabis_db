@@ -4,7 +4,8 @@ html{
 	background: #f5f2f2;
 }
 body {
-
+	height: 100%;
+	width: 100%;
 	margin: 0;
 	padding: 0;
 	font-family: 'Roboto Slab', serif;
@@ -22,11 +23,27 @@ p{
 }
 
 
+.filler{
+	height: 90px;
+}
+/*************** NAVIGATION STYLES STARTS HERE *****************/
+.navigation{
+	background: white;
+	position: fixed;
+	width: 100%;
+	box-shadow: 1px 1px 4px 1px #999;
+	padding: 10px 0;
+	z-index: 999;
+}
+
+/*************** NAVIGATION STYLES ENDS HERE *****************/
+
+
 /*************** CARDS STYLES STARTS HERE *****************/
 .card{
 	margin-bottom: 7px;
 	border:none;
-	
+
 }
 .card_header{
 	border-bottom:1px solid #DDD;
