@@ -1,14 +1,14 @@
 
 html{
-	height: 100%;
+
 	background: #f5f2f2;
 }
 body {
-	height: 100%;
+
 	margin: 0;
 	padding: 0;
 	font-family: 'Roboto Slab', serif;
-	background: #;
+	background: #f5f2f2;
 }
 .dispensary_title{
 	font-weight: 900;
@@ -24,7 +24,9 @@ p{
 
 /*************** CARDS STYLES STARTS HERE *****************/
 .card{
+	margin-bottom: 7px;
 	border:none;
+	
 }
 .card_header{
 	border-bottom:1px solid #DDD;
@@ -41,6 +43,8 @@ p{
 	padding-top: 3px;
 }
 .card_footer{
+
+	border-top:1px solid #DDD;
 	padding-left: 10px;
 	padding-top: 3px;
 }
