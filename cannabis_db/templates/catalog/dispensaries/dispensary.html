@@ -26,19 +26,30 @@
 						<div class="card__meta_header">
 							<div class="row">
 								<div class="col-auto">
-									<p>
-										<a href="">claim profile</a> | 
-										{% if dispensary.websiteURL %}
-											<i class="fa-solid fa-globe"></i> 
-											<a href="{{dispensary.websiteURL}}">{{dispensary.websiteURL}}</a>
-										{% endif %}
-										{% if dispensary.phone_number %} |
-											<i class="fa-solid fa-phone"></i> {{dispensary.phone_number}}
-										{% endif %}
-										{% if dispensary.email_address %} |
-											<i class="fa-solid fa-envelope"></i> {{dispensary.email_address}}
-										{% endif %}
-									</p>
+									
+
+									<ul class="">
+										<li>
+											<i class="fa-solid fa-certificate"></i>
+											<a href="">claim profile</a>
+										</li>
+										<li>
+											{% if dispensary.websiteURL %}
+												<i class="fa-solid fa-globe"></i> 
+												<a href="{{dispensary.websiteURL}}">{{dispensary.websiteURL}}</a>
+											{% endif %}
+										</li>
+										<li>
+											{% if dispensary.phone_number %}
+												<i class="fa-solid fa-phone"></i> {{dispensary.phone_number}}
+											{% endif %}
+										</li>
+										<li>
+											{% if dispensary.email_address %}
+												<i class="fa-solid fa-envelope"></i> {{dispensary.email_address}}
+											{% endif %}
+										</li>
+									</ul>
 								</div>
 								<div class="col-auto">
 									<ul class="shopping_options_list">

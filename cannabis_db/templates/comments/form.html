@@ -22,23 +22,11 @@
         </div>
 
 
-
-
-
-
-        <div class="row form-group">
-            <div class=" col-lg-12">
-                <div class="custom-control custom-checkbox">
-                    {{ form.followup }}
-                    <label for="id_followup{% if cid %}_{{ cid }}{% endif %}" class="custom-control-label">&nbsp;{{ form.followup.label }}</label>
-                </div>
-            </div>
-        </div>
     </fieldset>
 
     <div class="row form-group">
-         <div class=" col-lg-12">
-            <input type="submit" name="post" value="{% trans 'send' %}" class="btn-kok-2" />
+        <div class=" col-lg-12">
+            <input type="submit" name="post" value="{% trans 'send' %}" class="comment_btn" />
 
         </div>
     </div>
