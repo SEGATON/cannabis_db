@@ -1,26 +1,121 @@
 {% include 'template_parts/header.html' %}
 	{% block content %}
-<div class="container-fluid">
-	<div class="row">
 
-		<div class="col-md-8 p-0">
+<style type="text/css">
+	#sidemenu{
+	
+		width: 20%;
+		background: white;
+		height: 100%;
+		float: left;
+	}
+</style>
+
+
+<div id="sidemenu">
+
+sds
+</div>
+
+
+
+
+	<div id="map"></div>
 
 
 
 
 
 
- <script src="https://polyfill.io/v3/polyfill.min.js?features=default"></script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 <style type="text/css">
 	#map {
   height: 100%;
-  width: 100%;
+  width: 80%;
   margin: 0;
-  position: absolute;
+
   z-index: 0;
   padding: 0;
+  background: #ddd;
+  float: right;
 }
 </style>
 
@@ -33,146 +128,37 @@
 
 
 
-<div id="map"></div>
+
 
 <script type="text/javascript">
+
+
+
 let map;
 
 async function initMap() {
-  const { Map } = await google.maps.importLibrary("maps");
+const { Map } = await google.maps.importLibrary("maps");
 
 
-  styles = [
-    {
-        "featureType": "all",
-        "elementType": "geometry",
-        "stylers": [
-            {
-                "color": "#1f4d44"
-            }
-        ]
-    },
-    {
-        "featureType": "all",
-        "elementType": "labels.text.fill",
-        "stylers": [
-            {
-                "gamma": 0.01
-            },
-            {
-                "lightness": 20
-            }
-        ]
-    },
-    {
-        "featureType": "all",
-        "elementType": "labels.text.stroke",
-        "stylers": [
-            {
-                "saturation": -31
-            },
-            {
-                "lightness": -33
-            },
-            {
-                "weight": 2
-            },
-            {
-                "gamma": 0.8
-            }
-        ]
-    },
-    {
-        "featureType": "all",
-        "elementType": "labels.icon",
-        "stylers": [
-            {
-                "visibility": "off"
-            }
-        ]
-    },
-    {
-        "featureType": "landscape",
-        "elementType": "geometry",
-        "stylers": [
-            {
-                "lightness": 30
-            },
-            {
-                "saturation": 30
-            }
-        ]
-    },
-    {
-        "featureType": "poi",
-        "elementType": "geometry",
-        "stylers": [
-            {
-                "saturation": 20
-            }
-        ]
-    },
-    {
-        "featureType": "poi.park",
-        "elementType": "geometry",
-        "stylers": [
-            {
-                "lightness": 20
-            },
-            {
-                "saturation": -20
-            }
-        ]
-    },
-    {
-        "featureType": "road",
-        "elementType": "geometry",
-        "stylers": [
-            {
-                "lightness": 10
-            },
-            {
-                "saturation": -30
-            }
-        ]
-    },
-    {
-        "featureType": "road",
-        "elementType": "geometry.stroke",
-        "stylers": [
-            {
-                "saturation": 25
-            },
-            {
-                "lightness": 25
-            }
-        ]
-    },
-    {
-        "featureType": "water",
-        "elementType": "all",
-        "stylers": [
-            {
-                "lightness": -20
-            }
-        ]
-    }
-]
+
+
+
+
+
   map = new Map(document.getElementById("map"), {
     center: { lat: 40.759488341757627, lng: -73.98983550937935 },
     zoom: 13.3,
-    styles: styles,
+    dfdfdfd:'dfdf'
+
   });
 }
 
 initMap();
+
+
+
 </script>
 
 
-
-		</div>
-
-	</div>
-</div>
 
 	{% endblock %}

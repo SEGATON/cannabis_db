@@ -15,6 +15,35 @@ from localflavor.us.models import USSocialSecurityNumberField
 
 from django.conf import settings
 
+
+
+
+
+
+
+
+
+
+
+
+
+class Category(models.Model):
+	title = models.CharField(max_length=1000)
+	slug = models.SlugField(max_length=1000)
+	tagline = models.CharField(max_length=1000)
+
+	description = models.TextField(max_length=400)
+	category_icon	= models.ImageField(upload_to='media/CANNABIS_DB/CATEGORY_ICONS/', null=True, blank=True)
+
+	def get_absolute_url(self):
+		return reverse('cannabis_db:category', args=[self.slug])
+	def __str__(self):
+		return str(self.title) 
+
+
+
+
+
 #__________________________________________________________________________________________________________________________________
 
 

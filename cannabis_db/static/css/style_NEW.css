@@ -1,15 +1,15 @@
 
 html{
-
-	background: #f5f2f2;
+	height: 100%;
+	background: #f2f2f2;
 }
 body {
 	height: 100%;
-	width: 100%;
+
 	margin: 0;
 	padding: 0;
 	font-family: 'Roboto Slab', serif;
-	background: #f5f2f2;
+	background: #f2f2f2;
 }
 .dispensary_title{
 	font-weight: 900;
@@ -20,7 +20,47 @@ h1,h2,h3,h4,h5,h6{
 }
 p{
 	font-size: 12px;
+	padding: 0;
+	margin: 0;
 }
+
+
+a{
+	color: black;
+	text-decoration: none;
+
+}
+
+
+/*************** H STYLES STARTS HERE *****************/
+
+h5{
+	font-size: 15px;
+}
+.text-right{
+	text-align: right;
+
+}
+
+.title_heading{
+	font-weight: 900;
+	letter-spacing: -1px;
+	font-size: 23px;
+}
+
+.headline_text{
+	font-style: italic;
+	color: #666;
+}
+
+
+
+/*************** H STYLES STARTS HERE *****************/
+
+
+
+
+
 
 
 .filler{
@@ -31,7 +71,7 @@ p{
 	background: white;
 	position: fixed;
 	width: 100%;
-	box-shadow: 1px 1px 4px 1px #999;
+	box-shadow: 0px 0px 6px 0px #999;
 	padding: 10px 0;
 	z-index: 999;
 }
@@ -44,27 +84,41 @@ p{
 	margin-bottom: 7px;
 	border:none;
 
+
 }
 .card_header{
 	border-bottom:1px solid #DDD;
 	padding-left: 10px;
+	padding-right: 10px;
 	padding-top: 3px;
+	padding-bottom: 6px;
 }
 .card__meta_header{
 	border-bottom:1px solid #DDD;
 	padding-left: 10px;
+	padding-right: 10px;
+	padding-bottom: 6px;
 	padding-top: 3px;
 }
 .card_body{
 	padding-left: 10px;
+	padding-right: 10px;
 	padding-top: 3px;
+	padding-bottom: 6px;
 }
 .card_footer{
 
 	border-top:1px solid #DDD;
 	padding-left: 10px;
+	padding-right: 10px;
 	padding-top: 3px;
+	padding-bottom: 6px;
 }
+
+.strain_details_card{
+	border:none;
+}
+
 /*************** CARDS STYLES ENDS HERE *****************/
 
 
