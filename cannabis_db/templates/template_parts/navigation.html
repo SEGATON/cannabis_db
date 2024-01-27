@@ -21,7 +21,7 @@
 						
 							<li><a id="profile_nav_button" href="{% url 'memberships:profile' %}">
 								{% load thumbnail %}
-								<img src="{% thumbnail user.profile.profile_photo 25x25 crop %}" class="border_radius_sm">
+								<img src="{% thumbnail user.profile.profile_photo 25x25 crop %}" class="border_radius_sm nav_profile_img">
 							</a></li>
 <li><a href="">	<i class="fa-solid fa-location-dot"></i></a></li>
 	<li><a href="{% url 'account_logout' %}"><i class="fa-solid fa-right-from-bracket"></i></a></li>
@@ -41,8 +41,9 @@
   <div class="offcanvas-header">
   	<div class="p-2">
 
-  	<p class="sidebar_profile_menu">  		{% load thumbnail %}
-  		<a href="{% url 'memberships:profile' %}"><img src="{% thumbnail user.profile.profile_photo 20x20 crop %}"  class="border_radius_sm"></a>&nbsp;<b>Welcome back: </b>{{user}} | <a href="{% url 'account_logout' %}">Logout <i class="fa-solid fa-arrow-right-from-bracket"></i></a></p>
+  	<p class="sidebar_profile_menu">  		
+  		{% load thumbnail %}
+  		<a href="{% url 'memberships:profile' %}"><img src="{% thumbnail user.profile.profile_photo 20x20 crop %}"  class="border_radius_sm "></a>&nbsp;<b>Welcome back: </b>{{user}} | <a href="{% url 'account_logout' %}">Logout <i class="fa-solid fa-arrow-right-from-bracket"></i></a></p>
   </div>
     <button type="button" class="btn close_btn" data-bs-dismiss="offcanvas" ><i class="fa-solid fa-xmark"></i></button>
   </div>

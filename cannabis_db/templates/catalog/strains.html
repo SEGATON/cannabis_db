@@ -12,15 +12,15 @@
 					{% include 'components/filters.html' %}
 						<div class="row">
 							{% for strain in strains %}
-								<div class="col-md-2 ">
+								<div class="col-md-3 ">
+									<div class="card">
 									
+										<div class="card_header">
 
+											<div class="row">
 
-
-		
-									
-						
-									<a href="{% url 'cannabis_db:like_strain' strain.pk %}"><i class="fa-regular fa-thumbs-up"></i></a></i> 
+												<div class="col-md-7">
+											<a href="{% url 'cannabis_db:like_strain' strain.pk %}"><i class="fa-regular fa-thumbs-up"></i></a></i> 
 									
 								
 
@@ -31,24 +31,52 @@
 								<a href="{% url 'cannabis_db:dislike_strain' strain.pk %}"><i class="fa-regular fa-thumbs-down"></i></a>
 							
 								({{strain.dislikes.count}})
-									
-
-
-
-
-								|
-										{% if strain.strain_type_label == 'hybrid' %}
+							</div>
+							<div class="col-md-5 text-right">
+{% if strain.strain_type_label == 'hybrid' %}
 											<span class="">Hy</span>
 										{% elif strain.strain_type_label == 'sativa' %}
 										    <span class="">Sa</span>
 										 {% elif strain.strain_type_label == 'indica' %}
   											<span class="">In</span>
 										{% endif %}
-									{% load thumbnail %}
+							</div>
+									
+											</div>
+										</div>
+
+										<div class="card_meta_header">
+
+
+										</div>
+
+										<div class="card_body">
+
+{% load thumbnail %}
 									<a href="{{strain.get_absolute_url}}">
 										<img src="{% thumbnail strain.featured_image 300x300 crop %}" class="img-fluid"></a>
-									<a href="{{strain.get_absolute_url}}">{{strain|truncatechars:30}}</a>								
+										</div>
+
+										<div class="card_footer">
+
+<a href="{{strain.get_absolute_url}}" class="strains_title">{{strain|truncatechars:30}}</a>
+										</div>
+
+
+			
+									
+						
+									
+
+
+
+
+								
+										
+									
+																	
 								</div>
+							</div>
 							{% endfor %}
 						</div>
 				</div>
