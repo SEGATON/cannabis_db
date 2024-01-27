@@ -89,7 +89,8 @@ text-transform: capitalize;
 	margin-top: -4px;
 }
 .strains_title{
-	font-size: 12px;
+	font-size: 13px;
+	font-weight: 600;
 }
 /*************** NAVIGATION STYLES ENDS HERE *****************/
 
@@ -154,4 +155,35 @@ ul li{
 
 .main_footer{
 	background: white;
+}
+
+.custom_darkest_green_badge_hybrid{
+	background: #387500;
+	color: white;
+	padding: 4px 10px;
+font-size: 12px;
+	border-radius: 3px;
+	position: relative;
+}
+.custom_lighter_green_badge_sativa{
+	background: #458F00;
+	color: white;
+	padding: 4px 10px;
+font-size: 12px;
+	border-radius: 3px;
+	position: relative;
+}
+.custom_lightest_green_badge_indica{
+	background: #48990A;
+	color: white;
+	padding: 4px 10px;
+	border-radius: 3px;
+	position: relative;
+	font-size: 12px;
+}
+.koko{
+	padding-top: 1px;
+}
+.popo{
+	padding-top: 3px;
 }

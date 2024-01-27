@@ -19,8 +19,10 @@
 
 											<div class="row">
 
-												<div class="col-md-7">
-											<a href="{% url 'cannabis_db:like_strain' strain.pk %}"><i class="fa-regular fa-thumbs-up"></i></a></i> 
+												<div class="col-md-7 " >
+													<div class="popo">
+											<a  href="{% url 'cannabis_db:like_strain' strain.pk %}"><i class="fa-regular fa-thumbs-up"></i></a></i> 
+											
 									
 								
 
@@ -32,14 +34,17 @@
 							
 								({{strain.dislikes.count}})
 							</div>
+							</div>
 							<div class="col-md-5 text-right">
-{% if strain.strain_type_label == 'hybrid' %}
-											<span class="">Hy</span>
+								<div class="koko">
+										{% if strain.strain_type_label == 'hybrid' %}
+											<span class="custom_darkest_green_badge_hybrid">Hy</span>
 										{% elif strain.strain_type_label == 'sativa' %}
-										    <span class="">Sa</span>
+										    <span class="custom_lighter_green_badge_sativa">Sa</span>
 										 {% elif strain.strain_type_label == 'indica' %}
-  											<span class="">In</span>
+  											<span class="custom_lightest_green_badge_indica">In</span>
 										{% endif %}
+									</div>
 							</div>
 									
 											</div>
