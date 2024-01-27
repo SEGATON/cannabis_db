@@ -1,7 +1,7 @@
 
 html{
 	height: 100%;
-	background: #f2f2f2;
+	background: #E5E5E5;
 }
 body {
 	height: 100%;
@@ -9,7 +9,7 @@ body {
 	margin: 0;
 	padding: 0;
 	font-family: 'Roboto Slab', serif;
-	background: #f2f2f2;
+	background: #E5E5E5;
 }
 .dispensary_title{
 	font-weight: 900;
@@ -21,16 +21,24 @@ h1,h2,h3,h4,h5,h6{
 p{
 	font-size: 12px;
 	padding: 0;
+	color: #666;
 	margin: 0;
 }
 
 
 a{
-	color: black;
+	color:#055C16;
 	text-decoration: none;
 
 }
-
+b{
+	font-weight: 900;
+	color: #000;
+}
+.section_heading{
+	font-weight: 800;
+	color:#06701B;
+}
 
 /*************** H STYLES STARTS HERE *****************/
 
@@ -42,10 +50,10 @@ h5{
 
 }
 
-.title_heading{
+.title_heading {
 	font-weight: 900;
-	letter-spacing: -1px;
-	font-size: 23px;
+	letter-spacing: -2px;
+	font-size: 27px;
 }
 
 .headline_text{
@@ -99,15 +107,24 @@ text-transform: capitalize;
 .card{
 	margin-bottom: 7px;
 	border:none;
-
+border-radius: 3px;
 
 }
 .card_header{
 	border-bottom:1px solid #DDD;
 	padding-left: 10px;
 	padding-right: 10px;
-	padding-top: 3px;
-	padding-bottom: 6px;
+	padding-top: 10px;
+	padding-bottom: 10px;
+	border-top-left-radius: 3px;
+	border-top-right-radius: 3px;
+}
+.green_card_header{
+	background: #fff;
+	
+
+	border-top-left-radius: 3px;
+	border-top-right-radius: 3px;
 }
 .card__meta_header{
 	border-bottom:1px solid #DDD;
@@ -133,6 +150,10 @@ text-transform: capitalize;
 
 .strain_details_card{
 	border:none;
+	box-shadow: none;
+	border-bottom:1px solid #eee;
+	padding: 10px 0;
+
 }
 
 /*************** CARDS STYLES ENDS HERE *****************/
@@ -152,9 +173,17 @@ ul li{
 	background: #f5f2f2;
 }
 
-
+.howtoga{
+	background: none;
+	border:none;
+	padding: 0;
+	margin: 0;
+}
 .main_footer{
+	margin-top: 200px;
 	background: white;
+	padding: 300px 0;
+	height: 100%;
 }
 
 .custom_darkest_green_badge_hybrid{
