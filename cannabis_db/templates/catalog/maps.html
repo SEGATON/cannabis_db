@@ -1,6 +1,12 @@
 {% include 'template_parts/header.html' %}
 	{% block content %}
 
+
+<script>(g=>{var h,a,k,p="The Google Maps JavaScript API",c="google",l="importLibrary",q="__ib__",m=document,b=window;b=b[c]||(b[c]={});var d=b.maps||(b.maps={}),r=new Set,e=new URLSearchParams,u=()=>h||(h=new Promise(async(f,n)=>{await (a=m.createElement("script"));e.set("libraries",[...r]+"");for(k in g)e.set(k.replace(/[A-Z]/g,t=>"_"+t[0].toLowerCase()),g[k]);e.set("callback",c+".maps."+q);a.src=`https://maps.${c}apis.com/maps/api/js?`+e;d[q]=f;a.onerror=()=>h=n(Error(p+" could not load."));a.nonce=m.querySelector("script[nonce]")?.nonce||"";m.head.append(a)}));d[l]?console.warn(p+" only loads once. Ignoring:",g):d[l]=(f,...n)=>r.add(f)&&u().then(()=>d[l](f,...n))})
+        ({key: "AIzaSyBv7HBD5DqU7jifa5mabcTsNjJBguVZwGA", v: "weekly"});</script>
+
+
+
 <style type="text/css">
 	#sidemenu{
 	
@@ -8,14 +14,25 @@
 		background: white;
 		height: 100%;
 		float: left;
+    box-shadow: 0px 0px 6px 0px #333;
+    position: fixed;
+    z-index: 55;
 	}
+
+#map{
+  z-index: 40;
+}
 </style>
 
 
-<div id="sidemenu">
-
-sds
-</div>
+  <div id="sidemenu">
+    <div class="filler"></div>
+      {% for dispensary in dispensaries %}
+        <div class="card">
+            {{dispensary.title}}
+        </div>
+      {% endfor %}
+  </div>
 
 
 
@@ -24,28 +41,9 @@ sds
 
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+<script type="text/javascript">
+  initiateTheMap();
+</script>
 
 
 

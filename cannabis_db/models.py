@@ -479,6 +479,10 @@ class Dispensary(models.Model):
 	saves = models.ManyToManyField('memberships.Profile', null=True,blank=True, related_name='dispensary_saves')
 	followers = models.ManyToManyField('memberships.Profile', related_name='dispensary_followers')
 
+
+	longtitude = models.CharField(max_length=50, null=True, blank=True)
+	latitude = models.CharField(max_length=50, null=True, blank=True)
+
 	def get_absolute_url(self):
 		return reverse('cannabis_db:dispensary', args=[self.slug])
 

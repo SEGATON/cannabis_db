@@ -345,6 +345,7 @@ def search_results(request):
 
 
 def maps(request):
+	dispensaries = Dispensary.objects.all()
 	return render(request, 'catalog/maps.html', {
-		
+			'dispensaries':dispensaries
 		})
