@@ -1,5 +1,8 @@
 <ul class="profile_links">
-
+							<li>({{user.profile.followers.count}}) follower </li>
+							
+							<li><a href="{% url 'memberships:follow_user' user.pk %}">follow</a></li>
+							<li><a href="{% url 'memberships:submit_strain' user.pk %}">submit strain</a></li>
 	<li><a href="{% url 'memberships:edit_profile' user.pk %}">Edit profile</a></li>
 	<li><a href="{% url 'memberships:settings' %}"> Settings</a></li>
 	<li><a href="{% url 'memberships:my_reviews' user.pk %}"> My reviews</a></li>
