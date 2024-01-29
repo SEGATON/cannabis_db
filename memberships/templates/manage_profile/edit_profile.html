@@ -30,7 +30,13 @@
 							<img src="{% thumbnail user.profile.profile_photo 500x500 crop %}" class="img-fluid" >
 							
 						</div>
-						<div class="card_footer"></div>
+						<div class="card_footer">
+							<form method="POST" enctype="multipart/form-data">
+								{% csrf_token %}
+								{{change_profile_avatar_form.as_p}}
+								<button>change photo</button>
+							</form>
+						</div>
 						
 					</div>
 					<div class="card">

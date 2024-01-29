@@ -36,3 +36,9 @@ class ChangeUsernameForm(forms.ModelForm):
 	class Meta:
 		model = CustomUser
 		fields = '__all__'
+
+
+class ChangeProfilePhotoForm(forms.ModelForm):
+	class Meta:
+		model = Profile
+		fields = ['profile_photo']

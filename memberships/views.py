@@ -3,9 +3,12 @@ from django.shortcuts import redirect
 from django.shortcuts import get_object_or_404
 from django.views import generic
 # Create your views here.
+
 from .forms import EditProfileForm
 from .forms import EditProfileSocialProfilesForm
 from .forms import SubmitStrainForm
+from .forms import ChangeProfilePhotoForm
+
 from django.contrib.auth.views import PasswordChangeView
 from .models import Profile
 from cannabis_db.models import Rating
@@ -87,9 +90,20 @@ def edit_profile(request, pk):
 	else:
 		edit_profile_social_profiles_form = EditProfileSocialProfilesForm()
 
+
+	if request.method == 'POST':
+		change_profile_avatar_form = ChangeProfilePhotoForm(request.POST, request.FILES, instance=request.user)
+		if change_profile_avatar_form.is_valid():
+			cpaf = change_profile_avatar_form.save(commit=False)
+			cpaf.user = request.user 
+			cpaf.save()
+	else:
+		change_profile_avatar_form = ChangeProfilePhotoForm()
+
 	return render(request, 'manage_profile/edit_profile.html', {
 			'edit_profile_form':edit_profile_form,
 			'edit_profile_social_profiles_form':edit_profile_social_profiles_form,
+			'change_profile_avatar_form':change_profile_avatar_form
 		})
 
 @login_required

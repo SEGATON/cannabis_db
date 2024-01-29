@@ -330,3 +330,109 @@ font-size: 12px;
 .filler_large{
 	height: 150px;
 }
+
+
+
+
+
+
+
+
+
+
+.form-control{
+	border:3px solid  #1B5E51;
+	font-size: 12px;
+	border-radius: 5px;
+}
+
+
+
+.form-control:hover{
+	border:3px solid  #1B5E51;
+	outline: none;
+}
+
+
+
+.form-control:focus{
+	border:3px solid  #1B5E51;
+	outline: none;
+	box-shadow: none;
+}
+
+
+
+.form-control:active{
+	border:3px solid  #1B5E51;
+	outline: none;
+}
+
+
+
+.login_btn{
+	background:#1B5E51 ;
+		font-size: 12px;
+		width: 100%;
+		color:white;
+		border-radius: 5px;
+}
+
+
+.login_btn:hover{
+	background:#1B5E51 ;
+		font-size: 12px;
+		width: 100%;
+		color:white;
+		border-radius: 5px;
+}
+
+
+
+
+
+.f-btn{
+	background: #1877f2;
+	color: white;
+	width: 32.5%;
+	margin-bottom: 4px;
+	font-size: 12px;
+	height: 50px;
+	padding-top: 15px;
+}
+.f-btn:hover{
+	background: #1877f2;
+	color: white;
+	width: 32.5%;
+	margin-bottom: 4px;
+}
+.t-btn{
+	background: #14171a;
+	color: white;
+	width: 32.5%;
+	margin-bottom: 4px;
+	font-size: 12px;
+	height: 50px;
+	padding-top: 15px;
+}
+.t-btn:hover{
+	background: #14171a;
+	color: white;
+	width: 32.5%;
+	margin-bottom: 4px;
+}
+.g-btn{
+	background: #34a853;
+	color: white;
+	width: 32.9%;
+	margin-bottom: 4px;
+	font-size: 12px;
+	height: 50px;
+	padding-top: 15px;
+}
+.g-btn:hover{
+	background: #34a853;
+	color: white;
+	width: 32.9%;
+	margin-bottom: 4px;
+}
