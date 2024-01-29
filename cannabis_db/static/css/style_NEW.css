@@ -25,7 +25,9 @@ p{
 	margin: 0;
 }
 
-
+.text-muted{
+	display: none;
+}
 a{
 	color:#055C16;
 	text-decoration: none;
@@ -219,3 +221,19 @@ font-size: 12px;
 	padding-top: 3px;
 }
 
+
+.body_open_feelings{
+	display: none;
+}
+.body_open_flavors{
+	display: none;
+}
+.body_open_terpenes{
+	display: none;
+}
+.body_open_helps_with{
+	display: none;
+}
+.body_open_negatives{
+	display: none;
+}
