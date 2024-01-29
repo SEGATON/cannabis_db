@@ -10,80 +10,82 @@
 				<div class="col-md-10">
 					<div class="filler"></div>
 					{% include 'components/filters.html' %}
+
+
+
+
+
 						<div class="row">
+
+
+
+
+
+
 							{% for strain in strains %}
-								<div class="col-md-3 ">
-									<div class="card">
-									
-										<div class="card_header">
+
+
+								<div class="col-md-3">
+
+									<div class="thumbnail_card">
+
+										{% load thumbnail %}
+										<a href="{{strain.get_absolute_url}}">
+											<img src="{% thumbnail strain.featured_image 300x300 crop %}" class="img-fluid"></a>
+										
+
+
+
+
+										<span class="thumbnail_card_caption">
 
 											<div class="row">
+												<div class="col-lg-12">
+													<a href="{{strain.get_absolute_url}}">{{strain.title}}</a>
+													<hr>
+												</div>
+												<div class="col-lg-12">
+														<p>{% for strain_spec in strain.strain_specifications.specifications_set.specifications.all %}
+										<b>{{strain_spec.get_specification_name_display}}</b> {{strain_spec.specification_value}}%
+								{% endfor %}</p>
+												</div>
+												
 
-												<div class="col-md-7 " >
-													<div class="popo">
-											<a  href="{% url 'cannabis_db:like_strain' strain.pk %}"><i class="fa-regular fa-thumbs-up"></i></a></i> 
-											
-									
-								
-
-								({{strain.likes.count}})
-
-
-
-								<a href="{% url 'cannabis_db:dislike_strain' strain.pk %}"><i class="fa-regular fa-thumbs-down"></i></a>
-							
-								({{strain.dislikes.count}})
-							</div>
-							</div>
-							<div class="col-md-5 text-right">
-								<div class="koko">
-										{% if strain.strain_type_label == 'hybrid' %}
-											<span class="custom_darkest_green_badge_hybrid">Hy</span>
-										{% elif strain.strain_type_label == 'sativa' %}
-										    <span class="custom_lighter_green_badge_sativa">Sa</span>
-										 {% elif strain.strain_type_label == 'indica' %}
-  											<span class="custom_lightest_green_badge_indica">In</span>
-										{% endif %}
-									</div>
-							</div>
-									
 											</div>
-										</div>
+											<div class="row">
+												<div class="col-md-6"></div>
+												<div class="col-md-6"></div>
 
-										<div class="card_meta_header">
+											</div>
+											<div class="row">
+												<div class="col-md-6"></div>
+												<div class="col-md-6"></div>
 
+											</div>
+										</span>
 
-										</div>
-
-										<div class="card_body">
-
-{% load thumbnail %}
-									<a href="{{strain.get_absolute_url}}">
-										<img src="{% thumbnail strain.featured_image 300x300 crop %}" class="img-fluid"></a>
-										</div>
-
-										<div class="card_footer">
-
-<a href="{{strain.get_absolute_url}}" class="strains_title">{{strain|truncatechars:30}}</a>
-										</div>
+									</div>
 
 
-			
-									
-						
 									
 
-
-
-
-								
-										
-									
-																	
 								</div>
-							</div>
+
 							{% endfor %}
+
+
+
+
+
+
+
 						</div>
+
+
+
+
+
+
 				</div>
 			</div>
 		</div>
