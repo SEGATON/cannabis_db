@@ -2,6 +2,7 @@
 {% extends 'cannabis_db/base.html' %}
 {% load comments %}
 {% load comments_xtd %}
+{% load avatar_tags %}
 
 	{% block content %}
 		
@@ -45,10 +46,12 @@
           </div>
 
 				</div>
+				<!--
 				<div class="card_body">
 					<br>
 					{% include 'commenting_system_components/commenting_system.html' %}
 				</div>
+			-->
 				
 			</div>
 			<!-- card ends -->
@@ -498,6 +501,69 @@
 
 	</div>
 </div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<section class="commenting_system_section">
+
+<div class="container">
+	<div class="row">
+
+	
+		<div class="col-lg-12">
+		{% include 'commenting_system_components/commenting_system.html' %}
+		</div>
+	
+	</div>
+</div>
+
+
+
+
+
+
+
+
+
+
+</section>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
