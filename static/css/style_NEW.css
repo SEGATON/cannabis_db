@@ -277,7 +277,7 @@ font-size: 12px;
 }
 
 .thumbnail_card{
-	background: black;
+
 	overflow: hidden;
 	position: relative;
 	width: 100%;
@@ -304,6 +304,7 @@ font-size: 12px;
 	top: 50%;
 	transition: .15s all cubic-bezier(.42,0,.58,1);
 	border-radius: 4px;
+	opacity: .9;
 }
 .thumbnail_card_caption a {
 	color: white;
@@ -324,4 +325,8 @@ font-size: 12px;
 	border-top:1px solid #fff;
 	padding: 0;
 	margin: 0;
+}
+
+.filler_large{
+	height: 150px;
 }

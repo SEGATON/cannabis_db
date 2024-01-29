@@ -1,30 +1,50 @@
 {% extends 'cannabis_db/base.html' %}
 	{% block content %}
+
+
+
+
+
+
+
+
 		<div class="container">
-			<div class="row">
+			<div class="row g-2">
 <!--###################################################################################################################### -->
 				<div class="col-md-2">
 					<div class="filler"></div>
 					<div class="card">
-						<div id="profile_photo_box">
+						<div class="card_header"></div>
+						<div class="card_body p-0">
 							{% load thumbnail %}
 							<img src="{% thumbnail user.profile.profile_photo 500x500 crop %}" class="img-fluid" >
 							
 						</div>
+						<div class="card_footer"></div>
+						
 					</div>
 					<div class="card">
-						({{user.profile.followers.count}}) follower 
+						<div class="card_header"></div>
+						<div class="card_body">
+							
 						
-						<a href="{% url 'memberships:follow_user' user.pk %}">follow<a>
-						<a href="{% url 'memberships:submit_strain' user.pk %}">submit strain</a>
-						<hr>
-						{% include 'components/sidebar_menu.html' %}
+							{% include 'components/sidebar_menu.html' %}
+						</div>
+						<div class="card_footer"></div>
+						
 					</div>
 				</div>
 <!--###################################################################################################################### -->
 				<div class="col-md-6">				
 					<div class="filler"></div>
 					<div class="card">
+					<div class="card_header">
+						<h5 id=""><b>Welcome back:</b> <span>{{user}}</span></h5>
+					</div>
+					<div class="card_meta_header"></div>
+						<div class="card_body">
+							
+					
 						<h5 id="">Settings</h5>
 						<hr>
 			
@@ -41,16 +61,31 @@
 				{{form.username}}		
 
 					
+						</div>
+						<div class="card_footer">
+						
+						</div>
+						
+					
 					</div>
 				</div>
 <!--###################################################################################################################### -->
 				<div class="col-md-2">	
 					<div class="filler"></div>		
-					<div class="card">
-					</div>
+					{% for follower in user.profile.followers.all %}
+						<a href="">{{follower}}</a>
+					{% endfor %}
 				</div>
 			</div>
 		</div>
+
+
+
+
+<div class="filler_large"></div>
+
+
+
 	{% endblock %}
 
 

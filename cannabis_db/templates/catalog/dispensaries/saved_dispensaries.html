@@ -1,53 +1,244 @@
 {% extends 'cannabis_db/base.html' %}
 	{% block content %}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 		<div class="container">
-			<div class="row">
+			<div class="row g-2">
 <!--###################################################################################################################### -->
 				<div class="col-md-2">
 					<div class="filler"></div>
 					<div class="card">
-						<div id="profile_photo_box">
+						<div class="card_header"></div>
+						<div class="card_body p-0">
 							{% load thumbnail %}
 							<img src="{% thumbnail user.profile.profile_photo 500x500 crop %}" class="img-fluid" >
 							
 						</div>
+						<div class="card_footer"></div>
+						
 					</div>
 					<div class="card">
-						({{user.profile.followers.count}}) follower 
+						<div class="card_header"></div>
+						<div class="card_body">
+							
 						
-						<a href="{% url 'memberships:follow_user' user.pk %}">follow<a>
-						<a href="{% url 'memberships:submit_strain' user.pk %}">submit strain</a>
-						<hr>
-						{% include 'components/sidebar_menu.html' %}
+							{% include 'components/sidebar_menu.html' %}
+						</div>
+						<div class="card_footer"></div>
+						
 					</div>
 				</div>
 <!--###################################################################################################################### -->
-				<div class="col-md-6">				
+				<div class="col-md-8">				
 					<div class="filler"></div>
 					<div class="card">
-						<h5 id="">My saved dispensaries</h5>
+					<div class="card_header">
+						<h5 id=""><b>Welcome back:</b> <span>{{user}}</span></h5>
+					</div>
+					<div class="card_meta_header"></div>
+						<div class="card_body">
+							
+					
+<h5 id="">My saved dispensaries</h5>
 						<hr>
 			
 						{% include 'misc/profile_social_links.html' %}
 						
 						{% if saved_dispensaries %}
-							{{saved_dispensaries}}
+							
+
+
+
+
+
+
+{% for dispensary in saved_dispensaries %}
+					<div class="card dispensaries_list_item_card">
+						<div class="row">
+
+							<div class="col-auto text-wrap custom_width_column_for_dispensaries_list_counter">
+								<p class="text-wrap dispensaries_list_item_description_text p-3">{{forloop.counter}}</p>
+							</div>
+							<div class="col-auto p-2">
+								{% if dispensary.dispensary_logo %}
+									<img src="{{dispensary.dispensary_logo.url}}"  width="30" class="img-fluid">
+								{% endif %}
+							</div>
+							<div class="col-md-6">
+								<a class="dispensaries_list_item_title_link" href="{{dispensary.get_absolute_url}}">{{dispensary.title}}</a>
+								<p class="dispensaries_list_item_description_text">{{dispensary.dispensary_description|truncatechars:100|safe}}</p>
+								
+							</div>
+							<div class="col-md-4">
+
+
+
+								<div class="row">
+									<div class="col-lg-12 p-0">
+										<p class=" type_of_dispensary_label_style">
+										{% if dispensary.type_of_dispensary == 'medical' %}
+										Medical <i class="fa-solid fa-check"></i>
+									{% elif dispensary.type_of_dispensary == 'recreational' %}
+										Recreational <i class="fa-solid fa-check"></i>
+									{% elif dispensary.type_of_dispensary == 'medical_recreational' %}
+									Medical & Recreational <i class="fa-solid fa-check"></i>
+									{% endif %}
+									
+									</p>
+
+
+							<ul class="shopping_options_list">
+							{% if dispensary.shopping_options == 'all'  %}
+									<li><p><span class="badge shopping_options_badge">All</span></p></li>
+									<li><p><span class="badge shopping_options_badge shopping_options_badge_faded">Delivery</span></p></li>
+									<li><p><span class="badge shopping_options_badge shopping_options_badge_faded">Pickup</span></p></li>
+							{% elif dispensary.shopping_options == 'delivery'  %}
+									<li><p><span class="badge shopping_options_badge shopping_options_badge_faded">All</span></p></li>
+									<li><p><span class="badge shopping_options_badge">Delivery</span></p></li>
+									<li><p><span class="badge shopping_options_badge shopping_options_badge_faded">Pickup</span></p></li>
+							{% elif dispensary.shopping_options == 'pickup'  %}
+									<li><p><span class="badge shopping_options_badge shopping_options_badge_faded">All</span></p></li>
+									<li><p><span class="badge shopping_options_badge shopping_options_badge_faded">Delivery</span></p></li>
+									<li><p><span class="badge shopping_options_badge">Pickup</span></p></li>
+							{% endif %}
+							</ul>
+
+
+
+									</div>
+									<hr>
+									<div class="col-lg-12 p-0">
+										{% if dispensary.dispensary_address.all %}
+									
+									<p class="dispensaries_list_item_description_text">
+										<b>Address:</b><br>
+										{% for address in dispensary.dispensary_address.all %}
+											{{address.street_name_01}}
+											{{address.street_name_02}}<br>
+											{{address.street_city}}
+											{{address.street_state}}
+											{{address.street_zip_code}}
+										{% endfor %}
+									</p>
+									{% endif %}
+									</div>
+											<div class="col-md-3  text-right">
+											{% if user.is_authenticated %}
+			{% if saved %}
+			<a class="rate_link" href="{% url 'cannabis_db:save_dispensary' user.pk %}"><i class="fa-solid fa-bookmark"></i></a>
+											
+			{% else %}
+					<a class="rate_link" href="{% url 'cannabis_db:save_dispensary' user.pk %}"><i class="fa-regular fa-bookmark"></i></a>					
+			{% endif %}
+	{% endif %}
+	<b><a href="">({{dispensary.saves.count}})</a></b> saves
+									</div>
+									<hr>
+									<div class="col-lg-12 p-0">
+										<p class="dispensaries_list_item_description_text">
+									{% if dispensary.websiteURL %}
+										<i class="fa-solid fa-globe"></i> <a href="{{dispensary.websiteURL}}">{{dispensary.websiteURL}} </a> 
+									{% elif dispensary.email_address %}
+									|
+										<i class="fa-solid fa-envelope"></i>{{dispensary.email_address}} 
+									{% elif dispensary.phone_number %}
+									|
+										<i class="fa-solid fa-square-phone-flip"></i> {{dispensary.phone_number}}
+									{% endif %}
+
+
+
+										
+										
+								</p>
+									</div>
+								</div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+								
+							</div>
+
+</div>
+						</div>
+					{% endfor %}
+
+
+
+
+
+
+
+
+
+
+
 						{% else %}
 
 							<p>You have 0 saved dispensaries.</p>
 
 						{% endif %}
+						</div>
+						<div class="card_footer">
+
+						</div>
+						
 					
 					</div>
 				</div>
 <!--###################################################################################################################### -->
 				<div class="col-md-2">	
 					<div class="filler"></div>		
-					<div class="card">
-					</div>
+					{% for follower in user.profile.followers.all %}
+						<a href="">{{follower}}</a>
+					{% endfor %}
 				</div>
 			</div>
 		</div>
+		<div class="filler_large"></div>
+
+
+
+
+
+
+
+
+
+
+
+
+
 	{% endblock %}
 
 
