@@ -7,7 +7,7 @@ from django.views import generic
 from .forms import EditProfileForm
 from .forms import EditProfileSocialProfilesForm
 from .forms import SubmitStrainForm
-from .forms import ChangeProfilePhotoForm
+from .forms import ChangeProfilePhotoForm, CusPasswordChangeForm
 
 from django.contrib.auth.views import PasswordChangeView
 from .models import Profile
@@ -145,7 +145,7 @@ def my_strains(request, pk):
 
 
 class ChangePassView(PasswordChangeView):
-	form_class = PasswordChangeForm
+	form_class = CusPasswordChangeForm
 	#messages.success(request, "Password changed successfully!")
 	success_url = reverse_lazy('memberships:profile')
 

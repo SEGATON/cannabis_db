@@ -288,10 +288,10 @@ font-size: 12px;
 .thumbnail_card_caption{
 	background: yellow;
 	position: absolute;
-	top: 100%;
+	top: 81%;
 	left:0px;
 	border-radius: 4px;
-	bottom: -30px;
+	bottom: -50px;
 	width: 100%;
 	transition: 0.5s all cubic-bezier(.42,0,.58,1);
 	background-color:#237A6A; 
@@ -302,7 +302,7 @@ font-size: 12px;
 
 .thumbnail_card:hover .thumbnail_card_caption{
 	top: 50%;
-	transition: .15s all cubic-bezier(.42,0,.58,1);
+	transition: .5s all cubic-bezier(.42,0,.58,1);
 	border-radius: 4px;
 	opacity: .9;
 }
@@ -332,11 +332,20 @@ font-size: 12px;
 }
 
 
+.savey{
+	margin-bottom: -20px;
+	position: absolute;
+	z-index: 999;
+	padding: 10px;
+}
 
+#strain_thumbnail_title{
+	margin-bottom: 10px;
+}
 
-
-
-
+#strain_thumbnail_title_p{
+	padding-top: 14px;
+}
 
 
 
@@ -386,6 +395,29 @@ font-size: 12px;
 		color:white;
 		border-radius: 5px;
 }
+
+
+
+
+
+
+
+.search_form_tf{
+	width: 100%;
+	float: left;
+}
+
+#search_app_btn{
+	float: left;
+	margin-left: -35px;
+	border:none;
+	margin-top: 2px;
+	background: none;
+}
+
+
+
+
 
 
 

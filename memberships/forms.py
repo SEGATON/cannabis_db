@@ -3,7 +3,8 @@ from django import forms
 from .models import Profile
 from cannabis_db.models import Strain
 from accounts.models import CustomUser
-
+from django.contrib.auth.forms import PasswordChangeForm
+from django.contrib.auth.models import User
 class EditProfileForm(forms.ModelForm):
 	
 	biography = forms.CharField(required=False,widget=forms.Textarea(attrs={'class':'custom_ta','placeholder':'Biography'}))
@@ -42,3 +43,13 @@ class ChangeProfilePhotoForm(forms.ModelForm):
 	class Meta:
 		model = Profile
 		fields = ['profile_photo']
+
+
+class CusPasswordChangeForm(PasswordChangeForm):
+	old_password = forms.CharField(required=False,widget=forms.TextInput(attrs={'class':'form-control','placeholder':'Old password'}))
+	new_password1 = forms.CharField(required=False,widget=forms.TextInput(attrs={'class':'form-control','placeholder':'New password'}))
+	new_password2 = forms.CharField(required=False,widget=forms.TextInput(attrs={'class':'form-control','placeholder':'Confirm new password'}))
+
+	class Meta:
+		model = User
+		fields = ['old_password','new_password1','new_password2']
