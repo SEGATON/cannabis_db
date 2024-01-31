@@ -28,6 +28,11 @@ p{
 .text-muted{
 	display: none;
 }
+#rate_link {
+	font-size: 12px;
+	padding: 0;
+	margin: 0;
+}
 a{
 	color:#055C16;
 	text-decoration: none;
@@ -54,10 +59,7 @@ b{
 h5{
 	font-size: 15px;
 }
-.text-right{
-	text-align: right;
 
-}
 
 .title_heading {
 	font-weight: 900;
@@ -293,7 +295,7 @@ font-size: 12px;
 	border-radius: 4px;
 	bottom: -50px;
 	width: 100%;
-	transition: 0.5s all cubic-bezier(.42,0,.58,1);
+	transition: 0.15s all cubic-bezier(.42,0,.58,1);
 	background-color:#237A6A; 
 	padding: 10px;
 	color: white;
@@ -302,7 +304,7 @@ font-size: 12px;
 
 .thumbnail_card:hover .thumbnail_card_caption{
 	top: 50%;
-	transition: .5s all cubic-bezier(.42,0,.58,1);
+	transition: .15s all cubic-bezier(.42,0,.58,1);
 	border-radius: 4px;
 	opacity: .9;
 }
@@ -311,6 +313,7 @@ font-size: 12px;
 	font-size: 17px;
 	font-weight: 800;
 }
+
 .thumbnail_card_caption b {
 	color: white;
 	
@@ -331,12 +334,15 @@ font-size: 12px;
 	height: 150px;
 }
 
-
+.strain_type_label_box{
+	position: absolute;
+}
 .savey{
 	margin-bottom: -20px;
 	position: absolute;
 	z-index: 999;
-	padding: 10px;
+	text-align: right;
+
 }
 
 #strain_thumbnail_title{
@@ -467,4 +473,65 @@ font-size: 12px;
 	color: white;
 	width: 32.9%;
 	margin-bottom: 4px;
+}
+
+
+
+
+
+.text_right{
+	text-align: right;
+}
+
+
+
+
+
+
+.strain_type_label_box{
+	float: right;
+	right: 10px;
+	padding-top: 5px;
+}
+
+#strain_type_label_hybrid{
+	background: #00781c;
+	color: white;
+	padding: 5px;
+	font-size: 10px;
+	margin-top: 10px;
+	margin-left: 10px;
+	border-radius: 3px;
+	font-weight: 700;
+	width: 60px;
+	height: 30px;
+	box-shadow: inset 1px 1px 3px 1px #004a11;
+}
+#strain_type_label_sativa{
+	background: #009122;
+	color: white;
+	padding: 5px 5px;
+	font-size: 10px;
+	margin-top: 10px;
+	margin-left: 10px;
+	border-radius: 3px;
+	font-weight: 700;
+	width: 60px;
+	height: 30px;
+	box-shadow: inset 1px 1px 3px 1px #004a11;
+	
+}
+#strain_type_label_indica{
+	background: #00cf30;
+	color: white;
+	padding: 5px 5px;
+	font-size: 10px;
+	margin-top: 10px;
+	margin-left: 10px;
+	border-radius: 3px;
+	font-weight: 700;
+	width: 60px;
+	height: 30px;
+	box-shadow: inset 1px 1px 3px 1px #004a11;
+	
 }
