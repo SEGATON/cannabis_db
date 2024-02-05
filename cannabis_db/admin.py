@@ -61,7 +61,47 @@ class CommentAdmin(ImportExportModelAdmin):
 
 @admin.register(Address)
 class AddressAdmin(ImportExportModelAdmin):
-	pass
+	list_display = ['id','address_id_name',
+		'address_id_name',
+		'phone_number',
+		'dispensary_name',
+		'street_name_01',
+		'street_name_02',
+		'street_city',
+		'street_state',
+		'street_zip_code',
+	]
+	list_editable = ['address_id_name',
+		'address_id_name',
+		'phone_number',
+		'dispensary_name',
+		'street_name_01',
+		'street_name_02',
+		'street_city',
+		'street_state',
+		'street_zip_code',
+	]
+	search_fields = ['address_id_name',
+		'address_id_name',
+		'phone_number',
+		'dispensary_name',
+		'street_name_01',
+		'street_name_02',
+		'street_city',
+		'street_state',
+		'street_zip_code',
+	]
+	list_filter = ['address_id_name',
+		'address_id_name',
+		'phone_number',
+		'dispensary_name',
+		'street_name_01',
+		'street_name_02',
+		'street_city',
+		'street_state',
+		'street_zip_code',
+	]
+	
 
 
 
@@ -104,12 +144,12 @@ class DispensarySocialFollowsAdmin(admin.ModelAdmin):
 
 @admin.register(Dispensary)
 class DispensaryAdmin(ImportExportModelAdmin):
-	list_display = ['id','title','slug','dispensary_logo']
+	list_display = ['id','title','slug','dispensary_logo','phone_number','email_address']
 	prepopulated_fields = {
 		'slug':('title',)
 	}
 	list_display_links = ['id']
-	list_editable = ['title','slug','dispensary_logo']
+	list_editable = ['title','slug','dispensary_logo','phone_number','email_address']
 	search_fields = ['id','title','slug','dispensary_logo']
 @admin.register(StrainKeywords)
 class StrainKeywordsAdmin(admin.ModelAdmin):

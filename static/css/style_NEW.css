@@ -535,3 +535,26 @@ font-size: 12px;
 	box-shadow: inset 1px 1px 3px 1px #004a11;
 	
 }
+
+
+.dispensaries_list_item_card{
+	border:1px solid #ddd;
+	margin-bottom: 5px;
+	border:none;
+}
+
+.shopping_options_list{
+	padding: 0;
+	margin-top: -2px;
+}
+.shopping_options_list li{
+	display: inline;
+
+}
+
+.shopping_options_badge{
+	background: #009e12;
+}
+.shopping_options_badge_faded{
+	background-color: #666;
+}
