@@ -125,8 +125,8 @@ border-radius: 3px;
 	border-bottom:1px solid #DDD;
 	padding-left: 10px;
 	padding-right: 10px;
-	padding-top: 10px;
-	padding-bottom: 10px;
+
+	padding-bottom: 5px;
 	border-top-left-radius: 3px;
 	border-top-right-radius: 3px;
 }
@@ -541,8 +541,15 @@ font-size: 12px;
 	border:1px solid #ddd;
 	margin-bottom: 5px;
 	border:none;
+	transition: .3s all;
+	padding: 0;
 }
+.dispensaries_list_item_card:hover{
+	box-shadow: 1px 1px 1px 1px #d2d2d2;
+	transition: .3s all;
 
+
+}
 .shopping_options_list{
 	padding: 0;
 	margin-top: -2px;
@@ -553,8 +560,35 @@ font-size: 12px;
 }
 
 .shopping_options_badge{
-	background: #009e12;
+	background: #000;
 }
 .shopping_options_badge_faded{
-	background-color: #666;
+	background-color: #999;
+}
+
+.medical_badge{
+	background: #009e12;
+	color: white;
+}
+.recreational_badge{
+background: #009e12;
+color: white;
+padding: 0px 5px;
+border-radius: 3px;
+float: right;
+margin-top:4px;
+}
+.recreational_medical_badge{
+background: #009e12;
+color: white;
+}
+
+
+
+.dispensaries_list_item_title_link{
+	font-weight: 700;
+}
+
+.dispensary_logo_sm{
+	width: 100%;
 }
