@@ -123,10 +123,12 @@ border-radius: 3px;
 }
 .card_header{
 	border-bottom:1px solid #DDD;
+
 	padding-left: 10px;
 	padding-right: 10px;
+	padding-top: 10px ;
+	padding-bottom: 10px;
 
-	padding-bottom: 5px;
 	border-top-left-radius: 3px;
 	border-top-right-radius: 3px;
 }
@@ -147,8 +149,8 @@ border-radius: 3px;
 .card_body{
 	padding-left: 10px;
 	padding-right: 10px;
-	padding-top: 3px;
-	padding-bottom: 6px;
+	padding-top: 10px ;
+	padding-bottom: 10px;
 }
 .card_footer{
 
