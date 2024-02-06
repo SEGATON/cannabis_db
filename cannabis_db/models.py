@@ -382,6 +382,8 @@ class Brand(models.Model):
 	brand_products = models.ManyToManyField('Strain', related_name='brand_strains', null=True, blank=True)
 	brand_followers	= models.ManyToManyField(CustomUser, related_name='strain_brand_followers')
 
+	dispensary = models.ManyToManyField('Dispensary',null=True, blank=True )
+
 	def get_absolute_url(self):
 		return reverse('cannabis_db:brand', args=[self.slug])
 	def __str__(self):
@@ -438,6 +440,7 @@ class Dispensary(models.Model):
 	dispensary_cover = models.ImageField(upload_to='media/CANNABIS_DB/DISPENSARY_COVERS/', null=True, blank=True)
 	dispensary_description = RichTextField(null=True, blank=True)
 	dispensary_social_follow = models.ForeignKey(DispensarySocialFollows, on_delete=models.CASCADE, null=True, blank=True)
+
 	dispensary_strains = models.ManyToManyField('Strain', related_name='dispensary_products', null=True, blank=True)
 	dispensary_brands = models.ManyToManyField(Brand, related_name='dispensary_brands', null=True, blank=True)
 	dispensary_followers = models.ManyToManyField(CustomUser, related_name='dispensary_followers')

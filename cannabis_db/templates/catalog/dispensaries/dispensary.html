@@ -162,7 +162,46 @@
 							
 						</div>
 						<div class="card_body">
-							{{dispensary.dispensary_products}}
+							{{dispensary.dispensary_products.all}}
+						</div>
+						<div class="card_footer">
+							
+						</div>
+					</div>
+
+
+					<div class="card">
+						<div class="card_header">
+							
+						</div>
+						<div class="card_body">
+							{% for brand in dispensary.dispensary_brands.all %}
+									<a href="{{brand.get_absolute_url}}">{{brand}}</a>
+							
+							{% endfor %}
+						</div>
+						<div class="card_footer">
+							
+						</div>
+					</div>
+
+
+
+
+
+
+
+
+
+
+
+
+					<div class="card">
+						<div class="card_header">
+							
+						</div>
+						<div class="card_body">
+							{{dispensary.dispensary_strains.all}}
 						</div>
 						<div class="card_footer">
 							
@@ -212,7 +251,6 @@
 
 
 
-{{dispensary.dispensary_brands.all}}
 
 
 

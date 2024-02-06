@@ -131,11 +131,15 @@ def strain(request, slug):
 
 ####################################################################################################################################################################
 def brands(request):
+	brands = Brand.objects.all()
 	return render(request, 'catalog/brands/brands.html', {
+			'brands':brands
 		})
 
 def brand(request, slug):
+	brand = get_object_or_404(Brand, slug=slug)
 	return render(request, 'catalog/brands/brand.html', {
+		'brand':brand
 		})
 
 def brands_menu(request):
@@ -282,9 +286,11 @@ def dispensaries(request):
 def dispensary(request, slug):
 
 	dispensary = get_object_or_404(Dispensary, slug=slug)
+	brands = Brand.objects.filter(dispensary=dispensary)
 
 	return render(request, 'catalog/dispensaries/dispensary.html', {
 				'dispensary':dispensary,
+				'brands':brands
 			
 		})
 
