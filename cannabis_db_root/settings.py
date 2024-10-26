@@ -121,13 +121,29 @@ TEMPLATES = [
 
 WSGI_APPLICATION = 'cannabis_db_root.wsgi.application'
 
-
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.sqlite3',
         'NAME': BASE_DIR / 'db.sqlite3',
     }
 }
+'''
+
+DATABASES = {
+    'default': {
+        'ENGINE': 'django.db.backends.mysql',
+        'NAME': BASE_DIR / '',
+        'USER': '',
+        'PASSWORD': '',
+        'HOST': '',
+        'PORT':'',
+        'OPTIONS': {
+        
+        }
+    }
+}
+'''
+
 EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend'
 
 # Password validation

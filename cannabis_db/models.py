@@ -38,7 +38,7 @@ class Category(models.Model):
 	def get_absolute_url(self):
 		return reverse('cannabis_db:category', args=[self.slug])
 	def __str__(self):
-		return str(self.title) 
+		return str(self.title)
 
 
 
@@ -63,7 +63,7 @@ class Address(models.Model):
 	type_of_address	=	models.CharField(max_length=1000, choices=TYPE_OF_ADDRESS)
 
 	#order = models.ForeignKey('orders.Order', on_delete=models.CASCADE, related_name='order_address',null=True,blank=True)
-	
+
 	street_name_01	=	models.CharField(max_length=1000, null=True, blank=True)
 	street_name_02	=	models.CharField(max_length=1000, null=True, blank=True)
 	street_city		=	models.CharField(max_length=1000, null=True, blank=True)
@@ -91,7 +91,7 @@ class StrainType(models.Model):
 
 class StrainLineageDetailsListItem(models.Model):
 	title = models.CharField(max_length=50, null=True,blank=True)
-	slug = models.SlugField(max_length=50, null=True,blank=True)	
+	slug = models.SlugField(max_length=50, null=True,blank=True)
 	STRAIN_LINEAGE = {
 		('sativa','Sativa'),
 		('indica','Indica'),
@@ -108,15 +108,15 @@ class StrainLineageDetailsListItem(models.Model):
 
 
 class StrainLineageDetailsListItems(models.Model):
-	strain_lineage_details_list_items = models.ManyToManyField(StrainLineageDetailsListItem)	
+	strain_lineage_details_list_items = models.ManyToManyField(StrainLineageDetailsListItem)
 
 
 class StrainLineageDetailsList(models.Model):
 	title = models.CharField(max_length=50, null=True,blank=True)
 	slug = models.SlugField(max_length=50, null=True,blank=True)
 
-	strain_lineage_details_list_items = models.ForeignKey(StrainLineageDetailsListItems, on_delete=models.CASCADE, null=True,blank=True)	
-	
+	strain_lineage_details_list_items = models.ForeignKey(StrainLineageDetailsListItems, on_delete=models.CASCADE, null=True,blank=True)
+
 	def __str__(self):
 		return self.title
 
@@ -126,22 +126,22 @@ class StrainLineageDetailsList(models.Model):
 
 class StrainDetailsListItem(models.Model):
 	title = models.CharField(max_length=50, null=True,blank=True)
-	slug = models.SlugField(max_length=50, null=True,blank=True)	
+	slug = models.SlugField(max_length=50, null=True,blank=True)
 
 	def __str__(self):
 		return self.title
 
 
 class StrainDetailsListItems(models.Model):
-	strain_details_list_items = models.ManyToManyField(StrainDetailsListItem)	
+	strain_details_list_items = models.ManyToManyField(StrainDetailsListItem)
 
 
 class StrainDetailsList(models.Model):
 	title = models.CharField(max_length=50, null=True,blank=True)
 	slug = models.SlugField(max_length=50, null=True,blank=True)
 
-	strain_details_list_items = models.ForeignKey(StrainDetailsListItems, on_delete=models.CASCADE, null=True,blank=True)	
-	
+	strain_details_list_items = models.ForeignKey(StrainDetailsListItems, on_delete=models.CASCADE, null=True,blank=True)
+
 	def __str__(self):
 		return self.title
 
@@ -179,7 +179,7 @@ class HelpsWithReport(models.Model):
 	title = models.CharField(max_length=50, null=True,blank=True)
 	slug = models.SlugField(max_length=50, null=True,blank=True)
 	description = models.TextField(max_length=500, null=True,blank=True)
-	helps_with_icon = models.ImageField(upload_to='media/CANNABIS_DB/HELPS_WITH_ICONS/', null=True, blank=True, max_length=500)	
+	helps_with_icon = models.ImageField(upload_to='media/CANNABIS_DB/HELPS_WITH_ICONS/', null=True, blank=True, max_length=500)
 
 	def __str__(self):
 		return self.title
@@ -207,7 +207,7 @@ class FeelingReport(models.Model):
 	title = models.CharField(max_length=50, null=True,blank=True)
 	slug = models.SlugField(max_length=50, null=True,blank=True)
 	description = models.TextField(max_length=500, null=True,blank=True)
-	feeling_icon = models.ImageField(upload_to='media/CANNABIS_DB/FEELINGS_ICONS/', null=True, blank=True, max_length=500)	
+	feeling_icon = models.ImageField(upload_to='media/CANNABIS_DB/FEELINGS_ICONS/', null=True, blank=True, max_length=500)
 	def __str__(self):
 		return str(self.title)
 
@@ -231,12 +231,11 @@ class FeelingReportListSet(models.Model):
 
 
 class StrainGalleryImage(models.Model):
-	image_name = models.CharField(max_length=300)
-	image = models.ImageField(upload_to='media/CANNABIS_DB/GALLERY_IMAGES/', null=True, blank=True, max_length=500)	
+	image = models.ImageField(upload_to='media/CANNABIS_DB/GALLERY_IMAGES/', null=True, blank=True, max_length=500)
 
 
 class StrainGalleryImagesSet(models.Model):
-	images = models.ManyToManyField(StrainGalleryImage) 	
+	images = models.ManyToManyField(StrainGalleryImage)
 
 
 class StrainImageGallery(models.Model):
@@ -273,7 +272,7 @@ class TerpeneDetailsListSet(models.Model):
 class AromasDetails(models.Model):
 	title = models.CharField(max_length=50, null=True,blank=True)
 	slug = models.SlugField(max_length=50, null=True,blank=True)
-	aromas_icon = models.ImageField(upload_to='media/CANNABIS_DB/GALLERY_IMAGES/', null=True, blank=True, max_length=500)	
+	aromas_icon = models.ImageField(upload_to='media/CANNABIS_DB/GALLERY_IMAGES/', null=True, blank=True, max_length=500)
 
 
 class AromasDetailsList(models.Model):
@@ -291,7 +290,7 @@ class AromasListSet(models.Model):
 class FlavorsDetails(models.Model):
 	title = models.CharField(max_length=50, null=True,blank=True)
 	slug = models.SlugField(max_length=50, null=True,blank=True)
-	flavor_icon = models.ImageField(upload_to='media/CANNABIS_DB/FLAVORS_ICONS/', null=True, blank=True, max_length=500)	
+	flavor_icon = models.ImageField(upload_to='media/CANNABIS_DB/FLAVORS_ICONS/', null=True, blank=True, max_length=500)
 
 	def get_absolute_url(self):
 		return reverse('cannabis_db:flavor', args=[self.slug])
@@ -320,7 +319,10 @@ class StrainSpecification(models.Model):
 		('thc','THC'),
 		('cbd','CBD'),
 		('cbg','CBG '),
-		('htcv','THCV ')
+		('htcv','THCV '),
+		('tac','TAC '),
+		('cbda','CBDA '),
+		('thca','THCA '),
 
 	}
 	specification_name 	= models.CharField(max_length=1000, choices=SPEC_NAME)
@@ -334,7 +336,7 @@ class StrainSpecifications(models.Model):
 	specifications = models.ManyToManyField(StrainSpecification)
 
 	def __str__(self):
-		return str(self.specifications) 
+		return str(self.specifications)
 
 
 class StrainSpecificationsSets(models.Model):
@@ -342,7 +344,7 @@ class StrainSpecificationsSets(models.Model):
 	specifications_set 	= models.ForeignKey(StrainSpecifications, on_delete=models.CASCADE)
 
 	def __str__(self):
-		return str(self.specifications_set_name) 
+		return str(self.specifications_set_name)
 
 
 #__________________________________________________________________________________________________________________________________
@@ -357,7 +359,7 @@ class BrandSocialFollowURLS(models.Model):
 	social_profiles_URLS 		= models.ManyToManyField(BrandSocialFollowURL,  blank=True)
 
 	def __str__(self):
-		return str(self.social_profiles_URLS) 
+		return str(self.social_profiles_URLS)
 
 
 class BrandSocialFollows(models.Model):
@@ -365,7 +367,7 @@ class BrandSocialFollows(models.Model):
 	social_profiles_URLS 		= models.ForeignKey(BrandSocialFollowURLS, on_delete=models.CASCADE, blank=True)
 
 	def __str__(self):
-		return str(self.social_profiles_URLS) 
+		return str(self.social_profiles_URLS)
 
 
 class Brand(models.Model):
@@ -387,7 +389,7 @@ class Brand(models.Model):
 	def get_absolute_url(self):
 		return reverse('cannabis_db:brand', args=[self.slug])
 	def __str__(self):
-		return str(self.title) 
+		return str(self.title)
 
 
 
@@ -421,21 +423,21 @@ class Dispensary(models.Model):
 		('Medical_recreational','Medical & Recreational'),
 	}
 	type_of_dispensary = models.CharField(max_length=50, choices=TYPE_OF_DISPENSARY, null=True, blank=True)
-	
+
 	SHOPPING_OPTIONS = {
 		('all','All'),
 		('pickup','Pickup'),
 		('delivery','Delivery'),
 	}
 	shopping_options = models.CharField(max_length=50, choices=SHOPPING_OPTIONS, null=True, blank=True)
-	
+
 	title = models.CharField(max_length=1000)
 	slug = models.SlugField(max_length=1000)
 	tagline = models.CharField(max_length=1000)
 	websiteURL = models.URLField(max_length=300, null=True, blank=True)
 	phone_number = models.CharField(max_length=300, null=True, blank=True)
 	email_address = models.EmailField(max_length=300, null=True, blank=True)
-	
+
 	dispensary_logo	= models.ImageField(default='media/default.jpg', upload_to='media/CANNABIS_DB/DISPENSARY_LOGOS/', null=True, blank=True)
 	dispensary_cover = models.ImageField(upload_to='media/CANNABIS_DB/DISPENSARY_COVERS/', null=True, blank=True)
 	dispensary_description = RichTextField(null=True, blank=True)
@@ -459,7 +461,7 @@ class Dispensary(models.Model):
 		return reverse('cannabis_db:dispensary', args=[self.slug])
 
 	def __str__(self):
-		return str(self.title) 
+		return str(self.title)
 
 	def save(self,*args, **kwargs):
 		self.slug = slugify(self.title)
@@ -481,9 +483,9 @@ class Vendor(models.Model):
 
 	phone_number = models.CharField(max_length=300, null=True, blank=True)
 	email_address = models.EmailField(max_length=300, null=True, blank=True)
-	
+
 	followers = models.ManyToManyField('self', blank=True)
-	
+
 	vendor_is_top_vendor		= models.BooleanField(default=False)
 	vendor_is_featured 		= models.BooleanField(default=False)
 	vendor_is_bestseller 		= models.BooleanField(default=False)
@@ -520,7 +522,7 @@ class Strain(models.Model):
 	strain_details_list = models.ForeignKey(StrainDetailsList, on_delete=models.CASCADE, null=True,blank=True)
 	strain_specifications = models.ForeignKey(StrainSpecificationsSets, on_delete=models.CASCADE, null=True,blank=True)
 	description = RichTextField(max_length=5000, null=True,blank=True)
-	
+
 	featured_image = models.ImageField(default='media/default.jpg', upload_to='media/CANNABIS_DB/STRAINS/FEATURED_IMAGES/', null=True, blank=True)
 
 	image_galley= models.ForeignKey(StrainImageGallery, on_delete=models.CASCADE, related_name='product_image_gallery',null=True, blank=True)
@@ -530,7 +532,7 @@ class Strain(models.Model):
 	flavor_reports = models.ForeignKey(FlavorsDetailsListSet, on_delete=models.CASCADE,null=True, blank=True )
 	aromas_reports = models.ForeignKey(AromasListSet, on_delete=models.CASCADE,null=True, blank=True )
 	helps_with_reports = models.ForeignKey(HelpsWithReportListSet, on_delete=models.CASCADE,null=True, blank=True )
-	
+
 	strain_lineage_details_list = models.ForeignKey(StrainLineageDetailsList, on_delete=models.CASCADE, null=True,blank=True)
 
 
@@ -540,12 +542,12 @@ class Strain(models.Model):
 
 	likes = models.ManyToManyField(CustomUser, related_name='strain_likes', null=True,blank=True)
 	dislikes = models.ManyToManyField(CustomUser, related_name='strain_dislikes', null=True,blank=True)
-	
+
 	saves = models.ManyToManyField('memberships.Profile', null=True,blank=True, related_name='strain_saves')
 
 	date_created = models.DateTimeField(auto_now_add=True)
 
-	dispensary = models.ManyToManyField(Dispensary)
+	dispensary = models.ManyToManyField(Dispensary, null=True,blank=True)
 	def __str__(self):
 		return self.title
 
@@ -588,7 +590,7 @@ class Rating(models.Model):
 
 
 	replies = models.ManyToManyField('self')
-	
+
 	def __str__(self):
 		return self.title
 
@@ -622,7 +624,7 @@ class Comment(models.Model):
 
 
 	replies = models.ManyToManyField('self')
-	
+
 	def __str__(self):
 		return self.title
 
