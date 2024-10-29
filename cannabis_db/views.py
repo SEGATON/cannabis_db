@@ -293,7 +293,7 @@ def dispensary(request, slug):
 	dispensary = get_object_or_404(Dispensary, slug=slug)
 	brands = Brand.objects.filter(dispensary=dispensary)
 
-	return render(request, 'catalog/dispensaries/dispensary.html', {
+	return render(request, 'views/dispensary.html', {
 				'dispensary':dispensary,
 				'brands':brands
 			

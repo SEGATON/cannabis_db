@@ -193,9 +193,12 @@ class HelpsWithReportList(models.Model):
 
 
 class HelpsWithReportListSet(models.Model):
+	hw_UNIQUE_ID = models.CharField(max_length=50, null=True,blank=True)
 	helps_with_report_list = models.ForeignKey(HelpsWithReportList, on_delete=models.CASCADE,null=True, blank=True )
 
 
+	def __str__(self):
+		return str(self.hw_UNIQUE_ID)
 #__________________________________________________________________________________________________________________________________
 
 class EffectReport(models.Model):

@@ -1,0 +1,8 @@
+{% load thumbnail %}
+	{% for strain in strains %}
+		<a href="{{strain.get_absolute_url}}">
+			<img src="{% thumbnail strain.featured_image 700x700 crop %}">
+		</a>
+		<a href="{{strain.get_absolute_url}}">{{strain.title}}</a>
+	{% endfor %}
+	

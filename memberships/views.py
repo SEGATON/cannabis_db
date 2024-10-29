@@ -21,7 +21,7 @@ from django.contrib.auth.forms import PasswordChangeForm
 
 def profile(request):
 
-	return render(request, 'memberships/profile.html', {
+	return render(request, 'profile/profile.html', {
 		
 		})
 
