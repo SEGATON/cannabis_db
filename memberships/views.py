@@ -27,7 +27,7 @@ def profile(request):
 
 class PublicProfile(generic.DetailView):
 	model = Profile
-	template_name = 'memberships/public_profile.html'
+	template_name = 'profile/public_profile.html'
 	object_context_name = 'profiles'
 
 	def get_queryset(self):
@@ -40,7 +40,7 @@ class PublicProfile(generic.DetailView):
 		}
 		return content
 	def get_context_data(self, *args, **kwargs):
-		context = supser().get_context_data(**kwargs)
+		context = super().get_context_data(**kwargs)
 
 		return context
 

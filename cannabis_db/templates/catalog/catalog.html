@@ -1,8 +1,24 @@
 {% load thumbnail %}
-	{% for strain in strains %}
-		<a href="{{strain.get_absolute_url}}">
-			<img src="{% thumbnail strain.featured_image 700x700 crop %}">
-		</a>
-		<a href="{{strain.get_absolute_url}}">{{strain.title}}</a>
-	{% endfor %}
-	
+
+<div class="container">
+	<div class="row">
+		<div class="col-md-2">
+			{% include 'filters/filters.html' %}
+		</div>
+		<div class="col-md-10">
+			{% include 'filters/sorting.html' %}
+			<div class="row">
+				{% for strain in strains %}			
+					<div class="col-md-2">
+						<div class="card">
+							<a href="{{strain.get_absolute_url}}">
+								<img src="{% thumbnail strain.featured_image 700x700 crop %}" class="img-fluid">
+							</a>
+							<a href="{{strain.get_absolute_url}}">{{strain.title}}</a>
+						</div>
+					</div>				
+				{% endfor %}
+			</div>
+		</div>
+	</div>
+</div>

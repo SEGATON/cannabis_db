@@ -1,0 +1,127 @@
+{% load thumbnail %}
+<div class="container">
+	<div class="row">
+			<div class="col-md-7">
+				<img src="{{strain.featured_image.url}}" class="img-fluid">
+				<hr>
+				{% for strain_gallery_image in strain.image_gallery.images.images.all %}
+					{{strain_gallery_image}}
+				{% endfor %}
+			</div>
+			<div class="col-md-5">
+				<div class="card">
+					<h1>{{strain.title|title}}</h1>
+					<h4>{{strain.headline}}</h4>
+				</div>
+				<div class="card">
+					{{strain.strain_type_label}}
+					{{strain.strain_type.title}}
+				</div>
+				<div class="card">
+					<div class="row">
+						<div class="col-md-3">
+							{% include 'components/ratings/star_ratings/ratings_template.html' %}
+						</div>
+						<div class="col-md-3"></div>
+						<div class="col-md-3"></div>
+						<div class="col-md-3">
+							{% include 'components/buttons/bookmarking.html' %}
+						</div>
+					</div>
+				</div>
+				<div class="card">
+				{% for strain_specification in strain.strain_specifications.specifications.all %}
+					{{strain_specification.title}}
+					{{strain_specification.specification_value}}
+					{{strain_specification.get_specification_value_label_display}}
+				{% endfor %}	
+				</div>
+				<div class="card">
+					{{strain.date_created}}
+					{{strain.date_updated}}
+				</div>
+				<div class="card">
+					{% for user in strain.user.all %}
+						<img src="{% thumbnail user.profile.profile_photo 30x30 crop %}" class="img-fluid" width="20">
+						<a href="{% url 'memberships:public_profile' user.pk %}">{{user.username}}</a>					
+					{% endfor %}
+				</div>
+				<div class="card">
+					{% for strain_feeling in strain.feelings_reports.feeling_report_list_set.feeling_report_list.all %}
+						{% if strain_feeling.type_of_feelings == 'generic' %}
+							{{strain_feeling.get_type_of_feelings_display}}
+							{{strain_feeling.title}}
+							{{strain_feeling.description|safe}}
+							{{strain_feeling.feeling_icon}}
+						{% elif strain_feeling.type_of_feelings == 'positive' %}
+							{{strain_feeling.get_type_of_feelings_display}}
+							{{strain_feeling.title}}
+							{{strain_feeling.description|safe}}
+							{{strain_feeling.feeling_icon}}
+						{% elif strain_feeling.type_of_feelings == 'negative' %}
+							{{strain_feeling.get_type_of_feelings_display}}
+							{{strain_feeling.title}}
+							{{strain_feeling.description|safe}}
+							{{strain_feeling.feeling_icon}}
+						{% endif %}
+					{% endfor %}					
+				</div>
+				<div class="card">
+					{% for strain_effect in strain.effects_reports.effect_report_list_set.effect_report_list.all %}
+						{{strain_effect.get_type_of_effects_display}}
+						{{strain_effect.title}}
+						{{strain_effect.description|safe}}
+						{{strain_effect.effect_icon}}
+					{% endfor %}					
+				</div>
+
+				<div class="card">
+					{% for strain_flavor in strain.flavor_reports.flavors_list_set.flavors_list.all %}
+						{{strain_flavor.title}}
+						{{strain_flavor.flavor_icon}}
+					{% endfor %}					
+				</div>
+				<div class="card">
+					{% for strain_aroma in strain.aromas_reports.aromas_list_set.aromas_list.all %}
+						{{strain_aroma.title}}
+						{{strain_aroma.aromas_icon}}
+					{% endfor %}					
+				</div>
+				<div class="card">
+					{% for strain_helps_with in strain.helps_with_reports.helps_with_report_list.helps_with_report_list.all %}
+						{{strain_helps_with.title}}
+						{{strain_helps_with.description|safe}}
+						{{strain_helps_with.helps_with_icon}}
+					{% endfor %}				
+				</div>
+				<div class="card">
+					{% for strain_lineage in strain.strain_lineage_details_list.strain_lineage_details_list_items.strain_lineage_details_list_items.all %}
+						{{strain_lineage.title}}
+						{{strain_lineage.strain_lineage_01}}
+						{{strain_lineage.strain_lineage_value_01}}
+						{{strain_lineage.strain_lineage_02}}
+						{{strain_lineage.strain_lineage_value_02}}
+					{% endfor %}					
+				</div>
+				<div class="card">
+					{% for strain_dispensary_sold_in in strain.dispensaries.all %}
+						{{strain_dispensary_sold_in.title}}
+					{% endfor %}
+				</div>
+				<div class="card">
+					<p>{{strain.description|safe}}</p>					
+				</div>
+				<div class="card">
+					{% for strain_details_list_item in strain.strain_details_list.strain_details_list_items.strain_details_list_items.all %}
+						{{strain_details_list_item.title}}
+					{% endfor %}					
+				</div>
+				<div class="card">
+					{% for strain in strain.brand.all %}
+						{{strain}}
+					{% endfor %}
+				</div>
+			</div>	    
+
+	</div>
+</div>
