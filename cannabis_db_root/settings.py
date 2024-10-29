@@ -68,6 +68,8 @@ INSTALLED_APPS = [
 
     'rest_framework',
 
+    'star_ratings',
+
 ]
 
 
@@ -120,7 +122,7 @@ TEMPLATES = [
 ]
 
 WSGI_APPLICATION = 'cannabis_db_root.wsgi.application'
-
+'''
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.sqlite3',
@@ -132,9 +134,9 @@ DATABASES = {
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.mysql',
-        'NAME': BASE_DIR / '',
-        'USER': '',
-        'PASSWORD': '',
+        'NAME': 'strainsdb',
+        'USER': 'root',
+        'PASSWORD': 'pass',
         'HOST': '',
         'PORT':'',
         'OPTIONS': {
@@ -142,7 +144,7 @@ DATABASES = {
         }
     }
 }
-'''
+
 
 EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend'
 
@@ -241,3 +243,7 @@ COMMENTS_XTD_APP_MODEL_OPTIONS = {
     }
 }
 
+
+
+STAR_RATINGS_STAR_HEIGHT = 12
+STAR_RATINGS_STAR_WIDTH = 12

@@ -7,7 +7,7 @@ from django.contrib.auth.forms import PasswordChangeForm
 from django.contrib.auth.models import User
 class EditProfileForm(forms.ModelForm):
 	
-	biography = forms.CharField(required=False,widget=forms.Textarea(attrs={'class':'custom_ta','placeholder':'Biography'}))
+	biography = forms.CharField(required=False,widget=forms.Textarea(attrs={'class':'form-control','placeholder':'Biography'}))
 	
 	class Meta:
 		model = Profile 
@@ -15,11 +15,11 @@ class EditProfileForm(forms.ModelForm):
 
 class EditProfileSocialProfilesForm(forms.ModelForm):
 	
-	website_url = forms.CharField(required=False,widget=forms.TextInput(attrs={'class':'custom_tf','placeholder':'Website URL'}))
-	twitter = forms.CharField(required=False,widget=forms.TextInput(attrs={'class':'custom_tf','placeholder':'X'}))
-	facebook = forms.CharField(required=False,widget=forms.TextInput(attrs={'class':'custom_tf','placeholder':'Facebook'}))
-	youtube = forms.CharField(required=False,widget=forms.TextInput(attrs={'class':'custom_tf','placeholder':'YouTube'}))
-	instagram = forms.CharField(required=False,widget=forms.TextInput(attrs={'class':'custom_tf','placeholder':'Instagram'}))
+	website_url = forms.CharField(required=False,widget=forms.TextInput(attrs={'class':'form-control','placeholder':'Website URL'}))
+	twitter = forms.CharField(required=False,widget=forms.TextInput(attrs={'class':'form-control','placeholder':'X'}))
+	facebook = forms.CharField(required=False,widget=forms.TextInput(attrs={'class':'form-control','placeholder':'Facebook'}))
+	youtube = forms.CharField(required=False,widget=forms.TextInput(attrs={'class':'form-control','placeholder':'YouTube'}))
+	instagram = forms.CharField(required=False,widget=forms.TextInput(attrs={'class':'form-control','placeholder':'Instagram'}))
 	
 	class Meta:
 		model = Profile 

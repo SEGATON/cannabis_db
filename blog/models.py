@@ -30,6 +30,8 @@ class Category(models.Model):
 	 	return self.title
 
 
+
+
 class Article(models.Model):
 
 	options = (('draft','Draft',),('published','Published'))

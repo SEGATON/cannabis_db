@@ -12,7 +12,7 @@ from .models import StrainGalleryImagesSet
 from .models import StrainGalleryImage
 
 from .models import StrainSpecificationsSets
-from .models import StrainSpecifications
+
 from .models import StrainSpecification
 
 from .models import TerpeneDetails
@@ -53,7 +53,43 @@ from .models import StrainLineageDetailsList
 from .models import StrainLineageDetailsListItems
 from .models import StrainLineageDetailsListItem
 
+from .models import EffectReport
+from .models import EffectReportList
+from .models import EffectsReportListSet
+
+
+
+
+
+
 from import_export.admin import ImportExportModelAdmin
+
+
+
+
+
+
+
+
+@admin.register(EffectReport)
+class EffectReportAdmin(admin.ModelAdmin):
+	pass
+
+
+@admin.register(EffectReportList)
+class EffectReportListAdmin(admin.ModelAdmin):
+	pass
+
+
+@admin.register(EffectsReportListSet)
+class EffectsReportListSetAdmin(admin.ModelAdmin):
+	pass
+
+
+
+
+
+
 
 @admin.register(Comment)
 class CommentAdmin(ImportExportModelAdmin):
@@ -261,15 +297,12 @@ class BrandAdmin(ImportExportModelAdmin):
 class StrainSpecificationsSetsAdmin(ImportExportModelAdmin):
 	pass
 
-@admin.register(StrainSpecifications)
-class StrainSpecificationsAdmin(ImportExportModelAdmin):
-	pass
 
 @admin.register(StrainSpecification)
 class StrainSpecificationAdmin(ImportExportModelAdmin):
-	list_display = ['id','specification_name','specification_value']
+	list_display = ['id','title','specification_value']
 	list_display_links = ['id']
-	list_editable = ['specification_name','specification_value']
+	list_editable = ['title','specification_value']
 
 
 @admin.register(StrainImageGallery)
@@ -286,7 +319,10 @@ class StrainGalleryImageAdmin(ImportExportModelAdmin):
 
 @admin.register(StrainDetailsListItem)
 class StrainDetailsListItemAdmin(ImportExportModelAdmin):
-	pass
+	list_display = ['title','slug']
+	prepopulated_fields = {
+		'slug':('title',)
+	}
 
 @admin.register(StrainDetailsListItems)
 class StrainDetailsListItemsAdmin(ImportExportModelAdmin):

@@ -13,7 +13,7 @@ from .models import StrainGalleryImagesSet
 from .models import StrainGalleryImage
 
 from .models import StrainSpecificationsSets
-from .models import StrainSpecifications
+
 from .models import StrainSpecification
 
 from .models import TerpeneDetails
@@ -55,14 +55,22 @@ from .models import StrainLineageDetailsListItems
 from .models import StrainLineageDetailsListItem
 
 
+from .models import FeelingReportListSet
+from .models import FeelingReportList
+from .models import FeelingReport
+
 
 class StrainFilter(django_filters.FilterSet):
+
+
 	
-	title = django_filters.CharFilter(looup_expr='icontains')
+	title = django_filters.CharFilter(lookup_expr='icontains')
+	feelings_reports = django_filters.ModelMultipleChoiceFilter(queryset=FeelingReport.objects.all())
 
 	class Meta:
 		model = Strain
-		fields = ['title']
+		fields = ['title','feelings_reports']
+		
 
 	@property
 	def qs(self):

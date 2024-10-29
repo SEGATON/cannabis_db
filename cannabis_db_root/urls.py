@@ -28,6 +28,8 @@ urlpatterns = [
     path('blog/', include('blog.urls')),
     path('memberships/', include('memberships.urls')),
     path('avatar/', include('avatar.urls')),
+    path('ratings/', include('star_ratings.urls', namespace='ratings')),
+
 ]
 if settings.DEBUG:
     urlpatterns+=static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)

@@ -1,0 +1,56 @@
+{% extends 'template_parts/base.html' %}
+	{% block content %}
+	    {{strain.title|title}}
+		{{strain.strain_type_label}}
+		{{strain.headline}}
+		{{strain.date_created}}
+		{{strain.date_updated}}
+		{{strain.user.all}}
+		{{strain.strain_type.title}}
+		{% for strain in strain.brand.all %}
+			{{strain}}
+		{% endfor %}
+		{% for strain_details_list_item in strain.strain_details_list.strain_details_list_items.strain_details_list_items.all %}
+			{{strain_details_list_item.title}}
+		{% endfor %}
+		{% for strain_specification in strain.strain_specifications.specifications.all %}
+			{{strain_specification.title}}
+			{{strain_specification.specification_value}}
+			{{strain_specification.get_specification_value_label_display}}
+		{% endfor %}
+		{{strain.description|safe}}
+		{{strain.featured_image.url}}
+		{% for strain_gallery_image in strain.image_gallery.images.images.all %}
+			{{strain_gallery_image}}
+		{% endfor %}
+		{% for strain_feeling in strain.feelings_reports.feeling_report_list_set.feeling_report_list.all %}
+			{% if strain_feeling.type_of_feelings == 'generic' %}
+				{{strain_feeling.get_type_of_feelings_display}}
+				{{strain_feeling.title}}
+				{{strain_feeling.description}}
+				{{strain_feeling.feeling_icon}}
+			{% elif strain_feeling.type_of_feelings == 'positive' %}
+				{{strain_feeling.get_type_of_feelings_display}}
+				{{strain_feeling.title}}
+				{{strain_feeling.description}}
+				{{strain_feeling.feeling_icon}}
+			{% elif strain_feeling.type_of_feelings == 'negative' %}
+				{{strain_feeling.get_type_of_feelings_display}}
+				{{strain_feeling.title}}
+				{{strain_feeling.description}}
+				{{strain_feeling.feeling_icon}}
+			{% endif %}
+		{% endfor %}
+		{% for strain_effect in strain.effects_reports.effect_report_list_set.effect_report_list.all %}
+			{{strain_effect.get_type_of_effects_display}}
+			{{strain_effect.title}}
+			{{strain_effect.description}}
+			{{strain_effect.effect_icon}}
+		{% endfor %}
+		{{strain.aromas_reports}}
+		{{strain.helps_with_reports}}
+		{{strain.strain_lineage_details_list}}
+		{{strain.vendors}}
+		{{strain.dispensaries}}
+		{% include 'components/ratings/star_ratings/ratings_template.html' %}
+	{% endblock %}

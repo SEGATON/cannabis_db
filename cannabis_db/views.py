@@ -15,7 +15,7 @@ from .models import StrainGalleryImagesSet
 from .models import StrainGalleryImage
 
 from .models import StrainSpecificationsSets
-from .models import StrainSpecifications
+
 from .models import StrainSpecification
 
 from .models import TerpeneDetails
@@ -57,6 +57,8 @@ from .forms import AddDispensaryForm
 
 
 from .filters import StrainFilter
+
+
 from django.db.models import Q
 
 from django.views import generic
@@ -65,15 +67,18 @@ from django.views import generic
 
 def front_page(request):
 	strains = Strain.objects.all()
-	return render(request, 'cannabis_db/front_page.html', {
+	return render(request, 'template_parts/front_page.html', {
 			'strains':strains
 		})
 
 def strains(request):
 	strains = Strain.objects.all()
 
-	return render(request, 'catalog/strains.html', {
+	f = StrainFilter(request.GET, queryset=Strain.objects.all())
+
+	return render(request, 'strains/strains.html', {
 			'strains':strains,
+			'filter':f
 
 		})
 
@@ -81,7 +86,7 @@ def strains(request):
 ####################################################################################################################################################################
 
 class Strains(generic.ListView):
-	template_name = 'catalog/strains.html'
+	template_name = 'strains/strains.html'
 	model = Strain 
 	object_context_name = 'strains'
 
@@ -112,9 +117,9 @@ def strain(request, slug):
 		rating_value
 
 
-	f = StrainFilter(request.GET, queryset=Strain.objects.all())
+
 	
-	return render(request, 'catalog/strain.html', {
+	return render(request, 'strains/strain.html', {
 			'strain':strain,
 			'ratings':ratings,
 			'ratings_values':ratings_values,
@@ -124,7 +129,7 @@ def strain(request, slug):
 			'liked':liked,
 			'disliked':disliked,
 
-			'filter':f
+
 
 		})
 
