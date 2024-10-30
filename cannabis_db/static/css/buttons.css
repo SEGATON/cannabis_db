@@ -1,0 +1,40 @@
+.button{
+
+}
+.lrg{
+	border-radius: 4px;
+	padding: 5px 0px;
+}
+.button-green{
+	background:#015A29 ;
+	color:#FFF;
+}
+.button-full{
+	width: 100%;
+}
+
+
+
+.darkest-green{
+	background: #0f7d18;
+	color: #FFF;
+	text-decoration: none;
+	text-transform: capitalize;
+	text-align: center;
+	margin-bottom: 2px;
+}
+.darker-green{
+	background: #006308;
+	color: #FFF;
+	text-decoration: none;
+	text-transform: capitalize;
+	text-align: center;
+	margin-bottom: 2px;
+}
+.dark-green{
+	background: #4eb556;
+	color: #FFF;
+	text-decoration: none;
+	text-transform: capitalize;
+	text-align: center;
+}

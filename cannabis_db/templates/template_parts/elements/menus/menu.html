@@ -1,6 +1,29 @@
-<a href="{% url 'accounts:login' %}">login</a>
-<a href="{% url 'account_logout' %}">logout</a>
-<a href="{% url 'accounts:create_account' %}">create account</a>
-<a href="{% url 'accounts:login' %}">profile</a>
-<a href="{% url 'cannabis_db:strains' %}">Browse strains</a>
-<a href="{% url 'blog:front_page' %}">Blog</a>
+{% load static %}
+{% load thumbnail %}
+<div class="nav">
+	<div class="container">
+		<div class="row">
+			<div class="col-lg-12">
+				<ul class="main_menu float-start">
+					<li><a href="{% url 'cannabis_db:front_page' %}"><img src="{% static 'imgs/strains_db_logo.png' %}" height="10"></a></li>
+					<li><a href="{% url 'cannabis_db:front_page' %}">strains<b>db</b></a></li>
+	
+					<li><a href="{% url 'cannabis_db:strains' %}">Browse strains</a></li>
+					<li><a href="{% url 'blog:front_page' %}">Blog</a></li>
+				</ul>
+
+				<ul class="main_menu float-end">
+
+				{% if user.is_authenticated %}
+					<li><a href="{% url 'memberships:profile' %}"><img src="{% thumbnail user.profile.profile_photo 18x18 crop %}" class="img-fluid">&nbsp;{{user.username}}</a></li>
+					<li><a href="{% url 'account_logout' %}">logout</a></li>
+				{% else %}
+					<li><a href="{% url 'accounts:login' %}">login</a></li>
+					<li><a href="{% url 'accounts:create_account' %}">create account</a></li>
+				{% endif %}
+
+				</ul>
+			</div>
+		</div>
+	</div>
+</div>

@@ -25,13 +25,13 @@ class CreateAccountForm(UserCreationForm):
 		("vendor_dropshipper_account", "Vendor and dropshipper account"),
 	]
 
-	username = forms.CharField(widget=forms.TextInput(attrs={'placeholder':'Username'}))
-	email = forms.CharField(widget=forms.TextInput(attrs={'placeholder':'Email address'}))
+	username = forms.CharField(widget=forms.TextInput(attrs={'class':'form-control','placeholder':'Username'}))
+	email = forms.CharField(widget=forms.TextInput(attrs={'class':'form-control','placeholder':'Email address'}))
 
-	account_type = forms.CharField(widget=forms.Select(choices=ACCOUNT_TYPE, attrs={}))
 
-	password1 = forms.CharField(widget=forms.PasswordInput(attrs={'placeholder':'Create password'}))
-	password2 = forms.CharField(widget=forms.PasswordInput(attrs={'placeholder':'Confirm password'}))
+
+	password1 = forms.CharField(widget=forms.PasswordInput(attrs={'class':'form-control','placeholder':'Create password'}))
+	password2 = forms.CharField(widget=forms.PasswordInput(attrs={'class':'form-control','placeholder':'Confirm password'}))
 	class Meta:
 		model = CustomUser
 		fields = ['username','email','account_type','password1','password2']

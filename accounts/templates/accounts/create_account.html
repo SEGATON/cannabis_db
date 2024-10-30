@@ -10,6 +10,7 @@
       
     </div>
     <div class="col-md-4">
+      <div class="card p-2">
 <h3>Create account</h3>
 <br>
 <hr>
@@ -22,15 +23,15 @@
 
         <tr><td>{{create_account_form.username}}</td></tr>
         <tr><td>{{create_account_form.email}}</td></tr>
-        <tr><td>{{create_account_form.account_type}}</td>
+
         <tr><td>{{create_account_form.password1}}</td></tr>
         <tr><td>{{create_account_form.password2}}</td></tr>
-        <tr><td><button class="create_account_btn">create account</button></td></tr>
-        <tr><td><p>Have an account? <a href="{% url 'accounts:login' %}">login</a></p></td></tr>
+        <tr><td><button class="button button-green button-full lrg">Create account</button></td></tr>
+        <tr><td><p>Have an account? <a href="{% url 'accounts:login' %}" >login</a></p></td></tr>
 
       </form>
     </table>
-
+</tr>
     </div>
     <div class="col-md-4">
       
