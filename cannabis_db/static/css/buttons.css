@@ -5,9 +5,14 @@
 	border-radius: 4px;
 	padding: 5px 0px;
 }
+.md{
+	border-radius: 4px;
+	padding: 3px 10px;
+}
 .button-green{
 	background:#015A29 ;
 	color:#FFF;
+	text-transform: capitalize;
 }
 .button-full{
 	width: 100%;

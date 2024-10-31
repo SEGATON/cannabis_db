@@ -68,7 +68,8 @@ from django.views import generic
 def front_page(request):
 	strains = Strain.objects.all()
 	return render(request, 'template_parts/front_page.html', {
-			'strains':strains
+			'strains':strains,
+			'title':'StrainsDB | An Online Cannabis Strains Database'
 		})
 
 def strains(request):
@@ -78,7 +79,8 @@ def strains(request):
 
 	return render(request, 'strains/strains.html', {
 			'strains':strains,
-			'filter':f
+			'filter':f,
+			'title':'StrainsDB | An Online Cannabis Strains Database'
 
 		})
 
@@ -117,13 +119,16 @@ def strain(request, slug):
 		rating_value
 
 
+	if strain.headline:
+		headline = strain.headline
+	else:
+		headline = ''
 
-	
 	return render(request, 'strains/strain.html', {
 			'strain':strain,
 			'ratings':ratings,
 			'ratings_values':ratings_values,
-			'title': strain.title + ' | ' + 'Cannabis strain' + ' | ' + str(strain.get_strain_type_label_display()),
+			'title': strain.title + ' | ' + 'Cannabis strain' + ' | ' + str(strain.get_strain_type_label_display()) + ' | ' + str(headline),
 
 			'saved':saved,
 			'liked':liked,

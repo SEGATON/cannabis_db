@@ -1,6 +1,6 @@
 body{
 	font-family: "Inter", sans-serif;
-	background: #FBFBFB;
+	background: #fff;
 }
 
 
@@ -11,9 +11,10 @@ h1,h2,h3,h4,h5,h6{
 }
 p{
 	font-family: "Inter", sans-serif;
-	font-weight:400 ;
+	font-weight:300 ;
 	padding: 0;
 	margin: 0;
+	color: #666;
 }
 a{
 	color: #666;
@@ -26,9 +27,19 @@ a{
 	font-size: 20px;
 }
 .card{
-	border: 1px solid #eee;
+	border:none
 }
 .nav{
 	background: white;
 	padding: 7px 0px;
+}
+.footer{
+	background: white;
+}
+hr{
+	border-top:1px dotted #333;
+
+}
+.border_right{
+	border-right: 1px dotted #ddd;
 }

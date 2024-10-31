@@ -65,19 +65,16 @@ class StrainFilter(django_filters.FilterSet):
 
 	
 	title = django_filters.CharFilter(lookup_expr='icontains')
-	feelings_reports = django_filters.ModelMultipleChoiceFilter(queryset=FeelingReport.objects.all())
+	#feelings_reports = django_filters.ModelMultipleChoiceFilter(queryset=FeelingReport.objects.all())
+	brand = django_filters.ModelMultipleChoiceFilter(queryset=Brand.objects.all())
+	strain_type = django_filters.ModelMultipleChoiceFilter(queryset=StrainType.objects.all())
+	dispensaries = django_filters.ModelMultipleChoiceFilter(queryset=Dispensary.objects.all())
 
 	class Meta:
 		model = Strain
-		fields = ['title','feelings_reports']
+		fields = ['title','feelings_reports','brand','strain_type','dispensaries']
 		
 
-	@property
-	def qs(self):
-		parent = super().qs
-
-		return 
-	
 
 
 

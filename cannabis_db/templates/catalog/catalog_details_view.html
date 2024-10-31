@@ -1,7 +1,7 @@
 {% load thumbnail %}
 <div class="container">
-	<div class="row">
-			<div class="col-md-7">
+	<div class="row g-3">
+			<div class="col-md-7 border_right">
 				<!-- 
 				<div class="card">
 					<img src="{{strain.featured_image.url}}" class="img-fluid">
@@ -50,15 +50,16 @@
 				</div>
 			</div>
 			<div class="col-md-5">
-				<div class="card p-2">
+				<div class="card p-3">
 					<h1 id="page_heading">{{strain.title|title}}</h1>
+					<hr>
 					<h4 id="headline_heading">{{strain.headline}}</h4>
 				</div>
-				<div class="card p-2">
+				<div class="card p-3">
 					{{strain.strain_type_label|title}}
-					{{strain.strain_type.title|title}}
+
 				</div>
-				<div class="card p-2">
+				<div class="card p-3">
 					<div class="row">
 						<div class="col-md-3">
 							{% include 'components/ratings/star_ratings/ratings_template.html' %}
@@ -70,44 +71,69 @@
 						</div>
 					</div>
 				</div>
-				<div class="card p-2">
+				<div class="card p-3">
 				{% for strain_specification in strain.strain_specifications.specifications.all %}
 					<p>{{strain_specification.title}}
 					{{strain_specification.specification_value}}
 					{{strain_specification.get_specification_value_label_display}}</p>
 				{% endfor %}	
 				</div>
-				<div class="card p-2">
+				<div class="card p-3">
 					{{strain.date_created}}
 					{{strain.date_updated}}
 				</div>
-				<div class="card p-2">
+				<div class="card p-3">
 					{% for user in strain.user.all %}
 						<a href="{% url 'memberships:public_profile' user.pk %}"><img src="{% thumbnail user.profile.profile_photo 30x30 crop %}" class="img-fluid" width="20"></a>
 						<a href="{% url 'memberships:public_profile' user.pk %}">{{user.username}}</a>					
 					{% endfor %}
 				</div>
-				<div class="card p-2">
-					{% for strain_feeling in strain.feelings_reports.feeling_report_list_set.feeling_report_list.all %}
-						{% if strain_feeling.type_of_feelings == 'generic' %}
-							{{strain_feeling.get_type_of_feelings_display}}
-							{{strain_feeling.title}}
-							{{strain_feeling.description|safe}}
-							{{strain_feeling.feeling_icon}}
-						{% elif strain_feeling.type_of_feelings == 'positive' %}
-							{{strain_feeling.get_type_of_feelings_display}}
-							{{strain_feeling.title}}
-							{{strain_feeling.description|safe}}
-							{{strain_feeling.feeling_icon}}
-						{% elif strain_feeling.type_of_feelings == 'negative' %}
-							{{strain_feeling.get_type_of_feelings_display}}
-							{{strain_feeling.title}}
-							{{strain_feeling.description|safe}}
-							{{strain_feeling.feeling_icon}}
-						{% endif %}
-					{% endfor %}					
+				<div class="card p-3">
+					<table class="table strain-table strain-feelings-table">
+						{% for strain_feeling in strain.feelings_reports.feeling_report_list_set.feeling_report_list.all %}
+							
+								{% if strain_feeling.type_of_feelings == 'generic' %}
+
+
+								<tr>
+									<td><img src="{% thumbnail strain_feeling.feeling_icon 16x16 crop %}"></td>
+									<td><b>{{strain_feeling.title}}</b></td>
+									<td>{{strain_feeling.description|safe}}</td>
+									
+								</tr>
+
+
+								{% elif strain_feeling.type_of_feelings == 'positive' %}
+
+
+								<tr>
+									<td><img src="{% thumbnail strain_feeling.feeling_icon 16x16 crop %}"></td>
+									<td><b>{{strain_feeling.title}}</b></td>
+									<td>{{strain_feeling.description|safe}}</td>
+								
+								</tr>
+
+
+								{% elif strain_feeling.type_of_feelings == 'negative' %}
+
+
+								<tr>
+									<td><img src="{% thumbnail strain_feeling.feeling_icon 16x16 crop %}"></td>
+									<td><b>{{strain_feeling.title}}</b></td>
+									<td>{{strain_feeling.description|safe}}</td>
+								
+								</tr>
+
+
+
+
+								{% endif %}
+						
+						{% endfor %}	
+						
+					</table>				
 				</div>
-				<div class="card p-2">
+				<div class="card p-3">
 					{% for strain_effect in strain.effects_reports.effect_report_list_set.effect_report_list.all %}
 						{{strain_effect.get_type_of_effects_display}}
 						{{strain_effect.title}}
@@ -116,31 +142,31 @@
 					{% endfor %}					
 				</div>
 
-				<div class="card p-2">
+				<div class="card p-3">
 					{% for strain_flavor in strain.flavor_reports.flavors_list_set.flavors_list.all %}
 						{{strain_flavor.title}}
 						{{strain_flavor.flavor_icon}}
 					{% endfor %}					
 				</div>
-				<div class="card p-2">
+				<div class="card p-3">
 					{% for strain_aroma in strain.aromas_reports.aromas_list_set.aromas_list.all %}
 						{{strain_aroma.title}}
 						{{strain_aroma.aromas_icon}}
 					{% endfor %}					
 				</div>
-				<div class="card p-2">
+				<div class="card p-3">
 					{% for strain_helps_with in strain.helps_with_reports.helps_with_report_list.helps_with_report_list.all %}
 						{{strain_helps_with.title}}
 						{{strain_helps_with.description|safe}}
 						{{strain_helps_with.helps_with_icon}}
 					{% endfor %}				
 				</div>
-				<div class="card p-2">
+				<div class="card p-3">
 					{% for terpene in strain.terpenes_reports.terpene_set.terpenes.all %}
 						{{terpene.title}}
 					{% endfor %}
 				</div>
-				<div class="card p-2">
+				<div class="card p-3">
 					{% for strain_lineage in strain.strain_lineage_details_list.strain_lineage_details_list_items.strain_lineage_details_list_items.all %}
 						{{strain_lineage.title}}
 						{{strain_lineage.strain_lineage_01}}
@@ -149,20 +175,20 @@
 						{{strain_lineage.strain_lineage_value_02}}
 					{% endfor %}					
 				</div>
-				<div class="card p-2">
+				<div class="card p-3">
 					{% for strain_dispensary_sold_in in strain.dispensaries.all %}
 						{{strain_dispensary_sold_in.title}}
 					{% endfor %}
 				</div>
-				<div class="card p-2">
+				<div class="card p-3">
 					<p>{{strain.description|safe}}</p>					
 				</div>
-				<div class="card p-2">
+				<div class="card p-3">
 					{% for strain_details_list_item in strain.strain_details_list.strain_details_list_items.strain_details_list_items.all %}
 						{{strain_details_list_item.title}}
 					{% endfor %}					
 				</div>
-				<div class="card p-2">
+				<div class="card p-3">
 					{% for strain in strain.brand.all %}
 						{{strain}}
 					{% endfor %}

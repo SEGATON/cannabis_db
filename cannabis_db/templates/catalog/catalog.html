@@ -8,7 +8,7 @@
 		<div class="col-md-10">
 			{% include 'filters/sorting.html' %}
 			<div class="row g-2">
-				{% for strain in strains %}			
+				{% for strain in filter.qs %}			
 					<div class="col-md-2">
 						<div class="card">
 							<a href="{{strain.get_absolute_url}}">
