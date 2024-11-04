@@ -39,6 +39,7 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'django.contrib.sites',
+    'django.contrib.sitemaps',
 
     'avatar',
 
@@ -221,7 +222,7 @@ EMAIL_USE_TLS = True
 DEFAULT_FROM_EMAIL = "Helpdesk <helpdesk@yourdomain>"
 
 COMMENTS_XTD_MAX_THREAD_LEVEL = 24  # site wide default
-
+COMMENTS_XTD_LIST_ORDER = ('-thread_id', 'order')  # default is ('thread_id', 'order')
 
 #  To help obfuscating comments before they are sent for confirmation.
 COMMENTS_XTD_SALT = (b"Timendi causa est nescire. "
@@ -235,7 +236,7 @@ COMMENTS_XTD_CONTACT_EMAIL = "helpdesk@example.com"
 
 
 COMMENTS_XTD_APP_MODEL_OPTIONS = {
-    'default': {
+    'cannabis_db.strain': {
         'allow_flagging': True,
         'allow_feedback': True,
         'show_feedback': True,
@@ -243,7 +244,7 @@ COMMENTS_XTD_APP_MODEL_OPTIONS = {
     }
 }
 
-
+COMMENTS_XTD_API_GET_USER_AVATAR = "comp.utils.get_avatar_url"
 
 STAR_RATINGS_STAR_HEIGHT = 12
 STAR_RATINGS_STAR_WIDTH = 12

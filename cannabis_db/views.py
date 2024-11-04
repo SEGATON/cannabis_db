@@ -19,8 +19,8 @@ from .models import StrainSpecificationsSets
 from .models import StrainSpecification
 
 from .models import TerpeneDetails
-from .models import TerpeneDetailsList
-from .models import TerpeneDetailsListSet
+
+
 
 from .models import FlavorsDetailsListSet
 from .models import FlavorsDetailsList

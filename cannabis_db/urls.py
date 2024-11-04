@@ -1,7 +1,31 @@
 from django.urls import path
 from . import views  
 from .views import Strains
+
+from django.contrib.sitemaps.views import sitemap
+from .sitemaps import StrainsSitemap
 app_name = 'cannabis_db'
+
+
+
+
+
+
+
+
+
+
+
+sitemaps = {
+	'strains_sitemap':StrainsSitemap,
+
+
+}
+
+
+
+
+
 
 urlpatterns = [
 	path('', views.front_page, name='front_page'),
@@ -28,6 +52,6 @@ urlpatterns = [
 	path('saved-strains/<int:pk>/', views.saved_strains, name='saved_strains'),
 	path('saved-dispensaries/<int:pk>/', views.saved_dispensaries, name='saved_dispensaries'),
 	path('maps/', views.maps, name='maps'),
-
+	path('sitemap.xml', sitemap, {'sitemaps': sitemaps}, name='django.contrib.sitemaps.views.sitemap'),
 ]
 

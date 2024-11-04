@@ -16,8 +16,7 @@ from .models import StrainSpecificationsSets
 from .models import StrainSpecification
 
 from .models import TerpeneDetails
-from .models import TerpeneDetailsList
-from .models import TerpeneDetailsListSet
+
 
 from .models import FlavorsDetailsListSet
 from .models import FlavorsDetailsList
@@ -41,7 +40,7 @@ from .models import Rating
 
 from .models import StrainKeywords
 from .models import StrainKeywordsSet
-from .models import StrainMetas
+from .models import StrainMetasSet
 
 from .models import Dispensary
 from .models import Comment
@@ -193,8 +192,8 @@ class StrainKeywordsAdmin(admin.ModelAdmin):
 @admin.register(StrainKeywordsSet)
 class StrainKeywordsSetAdmin(admin.ModelAdmin):
 	pass
-@admin.register(StrainMetas)
-class StrainMetasAdmin(admin.ModelAdmin):
+@admin.register(StrainMetasSet)
+class StrainMetasAdmin(ImportExportModelAdmin):
 	pass
 
 
@@ -278,13 +277,8 @@ class FeelingReportListSetAdmin(ImportExportModelAdmin):
 class TerpeneDetailsAdmin(ImportExportModelAdmin):
 	pass
 
-@admin.register(TerpeneDetailsList)
-class TerpeneDetailsListAdmin(ImportExportModelAdmin):
-	pass
 
-@admin.register(TerpeneDetailsListSet)
-class TerpeneDetailsListSetAdmin(ImportExportModelAdmin):
-	pass
+
 
 
 @admin.register(Brand)

@@ -17,8 +17,7 @@ from .models import StrainSpecificationsSets
 from .models import StrainSpecification
 
 from .models import TerpeneDetails
-from .models import TerpeneDetailsList
-from .models import TerpeneDetailsListSet
+
 
 from .models import FlavorsDetailsListSet
 from .models import FlavorsDetailsList
@@ -42,7 +41,7 @@ from .models import Rating
 
 from .models import StrainKeywords
 from .models import StrainKeywordsSet
-from .models import StrainMetas
+from .models import StrainMetasSet
 
 from .models import Dispensary
 
@@ -65,14 +64,16 @@ class StrainFilter(django_filters.FilterSet):
 
 	
 	title = django_filters.CharFilter(lookup_expr='icontains')
-	#feelings_reports = django_filters.ModelMultipleChoiceFilter(queryset=FeelingReport.objects.all())
+
 	brand = django_filters.ModelMultipleChoiceFilter(queryset=Brand.objects.all())
 	strain_type = django_filters.ModelMultipleChoiceFilter(queryset=StrainType.objects.all())
 	dispensaries = django_filters.ModelMultipleChoiceFilter(queryset=Dispensary.objects.all())
+	feelings = django_filters.ModelMultipleChoiceFilter(queryset=FeelingReport.objects.all())
+	terpenes_reports = django_filters.ModelMultipleChoiceFilter(queryset=TerpeneDetails.objects.all())
 
 	class Meta:
 		model = Strain
-		fields = ['title','feelings_reports','brand','strain_type','dispensaries']
+		fields = ['title','brand','strain_type','dispensaries','feelings','terpenes_reports']
 		
 
 
