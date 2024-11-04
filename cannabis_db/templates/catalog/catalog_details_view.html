@@ -57,7 +57,8 @@
 						{% for user in strain.user.all %}
 
 						<div class="col-auto">
-							 Reviewed by: &nbsp;<a href="{% url 'memberships:public_profile' user.pk %}"><img src="{% thumbnail user.profile.profile_photo 30x30 crop %}" class="img-fluid radius_sm" width="20"></a>
+							 Reviewed by: &nbsp;<a href="{% url 'memberships:public_profile' user.pk %}">
+							 	<img src="{% thumbnail user.profile.profile_photo 30x30 crop %}" class="img-fluid radius_sm" width="20"></a>
 						</div>
 
 
@@ -67,11 +68,11 @@
 									<a href="{% url 'memberships:public_profile' user.pk %}">{{user.username}}</a>	
 								</div>
 								<div class="col-lg-12 p-0">
-									<p class="xs">{{user.profile.biography|safe|truncatechars:100}}</p>	
+									<p class="xs">{% if user.profile.biography %} {{user.profile|safe|truncatechars:100}}	{% else %} No bio yet. {% endif %}</p>
 								</div>
 								<div class="col-lg-12 p-0">
 									{{strain.date_created}}
-					{{strain.date_updated}}
+									{{strain.date_updated}}
 								</div>
 							</div>
 						</div>
@@ -154,37 +155,61 @@
 					</table>				
 				</div>
 				<div class="card p-3">
+					<h5>Effects</h5>
+					{% if strain.feelings_reports %}
 					{% for strain_effect in strain.effects_reports.effect_report_list_set.effect_report_list.all %}
 						{{strain_effect.get_type_of_effects_display}}
 						{{strain_effect.title}}
 						{{strain_effect.description|safe}}
 						{{strain_effect.effect_icon}}
-					{% endfor %}					
+					{% endfor %}	
+					{% else %}				
+						<p>Not available.</p>
+					{% endif %}
 				</div>
 				<div class="card p-3">
+					<h5>Flavors</h5>
+					{% if strain.flavor_reports %}
 					{% for strain_flavor in strain.flavor_reports.flavors_list_set.flavors_list.all %}
 						{{strain_flavor.title}}
 						{{strain_flavor.flavor_icon}}
-					{% endfor %}					
+					{% endfor %}	
+					{% else %}				
+						<p>Not available.</p>
+					{% endif %}				
 				</div>
 				<div class="card p-3">
+					<h5>Aromas</h5>
+					{% if strain.aromas_reports %}
 					{% for strain_aroma in strain.aromas_reports.aromas_list_set.aromas_list.all %}
 						{{strain_aroma.title}}
 						{{strain_aroma.aromas_icon}}
-					{% endfor %}					
+					{% endfor %}	
+					{% else %}				
+						<p>Not available.</p>
+					{% endif %}					
 				</div>
 				<div class="card p-3">
+					<h5>Helps with</h5>
+					{% if strain.helps_with_reports %}
 					{% for strain_helps_with in strain.helps_with_reports.helps_with_report_list.helps_with_report_list.all %}
 						{{strain_helps_with.title}}
 						{{strain_helps_with.description|safe}}
 						{{strain_helps_with.helps_with_icon}}
-					{% endfor %}				
+					{% endfor %}	
+					{% else %}				
+						<p>Not available.</p>
+					{% endif %}					
 				</div>
 				<div class="card p-3">
 					<h5>Terpenes profile</h5>
+					{% if strain.terpenes_reports %}
 					{% for terpene in strain.terpenes_reports.all %}
 						{{terpene.title}}
 					{% endfor %}
+					{% else %}				
+						<p>Not available.</p>
+					{% endif %}
 				</div>
 				<div class="card p-3">
 					{% for strain_lineage in strain.strain_lineage_details_list.strain_lineage_details_list_items.strain_lineage_details_list_items.all %}
@@ -198,25 +223,40 @@
 
 				<div class="card p-3">
 					<h5>Poster's review</h5>
-					
-					<p>{{strain.author_review|safe}}</p>					
+					{% if strain.author_review %}
+					<p>{{strain.author_review|safe}}</p>
+					{% else %}				
+						<p>Not available.</p>
+					{% endif %}					
 				</div>
 				<div class="card p-3">
+					{% if strain.strain_details_list %}
 					{% for strain_details_list_item in strain.strain_details_list.strain_details_list_items.strain_details_list_items.all %}
 						{{strain_details_list_item.title}}
-					{% endfor %}					
+					{% endfor %}	
+					{% else %}				
+						<p>Not available.</p>
+					{% endif %}				
 				</div>
 				<div class="card p-3">
 					<h5>Brand</h5>
+					{% if strain.brand %}
 					{% for strain in strain.brand.all %}
 						{{strain}}
 					{% endfor %}
+					{% else %}				
+						<p>Not available.</p>
+					{% endif %}
 				</div>
 				<div class="card p-3">
 					<h5>Where to buy</h5>
+					{% if strain.dispensaries %}
 					{% for strain_dispensary_sold_in in strain.dispensaries.all %}
 						{{strain_dispensary_sold_in.title}}
 					{% endfor %}
+					{% else %}				
+						<p>Not available.</p>
+					{% endif %}
 				</div>
 			</div>	    
 	</div>
