@@ -12,7 +12,7 @@ from localflavor.us.models import USStateField
 from localflavor.us.models import USZipCodeField
 from localflavor.us.models import USPostalCodeField
 from localflavor.us.models import USSocialSecurityNumberField
-
+from django_countries.fields import CountryField
 from django.conf import settings
 
 
@@ -51,7 +51,7 @@ class Address(models.Model):
 	user = models.ForeignKey(settings.AUTH_USER_MODEL, on_delete=models.CASCADE,null=True,blank=True)
 	dispensary_name = models.CharField(max_length=300, null=True, blank=True)
 	phone_number = models.CharField(max_length=300, null=True, blank=True)
-	address_id_name = models.CharField(max_length=1000)
+	address_id_name = models.CharField(max_length=1000,null=True, blank=True)
 
 	TYPE_OF_ADDRESS = (
 				('billing_address','Billing address'),
@@ -60,22 +60,25 @@ class Address(models.Model):
 				('physical_address','Physical Address'),
 			)
 
-	type_of_address	=	models.CharField(max_length=1000, choices=TYPE_OF_ADDRESS)
+	type_of_address	=	models.CharField(max_length=1000, choices=TYPE_OF_ADDRESS, null=True, blank=True)
 
 	#order = models.ForeignKey('orders.Order', on_delete=models.CASCADE, related_name='order_address',null=True,blank=True)
 
 	street_name_01	=	models.CharField(max_length=1000, null=True, blank=True)
 	street_name_02	=	models.CharField(max_length=1000, null=True, blank=True)
 	street_city		=	models.CharField(max_length=1000, null=True, blank=True)
-	street_state	=  USStateField()
-	street_zip_code	=	USZipCodeField()
+	street_state	=  USStateField(null=True, blank=True)
+	street_zip_code	=	USZipCodeField(null=True, blank=True)
 
 	default_address = models.BooleanField(default=False,null=True, blank=True)
 
-	date_created = models.DateTimeField(auto_now_add=True)
+	date_created = models.DateTimeField(auto_now_add=True, null=True, blank=True)
+
+	longtitude = models.CharField(max_length=50, null=True, blank=True)
+	latitude = models.CharField(max_length=50, null=True, blank=True)
 
 	def __str__(self):
-		return self.address_id_name
+		return str(self.address_id_name)
 
 
 class StrainType(models.Model):
@@ -292,7 +295,7 @@ class StrainGalleryImagesSet(models.Model):
 	images = models.ManyToManyField(StrainGalleryImage, null=True, blank=True, max_length=500)
 
 	def __str__(self):
-		return str(self.images)
+		return str(self.si_UNIQUE_ID)
 class StrainImageGallery(models.Model):
 	sig_UNIQUE_ID = models.CharField(max_length=300)
 	images = models.ForeignKey(StrainGalleryImagesSet, on_delete=models.CASCADE, null=True, blank=True, max_length=500)
@@ -626,11 +629,11 @@ class Dispensary(models.Model):
 	TYPE_OF_DISPENSARY = {
 		('medical','Medical'),
 		('recreational','Recreational'),
-		('Medical_recreational','Medical & Recreational'),
+		('medical_recreational','Medical & Recreational'),
 	}
 	type_of_dispensary = models.CharField(max_length=50, choices=TYPE_OF_DISPENSARY, null=True, blank=True)
 	SHOPPING_OPTIONS = {
-		('all','All'),
+		('pickup_delivery','Pickup/Delivery'),
 		('pickup','Pickup'),
 		('delivery','Delivery'),
 	}
@@ -641,7 +644,7 @@ class Dispensary(models.Model):
 	websiteURL = models.URLField(max_length=300, null=True, blank=True)
 	phone_number = models.CharField(max_length=300, null=True, blank=True)
 	email_address = models.EmailField(max_length=300, null=True, blank=True)
-	dispensary_logo	= models.ImageField(default='media/default.jpg', upload_to='media/CANNABIS_DB/DISPENSARY_LOGOS/', null=True, blank=True)
+	dispensary_logo	= models.ImageField(default='media/default.jpg/', upload_to='media/CANNABIS_DB/DISPENSARIES/DISPENSARY_LOGOS/', null=True, blank=True)
 	dispensary_cover = models.ImageField(upload_to='media/CANNABIS_DB/DISPENSARY_COVERS/', null=True, blank=True)
 	dispensary_description = RichTextField(null=True, blank=True)
 	dispensary_social_follow = models.ForeignKey(DispensarySocialFollows, on_delete=models.CASCADE, null=True, blank=True)
@@ -651,8 +654,7 @@ class Dispensary(models.Model):
 	dispensary_address = models.ManyToManyField(Address, null=True, blank=True)
 	saves = models.ManyToManyField('memberships.Profile', null=True,blank=True, related_name='dispensary_saves')
 	followers = models.ManyToManyField('memberships.Profile', related_name='dispensary_followers', null=True, blank=True)
-	longtitude = models.CharField(max_length=50, null=True, blank=True)
-	latitude = models.CharField(max_length=50, null=True, blank=True)
+
 
 	def get_absolute_url(self):
 		return reverse('cannabis_db:dispensary', args=[self.slug])

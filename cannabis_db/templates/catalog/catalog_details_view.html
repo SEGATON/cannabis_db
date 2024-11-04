@@ -1,56 +1,41 @@
 {% load thumbnail %}
+{% load static %}
 <div class="container">
 	<div class="row g-3">
 			<div class="col-md-7 border_right">
+				<div class="filler"></div>
 				<!-- 
 				<div class="card">
 					<img src="{{strain.featured_image.url}}" class="img-fluid">
 				</div>
 				-->
-				<div class="card">
-
-
-
-
-
-
-<div class="fotorama"
-			data-nav="thumbs" 
-			data-allowfullscreen="true" 
-			data-width="100%"
-			data-ratio="1000/1000"
-			data-keyboard="true"
-			data-arrows="true"
-			data-click="true"
-			data-swipe="false"
-			data-minheight="300"
-			data-maxheight="70%"
-			data-autoplay="true">
-
-
-			{% for strain_gallery_image in strain.image_gallery.images.images.all %}
-
-				<a href="{{strain_gallery_image.title.url}}"><img src="{{strain_gallery_image.title.url}}"></a>
-
-			{% endfor %}
-	</div>
-
-
-
-
-
-
-
-
-<div class="filler"></div>
-<hr>
-<div class="filler"></div>
+				<div class="card p-3">
+					<div class="fotorama"
+						data-nav="thumbs" 
+						data-allowfullscreen="true" 
+						data-width="100%"
+						data-ratio="1000/1000"
+						data-keyboard="true"
+						data-arrows="true"
+						data-click="true"
+						data-swipe="false"
+						data-minheight="300"
+						data-maxheight="70%"
+						data-autoplay="true">
+						{% for strain_gallery_image in strain.image_gallery.images.images.all %}
+							<a href="{{strain_gallery_image.title.url}}"><img src="{{strain_gallery_image.title.url}}"></a>
+						{% endfor %}
+					</div>
+					<div class="filler"></div>
+					<hr>
+					<div class="filler"></div>
 				</div>
 				<div class="card">
 					{% include 'commenting_system/commenting_system.html' %}
 				</div>
 			</div>
 			<div class="col-md-5">
+				<div class="filler"></div>
 				<div class="card p-3">
 					<h1 id="page_heading">{{strain.title|title}}</h1>
 					<hr>
@@ -58,15 +43,69 @@
 					<hr>
 				</div>
 				<div class="card p-3">
+					{% if strain.strain_type_label == 'sativa' %}
+						<mark id="sativa_mark">Sativa</mark>
+					{% elif strain.strain_type_label == 'indica' %}
+						<mark id="indica_mark">Indica</mark>
+					{% elif strain.strain_type_label == 'hybrid' %}
+						<mark id="hybrid_mark">Hybrid</mark>
+					{% endif %}
+				</div>
+				<div class="card p-3">
+
+					<div class="row">
+						{% for user in strain.user.all %}
+
+						<div class="col-auto">
+							 Reviewed by: &nbsp;<a href="{% url 'memberships:public_profile' user.pk %}"><img src="{% thumbnail user.profile.profile_photo 30x30 crop %}" class="img-fluid radius_sm" width="20"></a>
+						</div>
+
+
+						<div class="col-md-7">
+							<div class="row">
+								<div class="col-lg-12 p-0">
+									<a href="{% url 'memberships:public_profile' user.pk %}">{{user.username}}</a>	
+								</div>
+								<div class="col-lg-12 p-0">
+									<p class="xs">{{user.profile.biography|safe|truncatechars:100}}</p>	
+								</div>
+								<div class="col-lg-12 p-0">
+									{{strain.date_created}}
+					{{strain.date_updated}}
+								</div>
+							</div>
+						</div>
+
+						{% endfor %}
+					</div>
+					<br>
+					<hr>
+				</div>
+				<div class="card p-3">
 					<h5>Strain description</h5>
 					<hr>
 					<br>
-					{% if strain.description %}<p>{{strain.description|safe}}</p>{% else %}	<p>Not available.</p>{% endif %}				
+					{% if strain.description %}<p>{{strain.description|safe}}</p>{% else %}	<p>Not available.</p>{% endif %}	
+					<hr>			
 				</div>
-				<div class="card p-3">
-					{{strain.get_strain_type_label_display|title}}
 
-				</div>
+				<style type="text/css">
+					#sativa_mark{
+						background: #018223;
+						color: white;
+						padding: 2px 10px;
+					}
+					#indica_mark{
+						background: #00a62c;
+						color: white;
+						padding: 2px 10px;
+					}
+					#hybrid_mark{
+						background: #015918;
+						color: white;
+						padding: 2px 10px;
+					}
+				</style>
 				<div class="card p-3">
 					<div class="row">
 						<div class="col-md-3">
@@ -87,58 +126,31 @@
 				{% endfor %}	
 				</div>
 				<div class="card p-3">
-					{{strain.date_created}}
-					{{strain.date_updated}}
-				</div>
-				<div class="card p-3">
-					{% for user in strain.user.all %}
-						<a href="{% url 'memberships:public_profile' user.pk %}"><img src="{% thumbnail user.profile.profile_photo 30x30 crop %}" class="img-fluid" width="20"></a>
-						<a href="{% url 'memberships:public_profile' user.pk %}">{{user.username}}</a>					
-					{% endfor %}
-				</div>
+					
+				</div>		
 				<div class="card p-3">
 					<table class="table strain-table strain-feelings-table">
-						{% for strain_feeling in strain.feelings.all %}
-							
+						{% for strain_feeling in strain.feelings.all %}						
 								{% if strain_feeling.type_of_feelings == 'generic' %}
-
-
 								<tr>
 									<td><img src="{% thumbnail strain_feeling.feeling_icon 16x16 crop %}"></td>
 									<td><b>{{strain_feeling.title}}</b></td>
-									<td>{{strain_feeling.description|safe}}</td>
-									
+									<td>{{strain_feeling.description|safe}}</td>									
 								</tr>
-
-
 								{% elif strain_feeling.type_of_feelings == 'positive' %}
-
-
 								<tr>
 									<td><img src="{% thumbnail strain_feeling.feeling_icon 16x16 crop %}"></td>
 									<td><b>{{strain_feeling.title}}</b></td>
-									<td>{{strain_feeling.description|safe}}</td>
-								
+									<td>{{strain_feeling.description|safe}}</td>							
 								</tr>
-
-
 								{% elif strain_feeling.type_of_feelings == 'negative' %}
-
-
 								<tr>
 									<td><img src="{% thumbnail strain_feeling.feeling_icon 16x16 crop %}"></td>
 									<td><b>{{strain_feeling.title}}</b></td>
-									<td>{{strain_feeling.description|safe}}</td>
-								
+									<td>{{strain_feeling.description|safe}}</td>		
 								</tr>
-
-
-
-
 								{% endif %}
-						
-						{% endfor %}	
-						
+						{% endfor %}							
 					</table>				
 				</div>
 				<div class="card p-3">
@@ -149,7 +161,6 @@
 						{{strain_effect.effect_icon}}
 					{% endfor %}					
 				</div>
-
 				<div class="card p-3">
 					{% for strain_flavor in strain.flavor_reports.flavors_list_set.flavors_list.all %}
 						{{strain_flavor.title}}
@@ -170,7 +181,8 @@
 					{% endfor %}				
 				</div>
 				<div class="card p-3">
-					{% for terpene in strain.terpenes_reports.terpene_set.terpenes.all %}
+					<h5>Terpenes profile</h5>
+					{% for terpene in strain.terpenes_reports.all %}
 						{{terpene.title}}
 					{% endfor %}
 				</div>
@@ -183,15 +195,10 @@
 						{{strain_lineage.strain_lineage_value_02}}
 					{% endfor %}					
 				</div>
-				<div class="card p-3">
-					{% for strain_dispensary_sold_in in strain.dispensaries.all %}
-						{{strain_dispensary_sold_in.title}}
-					{% endfor %}
-				</div>
+
 				<div class="card p-3">
 					<h5>Poster's review</h5>
-					<hr>
-					<br>
+					
 					<p>{{strain.author_review|safe}}</p>					
 				</div>
 				<div class="card p-3">
@@ -200,8 +207,15 @@
 					{% endfor %}					
 				</div>
 				<div class="card p-3">
+					<h5>Brand</h5>
 					{% for strain in strain.brand.all %}
 						{{strain}}
+					{% endfor %}
+				</div>
+				<div class="card p-3">
+					<h5>Where to buy</h5>
+					{% for strain_dispensary_sold_in in strain.dispensaries.all %}
+						{{strain_dispensary_sold_in.title}}
 					{% endfor %}
 				</div>
 			</div>	    

@@ -44,3 +44,17 @@ hr{
 .border_right{
 	border-right: 1px dotted #ddd;
 }
+.logo{
+	text-transform: uppercase;
+	letter-spacing: -1px;
+}
+.db_logo_style {
+	color:#105700;
+	font-weight: 900;
+}
+.radius_sm{
+	border-radius: 3px;
+}
+.radius_md{
+	border-radius: 5px;
+}

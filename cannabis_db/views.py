@@ -365,3 +365,74 @@ def maps(request):
 	return render(request, 'catalog/maps.html', {
 			'dispensaries':dispensaries
 		})
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+@login_required
+def bookmarks(request):
+	strains = Strain.objects.filter(bookmarks=request.user.profile)
+	return render(request, 'cooking_recipes_app/widgets/bookmarks_list.html', {
+			'strains':strains
+		})
+
+
+@login_required
+def add_to_bookmarks(request, id):
+
+	user = request.user
+
+	strain = Strain.objects.get(id=id)
+
+	profile = Profile.objects.filter(user=user)
+
+
+
+	if strain not in user.profile.bookmarks.all():
+		request.user.profile.bookmarks.add(strain)
+	
+
+
+	return HttpResponseRedirect(request.META['HTTP_REFERER'])
+
+
+@login_required
+def remove_from_bookmarks(request, id):
+
+	user = request.user 
+
+	strain = Strain.objects.get(id=id)
+
+	profile = Profile.objects.filter(user=user)
+
+	if strain in user.profile.bookmarks.all():
+		request.user.profile.bookmarks.remove(strain)
+
+	return HttpResponseRedirect(request.META['HTTP_REFERER'])
+
+
+	return None

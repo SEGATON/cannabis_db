@@ -66,6 +66,8 @@ INSTALLED_APPS = [
     'django_comments',
     'dynamic_breadcrumbs',
 
+    'django_countries',
+
 
     'rest_framework',
 

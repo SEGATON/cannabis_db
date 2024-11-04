@@ -21,7 +21,7 @@ class Profile(models.Model):
           instagram = models.URLField(max_length=1000,null=True, blank=True)
 
 
-
+          bookmarks = models.ManyToManyField('cannabis_db.Strain', null=True, blank=True, related_name='bookmarked_strains')
 
           saved_strains = models.ManyToManyField(Strain,null=True, blank=True)
 
