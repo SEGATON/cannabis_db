@@ -31,7 +31,7 @@ class Profile(models.Model):
           verified = models.BooleanField(default=False)
 
 
-          address = models.ForeignKey('cannabis_db.Address', on_delete=models.CASCADE)
+          address = models.ForeignKey('cannabis_db.Address', on_delete=models.CASCADE,null=True, blank=True)
 
           def __str__(self):
                     return str(self.user)

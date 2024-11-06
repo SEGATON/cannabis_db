@@ -185,7 +185,7 @@ class HelpsWithReport(models.Model):
 	title = models.CharField(max_length=50, null=True,blank=True)
 	slug = models.SlugField(max_length=50, null=True,blank=True)
 	description = models.TextField(max_length=500, null=True,blank=True)
-	helps_with_icon = models.ImageField(upload_to='media/CANNABIS_DB/HELPS_WITH_ICONS/', null=True, blank=True, max_length=500)
+	helps_with_icon = models.ImageField(upload_to='media/CANNABIS_DB/HELPS_WITH_ICONS/', default='media/CANNABIS_DB/HELPS_WITH_ICONS/default.jpg/', null=True, blank=True, max_length=500)
 
 	def __str__(self):
 		return self.title
@@ -655,6 +655,7 @@ class Dispensary(models.Model):
 	saves = models.ManyToManyField('memberships.Profile', null=True,blank=True, related_name='dispensary_saves')
 	followers = models.ManyToManyField('memberships.Profile', related_name='dispensary_followers', null=True, blank=True)
 
+	claimed = models.BooleanField(default=False)
 
 	def get_absolute_url(self):
 		return reverse('cannabis_db:dispensary', args=[self.slug])
@@ -788,6 +789,7 @@ class Strain(models.Model):
 
 	author_review = RichTextField(max_length=5000, null=True,blank=True)
 	flavors = models.ManyToManyField(FlavorsDetails, null=True,blank=True)
+	may_relieve = models.ManyToManyField(HelpsWithReport, null=True,blank=True)
 
 	users_smoked = models.ManyToManyField(CustomUser, null=True, blank=True, related_name='users_smoked')
 

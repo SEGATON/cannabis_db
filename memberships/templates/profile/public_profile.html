@@ -34,7 +34,7 @@
 										<a href="{% url 'memberships:follow_user' user.pk %}" class=" ">
 											<svg xmlns="http://www.w3.org/2000/svg" width="1em" height="1em" viewBox="0 0 20 20"><path fill="#018223" d="M2 2c0-1.1.9-2 2-2h12a2 2 0 0 1 2 2v18l-8-4l-8 4zm2 0v15l6-3l6 3V2z"/></svg>
 											{{user.profile.user.first_name}}
-										</a>
+										</a> | 
 
 									{%  endif %}
 
@@ -44,7 +44,8 @@
 
 
 
-						{{object.koko.user.profile.followers.count}} followers</p>
+						 {{object.koko.user.profile.followers.count}}  follower{{ object.koko.user.profile.followers.count|pluralize }}
+  {{ object.koko.user.profile.followers.count|pluralize:","}}  </p>
 						
 								<style type="text/css">
 									.profile_heading{

@@ -39,7 +39,7 @@ class CustomUser(AbstractUser):
 	phone_number = models.CharField(max_length=100,null=True,blank=True)
 
 	is_staff 			= models.BooleanField(default=False)
-	is_active 			= models.BooleanField(default=False)
+	is_active 			= models.BooleanField(default=True)
 
 	USERNAME_FIELD 		= "email"
 	REQUIRED_FIELDS 		= ["username"]

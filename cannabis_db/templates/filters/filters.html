@@ -1,4 +1,69 @@
+    
+<table class="">
     <form method="get">
-        {{ filter.form.as_p}}
-        <input type="submit" />
+
+
+       <tr><td> <b>{{ filter.form.title.label}}</b>
+        <hr></td></tr>
+        <tr><td> {{ filter.form.title}}</td></tr>
+
+       <tr><td>  <b>{{ filter.form.brand.label}}<hr></b></td></tr>
+        <tr><td> {{ filter.form.brand}}</td></tr>
+
+       <tr><td>  <b>{{ filter.form.strain_type.label}}<hr></b></td></tr>
+        <tr><td> {{ filter.form.strain_type}}</td></tr>
+
+        <tr><td> <b>{{ filter.form.dispensaries.label}}<hr></b></td></tr>
+       <tr><td>  {{ filter.form.dispensaries}}</td></tr>
+
+        <tr><td> <b>{{ filter.form.feelings.label}}<hr></b></td></tr>
+       <tr><td>  {{ filter.form.feelings}}</td></tr>
+
+        <tr><td> <b>{{ filter.form.terpenes_reports.label}}<hr></b></td></tr>
+       <tr><td>  {{ filter.form.terpenes_reports}}</td></tr>
+
+        <tr><td> <b>May help relieve<hr></b></td></tr>
+       <tr><td>  {{ filter.form.may_relieve}}</td></tr>
+
+
+               <tr><td> <b>{{ filter.form.flavors.label}}<hr></b></td></tr>
+       <tr><td>  {{ filter.form.flavors}}</td></tr>
+
+
+        <tr><td> <input type="submit" /></td></tr>
     </form>
+
+</table>
+
+<style type="text/css">
+    select {
+    word-wrap: normal;
+    width: 100%;
+    padding: 5px 0;
+    min-height: 120px;
+    border: none;
+    margin-bottom: 40px;
+      overflow-y: scroll;
+  scrollbar-color: #ddd #EEEEEE;
+  scrollbar-width: thin;
+
+}
+select:focus{
+    outline: none;
+}
+select:active{
+    outline: none;
+
+}
+option {
+    padding: 2px 0;
+    color: #666;
+
+}
+option:checked, option:active, option:hover {
+    padding: 2px 0;
+    color: white;
+    font-weight: 700;
+    background: #488f8f repeat url("data:image/gif;base64,R0lGO...");
+}
+</style>
