@@ -263,10 +263,28 @@
 				<div class="card">
 
 					{% if request.user in strain.users_smoked.all %}
-							You and {{strain.users_smoked.count}} other stoner{{ strain.users_smoked.count|pluralize }}
-  {{ strain.users_smoked|pluralize:"s,ve"}} smoked <b>{{strain.title}}</b>.</p>
+
+
+
+
+							<p>You and {{strain.users_smoked.count}} other stoner{{ strain.users_smoked.count|pluralize }}
+  {{ strain.users_smoked|pluralize:"s,ve"}} smoked <b>{{strain.title}}</b>.
+
+
+
+
+
 					{% else %}
-					<p><a href="{% url 'cannabis_db:consumed' strain.pk %}">I smoked this {{strain.title}}</a> 
+
+
+
+					<a href="{% url 'cannabis_db:consumed' strain.pk %}">I smoked this {{strain.title}}</a> </p>
+
+
+<p>{{strain.users_smoked.count}} stoner{{ strain.users_smoked.count|pluralize }}
+  {{ strain.users_smoked|pluralize:"s,ve"}} smoked <b>{{strain.title}}</b>.
+
+
 						{% endif %}
 
 
