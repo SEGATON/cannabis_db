@@ -277,12 +277,46 @@
 				<div class="card p-3">
 					<h5>Where to buy</h5>
 					{% if strain.dispensaries %}
-					{% for strain_dispensary_sold_in in strain.dispensaries.all %}
-						{{strain_dispensary_sold_in.title}}
+					{% for strain_dispensary_sold_in in dispensaries.all %}
+					
+						<a href="{{strain_dispensary_sold_in.get_absolute_url}}" class="">{{strain_dispensary_sold_in.title}}</a>
+				
 					{% endfor %}
 					{% else %}				
 						<p>Not available.</p>
 					{% endif %}
+					<!-- Button trigger modal -->
+					<br>
+<a class="" data-toggle="modal" data-target="#exampleModalLong">
+  view all
+</a>
+
+<!-- Modal -->
+<div class="modal fade" id="exampleModalLong" tabindex="-1" role="dialog" aria-labelledby="exampleModalLongTitle" aria-hidden="true">
+  <div class="modal-dialog modal-lg" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLongTitle">Where to buy {{strain.title}}</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body p-0">
+        {% for dispensary in dispensaries_full_list.all %}
+        <div class="dispensary_view_all_list_li">
+        		<b>{{forloop.counter}}. </b>
+        		
+        		<a href="{{dispensary.get_absolute_url}}">{{dispensary.title|title}}</a> |  <a href="{{dispensary.get_absolute_url}}">{{dispensary.websiteURL}}</a>
+        	</div>
+        		
+        {% endfor %}
+      </div>
+      <div class="modal-footer">
+
+      </div>
+    </div>
+  </div>
+</div>
 				</div>
 				<div class="card p-3">
 
@@ -312,7 +346,34 @@
 						{% endif %}
 
 
+<style type="text/css">
+	.modal-content {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    padding: 50px 0;
+    color: var(--bs-modal-color);
+    pointer-events: auto;
+    background-color: var(--bs-modal-bg);
+    background-clip: padding-box;
+    border: none;
+    border-radius: 0;
+    outline: 0;
+    margin: 0;
+}
+.modal-dialog {
+    position: relative;
+    width: 90%;
+    margin: 0 auto;
 
+    pointer-events: none;
+}
+.dispensary_view_all_list_li{
+	padding: 5px;
+	border-top: 1px dotted #999;
+
+}
+</style>
 
 				</div>
 			</div>	    

@@ -644,8 +644,9 @@ class Dispensary(models.Model):
 	websiteURL = models.URLField(max_length=300, null=True, blank=True)
 	phone_number = models.CharField(max_length=300, null=True, blank=True)
 	email_address = models.EmailField(max_length=300, null=True, blank=True)
+	address = models.ManyToManyField(Address, null=True, blank=True, related_name='dispensary_addresses')
 	dispensary_logo	= models.ImageField(default='media/default.jpg/', upload_to='media/CANNABIS_DB/DISPENSARIES/DISPENSARY_LOGOS/', null=True, blank=True)
-	dispensary_cover = models.ImageField(upload_to='media/CANNABIS_DB/DISPENSARY_COVERS/', null=True, blank=True)
+	dispensary_cover = models.ImageField(upload_to='media/CANNABIS_DB/DISPENSARY_COVERS/',null=True, blank=True )
 	dispensary_description = RichTextField(null=True, blank=True)
 	dispensary_social_follow = models.ForeignKey(DispensarySocialFollows, on_delete=models.CASCADE, null=True, blank=True)
 	dispensary_strains = models.ManyToManyField('Strain', related_name='dispensary_products', null=True, blank=True)
@@ -654,6 +655,8 @@ class Dispensary(models.Model):
 	dispensary_address = models.ManyToManyField(Address, null=True, blank=True)
 	saves = models.ManyToManyField('memberships.Profile', null=True,blank=True, related_name='dispensary_saves')
 	followers = models.ManyToManyField('memberships.Profile', related_name='dispensary_followers', null=True, blank=True)
+
+	products = models.ManyToManyField('Product',null=True, blank=True )
 
 	claimed = models.BooleanField(default=False)
 
@@ -750,6 +753,12 @@ STRAIN MODEL
 
 
 class Strain(models.Model):
+	STATUS = (
+			('draft','Draft',),
+			('published','Published',),
+			('flagged','Flagged',),
+		)
+	status = models.CharField(max_length=100, choices=STATUS, null=True, blank=True, default='draft')
 	user = models.ManyToManyField(CustomUser, null=True, blank=True)
 	strain_metas_set = models.ForeignKey(StrainMetasSet, on_delete=models.CASCADE, related_name='strain_metas',null=True, blank=True)
 	STRAIN_TYPE = {
@@ -782,7 +791,7 @@ class Strain(models.Model):
 	dislikes = models.ManyToManyField(CustomUser, related_name='strain_dislikes', null=True,blank=True)
 	saves = models.ManyToManyField('memberships.Profile', null=True,blank=True, related_name='strain_saves')
 	date_created = models.DateTimeField(auto_now_add=True)
-	date_updated = models.DateTimeField(null=True,blank=True)
+	date_updated = models.DateTimeField(auto_now_add=True, null=True,blank=True)
 	dispensaries = models.ManyToManyField(Dispensary, null=True,blank=True)
 
 	feelings = models.ManyToManyField(FeelingReport, null=True,blank=True)
@@ -887,4 +896,14 @@ class Comment(models.Model):
 
 
 
+
+
+
+
+class Category(models.Model):
+	pass
+
+class Product(models.Model):
+	
+	dispensaries = models.ManyToManyField(Dispensary, null=True, blank=True)
 

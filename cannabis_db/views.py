@@ -4,7 +4,7 @@ from django.shortcuts import get_object_or_404
 
 from .models import Strain
 from .models import Brand
-from .models import StrainType
+from .models import StrainType, Product
 
 from .models import StrainDetailsListItem
 from .models import StrainDetailsListItems
@@ -124,6 +124,8 @@ def strain(request, slug):
 	else:
 		headline = ''
 
+
+
 	return render(request, 'strains/strain.html', {
 			'strain':strain,
 			'ratings':ratings,
@@ -133,6 +135,8 @@ def strain(request, slug):
 			'saved':saved,
 			'liked':liked,
 			'disliked':disliked,
+			'dispensaries': Dispensary.objects.filter(strain=strain)[:6],
+			'dispensaries_full_list': Dispensary.objects.filter(strain=strain)
 
 
 
@@ -288,7 +292,7 @@ def dispensaries(request):
 
 	dispensaries = Dispensary.objects.all()
 
-	return render(request, 'catalog/dispensaries/dispensaries.html', {
+	return render(request, 'views/dispensaries.html', {
 				'dispensaries':dispensaries
 		})
 
@@ -297,10 +301,14 @@ def dispensary(request, slug):
 
 	dispensary = get_object_or_404(Dispensary, slug=slug)
 	brands = Brand.objects.filter(dispensary=dispensary)
+	strains = Strain.objects.filter(dispensaries=dispensary)
+	products = Product.objects.filter(dispensaries=dispensary)
 
 	return render(request, 'views/dispensary.html', {
 				'dispensary':dispensary,
-				'brands':brands
+				'brands':brands,
+				'strains':strains,
+				'products':products
 			
 		})
 
@@ -362,7 +370,7 @@ def search_results(request):
 
 def maps(request):
 	dispensaries = Dispensary.objects.all()
-	return render(request, 'catalog/maps.html', {
+	return render(request, 'views/map.html', {
 			'dispensaries':dispensaries
 		})
 
@@ -447,3 +455,20 @@ def consumed(request, pk):
 		strain.users_smoked.add(user)
 
 	return HttpResponseRedirect(request.META['HTTP_REFERER'])
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

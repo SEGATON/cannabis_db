@@ -57,13 +57,20 @@ from .models import EffectReportList
 from .models import EffectsReportListSet
 
 
-
+from .models import Category
+from .models import Product
 
 
 
 from import_export.admin import ImportExportModelAdmin
 
+@admin.register(Category)
+class CategoryAdmin(admin.ModelAdmin):
+	pass
 
+@admin.register(Product)
+class ProductAdmin(admin.ModelAdmin):
+	pass
 
 
 
