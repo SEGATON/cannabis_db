@@ -25,7 +25,7 @@ class Profile(models.Model):
 
           saved_strains = models.ManyToManyField(Strain,null=True, blank=True)
 
-          followers = models.ManyToManyField('self',null=True, blank=True)
+          followers = models.ManyToManyField(settings.AUTH_USER_MODEL, null=True, blank=True, related_name='profile_follower')
 
 
           verified = models.BooleanField(default=False)
