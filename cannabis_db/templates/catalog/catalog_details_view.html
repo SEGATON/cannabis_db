@@ -260,6 +260,19 @@
 						<p>Not available.</p>
 					{% endif %}
 				</div>
+				<div class="card">
+
+					{% if request.user in strain.users_smoked.all %}
+							You and {{strain.users_smoked.count}} other stoner{{ strain.users_smoked.count|pluralize }}
+  {{ strain.users_smoked|pluralize:"s,ve"}} smoked <b>{{strain.title}}</b>.</p>
+					{% else %}
+					<p><a href="{% url 'cannabis_db:consumed' strain.pk %}">I smoked this {{strain.title}}</a> 
+						{% endif %}
+
+
+
+
+				</div>
 			</div>	    
 	</div>
 </div>

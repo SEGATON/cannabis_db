@@ -24,8 +24,12 @@ a{
 	font-weight:300 ;
 	font-size: 15px;
 }
+
 #page_heading{
 	font-size: 20px;
+}
+#profile_heading{
+	letter-spacing: -1px;
 }
 .card{
 	border:none

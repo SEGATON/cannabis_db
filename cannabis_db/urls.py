@@ -56,6 +56,7 @@ urlpatterns = [
 	path('bookmarks/', views.bookmarks, name='bookmarks'),
 	path('add_to_bookmarks/<int:id>/', views.add_to_bookmarks, name='add_to_bookmarks'),
 	path('remove-from-bookmarks/<int:id>/', views.remove_from_bookmarks, name='remove_from_bookmarks'),
+	path('consumed/<int:pk>/', views.consumed, name='consumed')
 
 ]
 

@@ -34,41 +34,9 @@ class CustomUserManager(BaseUserManager):
 
 
 class CustomUser(AbstractUser):
-	ACCOUNT_TYPE = (
-			('vendor_account','Vendor account'),
-			('dropshipper_account','Dropshipper account'),
-			('vendor_and_dropshipper','Vendor and dropshipper'),
-		)
-	account_type = models.CharField(max_length=300, choices=ACCOUNT_TYPE, null=True, blank=True)
 
 	email = models.EmailField(_("email address"), unique=True)
 	phone_number = models.CharField(max_length=100,null=True,blank=True)
-
-	business_lega_name 		= models.CharField(max_length=100,null=True,blank=True)
-	d_b_a 			= models.CharField(max_length=100,null=True,blank=True)
-
-	TYPE_OF_BUSINESS = (
-			('sole_proprietor','Sole Proprietor'),
-			('limited_liability_company','Limited Liability Company'),
-			('c_corp','C Corporation'),
-			('s_corp','S Corporation'),
-			('non_profit','Nonprofit'),
-
-		)
-
-	type_of_business 		= models.CharField(choices=TYPE_OF_BUSINESS, max_length=100, null=True, blank=True)
-
-	legal_business_address_line_1 	= models.CharField(max_length=100,null=True,blank=True)
-	legal_business_address_line_2 	= models.CharField(max_length=100,null=True,blank=True)
-	legal_business_unit 		= models.CharField(max_length=100,null=True,blank=True)
-	legal_business_city 		= models.CharField(max_length=100,null=True,blank=True)
-	legal_business_state 		= USStateField()
-	legal_business_zip_code 		= USZipCodeField()
-	legal_business_phone_number		= models.CharField(max_length=100,null=True,blank=True)
-	legal_business_email 		= models.CharField(max_length=100,null=True,blank=True)
-
-	tax_ID 			= models.CharField(max_length=100, null=True, blank=True)
-	ssn 			= models.CharField(max_length=100, null=True, blank=True)
 
 	is_staff 			= models.BooleanField(default=False)
 	is_active 			= models.BooleanField(default=False)
@@ -78,13 +46,3 @@ class CustomUser(AbstractUser):
 
 	objects 			= CustomUserManager()
 
-	APPLICATION_STATUS = (
-			('under_review','Under review'),
-			('pending','Pending'),
-			('active','Active'),
-			('suspended','Suspended'),
-			('terminated','Terminated'),
-		
-		)
-
-	application_status = models.CharField(max_length=100, choices=APPLICATION_STATUS, null=True, blank=True)

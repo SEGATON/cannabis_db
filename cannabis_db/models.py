@@ -789,6 +789,8 @@ class Strain(models.Model):
 	author_review = RichTextField(max_length=5000, null=True,blank=True)
 	flavors = models.ManyToManyField(FlavorsDetails, null=True,blank=True)
 
+	users_smoked = models.ManyToManyField(CustomUser, null=True, blank=True, related_name='users_smoked')
+
 	def __str__(self):
 		return self.title
 

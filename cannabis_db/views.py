@@ -436,3 +436,14 @@ def remove_from_bookmarks(request, id):
 
 
 	return None
+
+
+
+
+def consumed(request, pk):
+	strain = get_object_or_404(Strain, pk=pk)
+	user =request.user
+	if request.user not in strain.users_smoked.all():
+		strain.users_smoked.add(user)
+
+	return HttpResponseRedirect(request.META['HTTP_REFERER'])
