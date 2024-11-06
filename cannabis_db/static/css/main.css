@@ -30,10 +30,7 @@ a{
 .card{
 	border:none
 }
-.nav{
-	background: white;
-	padding: 7px 0px;
-}
+
 .footer{
 	background: white;
 }
@@ -57,4 +54,49 @@ hr{
 }
 .radius_md{
 	border-radius: 5px;
+}
+.radius_lg{
+
+}
+
+
+.nav-tabs {
+    --bs-nav-tabs-border-width: var(--bs-border-width);
+    --bs-nav-tabs-border-color: #ddd;
+    --bs-nav-tabs-border-radius:0;
+    --bs-nav-tabs-link-hover-border-color: var(--bs-secondary-bg) var(--bs-secondary-bg) var(--bs-border-color);
+    --bs-nav-tabs-link-active-color:#666;
+    --bs-nav-tabs-link-active-bg: var(--bs-body-bg);
+    --bs-nav-tabs-link-active-border-color: var(--bs-border-color) var(--bs-border-color) var(--bs-body-bg);
+    border-bottom: var(--bs-nav-tabs-border-width) solid var(--bs-nav-tabs-border-color);
+    margin: 0;
+
+    color: #666;
+}
+.nav-link:focus {
+    color: #666;
+      font-weight: 600;
+}
+.nav-link:active {
+    color: #666;
+      font-weight: 600;
+}
+.nav-link {
+    display: block;
+    padding: var(--bs-nav-link-padding-y) var(--bs-nav-link-padding-x);
+    font-size: var(--bs-nav-link-font-size);
+    font-weight: var(--bs-nav-link-font-weight);
+    color: #666;
+    text-decoration: none;
+    background: 0 0;
+    border: 0;
+    transition: color .15s ease-in-out, background-color .15s ease-in-out, border-color .15s ease-in-out;
+}
+.nav-tabs .nav-item.show .nav-link, .nav-tabs .nav-link.active {
+    color: var(--bs-nav-tabs-link-active-color);
+    background-color: var(--bs-nav-tabs-link-active-bg);
+    border-top:1px solid #ddd;
+    border-right:1px solid #ddd;
+    border-left:1px solid #ddd;
+    border-bottom:none;
 }

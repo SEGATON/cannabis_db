@@ -14,12 +14,13 @@
 						data-nav="thumbs" 
 						data-allowfullscreen="true" 
 						data-width="100%"
+						data-height="100%"
 						data-ratio="1000/1000"
 						data-keyboard="true"
 						data-arrows="true"
 						data-click="true"
 						data-swipe="false"
-						data-minheight="300"
+						data-minheight="700"
 						data-maxheight="70%"
 						data-autoplay="true">
 						{% for strain_gallery_image in strain.image_gallery.images.images.all %}
@@ -126,37 +127,37 @@
 					{{strain_specification.get_specification_value_label_display}}</p>
 				{% endfor %}	
 				</div>
+						
 				<div class="card p-3">
-					
-				</div>		
-				<div class="card p-3">
-					<table class="table strain-table strain-feelings-table">
+					<h5>Feelings</h5>
+					{% if strain.feelings %}
 						{% for strain_feeling in strain.feelings.all %}						
 								{% if strain_feeling.type_of_feelings == 'generic' %}
-								<tr>
-									<td><img src="{% thumbnail strain_feeling.feeling_icon 16x16 crop %}"></td>
-									<td><b>{{strain_feeling.title}}</b></td>
-									<td>{{strain_feeling.description|safe}}</td>									
-								</tr>
+								
+									<img src="{% thumbnail strain_feeling.feeling_icon 16x16 crop %}">
+									<b>{{strain_feeling.title}}</b>
+									{{strain_feeling.description|safe}}								
+								
 								{% elif strain_feeling.type_of_feelings == 'positive' %}
-								<tr>
-									<td><img src="{% thumbnail strain_feeling.feeling_icon 16x16 crop %}"></td>
-									<td><b>{{strain_feeling.title}}</b></td>
-									<td>{{strain_feeling.description|safe}}</td>							
-								</tr>
+							
+									<td><img src="{% thumbnail strain_feeling.feeling_icon 16x16 crop %}">
+									<b>{{strain_feeling.title}}</b>
+									{{strain_feeling.description|safe}}						
+								
 								{% elif strain_feeling.type_of_feelings == 'negative' %}
-								<tr>
-									<td><img src="{% thumbnail strain_feeling.feeling_icon 16x16 crop %}"></td>
-									<td><b>{{strain_feeling.title}}</b></td>
-									<td>{{strain_feeling.description|safe}}</td>		
-								</tr>
+								
+									<img src="{% thumbnail strain_feeling.feeling_icon 16x16 crop %}">
+									<b>{{strain_feeling.title}}</b>
+								
 								{% endif %}
 						{% endfor %}							
-					</table>				
+							{% else %}				
+						<p>Not available.</p>
+					{% endif %}		
 				</div>
 				<div class="card p-3">
 					<h5>Effects</h5>
-					{% if strain.feelings_reports %}
+					{% if strain.effects_reports %}
 					{% for strain_effect in strain.effects_reports.effect_report_list_set.effect_report_list.all %}
 						{{strain_effect.get_type_of_effects_display}}
 						{{strain_effect.title}}
@@ -169,8 +170,8 @@
 				</div>
 				<div class="card p-3">
 					<h5>Flavors</h5>
-					{% if strain.flavor_reports %}
-					{% for strain_flavor in strain.flavor_reports.flavors_list_set.flavors_list.all %}
+					{% if strain.flavors %}
+					{% for strain_flavor in strain.flavors.all %}
 						{{strain_flavor.title}}
 						{{strain_flavor.flavor_icon}}
 					{% endfor %}	
@@ -230,6 +231,7 @@
 					{% endif %}					
 				</div>
 				<div class="card p-3">
+					<h5>Details</h5>
 					{% if strain.strain_details_list %}
 					{% for strain_details_list_item in strain.strain_details_list.strain_details_list_items.strain_details_list_items.all %}
 						{{strain_details_list_item.title}}

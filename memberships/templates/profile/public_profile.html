@@ -1,0 +1,69 @@
+{% extends 'template_parts/base.html' %}
+{% load thumbnail %}
+	{% block content %}
+		<div class="container">
+			<div class="row">
+				<div class="col-md-2">
+					<div class="filler"></div>
+						<div class="card">
+
+							<img src="{% thumbnail object.koko.user.profile.profile_photo 200x200 crop %}" class="img-fluid radius_md">
+						</div>
+				</div>
+				<div class="col-md-10">
+
+					<div class="row">
+
+						<div class="col-lg-12">
+							<div class="card p-3">
+								
+								
+									<h1 class=" profile_heading">{{object.koko.user.profile.user.first_name}} {{object.koko.user.profile.user.last_name}}</h1>
+									<a href="" class=" profile_follow_link"><svg xmlns="http://www.w3.org/2000/svg" width="1em" height="1em" viewBox="0 0 24 24"><path fill="none" stroke="#018223" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 3H7a2 2 0 0 0-2 2v15.138a.5.5 0 0 0 .748.434l5.26-3.005a2 2 0 0 1 1.984 0l5.26 3.006a.5.5 0 0 0 .748-.435V5a2 2 0 0 0-2-2"/></svg> {{user.profile.user.first_name}}</a>
+						
+									
+								<style type="text/css">
+									.profile_heading{
+										width: 70%;
+										float: left;
+									}
+									.profile_follow_link{
+										width: 25%;
+										float: right;
+									}
+								</style>
+									
+							</div>
+							<div class="card">
+
+									
+							</div>
+							<div class="card">
+
+									
+							</div>
+							<div class="card p-3">
+
+									<nav>
+									  <div class="nav nav-tabs" id="nav-tab" role="tablist">
+									    <button class="nav-link active" id="nav-home-tab" data-bs-toggle="tab" data-bs-target="#nav-home" type="button" role="tab" aria-controls="nav-home" aria-selected="true"><svg xmlns="http://www.w3.org/2000/svg" width="1em" height="1em" viewBox="0 0 24 24"><path fill="#018223" d="M15.25 13c.967 0 1.75.784 1.75 1.75v4.504a1.75 1.75 0 0 1-1.75 1.75H3.75A1.75 1.75 0 0 1 2 19.254V14.75c0-.966.784-1.75 1.75-1.75zm5.751 1.896v5.354a.75.75 0 0 1-1.494.102l-.007-.102v-5.343a3 3 0 0 0 1.501-.011m-.75-4.804a1.908 1.908 0 1 1 0 3.816a1.908 1.908 0 0 1 0-3.816m-5.005-7.095c.967 0 1.75.784 1.75 1.75V9.25a1.75 1.75 0 0 1-1.75 1.75h-11.5a1.75 1.75 0 0 1-1.75-1.75V4.747a1.75 1.75 0 0 1 1.607-1.744l.143-.006zM20.251 3a.75.75 0 0 1 .743.649l.007.101v5.346a3 3 0 0 0-1.5-.01V3.75a.75.75 0 0 1 .75-.75"/></svg> Timeline</button>
+									    <button class="nav-link" id="nav-profile-tab" data-bs-toggle="tab" data-bs-target="#nav-profile" type="button" role="tab" aria-controls="nav-profile" aria-selected="false"><svg xmlns="http://www.w3.org/2000/svg" width="1em" height="1em" viewBox="0 0 24 24"><path fill="#018223" fill-rule="evenodd" d="M8 7a4 4 0 1 1 8 0a4 4 0 0 1-8 0m0 6a5 5 0 0 0-5 5a3 3 0 0 0 3 3h12a3 3 0 0 0 3-3a5 5 0 0 0-5-5z" clip-rule="evenodd"/></svg> About</button>
+									    <button class="nav-link" id="nav-contact-tab" data-bs-toggle="tab" data-bs-target="#nav-contact" type="button" role="tab" aria-controls="nav-contact" aria-selected="false"><svg xmlns="http://www.w3.org/2000/svg" width="1em" height="1em" viewBox="0 0 16 16"><path fill="#018223" fill-rule="evenodd" d="M4.76 1.5c-1.278 0-2.365.459-3.127 1.296C.878 3.624.5 4.758.5 6.013c0 2.18 1.11 3.917 2.52 5.268c1.404 1.345 3.17 2.368 4.632 3.133a.75.75 0 0 0 .693.002c1.463-.757 3.228-1.788 4.633-3.14c1.41-1.355 2.522-3.098 2.522-5.263c0-1.26-.38-2.393-1.136-3.221c-.763-.835-1.85-1.293-3.124-1.293c-1.076 0-1.966.399-2.643 1.151A4.5 4.5 0 0 0 8 3.504a4.5 4.5 0 0 0-.597-.854C6.726 1.898 5.836 1.5 4.76 1.5" clip-rule="evenodd"/></svg> Saved strains</button>
+
+									  </div>
+									</nav>
+									<div class="tab-content" id="nav-tabContent">
+									  <div class="tab-pane fade show active" id="nav-home" role="tabpanel" aria-labelledby="nav-home-tab" tabindex="0">...</div>
+									  <div class="tab-pane fade" id="nav-profile" role="tabpanel" aria-labelledby="nav-profile-tab" tabindex="0">...</div>
+									  <div class="tab-pane fade" id="nav-contact" role="tabpanel" aria-labelledby="nav-contact-tab" tabindex="0">...</div>
+
+									</div>
+							</div>
+					
+						</div>
+					</div>
+				</div>
+				
+			</div>
+		</div>
+	{% endblock %}

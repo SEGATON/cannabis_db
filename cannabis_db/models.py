@@ -170,7 +170,7 @@ class StrainKeywordsSet(models.Model):
 
 
 class StrainMetasSet(models.Model):
-	sms_UNIQUE_ID 	= models.CharField(max_length=60)
+	sms_UNIQUE_ID 	= models.CharField(max_length=160)
 	strain_meta_description = models.TextField(max_length=160,null=True, blank=True)
 	strain_meta_keywords 	= models.ForeignKey(StrainKeywordsSet, on_delete=models.CASCADE ,max_length=300,null=True, blank=True )
 
@@ -787,7 +787,7 @@ class Strain(models.Model):
 	feelings = models.ManyToManyField(FeelingReport, null=True,blank=True)
 
 	author_review = RichTextField(max_length=5000, null=True,blank=True)
-
+	flavors = models.ManyToManyField(FlavorsDetails, null=True,blank=True)
 
 	def __str__(self):
 		return self.title

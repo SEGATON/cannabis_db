@@ -194,8 +194,8 @@ class StrainKeywordsSetAdmin(admin.ModelAdmin):
 	pass
 @admin.register(StrainMetasSet)
 class StrainMetasAdmin(ImportExportModelAdmin):
-	pass
-
+	list_display = ['id','sms_UNIQUE_ID']
+	list_editable = ['sms_UNIQUE_ID']
 
 
 

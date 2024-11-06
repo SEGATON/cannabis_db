@@ -12,7 +12,7 @@ class Profile(models.Model):
           biography = RichTextField(max_length=10000, null=True, blank=True)
 
 
-          profile_photo = ThumbnailerImageField(default='/MEMBERSHIP/PROFILE_PHOTOS/default_profile_photo.png', upload_to='PROFILE_PHOTOS')
+          profile_photo = models.ImageField(default='/MEMBERSHIP/PROFILE_PHOTOS/default_profile_photo.png', upload_to='PROFILE_PHOTOS')
 
           website_url = models.URLField(max_length=1000,null=True, blank=True)
           twitter = models.URLField(max_length=1000,null=True, blank=True)
@@ -26,6 +26,9 @@ class Profile(models.Model):
           saved_strains = models.ManyToManyField(Strain,null=True, blank=True)
 
           followers = models.ManyToManyField('self',null=True, blank=True)
+
+
+          verified = models.BooleanField(default=False)
 
           def __str__(self):
                     return str(self.user)

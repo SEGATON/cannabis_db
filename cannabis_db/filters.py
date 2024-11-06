@@ -71,6 +71,9 @@ class StrainFilter(django_filters.FilterSet):
 	feelings = django_filters.ModelMultipleChoiceFilter(queryset=FeelingReport.objects.all())
 	terpenes_reports = django_filters.ModelMultipleChoiceFilter(queryset=TerpeneDetails.objects.all())
 
+	release_year = django_filters.DateRangeFilter(field_name='date_created', lookup_expr='year')
+
+
 	class Meta:
 		model = Strain
 		fields = ['title','brand','strain_type','dispensaries','feelings','terpenes_reports']
