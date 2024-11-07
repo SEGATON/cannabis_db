@@ -33,7 +33,12 @@
   </title>
 
 
-
+<link 
+  rel="stylesheet" 
+  href="https://use.fontawesome.com/releases/v5.3.1/css/all.css" 
+  integrity="sha384-mzrmE5qonljUremFsqc01SB46JvROS7bZs3IO2EmfFsd15uHvIt+Y8vEf7N7fWAU" 
+  crossorigin="anonymous"
+>
 
 
 <script src="https://code.jquery.com/jquery-3.7.1.js" integrity="sha256-eKhayi8LEQwp4NKxN+CfCh+3qOVUtJn3QNZ0TciWLP4=" crossorigin="anonymous"></script>
@@ -126,6 +131,193 @@
       <div class="filler">
 
 </div>
+
+
+<!-- Button trigger modal -->
+
+
+<!-- Modal -->
+<div class="modal fade" id="exampleModalCenter" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+  <div class="modal-dialog modal-lg modal-dialog-centered" style="width:100%;" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLongTitle">Terpenes profiles chart</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body p-0">
+        <table class="table table-hover terpene_profiles_table">
+  <thead>
+    <tr>
+      <td></td>
+      <td>terpene name</td>
+      <td>description</td>
+      <td>flavor</td>
+      <td>aroma/scent</td>
+      <td>used for/ may relieve</td>
+      <td></td>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td><svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" viewBox="0 0 128 128"><radialGradient id="notoMango0" cx="75.424" cy="-61.613" r="183.963" gradientUnits="userSpaceOnUse"><stop offset=".532" stop-color="#f33a1f"/><stop offset=".615" stop-color="#f86922"/><stop offset=".696" stop-color="#fd9124"/><stop offset=".739" stop-color="#ffa025"/><stop offset=".793" stop-color="#fca025"/><stop offset=".839" stop-color="#f1a124"/><stop offset=".883" stop-color="#dfa222"/><stop offset=".925" stop-color="#c7a41f"/><stop offset=".962" stop-color="#aaa61c"/></radialGradient><path fill="url(#notoMango0)" d="M4.03 89.43c-1.2 6.01 5.66 29.12 41.45 33.74c18.39 2.37 36.45-4.16 50.75-15.11S119.3 83 122.31 70.11c4.63-19.85-.69-49.82-40.06-51.59c-40.26-1.81-53.79 40.28-62.23 52.65C9.86 86.08 5.12 84 4.03 89.43"/><path fill="#dc0d27" d="M41.89 36.33s13.57 6.9 34.61 5.44c17.03-1.18 23.73-9.54 23.73-9.54s7.49 2.06 12.46.74c1.99-.53 2.42-1.61-.01-4.13c-3.67-3.82-16.27-10.89-34.85-9.7c-23.25 1.51-35.94 17.19-35.94 17.19"/><path fill="#ffebc9" d="M26.04 76.62c2.36 3.93 9.35-1.14 14.27-6.07c7.1-7.12 10.33-13.64 12.22-16.95s4.45-10.44-.71-11.59c-5.37-1.19-6.96 5.45-9.72 10.34s-6.6 10.71-9.68 14.5c-3.27 4.03-7.78 7.44-6.38 9.77"/><path fill="#6d4c41" d="M102.36 24.98c-.68 2.97 2.05 5.05 3.94 6.54s6.15 2.05 7.57 1.02c1.42-1.02-.16-4.02.87-5.83c1.02-1.81 2.84-4.02.63-5.52c-1.85-1.26-4.34-1.73-6.62-1.26s-2.29 2.21-3.23 2.68c-.96.48-2.93 1.35-3.16 2.37"/><path fill="#518e30" d="M100.14 25.88c-2.52 1.1-9.94 6.95-27.26 8.28c-19.1 1.47-41.53-.8-45.27-1.33s-10.12-.78-10.03-2.38c.13-2.4 2.61-1.63 7.61-3.07c6.01-1.74 12.15-4.14 16.83-6.94c7.18-4.31 21.8-15.09 36.19-15.36c15.76-.29 20.83 4.67 24.7 8.81s3.93 8.48 2.86 10.22c-1.06 1.74-2.56.44-5.63 1.77"/><path fill="#366918" d="M50.46 24.92c.37.46 7.35.72 11.24.59c8.88-.29 15.91-2.65 24.66-3.63s16.38 0 16.67-.34c.53-.62-4.84-7.92-22.41-5.95c-6.47.73-14.79 4.02-20.53 6.31c-3.66 1.49-9.98 2.58-9.63 3.02"/></svg></td>
+      <td>Myrcene</td>
+      <td>description</td>
+      <td>Citrucy, Piny</td>
+      <td>Earthy, musky, herbal, with hints of clove or citrus</td>
+      <td>Inflammation, muscle tension/soreness, arthritis related pain, stress and anxiety</td>
+      <td id="myrcene"></td>
+    </tr>
+    <tr>
+      <td><svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" viewBox="0 0 64 64"><circle cx="32" cy="31" r="2.8" fill="#699635"/><path fill="#7bb246" d="M3.8 40c-5.9 9.8 4.3 12.8 8.8 9.5c-3.4 5-.1 14.4 9.7 8.7c10.9-6.4 7.9-24.5 8.5-26.6c-1.8.3-20.7-2.1-27 8.4"/><path fill="#699635" d="M12.6 49.5c1.4-1.6 2.9-3.1 4.3-4.7l4.5-4.5c1.5-1.5 3-3 4.6-4.4l2.3-2.2l2.4-2.1l-2.1 2.4l-2.2 2.3l-4.5 4.5c-1.5 1.5-3 3-4.6 4.4c-1.5 1.5-3 2.9-4.7 4.3"/><path fill="#7bb246" d="M60.2 22c5.9-9.8-4.3-12.8-8.8-9.5c3.4-5 .1-14.4-9.7-8.7c-10.9 6.4-7.9 24.5-8.5 26.6c1.8-.3 20.7 2.1 27-8.4"/><path fill="#699635" d="M51.4 12.5c-1.4 1.6-2.9 3.1-4.3 4.7l-4.5 4.5c-1.5 1.5-3 3-4.6 4.4l-2.3 2.2l-2.4 2.1l2.1-2.4l2.2-2.3l4.5-4.5c1.5-1.5 3-3 4.6-4.4c1.5-1.5 3-2.9 4.7-4.3"/><path fill="#83bf4f" d="M22.3 3.8c-10-5.8-13 4.2-9.7 8.7c-5-3.3-14.6-.1-8.8 9.5c6.5 10.7 24.9 7.8 27 8.3c-.3-1.7 2.2-20.3-8.5-26.5"/><path fill="#699635" d="M12.6 12.5c1.6 1.4 3.2 2.8 4.7 4.2c1.6 1.4 3.1 2.9 4.6 4.4l4.5 4.5l2.2 2.3l2.1 2.4l-2.4-2.1l-2.3-2.1c-1.6-1.4-3.1-2.9-4.6-4.4l-4.5-4.5c-1.4-1.6-2.9-3.1-4.3-4.7"/><path fill="#83bf4f" d="M41.7 58.2c10 5.8 13-4.2 9.7-8.7c5.1 3.3 14.6.1 8.8-9.5c-6.5-10.7-24.9-7.8-27-8.3c.3 1.7-2.2 20.3 8.5 26.5"/><path fill="#699635" d="M51.4 49.5c-1.6-1.4-3.2-2.8-4.7-4.2c-1.6-1.4-3.1-2.9-4.6-4.4l-4.5-4.5l-2.2-2.4l-2.1-2.4l2.4 2.1l2.3 2.2c1.6 1.4 3.1 2.9 4.6 4.4l4.5 4.5c1.4 1.6 2.9 3.1 4.3 4.7M32 36.8l2.5 22.7c.1 1.3-.9 2.4-2.2 2.5c-1.4.1-2.6-.8-2.8-2.1v-.5z"/></svg></td>
+      <td>Caryophyllene</td>
+      <td>description</td>
+      <td>Spicy, peppery, earthy, piny</td>
+      <td>Spicy, peppery, and earthy. Warm, black pepper, cloves, cinnamon,  woody, sweet.</td>
+      <td>Inflammation, chronic pain, arthritis related pain, digestive issues, stress and anxiety.</td>
+      <td id="caryophyllene"></td>
+    </tr>
+    <tr>
+      <td><svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" viewBox="0 0 512 512"><path fill="#75432e" d="m383.446 131.739l2.512-3.498l1.324-1.843c.506-.687.93-1.349 1.684-2.252l4.696-5.782c1.757-2.029 3.72-4.059 5.776-6.286c1.05-1.09 2.231-2.139 3.386-3.246l1.772-1.662c.595-.561 1.192-1.129 1.857-1.65c2.609-2.122 5.23-4.391 8.204-6.371c2.848-2.125 6.013-3.933 9.127-5.8c3.234-1.669 6.45-3.395 9.79-4.708l2.468-1.037c.82-.342 1.663-.597 2.488-.895c1.659-.556 3.284-1.178 4.914-1.641l4.811-1.323c1.574-.415 3.128-.692 4.635-1.025l2.231-.465l2.165-.338c1.42-.216 2.794-.44 4.11-.618c2.619-.251 5.042-.578 7.152-.675c2.111-.108 3.972-.264 5.47-.275l4.725-.084l.216-.004c8.839-.157 16.131 6.882 16.288 15.721s-6.882 16.131-15.721 16.288c-.243.004-.542.001-.783-.005l-3.76-.117c-1.207-.058-2.608.007-4.256 0c-1.652-.018-3.429.159-5.425.228l-3.032.303l-1.601.157l-1.611.258c-1.084.188-2.228.312-3.352.552l-3.436.751c-1.168.258-2.3.65-3.485.967c-.584.177-1.193.31-1.77.523l-1.744.637c-2.38.765-4.653 1.884-6.993 2.9c-2.237 1.226-4.553 2.335-6.669 3.78c-2.208 1.275-4.202 2.881-6.213 4.321c-.512.346-.978.757-1.444 1.16l-1.392 1.187c-.912.795-1.846 1.518-2.692 2.319c-1.646 1.642-3.304 3.178-4.689 4.618l-3.596 3.951c-.522.515-1.108 1.334-1.61 1.955l-1.403 1.786l-2.663 3.389l-.359.457c-4.718 6.004-13.41 7.046-19.413 2.328c-5.839-4.588-6.967-12.958-2.689-18.936"/><path fill="#16992b" d="m397.562 128.093l-.331-.396c-.217-.261-.554-.652-.925-1.147c-.799-.986-1.789-2.476-2.997-4.219c-.662-.782-1.295-1.593-2.042-2.435l-1.033-1.257l-1.169-1.366c-.786-.915-1.493-1.874-2.328-2.774c-.846-.897-1.599-1.817-2.431-2.666c-1.678-1.703-3.268-3.271-4.892-4.612c-.425-.333-.728-.687-1.16-.998c-.42-.314-.777-.636-1.134-.951c-.371-.311-.789-.614-1.137-.923l-.519-.465l-.565-.468c-1.392-1.251-2.798-2.608-4.259-4.296c-1.465-1.674-2.935-3.682-4.683-6.023a149 149 0 0 1-5.424-7.884c-1.883-2.943-3.76-6.138-5.446-9.545c-1.709-3.45-3.222-7-4.407-10.673c-.6-1.791-1.084-3.689-1.518-5.448c-.391-1.856-.734-3.601-.955-5.359c-.439-3.504-.536-6.786-.267-9.734a36.8 36.8 0 0 1 1.285-7.556c.144-.52.25-.994.41-1.458l.472-1.299c.281-.794.595-1.479.826-2.02c.228-.54.466-.966.597-1.242l.214-.422a3.9 3.9 0 0 1 5.126-1.773l.296.138l1.622.758c1.035.484 2.391 1.214 4.116 2.025l1.338.629l1.373.684c.482.229 1.005.452 1.529.68l1.529.728l6.774 2.989c.558.267 1.18.529 1.789.791l1.793.817c1.261.56 2.442 1.126 3.723 1.743c2.482 1.215 5.119 2.595 7.753 4.198c2.696 1.612 5.445 3.518 8.259 5.761a74.6 74.6 0 0 1 8.559 8.064c2.824 3.1 5.662 6.762 8.048 10.928c2.393 4.146 4.403 8.802 5.614 13.688c1.236 4.845 1.726 9.824 1.423 14.428c-.219 4.609-1.279 8.816-2.63 12.428c-.301.913-.727 1.763-1.124 2.594a46 46 0 0 1-1.218 2.386c-.383.769-.865 1.48-1.319 2.161c-.442.683-.93 1.332-1.374 1.952c-.455.623-.933 1.197-1.398 1.767a65 65 0 0 1-1.417 1.641c-.993 1.017-1.851 1.911-2.718 2.671a29 29 0 0 1-2.419 1.682c-.731.474-1.372.873-1.928 1.189c-.53.322-.988.558-1.287.72l-.455.244a4.48 4.48 0 0 1-5.559-1.075"/><path fill="#ffd731" d="M431.894 191.9c-.177-3.112-.503-5.747-.659-7.44c-.077-.845-.177-1.54-.231-1.989l-.087-.683c-4.364-33.744-26.232-64.405-59.969-78.23l-.637-.261c-.42-.169-1.065-.447-1.861-.74c-1.594-.591-4.054-1.59-7.014-2.569c-6.105-2.2-14.631-4.869-24.883-7.483a332 332 0 0 0-35.069-6.938c-12.887-1.825-26.749-3.001-40.937-3.065c-14.195-.074-28.737.938-43.142 3.281c-14.414 2.331-28.671 6.02-42.472 11.071a213 213 0 0 0-39.596 19.433c-12.535 7.856-24.304 17.095-35.193 27.483a254 254 0 0 0-30.041 34.205c-9.072 12.374-17.088 25.741-24.056 39.707c-6.939 14.004-12.767 28.687-17.506 43.639c-4.741 14.95-8.381 30.182-11.033 45.167c-2.594 15.06-4.313 29.726-5.212 43.538a425 425 0 0 0-.822 37.738l.262 7.973l.435 7.298l.195 3.271c.058 1.042.118 2.047.224 3.069l.255 2.802l-4.095 5.847c-3.737 5.414-4.96 12.598-2.544 19.253c3.966 10.924 16.037 16.565 26.961 12.599l6.71-2.436l2.64.974c.96.367 1.915.687 2.906 1.013l3.108 1.038l6.935 2.316l7.632 2.324a424 424 0 0 0 36.656 9.008c13.572 2.719 28.18 4.868 43.398 6.275c15.16 1.332 30.815 1.773 46.483 1.077c15.67-.693 31.363-2.507 46.688-5.571c15.296-3.101 30.286-7.37 44.592-12.917a254 254 0 0 0 40.833-20.125c12.859-7.817 24.838-16.783 35.681-26.847a213 213 0 0 0 29.051-33.19c8.463-12.016 15.728-24.825 21.723-38.139c6.004-13.302 10.758-27.082 14.374-40.809c3.623-13.718 6.088-27.409 7.673-40.328a332 332 0 0 0 2.409-35.668c.136-10.578-.226-19.504-.765-25.971"/><path fill="#ffe9ab" d="M212.086 169.638c-11.605 0-22.524-7.105-26.828-18.615c-5.54-14.814 1.979-31.314 16.793-36.854c28.252-10.565 59.224-11.999 87.208-4.039c15.213 4.328 24.037 20.168 19.71 35.381s-20.168 24.038-35.38 19.71c-16.311-4.64-34.592-3.718-51.476 2.596a28.6 28.6 0 0 1-10.027 1.821"/><path fill="#56c140" d="M470.917 296.125s-.695-.855-1.825-2.439c-.537-.789-1.274-1.77-1.985-2.908l-.574-.887c-.206-.292-.465-.493-.706-.748l-1.486-1.468c-1.039-1.017-2.061-1.86-3.35-3.091l-1.873-1.728l-.938-.861c-.337-.287-.701-.575-1.056-.859l-2.108-1.697c-.371-.279-.67-.554-1.063-.838l-1.158-.839l-2.262-1.65l-2.427-1.664c-1.518-1.08-3.361-2.242-4.975-3.38c-.389-.277-.895-.585-1.331-.884l-1.321-.912a145 145 0 0 1-2.696-1.877c-.929-.657-1.868-1.295-2.754-1.981c-.964-.717-1.968-1.413-2.906-2.148l-2.956-2.304a173 173 0 0 1-3.01-2.472a136 136 0 0 1-3.071-2.658a153 153 0 0 1-3.173-2.9a138 138 0 0 1-3.2-3.113c-1.073-1.083-2.121-2.133-3.222-3.334a188 188 0 0 1-3.236-3.56c-1.085-1.278-2.185-2.554-3.244-3.863c-1.066-1.261-2.148-2.728-3.214-4.111c-1.047-1.41-2.112-2.809-3.145-4.366c-4.135-5.932-8.136-12.75-11.347-20.133c-3.253-7.322-5.591-15.566-6.832-23.757a157 157 0 0 1-.703-6.186c-.177-2.045-.181-4.153-.211-6.181c-.105-4.048.336-8.107.821-11.946c.503-3.847 1.539-7.567 2.43-11.043a163 163 0 0 1 1.811-5.051c.666-1.627 1.267-3.206 1.971-4.715c1.53-2.991 3.088-5.76 4.696-8.291c.831-1.256 1.72-2.428 2.605-3.556a70 70 0 0 1 2.617-3.211c3.422-4.066 7.284-7.035 10.283-9.404c3.321-2.242 6.059-3.798 8.076-4.775c.972-.5 1.79-.845 2.335-1.077l.822-.35a7.01 7.01 0 0 1 8.597 2.582l.277.422l.491.743c.327.489.821 1.214 1.371 2.11c1.178 1.816 2.661 4.351 4.431 7.327l2.974 4.724c1.017 1.642 2.004 3.357 3.204 5.07c1.187 1.721 2.276 3.457 3.438 5.179a210 210 0 0 1 3.646 5.061l1.919 2.427c.615.798 1.187 1.589 1.805 2.365l1.909 2.27c.625.745 1.122 1.49 1.806 2.209c1.295 1.445 2.326 2.859 3.587 4.266l.851 1.054c.275.354.511.7.837 1.059a42 42 0 0 1 1.702 2.148c2.29 2.919 4.261 5.977 6.499 9.612l.774 1.362c.282.478.583.947.846 1.436l.802 1.463c.245.491.508.993.818 1.518a96 96 0 0 1 1.696 3.156c.575 1.089 1.221 2.222 1.793 3.356a297 297 0 0 0 1.838 3.522l1.861 3.697c.657 1.272 1.271 2.571 1.893 3.861c.65 1.35 1.31 2.71 1.93 4.079l1.91 4.24a225 225 0 0 1 1.867 4.395a190 190 0 0 1 3.535 9.277a147 147 0 0 1 1.609 4.87c.508 1.649.999 3.231 1.456 4.973c.471 1.694.86 3.4 1.273 5.056c.415 1.729.737 3.491 1.065 5.193c.158.864.331 1.674.466 2.558l.359 2.644c.23 1.756.461 3.406.574 5.163c.247 3.536.404 6.815.233 10.21c-.089 1.675-.115 3.249-.298 4.847c-.208 1.626-.387 3.18-.65 4.69c-.415 2.969-1.263 5.896-2.009 8.473c-.202.651-.391 1.281-.602 1.901a47 47 0 0 1-.72 1.835c-.5 1.192-.958 2.314-1.46 3.375c-.897 2.035-2.139 4.212-3.165 5.916c-2.034 3.703-4.156 5.179-5.563 6.589c-1.434 1.317-2.292 2.009-2.292 2.009c-3.147 2.543-7.748 2.071-10.292-1.076"/></svg></td>
+      <td>Limonene</td>
+      <td>description</td>
+      <td>Lemon, Orange, Citrus, Diesel</td>
+      <td>Fresh, sharp, and tangy, with strong notes of lemon, orange, and other citrus fruit.</td>
+      <td>Mood swings, stress and anxiety, depression, clear-headedness, digestive issues, inflammation-related conditions, raspiratory health.</td>
+      <td id="limonene"></td>
+    </tr>
+    <tr>
+      <td><svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" viewBox="0 0 128 128"><path fill="#dc0d28" d="m45.43 68.14l-5.45-13.51l.15-21.87s14.68-2.2 22.39-3.26s23.04-7.52 37.02-1.33c15.88 7.03 24.3 23.3 20.06 48.1s-22.83 44.87-39.57 47.03c-8.29 1.07-9.77-2.15-16.12-1.69c-5.14.37-4.86 3.04-13.63 2.59s-16.21-3.71-20.59-9.15s15.74-46.91 15.74-46.91"/><path fill="#ff5117" d="M21.23 36.99c-12.57 10.5-18.5 32.63-8.47 56.25c8.92 21.02 23.17 27.03 23.17 27.03s24.92-1.63 42.31-11.01s34.18-25.71 34.18-47.18s-11.19-28.73-12.4-29.03s-6.2 2.87-11.8 3.02s-9.98-1.21-9.98-1.21l-17.69 5.9l-16.54-3.86s-.53-2.31 1.26-3.25c3.72-1.94 11.49 1.36 14.67 1.21s5.9-4.39 5.9-4.39s-7.41-.76-9.98-1.36c-2.57-.58-19.96-4.37-34.63 7.88"/><path fill="#8d1d0a" d="M62.03 37.12c-4.58.21-16.86-4.1-17.97-.73c-1.18 3.58 7.96 8.33 19.09 7.55c11.61-.81 18.84-7.23 17-10.69c-1.83-3.46-9.36 3.46-18.12 3.87"/><path fill="#513630" d="M51.04 16.96s-1.93-.1-2.95-.51s-2.46-.38-2.34-2.14c.2-2.95 3.98-5.98 4.89-6.52c1.73-1.02 4.76-.74 5.91 0c1.43.92.71 4.28.71 4.28s5.09 7.64 5.8 12.32c.65 4.27 3.31 16.73-.71 17.51c-3.67.71-2.14-8.86-4.17-13.54c-1.22-2.8-2.95-5.8-4.58-7.84a37 37 0 0 1-2.56-3.56"/><path fill="#2f7c31" d="M105.41 5.05c.41-.71-.41-1.43-3.77-1.53s-21.69-1.83-32.07 11.1c-7.46 9.29-6.31 17.21-6.31 17.21l6.82.31z"/><path fill="#709f19" d="M82.9 17.77c6.17-4.26 22.6-13.54 22.6-13.54s0 2.34-1.02 4.38S100 20.73 85.95 28.06c-13.19 6.88-21.99 5.19-22.71 3.97c-.7-1.22 9.48-7.23 19.66-14.26"/><path fill="#ffd2b1" d="M37.6 39.97c-2.73-3.93-9.34-2.82-15.27 5.09c-7.64 10.18-7.23 23.72-2.04 24.54c5.15.81.61-4.38 8.55-14.66c6.08-7.87 12.22-9.98 8.76-14.97"/></svg></td>
+      <td>Terpinolene</td>
+      <td>description</td>
+      <td>Floral, Herbal, Fruity, Apple, Lime</td>
+      <td>Fresh, floral, fruity, piney, herbs, citrusy, sweet and spicy.</td>
+      <td>Insomnia and sleep issues, stress and anxiety, and infections.</td>
+      <td id="terpinolene"></td>
+    </tr>
+    <tr>
+      <td><img src="{% static '/imgs/pine-cone.png' %}" height="18" width="18"></td>
+      <td>Pinene</td>
+      <td>description</td>
+      <td>Piney, herbal, and woody flavor, fresh, foresty, earthy.</td>
+      <td>Foresty fresh pine and evergreen scent.</td>
+      <td>Raspiratory issues such as bronchitis, asthma, inflammation and/or swelling, chronic pain, stress and anxiety.</td>
+      <td id="pinene"></td>
+    </tr>
+    <tr>
+      <td><img src="{% static '/imgs/lavender.png' %}" height="22" width="22"></td>
+      <td>Ocimene</td>
+      <td>description</td>
+      <td>Sweet, herbal, and citrusy, mango, papaya, floral and minty.</td>
+      <td>sugary tropical, fresh green foresty, minty, basily.</td>
+      <td>Inflammation, raspiratory issues, mood-enhancement, mild-depression, stress and anxiety, mood swings, skin health.</td>
+      <td id="ocimene"></td>
+    </tr>
+    <tr>
+      <td><img src="{% static '/imgs/mint.png' %}" height="24" width="24"></td>
+      <td>Linalool</td>
+      <td>description</td>
+      <td>Floral, spicy, sweet, herbal, citrusy, woody.</td>
+      <td>Sweet and sugary, lavender-fragrance, herbal undertones, peppery and cinnamon, slightly pundgent.</td>
+      <td>Anxiety and Stress, Insomnia and Sleep Issues, Pain Relief, Anti-inflammatory, Mood Enhancement, Seizure Relief, Skin Irritations, Muscle Relaxation</td>
+      <td id="linalool"></td>
+    </tr>
+    <tr>
+      <td><img src="{% static '/imgs/hop.png' %}" height="25" width="25"></td>
+      <td>Humulene</td>
+      <td>description</td>
+      <td>Hops, basil, thyme, cedar, pine, resin, woody</td>
+      <td>Earthy, Spicy, Herbal, Woody, Piney, Bitter </td>
+      <td>Anti-inflammatory, Pain Relief, Appetite Suppression, Antioxidant Effects, Antibacterial and Antifungal, Anti-cancer Properties, Respiratory Support</td>
+      <td id="humulene"></td>
+    </tr>
+  </tbody>
+</table>
+
+<style type="text/css">
+
+  .table{
+
+  }
+  .terpene_profiles_table{
+    border: none;
+  }
+  .terpene_profiles_table td{
+   
+
+  }
+    .terpene_profiles_table tr td{
+   
+
+  }
+  .terpene_profiles_table tr{
+    border-bottom: 1px solid #333;
+
+  }
+  .terpene_profiles_table thead tr td{
+    background: black;
+    color: white;
+ 
+  }
+  #myrcene{
+    background: #0067f7;
+    color: white;
+    width: 200px;
+
+  
+  }
+  #caryophyllene{
+    background: #59473E;
+    color: white;
+    width: 200px;
+  }
+  #limonene {
+    background: #C1F907;
+    color: white;
+    width: 200px;
+  }
+  #terpinolene{
+    background: #f54b25;
+    color: white;
+    width: 200px;
+  }
+  #pinene{
+    background: #344032;
+    color: white;
+    width: 200px;
+  }
+  #ocimene{
+    background: #e800f0;
+    color: white;
+    width: 200px;
+  }
+  #linalool{
+    background: #f0165b;
+    color: white;
+    width: 200px;
+  }
+  #humulene{
+    background: #732d22;
+    color: white;
+    width: 200px;
+  }
+@media (min-width: 992px) {
+    .modal-lg, .modal-xl {
+        --bs-modal-width: 1200px;
+    }
+}
+</style>
+      </div>
+      <div class="modal-footer">
+<p class="sm" style="font-size: 8px;"><b>Disclaimer:</b>
+The information on this site is provided as a resource only, and is not to be used or relied on for any diagnostic or treatment purposes. The information, including but not limited to, text, graphics, images and other material contained on this site are for informational purposes only. The information provided in this site, or through linkages to other sites, is not a substitute for medical or professional care, and you should not use the information in place of the advice of your physician or other healthcare provider. Always seek the advice of your physician or other qualified health care provider with any questions you may have regarding a medical condition or treatment, and never disregard professional medical advice or delay in seeking it because of something you have read on this site. Reliance on any information appearing on this site is solely at your own risk.</p>
+      </div>
+    </div>
+  </div>
+</div>
+
+
 
 
 <hr>

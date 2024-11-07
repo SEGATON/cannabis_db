@@ -69,7 +69,7 @@ def front_page(request):
 	strains = Strain.objects.all()
 	return render(request, 'template_parts/front_page.html', {
 			'strains':strains,
-			'title':'StrainsDB | An Online Cannabis Strains Database'
+			'title':'StrainsDB | A Cannabis Strains, brands, products, and dispensary database'
 		})
 
 def strains(request):

@@ -110,3 +110,49 @@ hr{
     border-left:1px solid #ddd;
     border-bottom:none;
 }
+
+.modal-header {
+    display: flex;
+    flex-shrink: 0;
+    align-items: center;
+    padding: var(--bs-modal-header-padding);
+    border-bottom: none;
+    border:none;
+    background: #016A08;
+    color: white;
+}
+.close, .close:focus, .close:hover {
+    color: #fff;
+    text-decoration: none;
+    opacity: .75;
+}
+
+.modal-content {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    color: var(--bs-modal-color);
+    pointer-events: auto;
+    background-color:#1A8922;
+    background-clip: padding-box;
+    border: none;
+    border-radius:none;
+    outline: 0;
+}
+.modal-body {
+    position: relative;
+    flex: 1 1 auto;
+    padding: var(--bs-modal-padding);
+    background: white;
+}
+.modal-footer {
+    display: flex;
+    flex-shrink: 0;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: flex-end;
+    padding: calc(var(--bs-modal-padding) - var(--bs-modal-footer-gap)* .5);
+    background-color: white;
+    border:none;
+}
