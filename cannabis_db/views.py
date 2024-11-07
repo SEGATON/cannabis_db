@@ -146,13 +146,13 @@ def strain(request, slug):
 ####################################################################################################################################################################
 def brands(request):
 	brands = Brand.objects.all()
-	return render(request, 'catalog/brands/brands.html', {
+	return render(request, 'views/brands.html', {
 			'brands':brands
 		})
 
 def brand(request, slug):
 	brand = get_object_or_404(Brand, slug=slug)
-	return render(request, 'catalog/brands/brand.html', {
+	return render(request, 'views/brand.html', {
 		'brand':brand
 		})
 

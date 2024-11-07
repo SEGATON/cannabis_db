@@ -1,39 +1,63 @@
-    
-<table class="">
+
+
+<script type="text/javascript"></script>
+
     <form method="get">
 
 
-       <tr><td> <b>{{ filter.form.title.label}}</b>
-        <hr></td></tr>
-        <tr><td> {{ filter.form.title}}</td></tr>
+    <div class="filter_section_header_title">
+     <b>{{ filter.form.title.label}}</b>
+     <button class="show_filter_section_body_title" id="">+</button>
+    </div>
+    <div class="filter_section_body_title" id="filter_section_body_title">
+     {{ filter.form.title}}
+    </div>
 
-       <tr><td>  <b>{{ filter.form.brand.label}}<hr></b></td></tr>
-        <tr><td> {{ filter.form.brand}}</td></tr>
-
-       <tr><td>  <b>{{ filter.form.strain_type.label}}<hr></b></td></tr>
-        <tr><td> {{ filter.form.strain_type}}</td></tr>
-
-        <tr><td> <b>{{ filter.form.dispensaries.label}}<hr></b></td></tr>
-       <tr><td>  {{ filter.form.dispensaries}}</td></tr>
-
-        <tr><td> <b>{{ filter.form.feelings.label}}<hr></b></td></tr>
-       <tr><td>  {{ filter.form.feelings}}</td></tr>
-
-        <tr><td> <b>{{ filter.form.terpenes_reports.label}}<hr></b></td></tr>
-       <tr><td>  {{ filter.form.terpenes_reports}}</td></tr>
-
-        <tr><td> <b>May help relieve<hr></b></td></tr>
-       <tr><td>  {{ filter.form.may_relieve}}</td></tr>
+<style type="text/css">
+    #filter_section_body_title{
+ display: none;
+                                padding: 40px 0;
+    }
+</style>
+<script type="text/javascript">
+   $(document).on("click", "#show_filter_section_body_title", function(){
+                                $("#filter_section_body_title").slideToggle("fast");
+                            });
+</script>
 
 
-               <tr><td> <b>{{ filter.form.flavors.label}}<hr></b></td></tr>
-       <tr><td>  {{ filter.form.flavors}}</td></tr>
+
+<div class="filter_section">
+    <div id="filter_section_header">
+  <b>{{ filter.form.brand.label}}</b><button id="show_filter_section_body">+</button>
+   </div>
+   <div id="filter_section_body">
+        {{ filter.form.brand}}
+    </div>
+    
+</div>
+        <b>{{ filter.form.strain_type.label}}<hr></b>
+       {{ filter.form.strain_type}}
+
+       <b>{{ filter.form.dispensaries.label}}<hr></b>
+       {{ filter.form.dispensaries}}</td></tr>
+
+     <b>{{ filter.form.feelings.label}}<hr></b>
+      {{ filter.form.feelings}}
+
+    <b>{{ filter.form.terpenes_reports.label}}<hr></b>
+ {{ filter.form.terpenes_reports}}
+
+   <b>May help relieve<hr></b>
+ {{ filter.form.may_relieve}}
 
 
-        <tr><td> <input type="submit" /></td></tr>
+    <b>{{ filter.form.flavors.label}}<hr></b>
+   {{ filter.form.flavors}}
+
+ <input type="submit" />
     </form>
 
-</table>
 
 <style type="text/css">
     select {
@@ -66,4 +90,32 @@ option:checked, option:active, option:hover {
     font-weight: 700;
     background: #488f8f repeat url("data:image/gif;base64,R0lGO...");
 }
+
 </style>
+
+
+
+
+<br>
+
+
+<div id="top" class="top">
+   Title here <button id="toggle_btn" class="toggle_btn">X</button>
+</div>
+<div id="bottom" class="bottom">
+    ... text
+</div>
+<style type="text/css">
+    .top{
+        background: yellow;
+        text-align: right;
+    }
+    .bottom{
+        display: none;
+    }
+</style>
+<script type="text/javascript">
+    $(document).on('click', '.toggle_btn', function(){
+        $('.bottom').slideToggle(300);
+    });
+</script>
