@@ -67,9 +67,16 @@ from django.views import generic
 
 def front_page(request):
 	strains = Strain.objects.all()
+
+
+	latest_strains = Strain.objects.all().order_by('-date_created')
+	featured_strains = Strain.objects.filter(featured=True)
+
 	return render(request, 'template_parts/front_page.html', {
 			'strains':strains,
-			'title':'StrainsDB | A Cannabis Strains, brands, products, and dispensary database'
+			'title':'StrainsDB | A Cannabis Strains, brands, products, and dispensary database',
+			'latest_strains':latest_strains,
+			'featured_strains':featured_strains
 		})
 
 def strains(request):

@@ -1,11 +1,23 @@
 {% load i18n %}
 {% load comments %}
 {% load comments_xtd %}
+{% load avatar_tags %}
+{% load l10n %}
+{% load i18n %}
+{% load comments %}
+{% load avatar_tags %}
+{% load comments_xtd %}
 
 {% for item in comments %}
 <div id="c{{ item.comment.id }}" class="comment d-flex">
-  <img src="{{ item.comment.user_email|xtd_comment_gravatar_url }}"
-       class="me-3" height="48" width="48" />
+  <img id="comments_avatar_custom_styles" 
+    {% if item.comment.user and item.comment.user|has_avatar %}
+      src="{% avatar_url item.comment.user 17 %}"
+    {% else %}
+      src="{{ item.comment.user_email|xtd_comment_gravatar_url }}"
+    {% endif %}
+    class="mr-3 radius_sm" height="17" width="17"
+  >
   <div class="d-flex flex-column flex-grow-1">
     <h6 class="comment-header mb-1 d-flex justify-content-between" style="font-size: 0.8rem">
       <div class="d-inline flex-grow-1">

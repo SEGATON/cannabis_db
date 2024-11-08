@@ -1,5 +1,64 @@
 {% extends 'template_parts/base.html' %}
-
+{% load thumbnail %}
 	{% block content %}
-		<a href="{% url 'cannabis_db:strains' %}">Browse strains</a>
+		<div class="container">
+			<div class="row">
+
+				<div class="col-lg-12">
+					<br>
+					<h1 class="front_page_section_heading">Recently added strains</h1>
+<br>
+				<hr>
+				<br>
+			<div class="row g-2">
+				{% for strain in latest_strains %}			
+					<div class="col-md-2">
+						<div class="card">
+							<a href="{{strain.get_absolute_url}}">
+								<img src="{% thumbnail strain.featured_image 700x700 crop %}" class="img-fluid radius_md">
+							</a>
+							<a href="{{strain.get_absolute_url}}">{{strain.title}}</a>
+						</div>
+					</div>				
+				{% endfor %}
+			</div>
+				</div>
+				
+			</div>
+			<div class="row">
+
+				<div class="col-lg-12">
+					<br>
+				<h1 class="front_page_section_heading">Featured strains</h1>
+				<br>
+				<hr>
+				<br>
+	
+							<div class="row g-2">
+				{% for strain in featured_strains %}			
+					<div class="col-md-2">
+						<div class="card">
+							<a href="{{strain.get_absolute_url}}">
+								<img src="{% thumbnail strain.featured_image 700x700 crop %}" class="img-fluid radius_md">
+							</a>
+							<a href="{{strain.get_absolute_url}}">{{strain.title}}</a>
+						</div>
+					</div>				
+				{% endfor %}
+			</div>
+				</div>
+				
+			</div>
+			<div class="row">
+
+				<div class="col-lg-12">
+					<br>
+				<h1 class="front_page_section_heading">Top rated strains</h1>
+			<br>
+				<hr>
+				<br>
+				</div>
+				
+			</div>
+		</div>
 	{% endblock %}

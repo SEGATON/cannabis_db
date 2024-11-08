@@ -213,6 +213,13 @@ LOGIN_REDIRECT_URL = 'memberships:profile'
 
 
 
+
+
+COMMENTS_XTD_API_GET_USER_AVATAR = "comp.utils.get_avatar_url"
+
+
+
+
 COMMENTS_APP = 'django_comments_xtd'
 
 
@@ -223,32 +230,26 @@ EMAIL_HOST_PASSWORD = "yourpassword"
 EMAIL_USE_TLS = True
 DEFAULT_FROM_EMAIL = "Helpdesk <helpdesk@yourdomain>"
 
-COMMENTS_XTD_MAX_THREAD_LEVEL = 24  # site wide default
-COMMENTS_XTD_LIST_ORDER = ('-thread_id', 'order')  # default is ('thread_id', 'order')
+COMMENTS_XTD_MAX_THREAD_LEVEL = 12 # site wide default
+
 
 #  To help obfuscating comments before they are sent for confirmation.
 COMMENTS_XTD_SALT = (b"Timendi causa est nescire. "
-                     b"Aequam memento rebus in arduis servare mentem.")
+                    b"Aequam memento rebus in arduis servare mentem.")
 
 # Source mail address used for notifications.
-COMMENTS_XTD_FROM_EMAIL = "noreply@example.com"
+COMMENTS_XTD_FROM_EMAIL = "webmaster@example.com"
 
 # Contact mail address to show in messages.
 COMMENTS_XTD_CONTACT_EMAIL = "helpdesk@example.com"
 
 
 COMMENTS_XTD_APP_MODEL_OPTIONS = {
-    'default': {
+    'cannabis_db.strain': {
         'allow_flagging': True,
         'allow_feedback': True,
         'show_feedback': True,
         'who_can_post': 'users'  # Valid values: 'all', users'
     }
 }
-
-COMMENTS_XTD_API_GET_USER_AVATAR = "comp.utils.get_avatar_url"
-
-STAR_RATINGS_STAR_HEIGHT = 12
-STAR_RATINGS_STAR_WIDTH = 12
-
 

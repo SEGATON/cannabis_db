@@ -108,6 +108,7 @@
 				</div>
 				<div class="card p-3">
 					<h5>Strain description</h5>
+					<br>
 					<hr>
 					<br>
 					{% if strain.description %}<p>{{strain.description|safe}}</p>{% else %}	<p>Not available.</p>{% endif %}	
@@ -219,6 +220,7 @@
 					<br>
 					<hr>
 					<br>
+					<div class="row">
 					<h5>Effects</h5>
 						<br>
 					{% if strain.effects_reports %}
@@ -231,6 +233,7 @@
 					{% else %}				
 						<p>Not available.</p>
 					{% endif %}
+				</div>
 				</div>
 				<div class="card p-3">
 					<br>
@@ -279,17 +282,21 @@
 	
 <hr>
 		<br>
+		<div class="row">
 					<h5>May help relieve</h5>
-						<br>
+						<br><br>
 					{% if strain.may_relieve %}
 					{% for may_relieve in strain.may_relieve.all %}
+					<div class="col-md-3">
 						{{may_relieve.title}}
 						{{may_relieve.description|safe}}
-						{{may_relieve.helps_with_icon}}
+						<img src="{% thumbnail may_relieve.helps_with_icon 30x30 crop %}">
+					</div>
 					{% endfor %}	
 					{% else %}				
 						<p>Not available.</p>
-					{% endif %}					
+					{% endif %}	
+					</div>				
 				</div>
 				<div class="card p-3">
 											<br>
@@ -302,11 +309,12 @@
 					{% if strain.terpenes_reports %}
 					{% for terpene in strain.terpenes_reports.all %}
 						{{terpene.title}}
+
 					{% endfor %}
 					{% else %}				
 						<p>Not available.</p>
 					{% endif %}
-
+<br><br>
 					<a href="" class="" data-toggle="modal" data-target="#exampleModalCenter">
   View all Terpenes Profiles
 </a>
@@ -335,46 +343,60 @@
 				<div class="card p-3">
 					<hr>
 		<br>
+		<div class="row">
 					<h5>Details</h5>
+					<br>
 					<br>
 					{% if strain.strain_details_list %}
 					{% for strain_details_list_item in strain.strain_details_list.strain_details_list_items.strain_details_list_items.all %}
+					<div class="col-md-3">
 						{{strain_details_list_item.title}}
+					</div>
 					{% endfor %}	
 					{% else %}				
 						<p>Not available.</p>
 					{% endif %}				
 				</div>
+				</div>
 				<div class="card p-3">
 					<hr>
 		<br>
+		<div class="row">
 					<h5>Brand</h5>
+<br>
 						<br>
 					{% if strain.brand %}
 					{% for strain in strain.brand.all %}
-						{{strain}}
+						<div class="col-md-3">{{strain}}</div>
 					{% endfor %}
 					{% else %}				
 						<p>Not available.</p>
 					{% endif %}
 				</div>
+				</div>
 				<div class="card p-3">
 					<hr>
 		<br>
+		<div class="row">
 					<h5>Where to buy</h5>
-						<br>
+						<br><br>
 					{% if strain.dispensaries %}
 					{% for strain_dispensary_sold_in in dispensaries.all %}
-					
+					<div class="col-auto">
+						<img src="{% thumbnail strain_dispensary_sold_in.dispensary_logo 20x20  crop %}" class="img-fluid">
+					</div>
+					<div class="col-md-11">
 						<a href="{{strain_dispensary_sold_in.get_absolute_url}}" class="">{{strain_dispensary_sold_in.title}}</a>
+					</div>
 				
 					{% endfor %}
 					{% else %}				
 						<p>Not available.</p>
 					{% endif %}
 					<!-- Button trigger modal -->
-					<br>
-
+			
+</div>
+<br><br>
 <a class="" data-toggle="modal" data-target="#exampleModalLong">
   view all
 </a>
@@ -438,6 +460,11 @@
 
 
 				</div>
+				<div class="filler"></div>
+<div class="filler"></div><div class="filler"></div>
+<div class="filler"></div><div class="filler"></div>
+<div class="filler"></div><div class="filler"></div>
+<div class="filler"></div>
 			</div>	    
 	</div>
 </div>

@@ -638,6 +638,12 @@ class Dispensary(models.Model):
 		('delivery','Delivery'),
 	}
 	shopping_options = models.CharField(max_length=50, choices=SHOPPING_OPTIONS, null=True, blank=True)
+	ACCEPTED_PAYMENT_METHODS = {
+		('cash','Cash'),
+		('debit_credit','Debit/Credit Cards'),
+		('cash_debit_credit','Cash, Debit/Credit Cards'),
+	}
+	accepted_payment_methods = models.CharField(max_length=50, choices=ACCEPTED_PAYMENT_METHODS)
 	title = models.CharField(max_length=1000)
 	slug = models.SlugField(max_length=1000)
 	tagline = models.CharField(max_length=1000, null=True, blank=True)
@@ -775,7 +781,7 @@ class Strain(models.Model):
 	strain_details_list = models.ForeignKey(StrainDetailsList, on_delete=models.CASCADE, null=True,blank=True)	
 	strain_specifications = models.ForeignKey(StrainSpecificationsSets, on_delete=models.CASCADE, null=True,blank=True)
 	description = RichTextField(max_length=5000, null=True,blank=True)
-
+	featured= models.BooleanField(default=False)
 	featured_image = models.ImageField(default='media/CANNABIS_DB/STRAINS/FEATURED_IMAGES/default.jpg/', upload_to='media/CANNABIS_DB/STRAINS/FEATURED_IMAGES/', null=True, blank=True)
 	image_gallery= models.ForeignKey(StrainImageGallery, on_delete=models.CASCADE, related_name='product_image_gallery',null=True, blank=True)
 	feelings_reports = models.ForeignKey(FeelingReportListSet, on_delete=models.CASCADE,null=True, blank=True)
@@ -811,6 +817,8 @@ class Strain(models.Model):
 
 	def get_total_ratings(self):
 		pass
+
+
 
 	class Meta:
 		ordering = ('-date_created',)
@@ -901,9 +909,26 @@ class Comment(models.Model):
 
 
 class Category(models.Model):
-	pass
+	title = models.CharField(max_length=300)
+	slug = models.CharField(max_length=300)
+	description = RichTextField(max_length=5000, null=True,blank=True)
+	category_icon = models.ImageField(upload_to='media/CANNABIS_DB/CATEGORIES/CATEGORY_ICONS/', null=True, blank=True, max_length=500)
+	def __str__(self):
+		return self.title
+
+
 
 class Product(models.Model):
+	title = models.CharField(max_length=300)
+	slug = models.CharField(max_length=300)
+	PRODUCT_TYPE = (
+		)
+	product_type= models.CharField(max_length=50, choices=PRODUCT_TYPE)
 	
+	description = RichTextField(max_length=5000, null=True,blank=True)
 	dispensaries = models.ManyToManyField(Dispensary, null=True, blank=True)
+
+	categories = models.ManyToManyField(Category, null=True, blank=True)
+	def __str__(self):
+		return self.title
 

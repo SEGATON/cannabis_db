@@ -121,9 +121,50 @@
 {% include 'template_parts/elements/menus/menu.html' %}
 
 <hr>
-      <div class="filler">
+
+
+<div class="filler">
 
 </div>
+
+
+
+<div class="container">
+  <div class="row">
+    <div class="col-md-3"></div>
+    <div class="col-md-6">
+      <form method="GET" action="">
+        <span class="jaba">
+        <input type="text" class="form-control search_app_form_tf"  name="">
+        <button id="search_app_form_btn"><svg xmlns="http://www.w3.org/2000/svg" width="17px" height="17px" viewBox="0 0 24 24"><path fill="none" stroke="#456501" stroke-linecap="round" stroke-linejoin="round" stroke-width="2.25" d="M19 11.5a7.5 7.5 0 1 1-15 0a7.5 7.5 0 0 1 15 0m-2.107 5.42l3.08 3.08"/></svg></button>
+      </span>
+      </form>
+    </div>
+    <style type="text/css">
+      .jaba{
+
+      }
+      .search_app_form_tf{
+        float: left;
+      }
+      #search_app_form_btn{
+float: right;
+        background: white;
+        position: absolute;
+        padding: 4px;
+        margin-left: -30px;
+        margin-top: 2px;
+        border: none;
+
+
+      }
+    </style>
+    <div class="col-md-3"></div>
+
+  </div>
+</div>
+
+
   <div class="card p-3 text-center">
         <a href="https://amzn.to/4egcxbC"><img src="{% static 'imgs/AD.png' %}" class="img-fluid" height="50" width="300"></a>
       </div>
@@ -321,3 +362,10 @@ The information on this site is provided as a resource only, and is not to be us
 
 
 <hr>
+
+
+
+
+
+
+

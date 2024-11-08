@@ -1,11 +1,22 @@
 {% load i18n %}
 {% load comments %}
 {% load comments_xtd %}
+{% load l10n %}
+{% load i18n %}
+{% load comments %}
+{% load avatar_tags %}
+{% load comments_xtd %}
 
-<div id="c{{ comment.id }}" class="d-flex"><a id="c{{ comment.id }}"></a>
-  <img src="{{ comment.user_email|xtd_comment_gravatar_url }}"
-       alt="{{ comment.user_email }}"
-       height="48" width="48" class="me-3" />
+{% load avatar_tags %}
+<div id="c{{ comment.id }}" class="d-flex"><a id="c{{ comment.id }}"></a>fff
+  <img
+    {% if comment.user|has_avatar %}
+      src="{% avatar_url comment.user 48 %}"
+    {% else %}
+      src="{{ comment.user_email|xtd_comment_gravatar_url }}"
+    {% endif %}
+    height="18" width="18" class="mr-3 radius_sm" 
+  >
   <div class="media-body">
     <div class="comment pb-3">
       <h6 class="mb-1 small d-flex">
