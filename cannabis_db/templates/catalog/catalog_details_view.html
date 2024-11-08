@@ -152,35 +152,75 @@
 				{% endfor %}	
 				</div>
 						
+
+
+
+
+
+
 				<div class="card p-3">
+
+
+					<br>
+					<hr>
+					<br>
+
+				
 					<h5>Feelings</h5>
+	<br>
+	<div class="row">
+
 					{% if strain.feelings %}
-						{% for strain_feeling in strain.feelings.all %}						
-								{% if strain_feeling.type_of_feelings == 'generic' %}
-								
+
+
+
+						{% for strain_feeling in strain.feelings.all %}				
+						<div class="col-md-3">
+								{% if strain_feeling.type_of_feelings == 'generic' %}		
 									<img src="{% thumbnail strain_feeling.feeling_icon 16x16 crop %}">
 									<b>{{strain_feeling.title}}</b>
-									{{strain_feeling.description|safe}}								
-								
+									<hr>
+									{% if strain_feeling.description %}{{strain_feeling.description|safe}}{% else %} <p>n/a</p>{% endif %}											
 								{% elif strain_feeling.type_of_feelings == 'positive' %}
-							
-									<td><img src="{% thumbnail strain_feeling.feeling_icon 16x16 crop %}">
-									<b>{{strain_feeling.title}}</b>
-									{{strain_feeling.description|safe}}						
-								
-								{% elif strain_feeling.type_of_feelings == 'negative' %}
-								
 									<img src="{% thumbnail strain_feeling.feeling_icon 16x16 crop %}">
 									<b>{{strain_feeling.title}}</b>
-								
+									{% if strain_feeling.description %}{{strain_feeling.description|safe}}{% else %} <p>n/a</p>{% endif %}										
+								{% elif strain_feeling.type_of_feelings == 'negative' %}	
+									<img src="{% thumbnail strain_feeling.feeling_icon 16x16 crop %}">
+									<b>{{strain_feeling.title}}</b>
 								{% endif %}
-						{% endfor %}							
+							</div>
+						{% endfor %}						
+
+
 							{% else %}				
+
+
 						<p>Not available.</p>
+
+
+
+
 					{% endif %}		
+
+
+
+</div>
+
 				</div>
+
+
+
+
+
+
+
 				<div class="card p-3">
+					<br>
+					<hr>
+					<br>
 					<h5>Effects</h5>
+						<br>
 					{% if strain.effects_reports %}
 					{% for strain_effect in strain.effects_reports.effect_report_list_set.effect_report_list.all %}
 						{{strain_effect.get_type_of_effects_display}}
@@ -193,18 +233,37 @@
 					{% endif %}
 				</div>
 				<div class="card p-3">
+					<br>
+					<hr>
+					<br>
 					<h5>Flavors</h5>
+						<br>
+					<div class="row">
+
+
 					{% if strain.flavors %}
 					{% for strain_flavor in strain.flavors.all %}
-						{{strain_flavor.title}}
-						{{strain_flavor.flavor_icon}}
+					<div class="col-md-3">
+						<div class="card">
+							{{strain_flavor.title}}
+							<img src="{% thumbnail strain_flavor.flavor_icon 200x200 crop %}" class="img-fluid" height="30" width="30">
+						</div>
+					</div>
 					{% endfor %}	
 					{% else %}				
 						<p>Not available.</p>
-					{% endif %}				
+					{% endif %}			
+					</div>	
 				</div>
 				<div class="card p-3">
+						<br>
+
+	
+<hr>
+		<br>
 					<h5>Aromas</h5>
+
+						<br>
 					{% if strain.aromas_reports %}
 					{% for strain_aroma in strain.aromas_reports.aromas_list_set.aromas_list.all %}
 						{{strain_aroma.title}}
@@ -215,7 +274,13 @@
 					{% endif %}					
 				</div>
 				<div class="card p-3">
+											<br>
+
+	
+<hr>
+		<br>
 					<h5>May help relieve</h5>
+						<br>
 					{% if strain.may_relieve %}
 					{% for may_relieve in strain.may_relieve.all %}
 						{{may_relieve.title}}
@@ -227,7 +292,13 @@
 					{% endif %}					
 				</div>
 				<div class="card p-3">
+											<br>
+
+	
+<hr>
+		<br>
 					<h5>Terpenes profile</h5>
+						<br>
 					{% if strain.terpenes_reports %}
 					{% for terpene in strain.terpenes_reports.all %}
 						{{terpene.title}}
@@ -235,6 +306,10 @@
 					{% else %}				
 						<p>Not available.</p>
 					{% endif %}
+
+					<a href="" class="" data-toggle="modal" data-target="#exampleModalCenter">
+  View all Terpenes Profiles
+</a>
 				</div>
 				<div class="card p-3">
 					{% for strain_lineage in strain.strain_lineage_details_list.strain_lineage_details_list_items.strain_lineage_details_list_items.all %}
@@ -247,7 +322,10 @@
 				</div>
 
 				<div class="card p-3">
+					<hr>
+		<br>
 					<h5>Poster's review</h5>
+						<br>
 					{% if strain.author_review %}
 					<p>{{strain.author_review|safe}}</p>
 					{% else %}				
@@ -255,7 +333,10 @@
 					{% endif %}					
 				</div>
 				<div class="card p-3">
+					<hr>
+		<br>
 					<h5>Details</h5>
+					<br>
 					{% if strain.strain_details_list %}
 					{% for strain_details_list_item in strain.strain_details_list.strain_details_list_items.strain_details_list_items.all %}
 						{{strain_details_list_item.title}}
@@ -265,7 +346,10 @@
 					{% endif %}				
 				</div>
 				<div class="card p-3">
+					<hr>
+		<br>
 					<h5>Brand</h5>
+						<br>
 					{% if strain.brand %}
 					{% for strain in strain.brand.all %}
 						{{strain}}
@@ -275,7 +359,10 @@
 					{% endif %}
 				</div>
 				<div class="card p-3">
+					<hr>
+		<br>
 					<h5>Where to buy</h5>
+						<br>
 					{% if strain.dispensaries %}
 					{% for strain_dispensary_sold_in in dispensaries.all %}
 					
@@ -287,9 +374,13 @@
 					{% endif %}
 					<!-- Button trigger modal -->
 					<br>
+
 <a class="" data-toggle="modal" data-target="#exampleModalLong">
   view all
 </a>
+<br>
+<hr>
+		<br>
 
 <!-- Modal -->
 <div class="modal fade" id="exampleModalLong" tabindex="-1" role="dialog" aria-labelledby="exampleModalLongTitle" aria-hidden="true">

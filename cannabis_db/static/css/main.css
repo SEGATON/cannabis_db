@@ -156,3 +156,9 @@ hr{
     background-color: white;
     border:none;
 }
+
+.modal-backdrop
+{
+    opacity:0.2 !important;
+    background: #000;
+}
