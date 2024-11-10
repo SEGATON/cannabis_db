@@ -33,5 +33,12 @@ class Profile(models.Model):
 
           address = models.ForeignKey('cannabis_db.Address', on_delete=models.CASCADE,null=True, blank=True)
 
+          VISIBILTY_OPTIONS = (
+                ('public','Public',),
+                ('private','Private',),
+            )
+
+          visibility_options = models.CharField(max_length=50, choices=VISIBILTY_OPTIONS,null=True, blank=True, default='public' )
+
           def __str__(self):
                     return str(self.user)

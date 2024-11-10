@@ -46,7 +46,7 @@ class PublicProfile(generic.DetailView):
 
 def edit_profile(request, pk):
 	
-	return render(request, 'memberships/edit_profile.html', {
+	return render(request, 'profile/edit_profile.html', {
 		
 		})
 
@@ -100,7 +100,7 @@ def edit_profile(request, pk):
 	else:
 		change_profile_avatar_form = ChangeProfilePhotoForm()
 
-	return render(request, 'manage_profile/edit_profile.html', {
+	return render(request, 'profile/profile_edit.html', {
 			'edit_profile_form':edit_profile_form,
 			'edit_profile_social_profiles_form':edit_profile_social_profiles_form,
 			'change_profile_avatar_form':change_profile_avatar_form

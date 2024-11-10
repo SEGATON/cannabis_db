@@ -12,7 +12,16 @@ https://docs.djangoproject.com/en/4.2/ref/settings/
 
 from pathlib import Path
 import os  
+import cloudinary
+import cloudinary.uploader
+import cloudinary.api
 
+
+cloudinary.config( 
+    cloud_name = "cannabis_db",
+    api_key = "986476683714272",
+    api_secret = "pSSbp6sPrgLZBQW-5DiHkp0frbg"
+)
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
 
@@ -252,4 +261,6 @@ COMMENTS_XTD_APP_MODEL_OPTIONS = {
         'who_can_post': 'users'  # Valid values: 'all', users'
     }
 }
+
+
 
