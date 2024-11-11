@@ -18,6 +18,7 @@ from django.conf import settings
 
 
 
+from cloudinary.forms import CloudinaryFileField
 
 
 
@@ -782,7 +783,7 @@ class Strain(models.Model):
 	strain_specifications = models.ForeignKey(StrainSpecificationsSets, on_delete=models.CASCADE, null=True,blank=True)
 	description = RichTextField(max_length=5000, null=True,blank=True)
 	featured= models.BooleanField(default=False)
-	featured_image = models.ImageField(default='media/CANNABIS_DB/STRAINS/FEATURED_IMAGES/default.jpg/', upload_to='media/CANNABIS_DB/STRAINS/FEATURED_IMAGES/', null=True, blank=True)
+	featured_image = models.ImageField(default='media/CANNABIS_DB/STRAINS/FEATURED_IMAGES/default.jpg', upload_to='media/CANNABIS_DB/STRAINS/FEATURED_IMAGES/', null=True, blank=True)
 	image_gallery= models.ForeignKey(StrainImageGallery, on_delete=models.CASCADE, related_name='product_image_gallery',null=True, blank=True)
 	feelings_reports = models.ForeignKey(FeelingReportListSet, on_delete=models.CASCADE,null=True, blank=True)
 	effects_reports = models.ForeignKey(EffectsReportListSet, on_delete=models.CASCADE,null=True, blank=True)	
@@ -805,6 +806,7 @@ class Strain(models.Model):
 	author_review = RichTextField(max_length=5000, null=True,blank=True)
 	flavors = models.ManyToManyField(FlavorsDetails, null=True,blank=True)
 	may_relieve = models.ManyToManyField(HelpsWithReport, null=True,blank=True)
+	aromas = models.ManyToManyField(AromasDetails, null=True, blank=True)
 
 	users_smoked = models.ManyToManyField(CustomUser, null=True, blank=True, related_name='users_smoked')
 

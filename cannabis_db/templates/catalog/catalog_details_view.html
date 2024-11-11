@@ -1,4 +1,5 @@
 {% load thumbnail %}
+{% load cloudinary %}
 {% load static %}
 <div class="container">
 	<div class="row g-3">
@@ -267,14 +268,18 @@
 					<h5>Aromas</h5>
 
 						<br>
-					{% if strain.aromas_reports %}
-					{% for strain_aroma in strain.aromas_reports.aromas_list_set.aromas_list.all %}
+						<div class="row">
+					{% if strain.aromas %}
+					{% for strain_aroma in strain.aromas.all %}
+					<div class="col-md-3">
 						{{strain_aroma.title}}
 						{{strain_aroma.aromas_icon}}
+					</div>
 					{% endfor %}	
 					{% else %}				
 						<p>Not available.</p>
-					{% endif %}					
+					{% endif %}			
+					</div>		
 				</div>
 				<div class="card p-3">
 											<br>
@@ -366,8 +371,12 @@
 <br>
 						<br>
 					{% if strain.brand %}
-					{% for strain in strain.brand.all %}
-						<div class="col-md-3">{{strain}}</div>
+					{% for brand in strain.brand.all %}
+						<div class="col-md-3">
+							<div class="card">
+							<a href="{{brand.get_absolute_url}}">{{brand}}</a>
+						</div>
+						</div>
 					{% endfor %}
 					{% else %}				
 						<p>Not available.</p>

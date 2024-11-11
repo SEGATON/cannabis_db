@@ -6,7 +6,11 @@
 					
 				</div>
 				<div class="col-md-10">
-					{{edit_profile_form}}
+					<form method="POST">
+						{% csrf_token %}
+					{{edit_profile_form.as_p}}
+					<button>Edit profile</button>
+				</form>
 					{{edit_profile_social_profiles_form}}
 					{{change_profile_avatar_form}}
 				</div>

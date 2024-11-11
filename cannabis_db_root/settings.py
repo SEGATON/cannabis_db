@@ -12,16 +12,29 @@ https://docs.djangoproject.com/en/4.2/ref/settings/
 
 from pathlib import Path
 import os  
+
+'''
+
+from pathlib import Path
+from dotenv import load_dotenv
+load_dotenv()
+
+
 import cloudinary
 import cloudinary.uploader
 import cloudinary.api
-
+from cloudinary import CloudinaryImage
+from cloudinary import CloudinaryVideo
 
 cloudinary.config( 
-    cloud_name = "cannabis_db",
+    cloud_name = "dko8xdqgt",
     api_key = "986476683714272",
     api_secret = "pSSbp6sPrgLZBQW-5DiHkp0frbg"
 )
+
+'''
+
+
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
 

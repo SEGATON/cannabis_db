@@ -3,7 +3,7 @@ from .models import Strain
 from .models import Brand
 from .models import StrainType
 
-from .models import StrainDetailsListItem
+from .models import StrainSpecificationsSets
 from .models import StrainDetailsListItems
 from .models import StrainDetailsList
 
@@ -11,7 +11,7 @@ from .models import StrainImageGallery
 from .models import StrainGalleryImagesSet
 from .models import StrainGalleryImage
 
-from .models import StrainSpecificationsSets
+
 
 from .models import StrainSpecification
 
@@ -223,9 +223,14 @@ class AromasListSetAdmin(admin.ModelAdmin):
 @admin.register(AromasDetailsList)
 class AromasDetailsListAdmin(admin.ModelAdmin):
 	pass
+
 @admin.register(AromasDetails)
-class AromasDetailsAdmin(admin.ModelAdmin):
-	pass
+class AromasDetailsAdmin(ImportExportModelAdmin):
+	list_display = ['id','title','slug','aromas_icon']
+	prepopulated_fields = {
+		'slug':('title','aromas_icon')
+	}
+	list_editable = ['title','slug','aromas_icon']
 
 
 
@@ -296,8 +301,9 @@ class BrandAdmin(ImportExportModelAdmin):
 	}
 @admin.register(StrainSpecificationsSets)
 class StrainSpecificationsSetsAdmin(ImportExportModelAdmin):
-	pass
-
+	list_display = ['id','sss_UNIQUE_ID']
+	list_display_links = ['id']
+	list_editable = ['sss_UNIQUE_ID']
 
 @admin.register(StrainSpecification)
 class StrainSpecificationAdmin(ImportExportModelAdmin):
@@ -318,23 +324,13 @@ class StrainGalleryImagesSetAdmin(ImportExportModelAdmin):
 class StrainGalleryImageAdmin(ImportExportModelAdmin):
 	pass
 
-@admin.register(StrainDetailsListItem)
-class StrainDetailsListItemAdmin(ImportExportModelAdmin):
-	list_display = ['title','slug']
-	prepopulated_fields = {
-		'slug':('title',)
-	}
-
 @admin.register(StrainDetailsListItems)
 class StrainDetailsListItemsAdmin(ImportExportModelAdmin):
 	pass
 
 @admin.register(StrainDetailsList)
 class StrainDetailsListAdmin(ImportExportModelAdmin):
-	list_display = ['title','slug']
-	prepopulated_fields = {
-		'slug':('title',)
-	}
+	pass
 
 @admin.register(Strain)
 class StrainAdmin(ImportExportModelAdmin):
