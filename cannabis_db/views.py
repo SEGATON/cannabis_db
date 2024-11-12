@@ -478,3 +478,18 @@ def contact(request):
 	return render(request, 'contact.html', {
 			'contact_form':contact_form
 		})
+
+
+
+@login_required
+def follow_dispensary(request, pk):
+
+	dispensary = get_object_or_404(Dispensary, pk=pk)
+	user = request.user
+	if request.user not in dispensary.followers.all():
+		dispensary.followers.add(user)
+	else:
+		dispensary.followers.remove(user)
+
+
+	return HttpResponseRedirect(request.META['HTTP_REFERER'])

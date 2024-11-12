@@ -11,7 +11,7 @@ from .models import StrainImageGallery
 from .models import StrainGalleryImagesSet
 from .models import StrainGalleryImage
 
-
+from .models import DispensarySocialFollowURLICON
 
 from .models import StrainSpecification
 
@@ -84,7 +84,9 @@ class PotencyAdmin(admin.ModelAdmin):
 	pass
 
 
-
+@admin.register(DispensarySocialFollowURLICON)
+class DispensarySocialFollowURLICONAdmin(admin.ModelAdmin):
+	pass
 
 
 @admin.register(EffectReport)

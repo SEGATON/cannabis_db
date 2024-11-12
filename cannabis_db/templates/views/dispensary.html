@@ -7,7 +7,20 @@
 				<div class="col-md-2">
 					<div class="filler"></div>
 					<div class="card">
-						<img src="{{  dispensary.dispensary_logo.url }}" class="img-fluid">
+						<img src="{{  dispensary.dispensary_logo.url }}" class="img-fluid radius_md">
+					</div>
+					<div class="card">
+						<p>flag {{dispensary}}</p>
+
+						{% if request.user in dispensary.followers.all %}
+						<a href="{% url 'cannabis_db:follow_dispensary' dispensary.pk %}" class="following_badge">following</a>
+						{{dispensary.followers.count}}
+						{% else %}
+						<a href="{% url 'cannabis_db:follow_dispensary' dispensary.pk %}" class="follow_badge">follow</a>
+						{{dispensary.followers.count}}
+						{% endif %}
+						
+
 					</div>
 				</div>
 				<div class="col-md-10">
@@ -33,7 +46,7 @@
 
 
 						</h1>
-						{% if dispensary.tagline %}<h4>{{dispensary.tagline}}</h4>{% endif %}
+						{% if dispensary.tagline %}<h4 class="tagline">{{dispensary.tagline}}</h4>{% endif %}
 					</div>
 					<div class="card">
 						<p>
@@ -58,6 +71,12 @@
 
 
 						</p>
+						<p>
+	<b>Accepted payment methods</b>
+{{dispensary.get_accepted_payment_methods_display}}
+	<b>Card types</b>
+{{dispensary.get_card_types_display}}
+</p>
 						<hr>
 
 						<p>{{dispensary.dispensary_description|safe}}</p>
@@ -65,7 +84,7 @@
 					<div class="card">
 
 			<div class="row g-2">
-				<h5>Our products</h5>
+				<h5>Our products <span style="font-weight:300;">({{dispensay.products.count}})</span></h5>
 				{% if dispensary.products.all %}
 				{% for product in dispensary.products.all %}			
 					<div class="col-md-2">
@@ -85,7 +104,7 @@
 
 
 						<div class="row g-1">
-							<h5>Our brands</h5>
+							<h5>Our brands <span style="font-weight: 300;">({{dispensary.dispensary_brands.count}})</span></h5>
 							{% if dispensary.dispensary_brands.all %}
 							{% for dispensary_brand in dispensary.dispensary_brands.all  %}
 							<div class="col-md-2">
@@ -110,10 +129,14 @@
 
 					</div>
 					<div class="card">
-
+						<ul class="dispensary_profiles_URLS">
+{% for social_profile in dispensary.dispensary_social_follow.social_profiles_URLS.dispensary_profiles_URLS.all %}
+		<li>{{social_profile.dispensary_social_profile_name}}
+		<a href="{{social_profile.dispensary_social_profile_URL}}"></a></li>
+{% endfor %}
+</ul>
 					</div>
 					<div class="card">
-
 
 
 

@@ -582,13 +582,16 @@ class Brand(models.Model):
 
 
 
-
+class DispensarySocialFollowURLICON(models.Model):
+	spui_UNIQUE_ID		= models.CharField(max_length=300, null=True, blank=True)
+	social_profiles_URL_icon = models.ImageField(upload_to='media/CANNABIS_DB/DISPENSARIES/DISPENSARIES_SOCIAL_MENUS_ICONS/')
 
 
 
 class DispensarySocialFollowURL(models.Model):
 	dispensary_social_profile_name		= models.CharField(max_length=300, null=True, blank=True)
 	dispensary_social_profile_URL		= models.URLField(null=True, blank=True)
+	social_profiles_URL_icon = models.ForeignKey(DispensarySocialFollowURLICON, on_delete=models.CASCADE, null=True, blank=True)
 
 
 
@@ -650,6 +653,13 @@ class Dispensary(models.Model):
 		('cash_debit_credit','Cash, Debit/Credit Cards'),
 	}
 	accepted_payment_methods = models.CharField(max_length=50, choices=ACCEPTED_PAYMENT_METHODS)
+
+	CARDS_ACCEPTED = (
+			('visa','Visa'),
+			('a_e','American Express'),
+		)
+	card_types = models.CharField(max_length=50, choices=CARDS_ACCEPTED)
+	
 	title = models.CharField(max_length=1000)
 	slug = models.SlugField(max_length=1000)
 	tagline = models.CharField(max_length=1000, null=True, blank=True)
@@ -663,14 +673,16 @@ class Dispensary(models.Model):
 	dispensary_social_follow = models.ForeignKey(DispensarySocialFollows, on_delete=models.CASCADE, null=True, blank=True)
 	dispensary_strains = models.ManyToManyField('Strain', related_name='dispensary_products', null=True, blank=True)
 	dispensary_brands = models.ManyToManyField(Brand, related_name='dispensary_brands', null=True, blank=True)
-	dispensary_followers = models.ManyToManyField(CustomUser, related_name='dispensary_followers', null=True, blank=True)
+
 	dispensary_address = models.ManyToManyField(Address, null=True, blank=True)
 	saves = models.ManyToManyField('memberships.Profile', null=True,blank=True, related_name='dispensary_saves')
-	followers = models.ManyToManyField('memberships.Profile', related_name='dispensary_followers', null=True, blank=True)
+
 
 	products = models.ManyToManyField('Product',null=True, blank=True )
 
 	claimed = models.BooleanField(default=False)
+
+	followers = models.ManyToManyField(CustomUser, null=True, blank=True)
 
 	def get_absolute_url(self):
 		return reverse('cannabis_db:dispensary', args=[self.slug])
