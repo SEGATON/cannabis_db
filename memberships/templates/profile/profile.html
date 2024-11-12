@@ -68,7 +68,25 @@
 									  	<p>{{user.profile.biography|safe}}</p>
 <br>
 									  </div>
-									  <div class="tab-pane fade" id="nav-contact" role="tabpanel" aria-labelledby="nav-contact-tab" tabindex="0">...</div>
+									  <div class="tab-pane fade" id="nav-contact" role="tabpanel" aria-labelledby="nav-contact-tab" tabindex="0">
+									  	
+
+									 			<div class="row g-3">
+				{% for strain in strains %}			
+					<div class="col-md-2">
+						<div class="card">
+							<a href="{{strain.get_absolute_url}}">
+								<img src="{% thumbnail strain.featured_image 700x700 crop %}" class="img-fluid radius_md">
+							</a>
+							<a href="{{strain.get_absolute_url}}">{{strain.title}}</a>{% include 'components/buttons/bookmarking.html' %}
+
+							
+						</div>
+					</div>		
+							
+				{% endfor %}
+			</div>
+									  </div>
 
 									</div>
 							</div>

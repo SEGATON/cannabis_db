@@ -16,13 +16,14 @@ from django.contrib.auth.decorators import login_required
 from django.http import HttpResponseRedirect
 from .forms import ChangeUsernameForm
 from django.urls import reverse_lazy
-
+from cannabis_db.models import Strain
 from django.contrib.auth.forms import PasswordChangeForm
 
 def profile(request):
-
+	strains = Strain.objects.filter(bookmarks=request.user)
 	return render(request, 'profile/profile.html', {
-		'title':'Profile' + ' | ' + request.user.username 
+		'title':'Profile' + ' | ' + request.user.username ,
+		'strains':strains
 		
 		})
 

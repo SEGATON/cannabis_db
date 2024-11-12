@@ -22,8 +22,13 @@ from cloudinary.forms import CloudinaryFileField
 
 
 
-
-
+class ContactMessage(models.Model):
+	title = models.CharField(max_length=1000)
+	subject = models.CharField(max_length=1000)
+	email = models.EmailField(max_length=1000)
+	file = models.FileField(upload_to='files')
+	phone = models.CharField(max_length=1000)
+	message = models.TextField(max_length=400)
 
 
 

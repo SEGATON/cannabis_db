@@ -52,8 +52,8 @@ from django.http import JsonResponse
 
 from django.contrib.auth.decorators import login_required
 
-
-from .forms import AddDispensaryForm
+from .models import ContactMessage
+from .forms import AddDispensaryForm, ContactForm
 
 
 from .filters import StrainFilter
@@ -467,6 +467,14 @@ def consumed(request, pk):
 
 def contact(request):
 
-	return render(request, 'contact.html', {
+	if request.method == 'POST':
+		contact_form = ContactForm(request.POST, request.FILES)
+		if contact_form.is_valid():
+			contact_form.save()
+	else:
+		contact_form = ContactForm()
 
+
+	return render(request, 'contact.html', {
+			'contact_form':contact_form
 		})

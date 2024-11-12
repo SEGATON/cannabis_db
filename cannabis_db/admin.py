@@ -32,7 +32,7 @@ from .models import HelpsWithReportListSet
 from .models import Vendor
 
 from .models import Address
-
+from .models import ContactMessage
 from .models import AromasListSet
 from .models import AromasDetailsList
 from .models import AromasDetails
@@ -63,6 +63,11 @@ from .models import Product
 
 
 from import_export.admin import ImportExportModelAdmin
+
+@admin.register(ContactMessage)
+class ContactMessageAdmin(admin.ModelAdmin):
+	pass
+
 
 @admin.register(Category)
 class CategoryAdmin(admin.ModelAdmin):
