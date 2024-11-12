@@ -6,5 +6,13 @@
 	font-weight: 400;
 }
 .page_heading{
-	font-size: 16px;
+	font-size: 30px;
+	font-weight: 400;
+}
+.page_sub_heading{
+		font-size: 15px;
+	font-weight: 500;
+}
+h6{
+	font-weight: 600;
 }

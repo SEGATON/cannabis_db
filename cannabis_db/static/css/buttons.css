@@ -1,45 +1,66 @@
-.button{
-
+.button {
+	border: none;
+	text-transform: capitalize;
+	text-decoration: none;
+	text-align: center;
 }
-.lrg{
-	border-radius: 4px;
-	padding: 5px 0px;
+.sm{
+	font-size: 10px;
+	padding: 7px 16px;
+	border-radius: 3px;
 }
 .md{
-	border-radius: 4px;
-	padding: 3px 10px;
+	font-size: 13px;
+	padding: 7px 19px;
+	border-radius: 5px;
 }
-.button-green{
-	background:#015A29 ;
-	color:#FFF;
-	text-transform: capitalize;
+.lg{
+	font-size: 16px;
+	padding: 10px 30px;
+	border-radius: 7px;
+
 }
-.button-full{
+
+.full {
 	width: 100%;
 }
-
-
-
-.darkest-green{
-	background: #0f7d18;
-	color: #FFF;
-	text-decoration: none;
-	text-transform: capitalize;
-	text-align: center;
-	margin-bottom: 2px;
+.green{
+	background: #018711;
+	color: white;
 }
-.darker-green{
-	background: #006308;
-	color: #FFF;
-	text-decoration: none;
-	text-transform: capitalize;
-	text-align: center;
-	margin-bottom: 2px;
+.red{
+	background: #c20000;
+	color: white;
 }
-.dark-green{
-	background: #4eb556;
-	color: #FFF;
-	text-decoration: none;
-	text-transform: capitalize;
-	text-align: center;
+.orange{
+	background: #d43d02;
+	color: white;
+}
+
+
+.login_with_x_btn{
+	background: #0f7d01;
+	color: white;
+	margin-bottom: 3px;
+
+}
+.login_with_f_btn{
+	background: #138f03;
+	color: white;
+	margin-bottom: 3px;
+}
+.login_with_g_btn{
+	background: #0d6601;
+	color: white;
+	margin-bottom: 3px;
+}
+.login_btn{
+	background: #094a01;
+	color: white;
+	margin-bottom: 3px;
+}
+.create_account_btn{
+	background: #094a01;
+	color: white;
+	margin-bottom: 3px;
 }

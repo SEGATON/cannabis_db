@@ -415,43 +415,29 @@ def bookmarks(request):
 			'strains':strains
 		})
 
-
 @login_required
-def add_to_bookmarks(request, id):
+def add_to_bookmarks(request, pk):
 
+	strain = get_object_or_404(Strain, pk=pk)
 	user = request.user
 
-	strain = Strain.objects.get(id=id)
-
-	profile = Profile.objects.filter(user=user)
-
-
-
-	if strain not in user.profile.bookmarks.all():
-		request.user.profile.bookmarks.add(strain)
-	
+	if request.user not in strain.bookmarks.all():
+		strain.bookmarks.add(request.user)
+	else:
+		strain.bookmarks.remove(request.user)
 
 
 	return HttpResponseRedirect(request.META['HTTP_REFERER'])
+
+
 
 
 @login_required
 def remove_from_bookmarks(request, id):
 
-	user = request.user 
-
-	strain = Strain.objects.get(id=id)
-
-	profile = Profile.objects.filter(user=user)
-
-	if strain in user.profile.bookmarks.all():
-		request.user.profile.bookmarks.remove(strain)
-
+	
+	
 	return HttpResponseRedirect(request.META['HTTP_REFERER'])
-
-
-	return None
-
 
 
 
@@ -479,3 +465,8 @@ def consumed(request, pk):
 
 
 
+def contact(request):
+
+	return render(request, 'contact.html', {
+
+		})

@@ -22,6 +22,7 @@ from django.contrib.auth.forms import PasswordChangeForm
 def profile(request):
 
 	return render(request, 'profile/profile.html', {
+		'title':'Profile' + ' | ' + request.user.username 
 		
 		})
 
@@ -36,7 +37,8 @@ class PublicProfile(generic.DetailView):
 		pk = self.kwargs.get('pk') 
 		koko = Profile.objects.get(pk=pk)
 		content = {
-			'koko':koko
+			'koko':koko,
+			'title':'Profile' + ' | ' + koko.user.username 
 		}
 		return content
 	def get_context_data(self, *args, **kwargs):
@@ -103,7 +105,8 @@ def edit_profile(request, pk):
 	return render(request, 'profile/profile_edit.html', {
 			'edit_profile_form':edit_profile_form,
 			'edit_profile_social_profiles_form':edit_profile_social_profiles_form,
-			'change_profile_avatar_form':change_profile_avatar_form
+			'change_profile_avatar_form':change_profile_avatar_form,
+			'title':'Edit profile' + ' | ' + request.user.username 
 		})
 
 

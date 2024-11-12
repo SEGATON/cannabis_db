@@ -10,6 +10,7 @@ from localflavor.us.models import USPostalCodeField
 from localflavor.us.models import USSocialSecurityNumberField
 
 
+
 class CustomUserManager(BaseUserManager):
 	def create_user(self, email, password, **extra_fields):
 		if not email:

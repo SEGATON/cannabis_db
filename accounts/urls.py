@@ -11,5 +11,5 @@ urlpatterns = [
     path('', views.front_page, name='front_page'),
     path('create-account/', views.create_account, name='create_account'),
     path('login/', auth_views.LoginView.as_view(template_name='accounts/login.html', form_class=LoginForm), name="login"),
-
+    path('delete-account-success/<int:pk>/', views.delete_account_success, name='delete_account_success'),
 ]

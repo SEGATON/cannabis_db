@@ -1,5 +1,7 @@
 .form-control{
 	border:2px solid #4B9E6C;
+	margin-bottom: 4px;
+	font-size: 12px;
 }
 .form-control:hover{
 	border:2px solid #4B9E6C;
@@ -15,4 +17,7 @@
 	border:2px solid #4B9E6C;
 	outline: none;
 	box-shadow: none;
+}
+::placeholder{
+	font-size: 12px;
 }

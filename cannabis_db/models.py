@@ -755,8 +755,10 @@ STRAIN MODEL
 
 
 
-
-
+class Potency(models.Model):
+	title = models.CharField(max_length=50)
+	slug = models.SlugField(max_length=50)	
+	description = RichTextField(max_length=5000, null=True,blank=True)
 
 
 class Strain(models.Model):
@@ -774,6 +776,15 @@ class Strain(models.Model):
 		('hybrid','Hybrid'),
 	}
 	strain_type_label = models.CharField(max_length=70, choices=STRAIN_TYPE,null=True, blank=True)
+	
+	POTENCY = (
+			('low','Low',),
+			('average','Average',),
+			('high','High',),
+		)
+
+	potency = models.ForeignKey(Potency,on_delete=models.CASCADE, null=True, blank=True)
+
 	title = models.CharField(max_length=50)
 	slug = models.SlugField(max_length=50)
 	headline = models.CharField(max_length=150, null=True, blank=True)
@@ -809,7 +820,7 @@ class Strain(models.Model):
 	aromas = models.ManyToManyField(AromasDetails, null=True, blank=True)
 
 	users_smoked = models.ManyToManyField(CustomUser, null=True, blank=True, related_name='users_smoked')
-
+	bookmarks = models.ManyToManyField(CustomUser, null=True, blank=True, related_name='bookmarked_by')
 	def __str__(self):
 		return self.title
 

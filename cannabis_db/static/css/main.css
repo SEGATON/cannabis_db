@@ -8,7 +8,11 @@ height: 100%;
 width: 100%;
 	background: #fff;
 }
-
+.light_gray_section_background{
+    background: #EEEEEE;
+    height: 100%;
+    width: 100%;
+}
 ::selection{
     background: #026e15;
     color: white;
@@ -171,4 +175,12 @@ hr{
 {
     opacity:0.2 !important;
     background: #000;
+}
+
+
+.login_form_card{
+
+}
+.create_account_form_card{
+
 }

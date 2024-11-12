@@ -2,26 +2,47 @@
 	{% block content %}
 		<div class="container">
 			<div class="row">
-				<div class="col-md-2">
+				<div class="col-md-3 border_right">
 					
 				</div>
-				<div class="col-md-10">
-					<div class="card">
+				<div class="col-md-6 ">
+					<br><br><br>
+					<div class="card p-3">
 						<br>
 						<h1 class="page_heading">My account</h1>
 						<br>
 						<hr>
 						<br>
 
-						<p>
-							<b>First name: </b> {{user.first_name}} | <b>Last name: </b> {{user.last_name}}<br>
-							<b>Date joined: </b> {{user.date_joined}} <b>Last visit: </b> {{user.last_login}}<br>
-							<b>Email address: </b>{{user.email}}
-						</p>
+
+
+						<div class="row">
+							<div class="col-md-6">
+								<p><b>First name: </b> {{user.first_name}}</p>
+							</div>
+							<div class="col-md-6">
+									<p><b>Last name: </b> {{user.last_name}}</p>
+							</div>
+
+							<div class="col-md-6">
+								<p><b>Date joined: </b> {{user.date_joined}}</p>
+							</div>
+							<div class="col-md-6">
+							<p>	<b>Last visit: </b> {{user.last_login}}</p>
+							</div>
+								<div class="col-md-6">
+								<p><b>Email address: </b>{{user.email}}</p>
+							</div>
+							<div class="col-md-6">
+								<p><b>Phone number: </b>{{user.phone_number}}</p>
+							</div>
+						</div>
+						<br>
+						<hr>
 						<br>
 					</div>
-					<div class="card">
-						<h1 class="page_heading">Change username</h1>
+					<div class="card p-3">
+						<h1 class="page_sub_heading">Change username</h1>
 						<br>
 						<hr>
 						<br>
@@ -29,35 +50,61 @@
 						<form method="POST">
 							{% csrf_token %}
 						{{change_username_form.username}}
-						<button class="button-green md">Change username</button>
+						<br>
+						<button class="button green sm">Change username</button>
 					</form>
 					<br>
+					<hr>
+					<br>
 					</div>
-					<div class="card">
-						<h1 class="page_heading">Change password</h1>
-						<br>
-						<hr>
+					<div class="card p-3">
+
+						<h1 class="page_sub_heading">Change password</h1>
+						
 						<br>
 						<form method="POST">
 							{% csrf_token %}
 						{{change_password_form.email}}
 						{{change_password_form.password1}}
 						{{change_password_form.password2}}
-						<button class="button-green md">Change password</button>
+						<br>
+						<button class="button green sm">Change password</button>
 						</form>
+						<br>
 					</div>
-					<div class="card">
-						<h1 class="page_heading">Email settings</h1>
+					<div class="card p-3">
+						<h1 class="page_sub_heading">Email settings</h1>
+
 						<br>
 						<hr>
 						<br>
 					</div>
-					<div class="card">
-						<h1 class="page_heading">Delete or de-activate account</h1>
+					<div class="card p-3">
+						<h1 class="page_sub_heading">Delete or de-activate account</h1>
 						<br>
 						<hr>
 						<br>
+					<div class="row">
+						
+						<div class="col-lg-12">
+<p><h6>Permanently delete account</h6>Deleting your account will result in data loss, contributions, and shared recipes.
+
+
+Are you sure you want to proceed with account deletion? This action cannot be reversed!</p>
+<br>
+							<a href="{% url 'accounts:delete_account_success' user.pk %}" class="button red sm ">Delete account</a> <br>
+<br><hr><br>
+						</div>
+						
+						<div class="col-lg-12">
+
+<p><h6>Temporarily de-activate account</h6> This will freeze your account until your next login.
+</p><br>
+
+							<a href="" class="button orange sm  ">De-activate</a></div>
+				</div>
 					</div>
+					<br><br><br><br><br><br><br>
 				</div>
 				
 			</div>

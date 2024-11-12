@@ -57,7 +57,7 @@ from .models import StrainLineageDetailsListItem
 from .models import FeelingReportListSet
 from .models import FeelingReportList
 from .models import FeelingReport
-
+from .models import Potency
 
 class StrainFilter(django_filters.FilterSet):
 
@@ -73,11 +73,11 @@ class StrainFilter(django_filters.FilterSet):
 	may_relieve = django_filters.ModelMultipleChoiceFilter(queryset=HelpsWithReport.objects.all())
 	flavors = django_filters.ModelMultipleChoiceFilter(queryset=FlavorsDetails.objects.all())
 	release_year = django_filters.DateRangeFilter(field_name='date_created', lookup_expr='year')
-
+	potency = django_filters.ModelMultipleChoiceFilter(queryset=Potency.objects.all())
 
 	class Meta:
 		model = Strain
-		fields = ['title','brand','strain_type','dispensaries','feelings','terpenes_reports','may_relieve','flavors']
+		fields = ['title','brand','strain_type','dispensaries','feelings','terpenes_reports','may_relieve','flavors','potency']
 		
 
 

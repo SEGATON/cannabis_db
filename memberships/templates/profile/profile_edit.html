@@ -2,19 +2,25 @@
 	{% block content %}
 		<div class="container">
 			<div class="row">
-				<div class="col-md-2">
+				<div class="col-md-3 border_right">
 					
 				</div>
-				<div class="col-md-10">
+				<div class="col-md-6 ">
+					<div class="card p-3">
+	<br>
+						<h1 class="page_heading">Edit profile</h1>
+						<br>
+						<hr>
+						<br>
 					<form method="POST">
 						{% csrf_token %}
 					{{edit_profile_form.as_p}}
-					<button>Edit profile</button>
+					<button class="button md green">Edit profile</button>
 				</form>
 					{{edit_profile_social_profiles_form}}
 					{{change_profile_avatar_form}}
 				</div>
-				
+				</div>
 			</div>
 		</div>
 	{% endblock %}

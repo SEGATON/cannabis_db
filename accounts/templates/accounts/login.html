@@ -11,13 +11,13 @@
 
 
 
-<div class="chobbo">
+<div class="light_gray_section_background">
   <div class="container ">
   <div class="row">
 <div class="col-md-4"></div>
     <div class="col-md-4">
-      <div class="filler"></div>
-<div class="  card p-2">
+
+<div class="  card login_form_card p-3">
 <h3>Login</h3>
 
 <hr>
@@ -26,9 +26,11 @@
 <br>
     <p class="text-center">Login with</p>
 <br>
-    <a href="{% provider_login_url "facebook"  %}"  class="button-full lrg f-btn darkest-green"><svg xmlns="http://www.w3.org/2000/svg" width="1em" height="1em" viewBox="0 0 24 24"><path fill="currentColor" d="M14 13.5h2.5l1-4H14v-2c0-1.03 0-2 2-2h1.5V2.14c-.326-.043-1.557-.14-2.857-.14C11.928 2 10 3.657 10 6.7v2.8H7v4h3V22h4z"/></svg></a>
-    <a href="{% provider_login_url "twitter"  %}"  class="button-full lrg  t-btn darker-green"><svg xmlns="http://www.w3.org/2000/svg" width="1em" height="1em" viewBox="0 0 14 14"><g fill="none"><g clip-path="url(#primeTwitter0)"><path fill="currentColor" d="M11.025.656h2.147L8.482 6.03L14 13.344H9.68L6.294 8.909l-3.87 4.435H.275l5.016-5.75L0 .657h4.43L7.486 4.71zm-.755 11.4h1.19L3.78 1.877H2.504z"/></g><defs><clipPath id="primeTwitter0"><path fill="#fff" d="M0 0h14v14H0z"/></clipPath></defs></g></svg></a>
-    <a href="{% provider_login_url "google"  %}"  class="button-full lrg g-btn dark-green"><svg xmlns="http://www.w3.org/2000/svg" width="1em" height="1em" viewBox="0 0 24 24"><path fill="currentColor" d="M12.222 5.977a5.4 5.4 0 0 1 3.823 1.496l2.868-2.868A9.6 9.6 0 0 0 12.222 2a10 10 0 0 0-8.937 5.51l3.341 2.59a5.96 5.96 0 0 1 5.596-4.123" opacity="0.7"/><path fill="currentColor" d="M3.285 7.51a10.01 10.01 0 0 0 0 8.98l3.341-2.59a5.9 5.9 0 0 1 0-3.8z"/><path fill="currentColor" d="M15.608 17.068A6.033 6.033 0 0 1 6.626 13.9l-3.34 2.59A10 10 0 0 0 12.221 22a9.55 9.55 0 0 0 6.618-2.423z" opacity="0.5"/><path fill="currentColor" d="M21.64 10.182h-9.418v3.868h5.382a4.6 4.6 0 0 1-1.996 3.018l-.01.006l.01-.006l3.232 2.51a9.75 9.75 0 0 0 2.982-7.35q0-1.032-.182-2.046" opacity="0.25"/></svg></a>
+    <a href="{% provider_login_url "facebook"  %}"  class="button md full login_with_f_btn "><svg xmlns="http://www.w3.org/2000/svg" width="1em" height="1em" viewBox="0 0 24 24"><path fill="currentColor" d="M14 13.5h2.5l1-4H14v-2c0-1.03 0-2 2-2h1.5V2.14c-.326-.043-1.557-.14-2.857-.14C11.928 2 10 3.657 10 6.7v2.8H7v4h3V22h4z"/></svg></a>
+
+    <a href="{% provider_login_url "twitter"  %}"  class="button md full login_with_x_btn"><svg xmlns="http://www.w3.org/2000/svg" width="1em" height="1em" viewBox="0 0 14 14"><g fill="none"><g clip-path="url(#primeTwitter0)"><path fill="currentColor" d="M11.025.656h2.147L8.482 6.03L14 13.344H9.68L6.294 8.909l-3.87 4.435H.275l5.016-5.75L0 .657h4.43L7.486 4.71zm-.755 11.4h1.19L3.78 1.877H2.504z"/></g><defs><clipPath id="primeTwitter0"><path fill="#fff" d="M0 0h14v14H0z"/></clipPath></defs></g></svg></a>
+
+    <a href="{% provider_login_url "google"  %}"  class="button md full login_with_g_btn"><svg xmlns="http://www.w3.org/2000/svg" width="1em" height="1em" viewBox="0 0 24 24"><path fill="currentColor" d="M12.222 5.977a5.4 5.4 0 0 1 3.823 1.496l2.868-2.868A9.6 9.6 0 0 0 12.222 2a10 10 0 0 0-8.937 5.51l3.341 2.59a5.96 5.96 0 0 1 5.596-4.123" opacity="0.7"/><path fill="currentColor" d="M3.285 7.51a10.01 10.01 0 0 0 0 8.98l3.341-2.59a5.9 5.9 0 0 1 0-3.8z"/><path fill="currentColor" d="M15.608 17.068A6.033 6.033 0 0 1 6.626 13.9l-3.34 2.59A10 10 0 0 0 12.221 22a9.55 9.55 0 0 0 6.618-2.423z" opacity="0.5"/><path fill="currentColor" d="M21.64 10.182h-9.418v3.868h5.382a4.6 4.6 0 0 1-1.996 3.018l-.01.006l.01-.006l3.232 2.51a9.75 9.75 0 0 0 2.982-7.35q0-1.032-.182-2.046" opacity="0.25"/></svg></a>
 
 <p class="text-center">- or -</p>
 
@@ -41,7 +43,7 @@
     <tr><td class="p-0"><input type="hidden" name="{{ redirect_field_name }}" value="{{ redirect_field_value }}" /></td></tr>
     {% endif %}
     <tr><td class="p-0"><p><a class="button secondaryAction" href="{% url 'account_reset_password' %}">{% trans "Forgot Password?" %}</a></p></td></tr>
-    <tr><td class="p-0"><button class="primaryAction button button-green button-full lrg" type="submit">{% trans "Sign In" %}</button></td></tr>
+    <tr><td class="p-0"><button class="primaryAction button md full login_btn" type="submit">{% trans "Login" %}</button></td></tr>
 
   </form>
 </table>
@@ -62,9 +64,6 @@
 </div>
 </div>
 
-<div class="chabba">
 
-</div>
-<div class="filler_large"></div>
 
 {% endblock %}

@@ -54,9 +54,10 @@ urlpatterns = [
 	path('maps/', views.maps, name='maps'),
 	path('sitemap.xml', sitemap, {'sitemaps': sitemaps}, name='django.contrib.sitemaps.views.sitemap'),
 	path('bookmarks/', views.bookmarks, name='bookmarks'),
-	path('add_to_bookmarks/<int:id>/', views.add_to_bookmarks, name='add_to_bookmarks'),
+	path('add_to_bookmarks/<int:pk>/', views.add_to_bookmarks, name='add_to_bookmarks'),
 	path('remove-from-bookmarks/<int:id>/', views.remove_from_bookmarks, name='remove_from_bookmarks'),
-	path('consumed/<int:pk>/', views.consumed, name='consumed')
+	path('consumed/<int:pk>/', views.consumed, name='consumed'),
+	path('contact/', views.contact, name='contact')
 
 ]
 

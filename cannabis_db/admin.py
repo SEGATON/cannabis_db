@@ -56,7 +56,7 @@ from .models import EffectReport
 from .models import EffectReportList
 from .models import EffectsReportListSet
 
-
+from .models import Potency
 from .models import Category
 from .models import Product
 
@@ -72,6 +72,11 @@ class CategoryAdmin(admin.ModelAdmin):
 class ProductAdmin(admin.ModelAdmin):
 	pass
 
+
+
+@admin.register(Potency)
+class PotencyAdmin(admin.ModelAdmin):
+	pass
 
 
 
