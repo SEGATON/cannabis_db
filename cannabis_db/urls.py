@@ -58,7 +58,8 @@ urlpatterns = [
 	path('remove-from-bookmarks/<int:id>/', views.remove_from_bookmarks, name='remove_from_bookmarks'),
 	path('consumed/<int:pk>/', views.consumed, name='consumed'),
 	path('contact/', views.contact, name='contact'),
-	path('follow-dispensary/<int:pk>/', views.follow_dispensary, name='follow_dispensary')
+	path('follow-dispensary/<int:pk>/', views.follow_dispensary, name='follow_dispensary'),
+	path('terms-and-conditions/', views.terms_conditions, name='terms_conditions')
 
 ]
 

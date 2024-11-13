@@ -10,7 +10,6 @@ urlpatterns = [
 	path('delete_profile/<int:pk>/', views.delete_profile, name='delete_profile'),
 	path('follow-profile/<int:pk>/', views.follow_profile, name='follow_profile'),
 	path('public-profile/<int:pk>/', PublicProfile.as_view(), name='public_profile'),
-	path('edit-profile/<int:pk>/', views.edit_profile, name='edit_profile'),
 	path('follow-user/<int:pk>/', views.follow_user, name='follow_user'),
 	path('unfollow-user/<int:pk>/', views.unfollow_user, name='unfollow_user'),
 	path('submit-strain/<int:pk>/', views.submit_strain, name='submit_strain'),

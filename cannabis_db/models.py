@@ -16,7 +16,7 @@ from django_countries.fields import CountryField
 from django.conf import settings
 
 
-
+from star_ratings.models import AbstractBaseRating
 
 from cloudinary.forms import CloudinaryFileField
 
@@ -334,7 +334,8 @@ class AromasDetails(models.Model):
 	slug = models.SlugField(max_length=50, null=True,blank=True)
 	aromas_icon = models.ImageField(upload_to='media/CANNABIS_DB/GALLERY_IMAGES/', null=True, blank=True, max_length=500)
 
-
+	def __str__(self):
+		return self.title
 class AromasDetailsList(models.Model):
 	aromas_list = models.ManyToManyField(AromasDetails)
 
@@ -961,4 +962,7 @@ class Product(models.Model):
 	categories = models.ManyToManyField(Category, null=True, blank=True)
 	def __str__(self):
 		return self.title
+
+
+
 

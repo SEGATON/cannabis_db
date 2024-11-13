@@ -1,9 +1,18 @@
 {% extends 'template_parts/base.html' %}
+{% load thumbnail %}
+
 	{% block content %}
 		<div class="container">
 			<div class="row">
-				<div class="col-md-3 border_right">
-					
+				<div class="col-md-2 border_right">
+					<div class="filler"></div>
+						<div class="card">
+
+							<img src="{% thumbnail user.profile.profile_photo 200x200 crop %}" class="img-fluid radius_md">
+						</div>
+						<div class="card">
+						
+						</div>
 				</div>
 				<div class="col-md-6 ">
 					<div class="card p-3">

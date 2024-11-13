@@ -3,7 +3,7 @@ html{
 width: 100%;
 }
 body{
-  font-family: "Work Sans", sans-serif;
+  font-family: "Mona Sans", sans-serif;
 height: 100%;
 width: 100%;
 	background: #fff;
@@ -12,6 +12,7 @@ width: 100%;
     background: #EEEEEE;
     height: 100%;
     width: 100%;
+
 }
 ::selection{
     background: #026e15;
@@ -179,7 +180,15 @@ hr{
 
 
 .login_form_card{
-
+    margin-top: 180px;
+}
+.create_account_form_card{
+      margin-top: 180px;
+      margin-bottom: 380px;
+}
+.contact_form_card{
+          margin-top: 180px;
+      margin-bottom: 180px;
 }
 .create_account_form_card{
 

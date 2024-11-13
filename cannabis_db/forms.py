@@ -13,6 +13,12 @@ class AddDispensaryForm(forms.ModelForm):
 
 
 class ContactForm(forms.ModelForm):
+	title = forms.CharField(widget=forms.TextInput(attrs={'class':'form-control','placeholder':'Title'}))
+	subject = forms.CharField(widget=forms.TextInput(attrs={'class':'form-control','placeholder':'Subject'}))
+	email = forms.CharField(widget=forms.TextInput(attrs={'class':'form-control','placeholder':'Email'}))
+	file = forms.CharField(widget=forms.FileInput(attrs={'class':'form-control','placeholder':'File'}))
+	phone = forms.CharField(widget=forms.TextInput(attrs={'class':'form-control','placeholder':'Phone'}))
+	message =forms.CharField(widget=forms.Textarea(attrs={'class':'form-control','placeholder':'Message'}))
 
 	class Meta:
 		model = ContactMessage

@@ -493,3 +493,22 @@ def follow_dispensary(request, pk):
 
 
 	return HttpResponseRedirect(request.META['HTTP_REFERER'])
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+def terms_conditions(request):
+
+	return render(request, 'views/static_views/terms_conditions.html', {
+
+		})

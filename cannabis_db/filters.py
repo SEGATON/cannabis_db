@@ -38,7 +38,7 @@ from .models import AromasListSet
 from .models import AromasDetailsList
 from .models import AromasDetails
 from .models import Rating
-
+from .models import AromasDetails
 from .models import StrainKeywords
 from .models import StrainKeywordsSet
 from .models import StrainMetasSet
@@ -74,10 +74,10 @@ class StrainFilter(django_filters.FilterSet):
 	flavors = django_filters.ModelMultipleChoiceFilter(queryset=FlavorsDetails.objects.all())
 	release_year = django_filters.DateRangeFilter(field_name='date_created', lookup_expr='year')
 	potency = django_filters.ModelMultipleChoiceFilter(queryset=Potency.objects.all())
-
+	aromas = django_filters.ModelMultipleChoiceFilter(queryset=AromasDetails.objects.all())
 	class Meta:
 		model = Strain
-		fields = ['title','brand','strain_type','dispensaries','feelings','terpenes_reports','may_relieve','flavors','potency']
+		fields = ['title','brand','strain_type','dispensaries','feelings','terpenes_reports','may_relieve','flavors','potency','aromas']
 		
 
 

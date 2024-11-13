@@ -21,9 +21,23 @@ from django.contrib.auth.forms import PasswordChangeForm
 
 def profile(request):
 	strains = Strain.objects.filter(bookmarks=request.user)
+
+	if request.method == 'POST':
+
+		change_profile_photo_form = ChangeProfilePhotoForm(request.POST, request.FILES, instance=request.user.profile)
+		if change_profile_photo_form.is_valid():
+			saga = change_profile_photo_form.save(commit=True)
+			saga.user = request.user 
+			saga.save()
+
+			return redirect('memberships:profile')
+	else:
+		change_profile_photo_form = ChangeProfilePhotoForm()
+
 	return render(request, 'profile/profile.html', {
 		'title':'Profile' + ' | ' + request.user.username ,
-		'strains':strains
+		'strains':strains,
+		'change_profile_photo_form':change_profile_photo_form
 		
 		})
 
@@ -47,11 +61,7 @@ class PublicProfile(generic.DetailView):
 
 		return context
 
-def edit_profile(request, pk):
-	
-	return render(request, 'profile/edit_profile.html', {
-		
-		})
+
 
 def delete_profile(request, pk):
 	
@@ -75,7 +85,7 @@ def edit_profile(request, pk):
 			chuchut = edit_profile_form.save(commit=True)
 			chuchut.user = request.user
 			chuchut.save()
-			return redirect('memberships:profile')
+			return HttpResponseRedirect(request.META['HTTP_REFERER'])
 	else:
 		edit_profile_form = EditProfileForm()
 
@@ -89,13 +99,13 @@ def edit_profile(request, pk):
 			chagga = edit_profile_social_profiles_form.save(commit=None)
 			chagga.user = request.user 
 			chagga.save()
-			return redirect('memberships:profile')
+			return HttpResponseRedirect(request.META['HTTP_REFERER'])
 	else:
 		edit_profile_social_profiles_form = EditProfileSocialProfilesForm()
 
 
 	if request.method == 'POST':
-		change_profile_avatar_form = ChangeProfilePhotoForm(request.POST, request.FILES, instance=request.user)
+		change_profile_avatar_form = ChangeProfilePhotoForm(request.POST, request.FILES, instance=request.user.profile)
 		if change_profile_avatar_form.is_valid():
 			cpaf = change_profile_avatar_form.save(commit=False)
 			cpaf.user = request.user 

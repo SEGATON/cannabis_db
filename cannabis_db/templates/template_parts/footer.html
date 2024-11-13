@@ -46,7 +46,7 @@
 	<li><a href="{% url 'cannabis_db:brands' %}">Brands</a></li> | 
 	<li><a href="">Products</a></li> | 
 	
-	<li><a href="">Terms of Use</a></li> | 
+	<li><a href="{% url 'cannabis_db:terms_conditions' %}">Terms & Conditions</a></li> | 
 	<li><a href="">Privacy Policy</a></li> |
 	{% if user.is_authenticated %}
 	<li><a href="{% url 'accounts:front_page' %}">My account</a></li> | 
