@@ -63,14 +63,15 @@ from django.db.models import Q
 
 from django.views import generic
 
+from django.core.paginator import Paginator
 
 
 def front_page(request):
 	strains = Strain.objects.all()
 
 
-	latest_strains = Strain.objects.all().order_by('-date_created')
-	featured_strains = Strain.objects.filter(featured=True)
+	latest_strains = Strain.objects.all().order_by('-date_created')[:12]
+	featured_strains = Strain.objects.filter(featured=True)[:12]
 
 	return render(request, 'template_parts/front_page.html', {
 			'strains':strains,
@@ -84,8 +85,15 @@ def strains(request):
 
 	f = StrainFilter(request.GET, queryset=Strain.objects.all())
 
+	paginator = Paginator(strains, 25)
+
+	page_number = request.GET.get("page")
+	page_obj = paginator.get_page(page_number)
+
+
+
 	return render(request, 'strains/strains.html', {
-			'strains':strains,
+			'page_obj':page_obj,
 			'filter':f,
 			'title':'StrainsDB | An Online Cannabis Strains Database'
 

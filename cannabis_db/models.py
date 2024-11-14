@@ -549,6 +549,8 @@ class Brand(models.Model):
 
 	dispensary = models.ManyToManyField('Dispensary',null=True, blank=True )
 
+
+
 	claimed = models.BooleanField(default=False,null=True, blank=True )
 
 
@@ -640,6 +642,7 @@ class Dispensary(models.Model):
 		('medical','Medical'),
 		('recreational','Recreational'),
 		('medical_recreational','Medical & Recreational'),
+		('seed_bank','Seed Bank'),
 	}
 	type_of_dispensary = models.CharField(max_length=50, choices=TYPE_OF_DISPENSARY, null=True, blank=True)
 	SHOPPING_OPTIONS = {
@@ -684,6 +687,9 @@ class Dispensary(models.Model):
 	claimed = models.BooleanField(default=False)
 
 	followers = models.ManyToManyField(CustomUser, null=True, blank=True)
+
+
+	
 
 	def get_absolute_url(self):
 		return reverse('cannabis_db:dispensary', args=[self.slug])
@@ -774,7 +780,7 @@ STRAIN MODEL
 
 
 class Potency(models.Model):
-	title = models.CharField(max_length=50)
+	title = models.CharField(max_length=50, null=True,blank=True)
 	slug = models.SlugField(max_length=50)	
 	description = RichTextField(max_length=5000, null=True,blank=True)
 
@@ -802,7 +808,7 @@ class Strain(models.Model):
 		)
 
 	potency = models.ForeignKey(Potency,on_delete=models.CASCADE, null=True, blank=True)
-
+	seeds = models.ManyToManyField(Brand, related_name='seed_bank_brands')
 	title = models.CharField(max_length=50)
 	slug = models.SlugField(max_length=50)
 	headline = models.CharField(max_length=150, null=True, blank=True)
@@ -826,7 +832,7 @@ class Strain(models.Model):
 	likes = models.ManyToManyField(CustomUser, related_name='strain_likes', null=True,blank=True)
 	dislikes = models.ManyToManyField(CustomUser, related_name='strain_dislikes', null=True,blank=True)
 	saves = models.ManyToManyField('memberships.Profile', null=True,blank=True, related_name='strain_saves')
-	date_created = models.DateTimeField(auto_now_add=True)
+	date_created = models.DateTimeField(auto_now_add=True, null=True,blank=True)
 	date_updated = models.DateTimeField(auto_now_add=True, null=True,blank=True)
 	dispensaries = models.ManyToManyField(Dispensary, null=True,blank=True)
 
@@ -840,7 +846,7 @@ class Strain(models.Model):
 	users_smoked = models.ManyToManyField(CustomUser, null=True, blank=True, related_name='users_smoked')
 	bookmarks = models.ManyToManyField(CustomUser, null=True, blank=True, related_name='bookmarked_by')
 	def __str__(self):
-		return self.title
+		return str(self.title)
 
 	def get_absolute_url(self):
 
