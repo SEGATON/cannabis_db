@@ -9,7 +9,7 @@
 			<div class="filler"></div>
 			{% include 'filters/sorting.html' %}
 			<div class="row g-2">
-				{% for strain in page_obj %}			
+				{% for strain in filter.qs %}			
 					<div class="col-md-2 ">
 						<div class="card">
 							<a href="{{strain.get_absolute_url}}">
@@ -24,7 +24,7 @@
 				{% endfor %}
 			</div>
 			{% for contact in page_obj %}
-    {# Each "contact" is a Contact model object. #}
+    {# Each "strain" is a Strain model object. #}
     {{ contact.full_name|upper }}<br>
     
 {% endfor %}

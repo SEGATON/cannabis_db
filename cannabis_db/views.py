@@ -85,15 +85,9 @@ def strains(request):
 
 	f = StrainFilter(request.GET, queryset=Strain.objects.all())
 
-	paginator = Paginator(strains, 25)
-
-	page_number = request.GET.get("page")
-	page_obj = paginator.get_page(page_number)
-
-
-
+	
 	return render(request, 'strains/strains.html', {
-			'page_obj':page_obj,
+			'strains':strains,
 			'filter':f,
 			'title':'StrainsDB | An Online Cannabis Strains Database'
 

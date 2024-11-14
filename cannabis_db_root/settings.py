@@ -232,8 +232,8 @@ LOGIN_REDIRECT_URL = 'memberships:profile'
 
 
 
-
-
+STAR_RATINGS_STAR_HEIGHT = 20
+STAR_RATINGS_STAR_WIDTH = 20
 
 
 
