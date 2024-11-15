@@ -82,17 +82,34 @@ def front_page(request):
 
 def strains(request):
 	strains = Strain.objects.all()
-
-	f = StrainFilter(request.GET, queryset=Strain.objects.all())
-
+	f = StrainFilter(request.GET, queryset=strains)
+	paginator = Paginator(f.qs, 50)
+	page_number = request.GET.get("page")
+	strains_qs = paginator.get_page(page_number)
 	
 	return render(request, 'strains/strains.html', {
-			'strains':strains,
+			'strains':strains_qs,
 			'filter':f,
 			'title':'StrainsDB | An Online Cannabis Strains Database'
 
 		})
 
+
+'''
+
+def posts(request):
+    posts = Post.objects.all()
+    post_filter = PostsFilter(request.GET, queryset=posts)
+    paginator = Paginator(post_filter.qs, 50)
+    page_number = request.GET.get('page')
+    posts_qs = paginator.get_page(page_number)
+    return render(
+        request,
+        'posts/posts.html',
+        {'posts': posts_qs.object_list, 'filter': post_filter, 'title': 'Posts'},
+    )
+
+'''
 
 ####################################################################################################################################################################
 

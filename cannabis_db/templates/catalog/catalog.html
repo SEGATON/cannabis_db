@@ -9,7 +9,7 @@
 			<div class="filler"></div>
 			{% include 'filters/sorting.html' %}
 			<div class="row g-2">
-				{% for strain in filter.qs %}			
+				{% for strain in strains %}			
 					<div class="col-md-2 ">
 						<div class="card">
 							<a href="{{strain.get_absolute_url}}">
@@ -31,18 +31,18 @@
 
 <div class="pagination">
     <span class="step-links">
-        {% if page_obj.has_previous %}
+        {% if strains.has_previous %}
             <a href="?page=1">&laquo; first</a>
-            <a href="?page={{ page_obj.previous_page_number }}">previous</a>
+            <a href="?page={{ strains.previous_page_number }}">previous</a>
         {% endif %}
 
         <span class="current">
-            Page {{ page_obj.number }} of {{ page_obj.paginator.num_pages }}.
+            Page {{ strains.number }} of {{ strains.paginator.num_pages }}.
         </span>
 
-        {% if page_obj.has_next %}
-            <a href="?page={{ page_obj.next_page_number }}">next</a>
-            <a href="?page={{ page_obj.paginator.num_pages }}">last &raquo;</a>
+        {% if strains.has_next %}
+            <a href="?page={{ strains.next_page_number }}">next</a>
+            <a href="?page={{ strains.paginator.num_pages }}">last &raquo;</a>
         {% endif %}
     </span>
 </div>
