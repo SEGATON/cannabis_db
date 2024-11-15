@@ -80,7 +80,7 @@ class ProductAdmin(admin.ModelAdmin):
 
 
 @admin.register(Potency)
-class PotencyAdmin(admin.ModelAdmin):
+class PotencyAdmin(ImportExportModelAdmin):
 	pass
 
 

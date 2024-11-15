@@ -783,7 +783,8 @@ class Potency(models.Model):
 	title = models.CharField(max_length=50, null=True,blank=True)
 	slug = models.SlugField(max_length=50)	
 	description = RichTextField(max_length=5000, null=True,blank=True)
-
+	def __str__(self):
+		return str(self.title)
 
 class Strain(models.Model):
 	STATUS = (
@@ -845,6 +846,9 @@ class Strain(models.Model):
 
 	users_smoked = models.ManyToManyField(CustomUser, null=True, blank=True, related_name='users_smoked')
 	bookmarks = models.ManyToManyField(CustomUser, null=True, blank=True, related_name='bookmarked_by')
+
+	
+
 	def __str__(self):
 		return str(self.title)
 
