@@ -87,8 +87,8 @@
 									  <div class="tab-pane fade" id="nav-contact" role="tabpanel" aria-labelledby="nav-contact-tab" tabindex="0">
 									  	
 
-									 			<div class="row g-3">
-				{% for strain in strains %}			
+									 		
+				{% for strain in request.user.profile.saved_strains.all %}			
 					<div class="col-md-2">
 						<div class="card">
 							<a href="{{strain.get_absolute_url}}">
@@ -101,7 +101,7 @@
 					</div>		
 							
 				{% endfor %}
-			</div>
+			
 									  </div>
 
 

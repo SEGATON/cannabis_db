@@ -434,17 +434,16 @@ def bookmarks(request):
 			'strains':strains
 		})
 
-@login_required
+
 def add_to_bookmarks(request, pk):
 
 	strain = get_object_or_404(Strain, pk=pk)
-	user = request.user
+	profile = Profile.objects.filter(user=request.user)
 
-	if request.user not in strain.bookmarks.all():
-		strain.bookmarks.add(request.user)
+	if strain not in request.user.profile.saved_strains.all():
+		request.user.profile.saved_strains.add(strain)
 	else:
-		strain.bookmarks.remove(request.user)
-
+		request.user.profile.saved_strains.remove(strain)
 
 	return HttpResponseRedirect(request.META['HTTP_REFERER'])
 
