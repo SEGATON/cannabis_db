@@ -367,20 +367,24 @@ def faq_page(request):
 		})
 
 
+def privacy_policy(request):
+	return render(request, 'views/static_views/privacy_policy.html', {
 
-def search(request):
-	return render(request, 'components/search_form.html', {
+		})
+
+def search_results(request):
+	return render(request, 'components/search/search_results.html', {
 
 		})
 
 
-def search_results(request):
+def search(request):
 
 	search_qs = {}
 
 	begins_with = ''
 
-	query = request.GET.get('s_query')
+	query = request.GET.get('search_query')
 
 	strain_search_results_qs = Strain.objects.filter(Q(title__icontains=query))
 
@@ -390,7 +394,9 @@ def search_results(request):
 
 
 
-	return JsonResponse(search_qs)
+	return render(request, 'components/search/search_results.html', {
+		'strain_search_results_qs':strain_search_results_qs
+		})
 
 
 
@@ -530,3 +536,12 @@ def terms_conditions(request):
 	return render(request, 'views/static_views/terms_conditions.html', {
 
 		})
+
+
+
+def process_search_form(request):
+
+	if request.method == 'POST':
+		search_q = request.POST['search_query']
+
+	return HttpResponseRedirect(request.META['HTTP_REFERER'])

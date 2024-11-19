@@ -21,7 +21,17 @@ from star_ratings.models import AbstractBaseRating
 from cloudinary.forms import CloudinaryFileField
 
 
+class NewslettersSubscriptions(models.Model):
+	email = models.EmailField(max_length=50)
 
+	def __str__(self):
+		return None
+
+	class Meta:
+		verbose_name_plural = 'Newsletters Subscription'
+
+
+		
 class ContactMessage(models.Model):
 	title = models.CharField(max_length=1000)
 	subject = models.CharField(max_length=1000)

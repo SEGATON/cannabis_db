@@ -60,9 +60,13 @@ from .models import Potency
 from .models import Category
 from .models import Product
 
-
+from .models import  NewslettersSubscriptions
 
 from import_export.admin import ImportExportModelAdmin
+
+@admin.register(NewslettersSubscriptions)
+class NewslettersSubscriptionsAdmin(ImportExportModelAdmin):
+	pass
 
 @admin.register(ContactMessage)
 class ContactMessageAdmin(admin.ModelAdmin):

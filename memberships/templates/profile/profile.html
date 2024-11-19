@@ -71,7 +71,7 @@
 
 
 
-									    <button class="nav-link" id="nav-nav-strains-consumed-tab" data-bs-toggle="tab" data-bs-target="#nav-strains-consumed" type="button" role="tab" aria-controls="nav-contact" aria-selected="false"><svg xmlns="http://www.w3.org/2000/svg" width="1em" height="1em" viewBox="0 0 16 16"><path fill="#018223" fill-rule="evenodd" d="M4.76 1.5c-1.278 0-2.365.459-3.127 1.296C.878 3.624.5 4.758.5 6.013c0 2.18 1.11 3.917 2.52 5.268c1.404 1.345 3.17 2.368 4.632 3.133a.75.75 0 0 0 .693.002c1.463-.757 3.228-1.788 4.633-3.14c1.41-1.355 2.522-3.098 2.522-5.263c0-1.26-.38-2.393-1.136-3.221c-.763-.835-1.85-1.293-3.124-1.293c-1.076 0-1.966.399-2.643 1.151A4.5 4.5 0 0 0 8 3.504a4.5 4.5 0 0 0-.597-.854C6.726 1.898 5.836 1.5 4.76 1.5" clip-rule="evenodd"/></svg> Strains consumed</button>
+									    <button class="nav-link" id="nav-nav-strains-consumed-tab" data-bs-toggle="tab" data-bs-target="#nav-strains-consumed" type="button" role="tab" aria-controls="nav-contact" aria-selected="false"><svg xmlns="http://www.w3.org/2000/svg" width="1.2em" height="1.2em" viewBox="0 0 24 24"><path fill="#2a4d00" d="M17 19v3h-2v-3c0-1.1-.9-2-2-2h-3c-2.8 0-5-2.2-5-5c0-1.2.4-2.2 1.1-3.1C3.8 8.5 2 6.4 2 4c0-.7.2-1.4.4-2h2.4c-.5.5-.8 1.2-.8 2c0 1.7 1.3 3 3 3h3v2c-1.7 0-3 1.3-3 3s1.3 3 3 3h3c2.2 0 4 1.8 4 4m.9-10.1C20.2 8.5 22 6.4 22 4c0-.7-.2-1.4-.4-2h-2.4c.5.5.8 1.2.8 2c0 1.7-1.3 3-3 3h-1.2c.1.3.2.6.2 1c0 1.7-1.3 3-3 3v2c2.8 0 5 2.2 5 5v4h2v-4c0-2.7-1.5-5-3.8-6.2c.9-.7 1.5-1.7 1.7-2.9"/></svg> Strains consumed</button>
 
 
 
@@ -87,10 +87,10 @@
 									  <div class="tab-pane fade" id="nav-contact" role="tabpanel" aria-labelledby="nav-contact-tab" tabindex="0">
 									  	
 
-									 		
+									 		<div class="row">
 				{% for strain in request.user.profile.saved_strains.all %}			
 					<div class="col-md-2">
-						<div class="card">
+						<div class="card p-0">
 							<a href="{{strain.get_absolute_url}}">
 								<img src="{% thumbnail strain.featured_image 700x700 crop %}" class="img-fluid radius_md">
 							</a>
@@ -101,16 +101,17 @@
 					</div>		
 							
 				{% endfor %}
-			
+			</div>
 									  </div>
 
 
 
 
 <div class="tab-pane fade  " id="nav-strains-consumed" role="tabpanel" aria-labelledby="nav-strains-consumed" tabindex="0">
+	<div class="row">
 					{% for strain in request.user.users_smoked.all %}			
 					<div class="col-md-2">
-						<div class="card">
+						<div class="card p-0">
 							<a href="{{strain.get_absolute_url}}">
 								<img src="{% thumbnail strain.featured_image 700x700 crop %}" class="img-fluid radius_md">
 							</a>
@@ -121,6 +122,7 @@
 					</div>		
 							
 				{% endfor %}
+			</div>
 </div>
 
 

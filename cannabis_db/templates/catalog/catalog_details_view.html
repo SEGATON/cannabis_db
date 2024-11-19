@@ -152,6 +152,11 @@
 					{{strain_specification.specification_value}}
 					{{strain_specification.get_specification_value_label_display}}</p>
 				{% endfor %}	
+
+				<br>
+				<hr>
+				<br>
+				<h5>Potency <span style="font-weight:300;">{{strain.potency.title}} |  {{strain.potency.description|safe}}</span></h5>
 				</div>
 						
 
@@ -398,20 +403,11 @@
 		<div class="row">
 					<h5>Where to buy</h5>
 						<br><br>
-					{% if strain.dispensaries %}
-					{% for strain_dispensary_sold_in in dispensaries.all %}
-					<div class="col-auto">
-						<img src="{% thumbnail strain_dispensary_sold_in.dispensary_logo 20x20  crop %}" class="img-fluid">
-					</div>
-					<div class="col-md-11">
-						<a href="{{strain_dispensary_sold_in.get_absolute_url}}" class="">{{strain_dispensary_sold_in.title}}</a>
-					</div>
-				
-					{% endfor %}
-					{% else %}				
-						<p>Not available.</p>
-					{% endif %}
+
 					<!-- Button trigger modal -->
+
+				
+
 			
 </div>
 <br><br>
@@ -427,7 +423,7 @@
   <div class="modal-dialog modal-lg" role="document">
     <div class="modal-content">
       <div class="modal-header">
-        <h5 class="modal-title" id="exampleModalLongTitle">Where to buy {{strain.title}}</h5>
+        <h5 class="modal-title" id="exampleModalLongTitle">Where to buy {{strain.title}} (<span style="font-weight: 300;">dispensaries</span>)</h5>
         <button type="button" class="close" data-dismiss="modal" aria-label="Close">
           <span aria-hidden="true">&times;</span>
         </button>
@@ -448,6 +444,87 @@
     </div>
   </div>
 </div>
+
+
+
+
+
+
+
+
+
+
+<br>
+					<h5>Buy <b>{{strain.title}}</b> seeds</h5>
+					<br>
+
+					{% if dispensary.type_of_dispensary == 'seed_bank' %}
+					{% if strain.dispensaries %}
+					{% for strain_dispensary_sold_in in dispensaries.all %}
+					<div class="col-auto">
+						<img src="{% thumbnail strain_dispensary_sold_in.dispensary_logo 20x20  crop %}" class="img-fluid">
+					</div>
+					<div class="col-md-11">
+						<a href="{{strain_dispensary_sold_in.get_absolute_url}}" class="">{{strain_dispensary_sold_in.title}}</a>
+					</div>
+				
+					{% endfor %}
+					{% else %}				
+						<p>Not available.</p>
+					{% endif %}
+
+					{% endif %}
+
+
+
+
+
+
+
+<br><br>
+<a class="" data-toggle="modal" data-target="#exampleModalLong2">
+  view all
+</a>
+<br>
+<hr>
+		<br>
+
+<!-- Modal -->
+<div class="modal fade" id="exampleModalLong2" tabindex="-1" role="dialog" aria-labelledby="exampleModalLongTitle" aria-hidden="true">
+  <div class="modal-dialog modal-lg" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLongTitle">Buy <b>{{strain.title}}</b> seeds (<span style="font-weight: 300;">seed banks</span>)</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body p-0">
+        {% for dispensary in dispensaries_full_list.all %}
+        <div class="dispensary_view_all_list_li">
+        		<b>{{forloop.counter}}. </b>
+        		
+        		<a href="{{dispensary.get_absolute_url}}">{{dispensary.title|title}}</a> |  <a href="{{dispensary.get_absolute_url}}">{{dispensary.websiteURL}}</a>
+        	</div>
+        		
+        {% endfor %}
+      </div>
+      <div class="modal-footer">
+
+      </div>
+    </div>
+  </div>
+</div>
+
+
+
+
+
+
+
+
+
+
 				</div>
 				<div class="card p-3">
 

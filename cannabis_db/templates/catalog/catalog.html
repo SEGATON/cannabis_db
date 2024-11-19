@@ -12,6 +12,23 @@
 				{% for strain in strains %}			
 					<div class="col-md-2 ">
 						<div class="card">
+
+							{% if strain.strain_type_label == 'indica' %}
+
+								<mark class="strain_type_label" id="strain_label_indica">In</mark>
+
+							{% elif strain.strain_type_label == 'sativa' %}
+
+								<mark class="strain_type_label" id="strain_label_sativa">St</mark>
+
+							{% elif strain.strain_type_label == 'hybrid' %}
+
+								<mark class="strain_type_label" id="strain_label_hybrid">Hy</mark>
+
+							{% endif %}
+
+
+
 							<a href="{{strain.get_absolute_url}}">
 								<img src="{% thumbnail strain.featured_image 700x700 crop %}" class="img-fluid radius_md lazy">
 							</a>

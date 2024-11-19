@@ -1,0 +1,12 @@
+.strain-table{}
+.strain-feelings-table{}
+.table tr td{
+	padding: 0;
+	border: none;
+}
+.bordered-bottom{
+	border-bottom: 1px solid #EEEEEE;
+}
+.login_form_table{
+	
+}

@@ -1,14 +1,32 @@
+import $ from 'jquery';
+
 export function getCookie(name) {
-  let value;
+  var cookieValue = null;
   if (document.cookie && document.cookie !== '') {
-    const all_cookies = document.cookie.split(';');
-    for (const cookie of all_cookies) {
-      const content = cookie.trim();
-      if (content.slice(0, name.length + 1) === (name + '=')) {
-        value = decodeURIComponent(content.slice(name.length + 1));
+    var cookies = document.cookie.split(';');
+    for (var i = 0; i < cookies.length; i++) {
+      var cookie = jQuery.trim(cookies[i]);
+      // Does this cookie string begin with the name we want?
+      if (cookie.substring(0, name.length + 1) === (name + '=')) {
+        cookieValue = decodeURIComponent(cookie.substring(name.length + 1));
         break;
       }
     }
   }
-  return value;
+  return cookieValue;
+}
+
+export function csrfSafeMethod(method) {
+  // these HTTP methods do not require CSRF protection
+  return (/^(GET|HEAD|OPTIONS|TRACE)$/.test(method));
+}
+
+export function jquery_ajax_setup(csrf_cookie_name) {
+  $.ajaxSetup({
+    beforeSend: function(xhr, settings) {
+      if (!csrfSafeMethod(settings.type) && !this.crossDomain) {
+        xhr.setRequestHeader("X-CSRFToken", getCookie(csrf_cookie_name));
+      }
+    }
+  });
 }
