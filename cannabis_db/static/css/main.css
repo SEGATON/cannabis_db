@@ -2,31 +2,18 @@ html{
     height: 100%;
 width: 100%;
 }
-body{
-    font-family: "Mona Sans", sans-serif;
-    height: 100%;
-    width: 100%;
-	background: #fff;
-}
 
 
 
 
-
-
-
-
-body.dark-theme{
-    --bkg-color:#000;
-}
 
 
 
 body{
-    --bg-color:#fff;
-    --bg-dg-color:#fff;
+    font-family: "Mona Sans", sans-serif;
+    --bg-color:#FFF;
     --page-heading-color:#000;
-    --page-border-color:#fff;
+    --page-border-color:#999;
     --page-a-link-color:#000;
 }
 
@@ -40,17 +27,199 @@ body.dark-theme{
 }
 
 
-
-
 body{
     background: var(--bg-color);
 }
-.card{
-    background: var(--bg-dg-color);
+
+.material-symbols--verified {
+  display: inline-block;
+  width: .8em;
+  height: .8em;
+  background-repeat: no-repeat;
+  background-size: 100% 100%;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'%3E%3Cpath fill='%2339FF14' d='m8.6 22.5l-1.9-3.2l-3.6-.8l.35-3.7L1 12l2.45-2.8l-.35-3.7l3.6-.8l1.9-3.2L12 2.95l3.4-1.45l1.9 3.2l3.6.8l-.35 3.7L23 12l-2.45 2.8l.35 3.7l-3.6.8l-1.9 3.2l-3.4-1.45zm2.35-6.95L16.6 9.9l-1.4-1.45l-4.25 4.25l-2.15-2.1L7.4 12z'/%3E%3C/svg%3E");
 }
-#profile_heading{
+
+.material-symbols--verified.dark-theme{
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'%3E%3Cpath fill='#39FF14' d='m8.6 22.5l-1.9-3.2l-3.6-.8l.35-3.7L1 12l2.45-2.8l-.35-3.7l3.6-.8l1.9-3.2L12 2.95l3.4-1.45l1.9 3.2l3.6.8l-.35 3.7L23 12l-2.45 2.8l.35 3.7l-3.6.8l-1.9 3.2l-3.4-1.45zm2.35-6.95L16.6 9.9l-1.4-1.45l-4.25 4.25l-2.15-2.1L7.4 12z'/%3E%3C/svg%3E");
+}
+
+
+#page_heading{
+
+    color: black;
+}
+#page_heading.dark-theme{
+
+    --page-heading-color: #39FF14;
+}
+#page_heading{
+
     color: var(--page-heading-color);
 }
+
+
+.light_gray_section_background{
+    background: white;
+}
+.light_gray_section_background.dark-theme{
+    --light-gray-section-background-bg-color: #111;
+}
+.light_gray_section_background{
+    background: var(--light-gray-section-background-bg-color);
+}
+
+.login_form_card{
+    background: white;
+}
+.login_form_card.dark-theme{
+    --light-gray-section-background-bg-color: #111;
+}
+.login_form_card{
+    background: var(--light-gray-section-background-bg-color);
+}
+
+.login_form_table tr td{background: white;}
+.login_form_table.dark-theme tr td{--light-gray-section-background-bg-color: #111;}
+.login_form_table tr td{background: var(--light-gray-section-background-bg-color);}
+
+
+#headline_heading{
+    color: black;
+    font-weight: 300;
+}
+#headline_heading.dark-theme{
+    --page-heading-color: #39FF14;
+}
+#headline_heading{
+    color: var(--page-heading-color);
+}
+
+
+
+.form-control {
+    border:1px solid #444;
+    color: #ddd;
+}
+.form-control:hover {
+    outline: none;
+    box-shadow: none;
+    border:1px solid #444;
+        color: #ddd;
+}
+.form-control:focus {
+    outline: none;
+    box-shadow: none;
+   border:1px solid #444;
+       color: #ddd;
+}
+.form-control:active {
+    outline: none;
+    box-shadow: none;
+   border:1px solid #444;
+       color: #ddd;
+
+}
+
+
+input[type=text] {
+   border:1px solid #444;
+    margin-bottom: 4px;
+    font-size: 12px;
+    outline: none;
+    box-shadow: none;
+        color: #ddd;
+}
+input[type=text].dark-theme {
+    --form-control-bg-color: #111;
+        outline: none;
+    box-shadow: none;
+}
+input[type=text] {
+    background: var(--form-control-bg-color);
+        outline: none;
+    box-shadow: none;
+    color: #ddd;
+}
+
+input[type=password] {
+    border:1px solid #444;
+    margin-bottom: 4px;
+    font-size: 12px;
+    color: #ddd;
+}
+input[type=password].dark-theme {
+    --form-control-bg-color: #111;
+    color: #ddd;
+}
+input[type=password] {
+    background: var(--form-control-bg-color);
+    color: #ddd;
+}
+
+
+
+
+
+h5{
+    color: black;
+    font-weight: 500;
+}
+h5.dark-theme{
+    --page-heading-color: #39FF14;
+}
+h5{
+    color: var(--page-heading-color);
+}
+
+
+
+p{
+    color: black;
+
+}
+p.dark-theme{
+    --page-heading-color: #eee;
+}
+p{
+    color: var(--page-heading-color);
+}
+
+
+h1{
+    color: black;
+
+}
+h1.dark-theme{
+    --page-heading-color: #eee;
+}
+h1{
+    color: var(--page-heading-color);
+}
+
+
+
+
+
+
+.card{
+    --bg-color:#FFF;
+    --page-border-color:#999;
+    margin-bottom: 10px;
+
+}
+.card.dark-theme{
+
+    --bg-color:#111;
+    --page-border-color:none;
+}
+
+.card{
+    background: var(--bg-dg-color);
+    border: none;
+ 
+}
+
 .footer{
     background: var(--bg-dg-color);
     border-top: 1px solid var(--page-border-color);
@@ -84,21 +253,12 @@ hr{
 
 
 
-.light_gray_section_background{
-    background: #EEEEEE;
-    height: 100%;
-    width: 100%;
 
-}
 ::selection{
     background: #026e15;
     color: white;
 }
-h1,h2,h3,h4,h5,h6{
 
-		padding: 0;
-	margin: 0;
-}
 .center{
     text-align: center;
 }
@@ -227,9 +387,7 @@ background: #00a62c;
 .bordered-bottom{
     border-bottom: 1px solid #EEEEEE;
 }
-.login_form_table{
-    
-}
+
 #strain_label_sativa{
     background: #018223;
     color: white;
@@ -267,24 +425,15 @@ p{
 b{
     font-weight: 600;
 }
-#headline_heading{
-	font-weight:300 ;
-	font-size: 15px;
-}
+
 
                                     .profile_follow_link{
                                         width: 25%;
                                         float: right;
                                     }
-#page_heading{
-	font-size: 20px;
-}
-#profile_heading{
-letter-spacing: -2px;
-}
-.card{
-	border:none
-}
+
+
+
 
 
 .logo{
@@ -400,9 +549,7 @@ letter-spacing: -2px;
 }
 
 
-.login_form_card{
-    margin-top: 180px;
-}
+
 .create_account_form_card{
       margin-top: 180px;
       margin-bottom: 380px;
@@ -423,14 +570,7 @@ letter-spacing: -2px;
     font-weight: 500;
 
 }
-.page_heading{
-    font-size: 30px;
-    font-weight: 400;
-}
-.page_sub_heading{
-        font-size: 15px;
-    font-weight: 500;
-}
+
 h6{
     font-weight: 600;
 }
@@ -462,26 +602,7 @@ h6{
 }
 
 
-.form-control{
-    border:2px solid #4B9E6C;
-    margin-bottom: 4px;
-    font-size: 12px;
-}
-.form-control:hover{
-    border:2px solid #4B9E6C;
-    outline: none;
-    box-shadow: none;
-}
-.form-control:focus{
-    border:2px solid #4B9E6C;
-    outline: none;
-    box-shadow: none;
-}
-.form-control:active{
-    border:2px solid #4B9E6C;
-    outline: none;
-    box-shadow: none;
-}
+
 ::placeholder{
     font-size: 12px;
 }
