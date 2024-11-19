@@ -61,6 +61,7 @@ urlpatterns = [
 	path('follow-dispensary/<int:pk>/', views.follow_dispensary, name='follow_dispensary'),
 	path('terms-and-conditions/', views.terms_conditions, name='terms_conditions'),
 	path('process-search-form/', views.search, name='search'),
-	path('privacy-policy/', views.privacy_policy, name='privacy_policy')
+	path('privacy-policy/', views.privacy_policy, name='privacy_policy'),
+	path('newsletter-subscription-form-process/', views.newsletter_subscription_form_process, name='newsletter_subscription_form_process'),
 ]
 

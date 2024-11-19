@@ -48,16 +48,7 @@
 						 {{object.koko.user.profile.followers.count}}  follower{{ object.koko.user.profile.followers.count|pluralize }}
   {{ object.koko.user.profile.followers.count|pluralize:","}}  </p>
 						
-								<style type="text/css">
-									.profile_heading{
-										width: 70%;
-										float: left;
-									}
-									.profile_follow_link{
-										width: 25%;
-										float: right;
-									}
-								</style>
+							
 									
 							</div>
 							<div class="card">
@@ -95,9 +86,10 @@
 <br>
 									  </div>
 									  <div class="tab-pane fade" id="nav-contact" role="tabpanel" aria-labelledby="nav-contact-tab" tabindex="0">
+									  	<div class="filler"></div>
 									  	
 
-									<div class="row"> 		
+									<div class="row g-2"> 		
 				{% for strain in object.koko.saved_strains.all %}			
 					<div class="col-md-2 ">
 						<div class="card p-0">
@@ -118,8 +110,9 @@
 
 
 <div class="tab-pane fade  " id="nav-strains-consumed" role="tabpanel" aria-labelledby="nav-strains-consumed" tabindex="0">
-		<div class="row"> 	
-					{% for strain in object.koko.user.users_smoked.all  %}			
+	<div class="filler"></div>
+	<div class="row g-2">
+					{% for strain in object.koko.user.users_smoked.all %}			
 					<div class="col-md-2">
 						<div class="card p-0">
 							<a href="{{strain.get_absolute_url}}">
@@ -130,8 +123,9 @@
 							
 						</div>
 					</div>		
-							</div>
+							
 				{% endfor %}
+			</div>
 </div>
 
 

@@ -3,89 +3,13 @@ html{
 width: 100%;
 }
 body{
-    font-family: "Mona Sans", sans-serif;
-    height: 100%;
-    width: 100%;
-	background: #fff;
+  font-family: "Mona Sans", sans-serif;
+height: 100%;
+width: 100%;
+	background: #000;
 }
-
-
-
-
-
-
-
-
-body.dark-theme{
-    --bkg-color:#000;
-}
-
-
-
-body{
-    --bg-color:#fff;
-    --bg-dg-color:#fff;
-    --page-heading-color:#000;
-    --page-border-color:#fff;
-    --page-a-link-color:#000;
-}
-
-
-body.dark-theme{
-    --bg-color:#000;
-    --bg-dg-color:#111;
-    --page-heading-color:#39FF14;
-    --page-border-color:#39FF14;
-    --page-a-link-color:#777;
-}
-
-
-
-
-body{
-    background: var(--bg-color);
-}
-.card{
-    background: var(--bg-dg-color);
-}
-#profile_heading{
-    color: var(--page-heading-color);
-}
-.footer{
-    background: var(--bg-dg-color);
-    border-top: 1px solid var(--page-border-color);
-        padding: 50px 0px;
-}
-a{
-    color: var(--page-a-link-color);
-}
-hr{
-    border-top: var(--page-border-color);
-}
-.border_right{
-    border-right:none;
-}
-
-.filler{
-    height: 20px;
-}
-.main-nav{
-
-    padding: 10px;
-    border-bottom: 1px solid var(--page-border-color);
-}
-
-
-
-
-
-
-
-
-
-
 .light_gray_section_background{
-    background: #EEEEEE;
+    background: #111;
     height: 100%;
     width: 100%;
 
@@ -95,9 +19,12 @@ hr{
     color: white;
 }
 h1,h2,h3,h4,h5,h6{
-
+color: #39FF14;
 		padding: 0;
 	margin: 0;
+}
+p{
+    color: #999;
 }
 .center{
     text-align: center;
@@ -177,7 +104,7 @@ h1,h2,h3,h4,h5,h6{
       }
       #search_app_form_btn{
         float: right;
-        background: white;
+        background: none;
         position: absolute;
         padding: 1px;
         margin-left: -27px;
@@ -189,8 +116,11 @@ h1,h2,h3,h4,h5,h6{
       hr{
     padding: 0;
     margin: 0;
+    border:1px solid #39FF14;
 }
-
+.filler{
+    height: 20px;
+}
 .follow_badge{
     background: blue;
     color: white;
@@ -227,8 +157,8 @@ background: #00a62c;
 .bordered-bottom{
     border-bottom: 1px solid #EEEEEE;
 }
-.login_form_table{
-    
+.login_form_table tr td{
+    background: black;
 }
 #strain_label_sativa{
     background: #018223;
@@ -256,14 +186,10 @@ font-size: 10px;
         position: relative;
         margin-left: -135px;
       }
-p{
 
-	font-weight:400 ;
-	padding: 0;
-	margin: 0;
-	color: #666;
+a{
+	color: #999;
 }
-
 b{
     font-weight: 600;
 }
@@ -272,21 +198,32 @@ b{
 	font-size: 15px;
 }
 
-                                    .profile_follow_link{
-                                        width: 25%;
-                                        float: right;
-                                    }
 #page_heading{
 	font-size: 20px;
 }
 #profile_heading{
-letter-spacing: -2px;
+	letter-spacing: -1px;
+	color: #39FF14;
+	font-weight: 400;
 }
 .card{
-	border:none
+	border:none;
+	background:#111;
+    margin-bottom: 5px;
 }
 
+.footer{
+	background: #111;
+    border-top: 1px solid #39FF14;
+    padding: 50px 0px;
+}
+hr{
+	border-top:1px dotted #333;
 
+}
+.border_right{
+	border-right: 1px dotted #136104;
+}
 .logo{
 	text-transform: uppercase;
 	letter-spacing: -1px;
@@ -402,6 +339,7 @@ letter-spacing: -2px;
 
 .login_form_card{
     margin-top: 180px;
+    background: black;
 }
 .create_account_form_card{
       margin-top: 180px;
@@ -461,11 +399,18 @@ h6{
     color: #666;
 }
 
+.main-nav{
+
+    padding: 10px;
+    border-bottom: 1px solid #39FF14;
+}
+
 
 .form-control{
-    border:2px solid #4B9E6C;
+    border:2px solid #333;
     margin-bottom: 4px;
     font-size: 12px;
+    background: #000;
 }
 .form-control:hover{
     border:2px solid #4B9E6C;

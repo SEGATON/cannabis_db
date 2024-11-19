@@ -1,7 +1,7 @@
 from django import forms
 from .models import Rating
 from .models import Dispensary
-from .models import ContactMessage
+from .models import ContactMessage,NewslettersSubscriptions
 from django import forms
 
 
@@ -23,3 +23,10 @@ class ContactForm(forms.ModelForm):
 	class Meta:
 		model = ContactMessage
 		fields = '__all__'
+
+
+class NewslettersSubscriptionForm(forms.ModelForm):
+	email = forms.CharField(widget=forms.TextInput(attrs={'class':'form-control','placeholder':'Enter email address','id':'newsletter_subscription_form_tf'}))
+	class Meta:
+		model = NewslettersSubscriptions
+		fields =  ['email']

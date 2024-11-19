@@ -101,15 +101,13 @@
 
 <!-- CSS EMBEDDS STARTS --->
 
-<link rel="stylesheet" type="text/css" href="{% static 'css/main.css' %}">
-<link rel="stylesheet" type="text/css" href="{% static 'css/components.css' %}">
-<link rel="stylesheet" type="text/css" href="{% static 'css/elements.css' %}">
-<link rel="stylesheet" type="text/css" href="{% static 'css/forms.css' %}">
-<link rel="stylesheet" type="text/css" href="{% static 'css/buttons.css' %}">
-<link rel="stylesheet" type="text/css" href="{% static 'css/misc.css' %}">
-<link rel="stylesheet" type="text/css" href="{% static 'css/menus.css' %}">
-<link rel="stylesheet" type="text/css" href="{% static 'css/tables.css' %}">
-<link rel="stylesheet" type="text/css" href="{% static 'css/fonts.css' %}">
+
+
+<link rel="stylesheet" type="text/css" href="{% static 'css/main.css' %}"> 
+
+
+<!--<link rel="stylesheet" type="text/css" href="{% static 'css/themes/neon_green.css' %}"> -->
+
 <!-- CSS EMBEDDS ENDS --->
 
 
@@ -344,3 +342,25 @@ The information on this site is provided as a resource only, and is not to be us
 
 
 
+
+
+<button  class="btn-toggle">Dark mode</button>
+
+<script src="https://code.jquery.com/jquery-3.7.1.js" integrity="sha256-eKhayi8LEQwp4NKxN+CfCh+3qOVUtJn3QNZ0TciWLP4=" crossorigin="anonymous"></script>
+
+<script type="text/javascript">
+  
+  const btn = document.querySelector('.btn-toggle');
+
+  const currentTheme = localStorage.getItem('theme');
+
+  if ( currentTheme == 'dark' ){
+    document.body.classList.add('dark-theme');
+  }
+
+  btn.addEventListener("click", function(){
+      document.body.classList.toggle('dark-theme');
+  });
+
+
+</script>

@@ -25,10 +25,10 @@ class NewslettersSubscriptions(models.Model):
 	email = models.EmailField(max_length=50)
 
 	def __str__(self):
-		return None
+		return self.email
 
 	class Meta:
-		verbose_name_plural = 'Newsletters Subscription'
+		verbose_name_plural = 'Newsletters Subscription EMAILS LIST'
 
 
 		

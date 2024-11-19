@@ -64,7 +64,7 @@ from django.db.models import Q
 from django.views import generic
 
 from django.core.paginator import Paginator
-
+from .forms import NewslettersSubscriptionForm
 
 def front_page(request):
 	strains = Strain.objects.all()
@@ -410,9 +410,24 @@ def maps(request):
 
 
 
+def newsletter_subscription_form_process_form(request):
+	newsletter_subscription_form_process_form = NewslettersSubscriptionForm(request.POST)
+	return {
+		'newsletter_subscription_form_process_form':newsletter_subscription_form_process_form
+	}
+
+def newsletter_subscription_form_process(request):
+
+	if request.method == 'POST':
+		newsletter_subscription_form_process_form = NewslettersSubscriptionForm(request.POST)
+		if newsletter_subscription_form_process_form.is_valid():
+			newsletter_subscription_form_process_form.save()
+	else:
+		newsletter_subscription_form_process_form = NewslettersSubscriptionForm()
 
 
 
+	return HttpResponseRedirect(request.META['HTTP_REFERER'])
 
 
 
@@ -445,6 +460,10 @@ def add_to_bookmarks(request, pk):
 
 	strain = get_object_or_404(Strain, pk=pk)
 	profile = Profile.objects.filter(user=request.user)
+
+
+
+
 
 	if strain not in request.user.profile.saved_strains.all():
 		request.user.profile.saved_strains.add(strain)
