@@ -3,7 +3,7 @@ from . import views
 from .views import Strains
 
 from django.contrib.sitemaps.views import sitemap
-from .sitemaps import StrainsSitemap
+from .sitemaps import StrainsSitemap, DispensarySitemap,BrandSitemap, ProductSitemap
 app_name = 'cannabis_db'
 
 
@@ -18,6 +18,9 @@ app_name = 'cannabis_db'
 
 sitemaps = {
 	'strains_sitemap':StrainsSitemap,
+	'dispensary_sitemap':DispensarySitemap,
+	'brand_sitemap':BrandSitemap,
+	'product_sitemap':ProductSitemap
 
 
 }

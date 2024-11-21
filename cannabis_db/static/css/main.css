@@ -31,6 +31,76 @@ body{
     background: var(--bg-color);
 }
 
+
+
+
+
+
+select {
+    --background-color: #fff;
+        scrollbar-width: 30px;
+        overflow-y: scroll;
+            word-wrap: normal;
+    width: 100%;
+    padding: 5px 0;
+    min-height: 120px;
+    border: none;
+    margin-bottom: 40px;
+      overflow-y: scroll;
+  
+
+}
+
+select.dark-theme {
+
+    --select-light-background-color: #444;
+    --select-dark-background-color: #111;
+
+}
+
+select {
+
+    background: var(--select-dark-background-color);
+        overflow-y: scroll;
+    scrollbar-color: var(--select-light-background-color);
+   
+}
+
+
+
+
+
+
+
+
+option {
+    padding: 2px 0;
+    color: #ccc;
+
+}
+option.dark-theme {
+    padding: 2px 0;
+    color: #ccc;
+
+}
+option {
+    padding: 2px 0;
+    color: #ccc;
+
+}
+option:checked, option:active, option:hover {
+    padding: 2px 0;
+    color: white;
+    font-weight: 700;
+    background: #488f8f repeat url("data:image/gif;base64,R0lGO...");
+}
+
+
+
+
+
+
+
 .material-symbols--verified {
   display: inline-block;
   width: .8em;
@@ -94,6 +164,23 @@ body{
 #headline_heading{
     color: var(--page-heading-color);
 }
+
+
+
+
+.border_right{
+    border-right:1px dotted #999;
+}
+
+.border_right.dark-theme{
+    --border-right-color: 1px solid #39FF14;
+}
+.border_right{
+    border-right: 1px solid var( --border-right-color);
+}
+
+
+
 
 ::placeholder{
     font-size: 12px;
@@ -199,6 +286,23 @@ p{
 }
 
 
+
+h4.tagline{
+    color: black;
+    font-weight: 300;
+}
+h4.tagline.dark-theme{
+    color: #23a10b;
+
+}
+h4.tagline{
+    color: #23a10b;
+
+}
+
+
+tagline
+
 h1{
     color: black;
 
@@ -244,9 +348,7 @@ a{
 hr{
     border-top: var(--page-border-color);
 }
-.border_right{
-    border-right:none;
-}
+
 
 .filler{
     height: 20px;
@@ -420,6 +522,9 @@ font-size: 10px;
 .newsletter_subscription_form_tf{
     width: 100%;
 }
+
+
+
       #newsletter_subscription_form_btn{
         background: none;
         border: none;
@@ -427,6 +532,30 @@ font-size: 10px;
         position: relative;
         margin-left: -135px;
       }
+
+
+      #newsletter_subscription_form_btn.dark-theme{
+        background: none;
+        border: none;
+        color: #018711;
+        position: relative;
+        margin-left: -135px;
+      }
+
+      #newsletter_subscription_form_btn{
+        background: black;
+        border: none;
+        color: #018711;
+        position: relative;
+        margin-left: -135px;
+      }
+
+
+
+
+
+
+
 p{
 
 	font-weight:400 ;
@@ -613,6 +742,23 @@ h6{
     text-transform: capitalize;
     color: #666;
 }
+
+
+
+.dispensary_menu{
+    padding: 0;
+    margin: 0;
+    list-style: none;
+}
+.dispensary_menu li{
+color: #999;
+font-size: 12px;
+margin-bottom: 10px;
+}
+
+
+
+
 
 
 

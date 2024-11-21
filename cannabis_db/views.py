@@ -529,10 +529,10 @@ def follow_dispensary(request, pk):
 
 	dispensary = get_object_or_404(Dispensary, pk=pk)
 	user = request.user
-	if request.user not in dispensary.followers.all():
-		dispensary.followers.add(user)
+	if dispensary not in user.profile.saved_dispensaries.all():
+		user.profile.saved_dispensaries.add(dispensary)
 	else:
-		dispensary.followers.remove(user)
+		user.profile.saved_dispensaries.remove(dispensary)
 
 
 	return HttpResponseRedirect(request.META['HTTP_REFERER'])

@@ -1,7 +1,7 @@
 from django.db import models
 
 from django.conf import settings
-from cannabis_db.models import Strain
+from cannabis_db.models import Strain, Dispensary
 # Create your models here.
 from ckeditor.fields import RichTextField
 
@@ -24,6 +24,8 @@ class Profile(models.Model):
           bookmarks = models.ManyToManyField('cannabis_db.Strain', null=True, blank=True, related_name='bookmarked_strains')
 
           saved_strains = models.ManyToManyField(Strain,null=True, blank=True)
+
+          saved_dispensaries = models.ManyToManyField(Dispensary,null=True, blank=True)
 
           followers = models.ManyToManyField(settings.AUTH_USER_MODEL, null=True, blank=True, related_name='profile_follower')
 

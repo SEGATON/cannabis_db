@@ -6,18 +6,19 @@
 			<div class="row">
 				<div class="col-md-2">
 					<div class="filler"></div>
-					<div class="card">
+					<div class="card p-3">
 						<img src="{{  dispensary.dispensary_logo.url }}" class="img-fluid radius_md">
 					</div>
-					<div class="card">
-						<p>flag {{dispensary}}</p>
+					<div class="card p-3">
+						
 
-						{% if request.user in dispensary.followers.all %}
-						<a href="{% url 'cannabis_db:follow_dispensary' dispensary.pk %}" class="following_badge">following</a>
-						{{dispensary.followers.count}}
+
+						{% if dispensary in request.user.profile.saved_dispensaries.all %}
+						<a href="{% url 'cannabis_db:follow_dispensary' dispensary.pk %}" class=""><svg xmlns="http://www.w3.org/2000/svg" width="1em" height="1em" viewBox="0 0 20 20"><path fill="#018223" d="M2 2c0-1.1.9-2 2-2h12a2 2 0 0 1 2 2v18l-8-4l-8 4z"/></svg> following</a>
+						
 						{% else %}
-						<a href="{% url 'cannabis_db:follow_dispensary' dispensary.pk %}" class="follow_badge">follow</a>
-						{{dispensary.followers.count}}
+						<a href="{% url 'cannabis_db:follow_dispensary' dispensary.pk %}" class=""><svg xmlns="http://www.w3.org/2000/svg" width="1em" height="1em" viewBox="0 0 20 20"><path fill="#018223" d="M2 2c0-1.1.9-2 2-2h12a2 2 0 0 1 2 2v18l-8-4l-8 4zm2 0v15l6-3l6 3V2z"/></svg> follow</a>
+					
 						{% endif %}
 						
 
@@ -25,7 +26,7 @@
 				</div>
 				<div class="col-md-10">
 					<div class="filler"></div>
-					<div class="card">
+					<div class="card p-3">
 						<h1 id="profile_heading">{{dispensary.title}} 
 
 
@@ -48,12 +49,33 @@
 						</h1>
 						{% if dispensary.tagline %}<h4 class="tagline">{{dispensary.tagline}}</h4>{% endif %}
 					</div>
-					<div class="card">
-						<p>
-							<svg xmlns="http://www.w3.org/2000/svg" width="1em" height="1em" viewBox="0 0 512 512"><path fill="#0c6b00" d="M352 256c0 22.2-1.2 43.6-3.3 64H163.4c-2.2-20.4-3.3-41.8-3.3-64s1.2-43.6 3.3-64h185.3c2.2 20.4 3.3 41.8 3.3 64m28.8-64h123.1c5.3 20.5 8.1 41.9 8.1 64s-2.8 43.5-8.1 64H380.8c2.1-20.6 3.2-42 3.2-64s-1.1-43.4-3.2-64m112.6-32H376.7c-10-63.9-29.8-117.4-55.3-151.6c78.3 20.7 142 77.5 171.9 151.6zm-149.1 0H167.7c6.1-36.4 15.5-68.6 27-94.7c10.5-23.6 22.2-40.7 33.5-51.5C239.4 3.2 248.7 0 256 0s16.6 3.2 27.8 13.8c11.3 10.8 23 27.9 33.5 51.5c11.6 26 20.9 58.2 27 94.7m-209 0H18.6c30-74.1 93.6-130.9 172-151.6c-25.5 34.2-45.3 87.7-55.3 151.6M8.1 192h123.1c-2.1 20.6-3.2 42-3.2 64s1.1 43.4 3.2 64H8.1C2.8 299.5 0 278.1 0 256s2.8-43.5 8.1-64m186.6 254.6c-11.6-26-20.9-58.2-27-94.6h176.6c-6.1 36.4-15.5 68.6-27 94.6c-10.5 23.6-22.2 40.7-33.5 51.5c-11.2 10.7-20.5 13.9-27.8 13.9s-16.6-3.2-27.8-13.8c-11.3-10.8-23-27.9-33.5-51.5zM135.3 352c10 63.9 29.8 117.4 55.3 151.6c-78.4-20.7-142-77.5-172-151.6zm358.1 0c-30 74.1-93.6 130.9-171.9 151.6c25.5-34.2 45.2-87.7 55.3-151.6h116.7z"/></svg> <a href="{{dispensary.websiteURL}}">{{dispensary.websiteURL}}</a> | <svg xmlns="http://www.w3.org/2000/svg" width="1em" height="1em" viewBox="0 0 24 24"><path fill="#0c6b00" d="M5 9.86a18.47 18.47 0 0 0 9.566 9.292l.68.303a3.5 3.5 0 0 0 4.33-1.247l.889-1.324a1 1 0 0 0-.203-1.335l-3.012-2.43a1 1 0 0 0-1.431.183l-.932 1.257a12.14 12.14 0 0 1-5.51-5.511l1.256-.932a1 1 0 0 0 .183-1.431l-2.43-3.012a1 1 0 0 0-1.335-.203l-1.333.894a3.5 3.5 0 0 0-1.237 4.355z"/></svg>{{dispensary.phone_number}} | <svg xmlns="http://www.w3.org/2000/svg" width="1em" height="1.5em" viewBox="0 0 24 24"><path fill="#0c6b00" d="M20 4H4c-1.1 0-1.99.9-1.99 2L2 18c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2m0 4l-8 5l-8-5V6l8 5l8-5z"/></svg>  {{dispensary.email_address}} | <svg xmlns="http://www.w3.org/2000/svg" width="1em" height="1em" viewBox="0 0 24 24"><path fill="#0c6b00" d="M12 11.5A2.5 2.5 0 0 1 9.5 9A2.5 2.5 0 0 1 12 6.5A2.5 2.5 0 0 1 14.5 9a2.5 2.5 0 0 1-2.5 2.5M12 2a7 7 0 0 0-7 7c0 5.25 7 13 7 13s7-7.75 7-13a7 7 0 0 0-7-7"/></svg>{% for address in dispensary.address.all %} {{address.street_name_01}}, {{address.street_city}} {{address.street_state}} {{address.street_zip_code}} {% endfor %}
+					<div class="card p-3">
+		<div class="card">
+	<div class="row">
 
-							| <b>Dispensary type: </b>{{dispensary.get_type_of_dispensary_display}} | 
-							<b>Shopping options: </b> 		
+		<div class="col-md-4">
+
+			<ul class="dispensary_menu">
+				<li>
+					<svg xmlns="http://www.w3.org/2000/svg" width="1em" height="1em" viewBox="0 0 512 512"><path fill="#0c6b00" d="M352 256c0 22.2-1.2 43.6-3.3 64H163.4c-2.2-20.4-3.3-41.8-3.3-64s1.2-43.6 3.3-64h185.3c2.2 20.4 3.3 41.8 3.3 64m28.8-64h123.1c5.3 20.5 8.1 41.9 8.1 64s-2.8 43.5-8.1 64H380.8c2.1-20.6 3.2-42 3.2-64s-1.1-43.4-3.2-64m112.6-32H376.7c-10-63.9-29.8-117.4-55.3-151.6c78.3 20.7 142 77.5 171.9 151.6zm-149.1 0H167.7c6.1-36.4 15.5-68.6 27-94.7c10.5-23.6 22.2-40.7 33.5-51.5C239.4 3.2 248.7 0 256 0s16.6 3.2 27.8 13.8c11.3 10.8 23 27.9 33.5 51.5c11.6 26 20.9 58.2 27 94.7m-209 0H18.6c30-74.1 93.6-130.9 172-151.6c-25.5 34.2-45.3 87.7-55.3 151.6M8.1 192h123.1c-2.1 20.6-3.2 42-3.2 64s1.1 43.4 3.2 64H8.1C2.8 299.5 0 278.1 0 256s2.8-43.5 8.1-64m186.6 254.6c-11.6-26-20.9-58.2-27-94.6h176.6c-6.1 36.4-15.5 68.6-27 94.6c-10.5 23.6-22.2 40.7-33.5 51.5c-11.2 10.7-20.5 13.9-27.8 13.9s-16.6-3.2-27.8-13.8c-11.3-10.8-23-27.9-33.5-51.5zM135.3 352c10 63.9 29.8 117.4 55.3 151.6c-78.4-20.7-142-77.5-172-151.6zm358.1 0c-30 74.1-93.6 130.9-171.9 151.6c25.5-34.2 45.2-87.7 55.3-151.6h116.7z"/></svg> <a href="{{dispensary.websiteURL}}">{{dispensary.websiteURL}}</a>
+				</li>
+
+				<li>
+					<svg xmlns="http://www.w3.org/2000/svg" width="1em" height="1em" viewBox="0 0 24 24"><path fill="#0c6b00" d="M5 9.86a18.47 18.47 0 0 0 9.566 9.292l.68.303a3.5 3.5 0 0 0 4.33-1.247l.889-1.324a1 1 0 0 0-.203-1.335l-3.012-2.43a1 1 0 0 0-1.431.183l-.932 1.257a12.14 12.14 0 0 1-5.51-5.511l1.256-.932a1 1 0 0 0 .183-1.431l-2.43-3.012a1 1 0 0 0-1.335-.203l-1.333.894a3.5 3.5 0 0 0-1.237 4.355z"/></svg>{{dispensary.phone_number}} </li>
+
+				<li> <svg xmlns="http://www.w3.org/2000/svg" width="1em" height="1.5em" viewBox="0 0 24 24"><path fill="#0c6b00" d="M20 4H4c-1.1 0-1.99.9-1.99 2L2 18c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2m0 4l-8 5l-8-5V6l8 5l8-5z"/></svg>  {{dispensary.email_address}} 
+				</li>
+
+				<li>
+					<svg xmlns="http://www.w3.org/2000/svg" width="1em" height="1em" viewBox="0 0 24 24"><path fill="#0c6b00" d="M12 11.5A2.5 2.5 0 0 1 9.5 9A2.5 2.5 0 0 1 12 6.5A2.5 2.5 0 0 1 14.5 9a2.5 2.5 0 0 1-2.5 2.5M12 2a7 7 0 0 0-7 7c0 5.25 7 13 7 13s7-7.75 7-13a7 7 0 0 0-7-7"/></svg>{% for address in dispensary.address.all %} {{address.street_name_01}}, {{address.street_city}} {{address.street_state}} {{address.street_zip_code}} {% endfor %}
+				</li>
+
+				<li>
+					<b>Dispensary type: </b>{{dispensary.get_type_of_dispensary_display}}
+				</li>
+
+				<li>
+					<b>Shopping options: </b> 		
 
 							{% if dispensary.shopping_options == 'pickup_delivery' %}
 									<svg xmlns="http://www.w3.org/2000/svg" width="1em" height="1em" viewBox="0 0 24 24"><path fill="black" d="M12 13a5 5 0 0 1-5-5h2a3 3 0 0 0 3 3a3 3 0 0 0 3-3h2a5 5 0 0 1-5 5m0-10a3 3 0 0 1 3 3H9a3 3 0 0 1 3-3m7 3h-2a5 5 0 0 0-5-5a5 5 0 0 0-5 5H5c-1.11 0-2 .89-2 2v12a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V8a2 2 0 0 0-2-2"/></svg>
@@ -68,27 +90,40 @@
 <svg xmlns="http://www.w3.org/2000/svg" width="1em" height="1em" viewBox="0 0 24 24"><path fill="#0c6b00" d="M12 13a5 5 0 0 1-5-5h2a3 3 0 0 0 3 3a3 3 0 0 0 3-3h2a5 5 0 0 1-5 5m0-10a3 3 0 0 1 3 3H9a3 3 0 0 1 3-3m7 3h-2a5 5 0 0 0-5-5a5 5 0 0 0-5 5H5c-1.11 0-2 .89-2 2v12a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V8a2 2 0 0 0-2-2"/></svg>
 									Pickup only
 							{% endif %}
+				</li>
 
-
-						</p>
-						<p>
-	<b>Accepted payment methods</b>
+				<li>
+						<b>Accepted payment methods</b>
 {{dispensary.get_accepted_payment_methods_display}}
 	<b>Card types</b>
 {{dispensary.get_card_types_display}}
-</p>
-						<hr>
+				</li>
 
-						<p>{{dispensary.dispensary_description|safe}}</p>
+
+				<li>	<p>{{dispensary.dispensary_description|safe}}</p></li>
+
+			</ul>
+		</div>
+		<div class="col-md-4">
+
+		4
+		</div>
+		<div class="col-md-4">
+
+		4
+		</div>
+	</div>
+
+</div>
 					</div>
-					<div class="card">
+					<div class="card p-3">
 
 			<div class="row g-2">
 				<h5>Our products <span style="font-weight:300;">({{dispensay.products.count}})</span></h5>
 				{% if dispensary.products.all %}
 				{% for product in dispensary.products.all %}			
 					<div class="col-md-2">
-						<div class="card">
+						<div class="card p-3">
 							<a href="{{product.get_absolute_url}}">
 								<img src="{% thumbnail product.featured_image 700x700 crop %}" class="img-fluid radius_md">
 							</a>
@@ -100,7 +135,7 @@
 					<p>n/a</p>
 				{% endif %}
 					</div>
-					<div class="card">
+					<div class="card ">
 
 
 						<div class="row g-1">
@@ -108,7 +143,7 @@
 							{% if dispensary.dispensary_brands.all %}
 							{% for dispensary_brand in dispensary.dispensary_brands.all  %}
 							<div class="col-md-2">
-								<div class="card center p-3" style="border:1px solid #ccc;">
+								<div class="card center " style="border:1px solid #ccc;">
 									<a href="{{dispensary_brand.get_absolute_url}}"><img src="{% thumbnail dispensary_brand.brand_logo 1000x1000 crop %}" height="30" ></a>
 									<br>
 									<a href="{{dispensary_brand.get_absolute_url}}">{{dispensary_brand.title}}</a>
@@ -122,13 +157,13 @@
 								{% endif %}
 						</div>
 					</div>
-					<div class="card">
+					<div class="card p-3">
 
 					</div>
-					<div class="card">
+					<div class="card p-3">
 
 					</div>
-					<div class="card">
+					<div class="card p-3">
 						<ul class="dispensary_profiles_URLS">
 {% for social_profile in dispensary.dispensary_social_follow.social_profiles_URLS.dispensary_profiles_URLS.all %}
 		<li>{{social_profile.dispensary_social_profile_name}}
@@ -136,7 +171,7 @@
 {% endfor %}
 </ul>
 					</div>
-					<div class="card">
+					<div class="card p-3">
 
 
 
@@ -151,16 +186,7 @@
 		</div>
 
 
-		
-
-		
-
-
-		
-
-
-
-
+	</div>
 
 	{% endblock %}
 
