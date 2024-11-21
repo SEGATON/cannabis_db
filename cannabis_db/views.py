@@ -20,6 +20,8 @@ from .models import StrainSpecification
 
 from .models import TerpeneDetails
 
+from .models import Category
+
 
 
 from .models import FlavorsDetailsListSet
@@ -72,12 +74,20 @@ def front_page(request):
 
 	latest_strains = Strain.objects.all().order_by('-date_created')[:12]
 	featured_strains = Strain.objects.filter(featured=True)[:12]
+	featured_brands = Brand.objects.all()[:12]
+	featured_products = Product.objects.all()[:12]
+	featured_dispensaries = Dispensary.objects.all()[:12]
+	featured_categories = Category.objects.all()[:12]
 
 	return render(request, 'template_parts/front_page.html', {
 			'strains':strains,
-			'title':'StrainsDB | A Cannabis Strains, brands, products, and dispensary database',
+			'title':'StrainsDB | The most organized and up-to-date Online Cannabis Strains, brands, products, and dispensary database',
 			'latest_strains':latest_strains,
-			'featured_strains':featured_strains
+			'featured_strains':featured_strains,
+			'featured_brands':featured_brands,
+			'featured_products':featured_products,
+			'featured_dispensaries':featured_dispensaries,
+			'featured_categories':featured_categories
 		})
 
 def strains(request):

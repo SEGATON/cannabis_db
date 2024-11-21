@@ -2,6 +2,164 @@
 {% load thumbnail %}
 	{% block content %}
 		<div class="container">
+
+
+
+
+			<div class="row">
+
+				<div class="col-lg-12">
+					<br>
+				<h1 class="front_page_section_heading">Nearest dispensaries</h1>
+				<br>
+				<hr>
+				<br>
+	
+							<div class="row g-2">
+				{% for dispensary in featured_dispensaries %}			
+					<div class="col-md-2">
+						<div class="card">
+							<a href="{{dispensary.get_absolute_url}}">
+								<img src="{% thumbnail dispensary.featured_image 700x700 crop %}" class="img-fluid radius_md">
+							</a>
+							<a href="{{dispensary.get_absolute_url}}">{{dispensary.title}}</a>
+						</div>
+					</div>				
+				{% endfor %}
+			<a href="" class="sm">view all</a>
+			</div>
+				</div>
+				
+			</div>
+
+
+
+
+
+
+
+
+
+
+			<div class="row">
+
+				<div class="col-lg-12">
+					<br>
+				<h1 class="front_page_section_heading">Categories</h1>
+				<br>
+				<hr>
+				<br>
+	
+							<div class="row g-2">
+				{% for category in featured_categories %}			
+					<div class="col-md-2">
+						<div class="card">
+							<a href="{{category.get_absolute_url}}">
+								<img src="{% thumbnail category.featured_image 700x700 crop %}" class="img-fluid radius_md">
+							</a>
+							<a href="{{category.get_absolute_url}}">{{category.title}}</a>
+						</div>
+					</div>				
+				{% endfor %}
+<a href="" class="sm">view all</a>
+			</div>
+				</div>
+				
+			</div>
+
+
+
+
+
+
+
+
+			<div class="row">
+
+				<div class="col-lg-12">
+					<br>
+				<h1 class="front_page_section_heading">Brands</h1>
+				<br>
+				<hr>
+				<br>
+	
+							<div class="row g-2">
+				{% for brand in featured_brands %}			
+					<div class="col-md-2">
+						<div class="card">
+							<a href="{{brand.get_absolute_url}}">
+								<img src="{% thumbnail brand.featured_image 700x700 crop %}" class="img-fluid radius_md">
+							</a>
+							<a href="{{strain.get_absolute_url}}">{{brand.title}}</a>
+						</div>
+					</div>				
+				{% endfor %}
+			<a href="" class="sm">view all</a>
+			</div>
+				</div>
+				
+			</div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+			<div class="row">
+
+				<div class="col-lg-12">
+					<br>
+				<h1 class="front_page_section_heading">Products</h1>
+				<br>
+				<hr>
+				<br>
+	
+							<div class="row g-2">
+				{% for product in featured_products %}			
+					<div class="col-md-2">
+						<div class="card">
+							<a href="{{product.get_absolute_url}}">
+								<img src="{% thumbnail product.featured_image 700x700 crop %}" class="img-fluid radius_md">
+							</a>
+							<a href="{{product.get_absolute_url}}">{{product.title}}</a>
+						</div>
+					</div>				
+				{% endfor %}
+		<a href="" class="sm">view all</a>
+			</div>
+				</div>
+				
+			</div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 			<div class="row">
 
 				<div class="col-lg-12">
@@ -21,6 +179,7 @@
 						</div>
 					</div>				
 				{% endfor %}
+				<a href="" class="sm">view all</a>
 			</div>
 				</div>
 				
@@ -45,6 +204,7 @@
 						</div>
 					</div>				
 				{% endfor %}
+				<a href="" class="sm">view all</a>
 			</div>
 				</div>
 				
