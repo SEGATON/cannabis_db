@@ -36,6 +36,8 @@ body{
 
 
 
+
+
 select {
     --background-color: #fff;
         scrollbar-width: 30px;
@@ -69,15 +71,6 @@ select {
 
 
 
-.catalog_item_title{
-    color: black;
-}
-.catalog_item_title.dark-theme{
-    --catalog-item-title-link-color:#39FF14;
-}
-.catalog_item_title{
-    color: var(--catalog-item-title-link-color);
-}
 
 
 
@@ -100,8 +93,8 @@ option {
 option:checked, option:active, option:hover {
     padding: 2px 0;
     color: white;
-    font-weight: 700;
-    background: #488f8f repeat url("data:image/gif;base64,R0lGO...");
+    
+    background: #111;
 }
 
 
@@ -270,59 +263,6 @@ input[type=password] {
 
 
 
-h5{
-    color: black;
-    font-weight: 500;
-}
-h5.dark-theme{
-    --page-heading-color: #39FF14;
-}
-h5{
-    color: var(--page-heading-color);
-}
-
-
-
-p{
-    color: black;
-
-}
-p.dark-theme{
-    --page-heading-color: #eee;
-}
-p{
-    color: var(--page-heading-color);
-}
-
-
-
-h4.tagline{
-    color: black;
-    font-weight: 300;
-}
-h4.tagline.dark-theme{
-    color: #23a10b;
-
-}
-h4.tagline{
-    color: #23a10b;
-
-}
-
-
-tagline
-
-h1{
-    color: black;
-
-}
-h1.dark-theme{
-    --page-heading-color: #eee;
-}
-h1{
-    color: var(--page-heading-color);
-}
-
 
 
 
@@ -351,9 +291,7 @@ h1{
     border-top: 1px solid var(--page-border-color);
         padding: 50px 0px;
 }
-a{
-    color: var(--page-a-link-color);
-}
+
 hr{
     border-top: var(--page-border-color);
 }
@@ -565,17 +503,7 @@ font-size: 10px;
 
 
 
-p{
 
-	font-weight:400 ;
-	padding: 0;
-	margin: 0;
-	color: #666;
-}
-
-b{
-    font-weight: 600;
-}
 
 
                                     .profile_follow_link{
@@ -722,14 +650,8 @@ b{
 
 }
 
-h6{
-    font-weight: 600;
-}
-.tagline{
-    font-size: 20px;
-    font-weight: 300;
-    
-}
+
+
 
 .main_menu{
     padding: 0;
@@ -766,6 +688,46 @@ margin-bottom: 10px;
 }
 
 
+
+
+
+
+
+
+
+
+
+p{
+    font-family: "Mona Sans", sans-serif;
+
+
+    --p-link-color:#000;
+}
+p.dark-theme{
+
+    --p-link-color:#39FF14;
+
+p{
+    color: var(--p-link-color);
+}
+
+
+
+
+
+h1,h2,h3,h4,h5,h6{
+    font-family: "Mona Sans", sans-serif;
+
+
+    --catalog-a-link-color:#000;
+}
+h1,h2,h3,h4,h5,h6.dark-theme{
+
+    --catalog-a-link-color:#39FF14;
+
+h1,h2,h3,h4,h5,h6{
+    color: var(--catalog-a-link-color);
+}
 
 
 
