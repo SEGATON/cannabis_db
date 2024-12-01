@@ -39,9 +39,9 @@ from .models import AromasDetailsList
 from .models import AromasDetails
 from .models import Rating
 from .models import AromasDetails
-from .models import StrainKeywords
-from .models import StrainKeywordsSet
-from .models import StrainMetasSet
+from .models import Keywords
+from .models import KeywordsSet
+from .models import MetasSet
 
 from .models import Dispensary
 

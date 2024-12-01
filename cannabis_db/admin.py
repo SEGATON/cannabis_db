@@ -38,9 +38,9 @@ from .models import AromasDetailsList
 from .models import AromasDetails
 from .models import Rating
 
-from .models import StrainKeywords
-from .models import StrainKeywordsSet
-from .models import StrainMetasSet
+from .models import Keywords
+from .models import KeywordsSet
+from .models import MetasSet
 
 from .models import Dispensary
 from .models import Comment
@@ -209,14 +209,14 @@ class DispensaryAdmin(ImportExportModelAdmin):
 	list_display_links = ['id']
 	list_editable = ['title','slug','dispensary_logo','phone_number','email_address']
 	search_fields = ['id','title','slug','dispensary_logo']
-@admin.register(StrainKeywords)
-class StrainKeywordsAdmin(admin.ModelAdmin):
+@admin.register(Keywords)
+class KeywordsAdmin(admin.ModelAdmin):
 	pass
-@admin.register(StrainKeywordsSet)
-class StrainKeywordsSetAdmin(admin.ModelAdmin):
+@admin.register(KeywordsSet)
+class KeywordsSetAdmin(admin.ModelAdmin):
 	pass
-@admin.register(StrainMetasSet)
-class StrainMetasAdmin(ImportExportModelAdmin):
+@admin.register(MetasSet)
+class MetasAdmin(ImportExportModelAdmin):
 	list_display = ['id','sms_UNIQUE_ID']
 	list_editable = ['sms_UNIQUE_ID']
 

@@ -19,7 +19,13 @@ body{
     --page-a-link-color:#000;
 }
 
-
+.nav-tabs .nav-link {
+    margin-bottom: calc(-1* var(--bs-nav-tabs-border-width));
+    border: var(--bs-nav-tabs-border-width) solid transparent;
+    border-top-left-radius: var(--bs-nav-tabs-border-radius);
+    border-top-right-radius: var(--bs-nav-tabs-border-radius);
+    font-size: 12px;
+}
 
 .login_page_bg{
     background-image: url('/static/imgs/login-page-bg.jpg') ;
@@ -170,8 +176,7 @@ border: none;
 
 
 .card{
-    --bg-color:#FFF;
-    --page-border-color:#999;
+border: none;
     margin-bottom: 10px;
 
 }
@@ -612,3 +617,48 @@ h1,h2,h3,h4,h5,h6{
 
 
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+#dispensaries_table{
+
+}
+#dispensaries_table tr {
+border: 1px solid #ddd;
+}
+#dispensaries_table tr td{
+    border: 1px solid #ddd;
+    padding-left: 12px;
+    font-size: 10px;
+}
+
+#ai_tools_heading{
+    font-weight: 300;
+}
+
+.dispensaries_search_form_box{
+    width: 300px;
+}
+.dispensaries_searhc_form_btn{
+    margin-left: -30px;
+    margin-top: 3px;
+    float: left;
+    background: none;
+    border: none;
+}
+#dispensaries_search_tf{
+    float: left;
+}

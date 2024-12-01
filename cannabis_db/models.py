@@ -171,24 +171,24 @@ class StrainDetailsList(models.Model):
 #__________________________________________________________________________________________________________________________________
 
 
-class StrainKeywords(models.Model):
+class Keywords(models.Model):
 	keyword 			= models.CharField(max_length=300)
 
 	def __str__(self):
 		return str(self.keyword)
 
 
-class StrainKeywordsSet(models.Model):
-	keywords 			= models.ManyToManyField(StrainKeywords)
+class KeywordsSet(models.Model):
+	keywords 			= models.ManyToManyField(Keywords)
 
 	def __str__(self):
 		return str(self.keywords)
 
 
-class StrainMetasSet(models.Model):
+class MetasSet(models.Model):
 	sms_UNIQUE_ID 	= models.CharField(max_length=160)
 	strain_meta_description = models.TextField(max_length=160,null=True, blank=True)
-	strain_meta_keywords 	= models.ForeignKey(StrainKeywordsSet, on_delete=models.CASCADE ,max_length=300,null=True, blank=True )
+	strain_meta_keywords 	= models.ForeignKey(KeywordsSet, on_delete=models.CASCADE ,max_length=300,null=True, blank=True )
 
 	def __str__(self):
 		return str(self.sms_UNIQUE_ID)
@@ -804,7 +804,7 @@ class Strain(models.Model):
 		)
 	status = models.CharField(max_length=100, choices=STATUS, null=True, blank=True, default='draft')
 	user = models.ManyToManyField(CustomUser, null=True, blank=True)
-	strain_metas_set = models.ForeignKey(StrainMetasSet, on_delete=models.CASCADE, related_name='strain_metas',null=True, blank=True)
+	strain_metas_set = models.ForeignKey(MetasSet, on_delete=models.CASCADE, related_name='strain_metas',null=True, blank=True)
 	STRAIN_TYPE = {
 		('indica','Indica'),
 		('sativa','Sativa'),

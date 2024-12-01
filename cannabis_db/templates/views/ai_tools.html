@@ -1,0 +1,30 @@
+{% extends 'template_parts/base.html' %}
+	{% block content %}
+
+
+	{% if user.is_authenticated %}
+		<div class="container-full">
+			<div class="row">
+
+				<div class="col-lg-12 p-0">
+
+					<h1 id="ai_tools_heading" class="text-center">Let's find the perfect strain for you.</h1>
+
+
+
+					<h4>Tell more about you</h4>
+
+
+
+				</div>
+				
+			</div>
+		</div>
+
+		{% else %}
+
+			Please <a href="{% url 'accounts:login' %}">login</a> to access.
+
+
+		{% endif %}
+	{% endblock %}

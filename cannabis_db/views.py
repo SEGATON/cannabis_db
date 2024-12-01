@@ -81,7 +81,8 @@ def front_page(request):
 
 	return render(request, 'template_parts/front_page.html', {
 			'strains':strains,
-			'title':'StrainsDB | The most organized and up-to-date Online Cannabis Strains, brands, products, and dispensary database',
+			'title':'Browse All Marijuana/Cannabis Strains, Dispensaries, Brands, and Products',
+			'title_description':'Browse over 6000+ marijuana/cannabis strains, dispensaries, brands, and products.',
 			'latest_strains':latest_strains,
 			'featured_strains':featured_strains,
 			'featured_brands':featured_brands,
@@ -328,8 +329,14 @@ def dispensaries(request):
 
 	dispensaries = Dispensary.objects.all()
 
+	paginator = Paginator(dispensaries, 25)
+
+	page_number = request.GET.get("page")
+	page_obj = paginator.get_page(page_number)
+
 	return render(request, 'views/dispensaries.html', {
-				'dispensaries':dispensaries
+				'page_obj':page_obj,
+				'title': 'StrainsDB | An Internet Medical & Recreational Dispensaries Directory'
 		})
 
 
@@ -344,7 +351,8 @@ def dispensary(request, slug):
 				'dispensary':dispensary,
 				'brands':brands,
 				'strains':strains,
-				'products':products
+				'products':products,
+				'title': dispensary.title + ' | ' + str(dispensary.get_type_of_dispensary_display()) + ' dispensary for ' + dispensary.get_shopping_options_display()
 			
 		})
 
@@ -574,3 +582,11 @@ def process_search_form(request):
 		search_q = request.POST['search_query']
 
 	return HttpResponseRedirect(request.META['HTTP_REFERER'])
+
+
+
+def ai_tools(request):
+
+	return render(request, 'views/ai_tools.html', {
+
+		})
