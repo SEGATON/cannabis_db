@@ -55,7 +55,7 @@ from django.http import JsonResponse
 from django.contrib.auth.decorators import login_required
 
 from .models import ContactMessage
-from .forms import AddDispensaryForm, ContactForm
+from .forms import AddDispensaryForm, ContactForm, DispensariesSearchForm
 
 
 from .filters import StrainFilter
@@ -334,9 +334,13 @@ def dispensaries(request):
 	page_number = request.GET.get("page")
 	page_obj = paginator.get_page(page_number)
 
+	search_dispensaries_form = DispensariesSearchForm()
+
+
 	return render(request, 'views/dispensaries.html', {
 				'page_obj':page_obj,
-				'title': 'StrainsDB | An Internet Medical & Recreational Dispensaries Directory'
+				'title': 'StrainsDB | An Internet Medical & Recreational Dispensaries Directory',
+				'search_dispensaries_form':search_dispensaries_form
 		})
 
 
@@ -590,3 +594,14 @@ def ai_tools(request):
 	return render(request, 'views/ai_tools.html', {
 
 		})
+
+
+
+
+
+
+
+
+
+
+

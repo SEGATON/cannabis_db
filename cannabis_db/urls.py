@@ -1,7 +1,7 @@
 from django.urls import path
 from . import views  
 from .views import Strains
-
+from .views import *
 from django.contrib.sitemaps.views import sitemap
 from .sitemaps import StrainsSitemap, DispensarySitemap,BrandSitemap, ProductSitemap
 app_name = 'cannabis_db'
@@ -66,6 +66,7 @@ urlpatterns = [
 	path('process-search-form/', views.search, name='search'),
 	path('privacy-policy/', views.privacy_policy, name='privacy_policy'),
 	path('newsletter-subscription-form-process/', views.newsletter_subscription_form_process, name='newsletter_subscription_form_process'),
-	path('ai-tools/', views.ai_tools, name='ai_tools')
+	path('ai-tools/', views.ai_tools, name='ai_tools'),
+
 ]
 

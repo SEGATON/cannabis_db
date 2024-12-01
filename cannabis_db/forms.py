@@ -1,6 +1,7 @@
 from django import forms
 from .models import Rating
 from .models import Dispensary
+from .models import Category
 from .models import ContactMessage,NewslettersSubscriptions
 from django import forms
 
@@ -30,3 +31,19 @@ class NewslettersSubscriptionForm(forms.ModelForm):
 	class Meta:
 		model = NewslettersSubscriptions
 		fields =  ['email']
+
+
+
+class DispensariesSearchForm(forms.Form):
+	q = forms.CharField()
+	c = forms.ModelChoiceField(
+			queryset=Category.objects.all().order_by('title'))
+
+	def __init__(self, *args, **kwargs):
+		super().__init__(*args, **kwargs)
+		self.fields['c'].label = ''
+		self.fields['c'].required = False
+		self.fields['c'].label = 'Category'
+		self.fields['q'].label = 'Search for'
+		self.fields['q'].widget.attrs.update({'class':'form-control'})
+		self.fields['q'].widget.attrs.update({'class':'dropdown'})
