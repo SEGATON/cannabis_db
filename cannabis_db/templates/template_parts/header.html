@@ -61,11 +61,47 @@
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
 
 <!-- JQUERY STARTS --->
+  <script src="https://code.jquery.com/jquery-3.5.1.min.js"
+    integrity="sha256-9/aliU8dGd2tb6OSsuzixeV4y/faTqgFtohetphbbj0=" crossorigin="anonymous"></script>
 <script src="https://code.jquery.com/jquery-3.7.1.js" integrity="sha256-eKhayi8LEQwp4NKxN+CfCh+3qOVUtJn3QNZ0TciWLP4=" crossorigin="anonymous"></script>
 <!-- JQUERY ENDS --->
 
 
 
+<script type="text/javascript">
+  $(document).on('keyup', '#id_q', function(e) {
+    e.preventDefault();
+
+    var minlength = 3;
+    var results = [];
+
+    if($('#id_q').val().length >= minlength){
+      $.ajax({
+        type:'POST',
+        url: '{% url "cannabis_db:search_dispensaries" %}',
+        data: {
+          ss: $('#id_q').val(),
+          csrfmiddlewaretoken: $('input[name=csrfmiddlewaretoken]').val(),
+          action: 'post'
+        },
+        success: function(json){
+          $.each(JSON.parse(json.search_string), function(i, item){
+            results.push('<li class="my-2 pl-2"><a href="/'+item.fields.slug+'">'+ item.fields.title'</a></li>')
+          })
+
+          if(!$(".show")[0]){
+            $('.menudd').trigger('click')
+          }
+          document.getElementById("list").innerHTML = (!results.length) ?
+            "No results match your query" : results.join('');
+        },
+        error: function(xhr, errmsg, err) {}
+
+      });
+    }
+
+  })
+</script>
 
 
 

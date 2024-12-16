@@ -51,7 +51,7 @@ from memberships.models import Profile
 from django.http import HttpResponseRedirect
 from django.http import JsonResponse
 
-
+from django.core import serializers
 from django.contrib.auth.decorators import login_required
 
 from .models import ContactMessage
@@ -161,13 +161,14 @@ def strain(request, slug):
 	else:
 		headline = ''
 
+		
 
 
 	return render(request, 'strains/strain.html', {
 			'strain':strain,
 			'ratings':ratings,
 			'ratings_values':ratings_values,
-			'title': strain.title + ' | ' + 'Cannabis strain' + ' | ' + str(strain.get_strain_type_label_display()) + ' | ' + str(headline),
+			'title': strain.title + ' | ' + str(strain.thc)+'% thc ' + str(strain.cbd)+'% cbd ' + str(strain.tac)+'% tac |  '  + 'Cannabis strain' + ' | ' + str(strain.get_strain_type_label_display()) ,
 
 			'saved':saved,
 			'liked':liked,
@@ -180,7 +181,7 @@ def strain(request, slug):
 		})
 
 
-####################################################################################################################################################################
+
 def brands(request):
 	brands = Brand.objects.all()
 	return render(request, 'views/brands.html', {
@@ -598,6 +599,41 @@ def ai_tools(request):
 
 
 
+def search_dispensaries(request):
+	form = DispensariesSearchForm()
+
+	q = ''
+	c = ''
+
+	results = []
+	query = Q()
+
+	if request.POST.get('action')=='post':
+		search_string = str(request.POST.get('ss'))
+
+		if search_string is not None:
+			search_string = Dispensary.objects.filter(title__contains=search_string)[:5]
+
+			data = serializers.serialize('json', list(search_string), fields=('id','title','slug'))
+
+			return JsonResponse({'search_string': data})
+
+	if 'q' in request.GET:
+		form = DispensariesSearchForm(request.GET)
+		if form.is_valid():
+			q = form.cleaned_data['q']
+			c = form.cleaned_data['c']
+
+			if c is not None:
+				query &= Q(dispensary=c)
+			if q is not None:
+				query &= Q(title__contains=q)
+			results = Dispensary.objects.filter(query)
+	return render(request, 'views/dispensaries.html', {
+			'search_dispensaries_form':form,
+			'q':q,
+			'results':results
+		})
 
 
 

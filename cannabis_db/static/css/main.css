@@ -36,39 +36,14 @@ body{
 
 
 
-select {
-    --background-color: #fff;
-        scrollbar-width: 30px;
-        overflow-y: scroll;
-            word-wrap: normal;
-    width: 100%;
-    padding: 5px 0;
-    min-height: 120px;
-    border: none;
-    margin-bottom: 40px;
-      overflow-y: scroll;
-  
-
-}
 
 
 
 
 
 
-option {
-    padding: 2px 0;
-    color: #999;
-    font-size: 12px;
 
-}
 
-option:checked, option:active, option:hover {
-    padding: 2px 0;
-    color: white;
-    
-    background: #111;
-}
 
 
 
@@ -89,12 +64,13 @@ option:checked, option:active, option:hover {
 
 #page_heading{
     font-weight: 900;
-    letter-spacing: -2px;
+    letter-spacing: -3px;
     color: black;
+
 }
 #profile_heading{
     font-weight: 900;
-    letter-spacing: -2px;
+    letter-spacing: -3px;
 }
 
 

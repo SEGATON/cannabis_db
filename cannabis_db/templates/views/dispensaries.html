@@ -100,18 +100,7 @@
 
 
 
-<form method="GET">
-	{% csrf_token %}
-	{{search_dispensaries_form.q}}
-	<ul class="dropdown-menu col-12 pl-2" role="menu" aria-labelledby="menu" id="list">
-            <li role="presentation"><a role="menuitem" tabindex="-1" href="#">HTML</a></li>
-            <div class="dropdown-divider"></div>
-            <li role="presentation"><a role="menuitem" tabindex="-1" href="#">CSS</a></li>
-            <div class="dropdown-divider"></div>
-            <li role="presentation"><a role="menuitem" tabindex="-1" href="#">JavaScript</a></li>
-        </ul>
-       {{search_dispensaries_form.c}}
-	<input type="submit" value="search" name="">
-</form>
+
+
 
 	{% endblock %}

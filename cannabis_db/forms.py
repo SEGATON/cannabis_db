@@ -37,13 +37,13 @@ class NewslettersSubscriptionForm(forms.ModelForm):
 class DispensariesSearchForm(forms.Form):
 	q = forms.CharField()
 	c = forms.ModelChoiceField(
-			queryset=Category.objects.all().order_by('title'))
+			queryset=Dispensary.objects.all().order_by('title'))
 
 	def __init__(self, *args, **kwargs):
 		super().__init__(*args, **kwargs)
 		self.fields['c'].label = ''
 		self.fields['c'].required = False
-		self.fields['c'].label = 'Category'
+		self.fields['c'].label = 'Dispensary'
 		self.fields['q'].label = 'Search for'
-		self.fields['q'].widget.attrs.update({'class':'form-control'})
+		self.fields['q'].widget.attrs.update({'class':'form-control menudd'})
 		self.fields['q'].widget.attrs.update({'class':'dropdown'})

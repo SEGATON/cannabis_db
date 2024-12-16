@@ -680,7 +680,6 @@ class Dispensary(models.Model):
 	websiteURL = models.URLField(max_length=300, null=True, blank=True)
 	phone_number = models.CharField(max_length=300, null=True, blank=True)
 	email_address = models.EmailField(max_length=300, null=True, blank=True)
-	address = models.ManyToManyField(Address, null=True, blank=True, related_name='dispensary_addresses')
 	dispensary_logo	= models.ImageField(default='media/default.jpg/', upload_to='media/CANNABIS_DB/DISPENSARIES/DISPENSARY_LOGOS/', null=True, blank=True)
 	dispensary_cover = models.ImageField(upload_to='media/CANNABIS_DB/DISPENSARY_COVERS/',null=True, blank=True )
 	dispensary_description = RichTextField(null=True, blank=True)
@@ -817,6 +816,10 @@ class Strain(models.Model):
 			('average','Average',),
 			('high','High',),
 		)
+
+	thc = models.DecimalField(max_digits=9, decimal_places=2)
+	tac = models.DecimalField(max_digits=9, decimal_places=2)
+	cbd = models.DecimalField(max_digits=9, decimal_places=2)
 
 	potency = models.ForeignKey(Potency,on_delete=models.CASCADE, null=True, blank=True)
 	seeds = models.ManyToManyField(Brand, related_name='seed_bank_brands')
