@@ -168,7 +168,7 @@ def strain(request, slug):
 			'strain':strain,
 			'ratings':ratings,
 			'ratings_values':ratings_values,
-			'title': strain.title + ' | ' + str(strain.thc)+'% thc ' + str(strain.cbd)+'% cbd ' + str(strain.tac)+'% tac |  '  + 'Cannabis strain' + ' | ' + str(strain.get_strain_type_label_display()) ,
+			'title': strain.title + ' | ' + str(strain.thc)+'% thc, ' + str(strain.cbd)+'% cbd, ' + str(strain.tac)+'% tac |  '  + str(strain.get_strain_type_label_display()) + ' | Cannabis strain',
 
 			'saved':saved,
 			'liked':liked,
