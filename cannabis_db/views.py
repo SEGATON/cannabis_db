@@ -386,13 +386,13 @@ def remove_dispensary(request, pk):
 
 def faq_page(request):
 	return render(request, 'static_pages/faq.html', {
-
+			'title':'F.A.Q'
 		})
 
 
 def privacy_policy(request):
 	return render(request, 'views/static_views/privacy_policy.html', {
-
+			'title':'Privacy policy'
 		})
 
 def search_results(request):
@@ -426,7 +426,8 @@ def search(request):
 def maps(request):
 	dispensaries = Dispensary.objects.all()
 	return render(request, 'views/map.html', {
-			'dispensaries':dispensaries
+			'dispensaries':dispensaries,
+			'title':'Find dispensary | map'
 		})
 
 
@@ -542,7 +543,8 @@ def contact(request):
 
 
 	return render(request, 'contact.html', {
-			'contact_form':contact_form
+			'contact_form':contact_form,
+			'title':'Contact us'
 		})
 
 
@@ -576,7 +578,7 @@ def follow_dispensary(request, pk):
 def terms_conditions(request):
 
 	return render(request, 'views/static_views/terms_conditions.html', {
-
+			'title':'Terms and Conditions',
 		})
 
 
@@ -593,7 +595,7 @@ def process_search_form(request):
 def ai_tools(request):
 
 	return render(request, 'views/ai_tools.html', {
-
+			'title':'AI Tools'
 		})
 
 

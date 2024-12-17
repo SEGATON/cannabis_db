@@ -1,6 +1,10 @@
 {% extends 'template_parts/base.html' %}
 {% load thumbnail %}
 	{% block content %}
+
+
+<section id="featured_dispensaries_section">
+
 		<div class="container">
 
 
@@ -15,26 +19,55 @@
 				<hr>
 				<br>
 	
-							<div class="row g-2">
+							<div class="row g-1">
 				{% for dispensary in featured_dispensaries %}			
 					<div class="col-md-2">
 						<div class="card">
-							<a href="{{dispensary.get_absolute_url}}">
-								<img src="{% thumbnail dispensary.featured_image 700x700 crop %}" class="img-fluid radius_md">
+							<div class="row">
+								<div class="col-md-3 border_right">
+									<a href="{{dispensary.get_absolute_url}}">
+								<img src="{% thumbnail dispensary.dispensary_logo 1200x1200 crop %}" class="img-fluid radius_md" style="width:100%; text-align: center;">
 							</a>
-							<a href="{{dispensary.get_absolute_url}}">{{dispensary.title}}</a>
+								</div>
+								<div class="col-md-9">
+									<a href="{{dispensary.get_absolute_url}}" class="small_link">{{dispensary.title|truncatechars:23}}</a>
+								</div>
+							</div>
+							<style type="text/css">
+								.small_link{
+									font-size: 11px;
+									text-decoration: none;
+								}
+								.small_link:hover{
+									font-size: 11px;
+									text-decoration: none;
+									color: #666;
+								}
+
+							</style>
+							
 						</div>
 					</div>				
 				{% endfor %}
-			<a href="" class="sm">view all</a>
+<a href="{% url 'cannabis_db:dispensaries' %}" class="sm p-0">view all</a>	
 			</div>
 				</div>
-				
+			
 			</div>
 
 
 
+</div>
 
+</section>
+
+
+
+
+
+
+
+		<div class="container">
 
 
 
@@ -68,7 +101,9 @@
 			</div>
 
 
+</div>
 
+		<div class="container">
 
 
 
@@ -105,7 +140,10 @@
 
 
 
+</div>
 
+
+		<div class="container">
 
 
 
@@ -143,7 +181,9 @@
 
 
 
+</div>
 
+		<div class="container">
 
 
 
@@ -184,6 +224,15 @@
 				</div>
 				
 			</div>
+
+		</div>
+
+
+<section id="featured_dispensaries_section">
+				<div class="container">
+
+
+
 			<div class="row">
 
 				<div class="col-lg-12">
@@ -209,6 +258,13 @@
 				</div>
 				
 			</div>
+
+
+		</div>
+
+
+
+				<div class="container">
 			<div class="row">
 
 				<div class="col-lg-12">

@@ -33,6 +33,15 @@
       {{object.title}}
   </title>
 
+<meta name="description" content="{{strain.strain_metas_set.strain_meta_description}}">
+
+<meta name="keywords" content="
+
+{% for kw in strain.strain_metas_set.strain_meta_keywords.keywords.all %} 
+  {{kw}}
+{% endfor %}">
+
+
 
 <link 
   rel="stylesheet" 
@@ -78,7 +87,7 @@
     if($('#id_q').val().length >= minlength){
       $.ajax({
         type:'POST',
-        url: '{% url "cannabis_db:search_dispensaries" %}',
+        url: '',
         data: {
           ss: $('#id_q').val(),
           csrfmiddlewaretoken: $('input[name=csrfmiddlewaretoken]').val(),
