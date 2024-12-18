@@ -72,12 +72,19 @@ class StrainFilter(django_filters.FilterSet):
 	terpenes_reports = django_filters.ModelMultipleChoiceFilter(queryset=TerpeneDetails.objects.all())
 	may_relieve = django_filters.ModelMultipleChoiceFilter(queryset=HelpsWithReport.objects.all())
 	flavors = django_filters.ModelMultipleChoiceFilter(queryset=FlavorsDetails.objects.all())
-	release_year = django_filters.DateRangeFilter(field_name='date_created', lookup_expr='year')
+
 	potency = django_filters.ModelMultipleChoiceFilter(queryset=Potency.objects.all())
 	aromas = django_filters.ModelMultipleChoiceFilter(queryset=AromasDetails.objects.all())
+
+	date_created = django_filters.NumberFilter(field_name='date_created', lookup_expr='year')
+	date_created__gt = django_filters.NumberFilter(field_name='date_created', lookup_expr='year__gt')
+	date_created__lt = django_filters.NumberFilter(field_name='date_created', lookup_expr='year__lt')
+	
+
+
 	class Meta:
 		model = Strain
-		fields = ['title','brand','strain_type','dispensaries','feelings','terpenes_reports','may_relieve','flavors','potency','aromas']
+		fields = ['title','brand','strain_type','dispensaries','feelings','terpenes_reports','may_relieve','flavors','potency','aromas','date_created']
 		
 
 
