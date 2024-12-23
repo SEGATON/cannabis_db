@@ -17,6 +17,8 @@ body{
     --page-heading-color:#000;
     --page-border-color:#999;
     --page-a-link-color:#000;
+    height: 100%;
+    width: 100%;
 }
 
 .nav-tabs .nav-link {
