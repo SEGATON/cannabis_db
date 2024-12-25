@@ -56,6 +56,7 @@ class PublicProfile(generic.DetailView):
 			'title':'Profile' + ' | ' + koko.user.username 
 		}
 		return content
+
 	def get_context_data(self, *args, **kwargs):
 		context = super().get_context_data(**kwargs)
 
@@ -121,13 +122,21 @@ def edit_profile(request, pk):
 		})
 
 
+
+
+
 def follow_user(request, pk):
 
 	profile = get_object_or_404(Profile, pk=pk)
+
 	user =request.user
+
 	if request.user not in profile.followers.all():
+
 		profile.followers.add(user)
+
 	else:
+
 		profile.followers.remove(user)
 
 	return HttpResponseRedirect(request.META['HTTP_REFERER'])
@@ -141,6 +150,7 @@ def unfollow_user(request, pk):
 	profile = get_object_or_404(Profile, pk=pk)
 
 	if request.user in profile.followers.all():
+		
 		profile.followers.delete(user=request.user)
 	
 	return HttpResponseRedirect(request.META['HTTP_REFERER'])

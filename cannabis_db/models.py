@@ -820,6 +820,10 @@ class Strain(models.Model):
 	thc = models.DecimalField(max_digits=9, decimal_places=2)
 	tac = models.DecimalField(max_digits=9, decimal_places=2)
 	cbd = models.DecimalField(max_digits=9, decimal_places=2)
+	cnbnd = models.DecimalField(max_digits=9, decimal_places=2)
+
+	lineage = models.CharField(max_length=300, null=True, blank=True)
+
 
 	potency = models.ForeignKey(Potency,on_delete=models.CASCADE, null=True, blank=True)
 	seeds = models.ManyToManyField(Brand, related_name='seed_bank_brands')

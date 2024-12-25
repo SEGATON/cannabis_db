@@ -21,28 +21,33 @@
 								
 <h1 id="profile_heading">{{object.koko.user.username}} </h1>
 
-									<p>
-
-
-									{% if request.user in object.koko.user.profile.followers.all %}
-										<a href="{% url 'memberships:follow_user' user.pk %}" class=" ">
+									  <p>
+													{% if request.user in object.koko.user.profile.followers.all %}
+																		Following
+										<a href="{% url 'memberships:follow_user' object.koko.user.pk %}" class=" ">
 											<svg xmlns="http://www.w3.org/2000/svg" width="1em" height="1em" viewBox="0 0 20 20"><path fill="#018223" d="M2 2c0-1.1.9-2 2-2h12a2 2 0 0 1 2 2v18l-8-4l-8 4z"/></svg>
-											{{user.profile.user.first_name}}
+											<b>{{object.koko.user.profile.user.username}}</b>
 										</a> | 
 
 									{% else %}
-
-										<a href="{% url 'memberships:follow_user' user.pk %}" class=" ">
-											<svg class="lala" xmlns="http://www.w3.org/2000/svg" width="1em" height="1em" viewBox="0 0 20 20"><path class="lala" fill="#018223" d="M2 2c0-1.1.9-2 2-2h12a2 2 0 0 1 2 2v18l-8-4l-8 4zm2 0v15l6-3l6 3V2z"/></svg>
-											{{user.profile.user.first_name}}
+Follow 
+										<a href="{% url 'memberships:follow_user' object.koko.user.pk %}" class=" ">
+											<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"><path fill="#076900" d="M5 21V5q0-.825.588-1.412T7 3h10q.825 0 1.413.588T19 5v16l-7-3zm2-3.05l5-2.15l5 2.15V5H7zM7 5h10z"/></svg>
+											{{object.koko.user.profile.user.username}}
 										</a> | 
 
-									{%  endif %}
+									{%  endif %}	
 
 
 
 
 
+
+
+ {{object.koko.user.profile.followers.count}}  follower{{ object.koko.user.profile.followers.count|pluralize }}
+  {{ object.koko.user.profile.followers.count|pluralize:","}}  
+
+</p>
 
 
 						 {{object.koko.user.profile.followers.count}}  follower{{ object.koko.user.profile.followers.count|pluralize }}
