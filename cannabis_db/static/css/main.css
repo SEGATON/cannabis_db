@@ -9,7 +9,9 @@ a{
     color: black;
 }
 
-
+.catalog_item_link{
+    text-decoration: none;
+}
 
 body{
     font-family: "Mona Sans", sans-serif;
