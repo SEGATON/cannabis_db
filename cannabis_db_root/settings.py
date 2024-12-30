@@ -94,7 +94,7 @@ INSTALLED_APPS = [
     'rest_framework',
 
     'star_ratings',
-
+    'chatterbot.ext.django_chatterbot'
 ]
 
 

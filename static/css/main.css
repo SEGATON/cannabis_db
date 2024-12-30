@@ -5,19 +5,50 @@ width: 100%;
 
 
 
-a{
-    color: black;
+
+.catalog_item_link{
+    text-decoration: none;
 }
+
+
+
+
 
 
 
 body{
     font-family: "Mona Sans", sans-serif;
-    --bg-color:#FFF;
+    background:#fff;
     --page-heading-color:#000;
     --page-border-color:#999;
     --page-a-link-color:#000;
+    height: 100%;
+    width: 100%;
 }
+body.dark-theme{
+    --bkg-color:#000;
+}
+
+body{
+    font-family: "Mona Sans", sans-serif;
+    background: var(--bkg-color);
+    --page-heading-color:#000;
+    --page-border-color:#999;
+    --page-a-link-color:#000;
+    height: 100%;
+    width: 100%;
+}
+
+
+
+
+.card.dark-theme{
+    --bkg-color:#0f1824;
+}
+.card {
+  background:var(--bkg-color);
+}
+
 
 .nav-tabs .nav-link {
     margin-bottom: calc(-1* var(--bs-nav-tabs-border-width));
@@ -62,16 +93,48 @@ body{
 
 
 
-#page_heading{
-    font-weight: 900;
-    letter-spacing: -3px;
-    color: black;
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+#page_heading{
+
+    color: black;
 }
-#profile_heading{
-    font-weight: 900;
-    letter-spacing: -3px;
+#page_heading.dark-theme{
+
+    --page-heading-color: #39FF14;
 }
+#page_heading{
+
+    color: var(--page-heading-color);
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 .light_gray_section_background{
@@ -151,11 +214,6 @@ border: none;
 
 
 
-.card{
-border: none;
-    margin-bottom: 10px;
-
-}
 
 .footer{
     background: var(--bg-dg-color);
@@ -572,22 +630,8 @@ margin-bottom: 10px;
 
 
 
-p{
-    font-family: "Mona Sans", sans-serif;
 
 
-    --p-link-color:#000;
-}
-
-
-
-
-h1,h2,h3,h4,h5,h6{
-    font-family: "Mona Sans", sans-serif;
-
-
-    --catalog-a-link-color:#000;
-}
 
 
 

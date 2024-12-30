@@ -321,20 +321,59 @@ class StrainImageGallery(models.Model):
 #__________________________________________________________________________________________________________________________________
 
 
-class TerpeneDetails(models.Model):
-	title 	= models.CharField(max_length=1000)
-	slug 	= models.SlugField(max_length=1000)
-	description = RichTextField(null=True, blank=True)
+
+class TerpeneValue(models.Model):
+	terpene_value = models.DecimalField(max_digits=9,decimal_places=2, null=True, blank=True)
+	TERPENE_VALUE_LABEL = (
+			('percentage','%'),
+			('milligrams','mg'),
+
+		)
+	terpene_value_lbl = models.CharField(max_length=50, choices=TERPENE_VALUE_LABEL, null=True, blank=True)
+	def __str__(self):
+		return str(self.terpene_value)
+
+
+class TerpeneIcon(models.Model):
 	terpene_icon = models.ImageField(default='media/CANNABIS_DB/STRAINS/TERPENES_REPORTS/TERPENE_ICONS/default.jpg/', upload_to='media/CANNABIS_DB/STRAINS/TERPENES_REPORTS/TERPENE_ICONS/', null=True, blank=True, max_length=500)
 	def __str__(self):
-		return self.title
+		return str(self.terpene_icon)
+
+class TerpeneDetails(models.Model):
+
+	TERPENE = (
+			('beta-myrcene','Beta-Myrcene'),
+			('ocimene','Ocimene'),
+		)
+
+	terpene 	= models.CharField(choices=TERPENE, max_length=1000)
 
 
+	terpene_icon = models.ManyToManyField(TerpeneIcon,null=True, blank=True)
+	terpene_values = models.ManyToManyField(TerpeneValue,null=True, blank=True)
 
+	def __str__(self):
+		return self.terpene
 
+class TerpeneDetailsItem(models.Model):
+	tdsi_UNIQUE_ID = models.CharField(max_length=100)
+	title = models.CharField(max_length=1000)
+	slug = models.SlugField(max_length=1000)
+	description = RichTextField(null=True, blank=True)
+	terpenes_reports = models.ForeignKey(TerpeneDetails, on_delete=models.CASCADE,null=True, blank=True)
 
+	def __str__(self):
+		return self.tdsi_UNIQUE_ID
 
+class TerpeneDetailsSet(models.Model):
+	tds_UNIQUE_ID = models.CharField(max_length=100)
+	title = models.CharField(max_length=1000)
+	slug = models.SlugField(max_length=1000)
+	description = RichTextField(null=True, blank=True)
+	terpenes_reports = models.ManyToManyField(TerpeneDetails)
 
+	def __str__(self):
+		return self.tds_UNIQUE_ID
 
 #__________________________________________________________________________________________________________________________________
 
@@ -840,11 +879,18 @@ class Strain(models.Model):
 	image_gallery= models.ForeignKey(StrainImageGallery, on_delete=models.CASCADE, related_name='product_image_gallery',null=True, blank=True)
 	feelings_reports = models.ForeignKey(FeelingReportListSet, on_delete=models.CASCADE,null=True, blank=True)
 	effects_reports = models.ForeignKey(EffectsReportListSet, on_delete=models.CASCADE,null=True, blank=True)	
-	terpenes_reports = models.ManyToManyField(TerpeneDetails, null=True, blank=True)	
+	terpenes_reports = models.ForeignKey(TerpeneDetailsSet, on_delete=models.CASCADE,null=True, blank=True)	
 	flavor_reports = models.ForeignKey(FlavorsDetailsListSet, on_delete=models.CASCADE,null=True, blank=True )	
 	aromas_reports = models.ForeignKey(AromasListSet, on_delete=models.CASCADE,null=True, blank=True )	
 	helps_with_reports = models.ForeignKey(HelpsWithReportListSet, on_delete=models.CASCADE,null=True, blank=True )
 	strain_lineage_details_list = models.ForeignKey(StrainLineageDetailsList, on_delete=models.CASCADE, null=True,blank=True)
+
+
+
+
+
+
+
 	vendors = models.ManyToManyField(Vendor, null=True, blank=True)
 	ratings = models.ManyToManyField('Rating', null=True, blank=True)
 	likes = models.ManyToManyField(CustomUser, related_name='strain_likes', null=True,blank=True)
@@ -865,6 +911,9 @@ class Strain(models.Model):
 	bookmarks = models.ManyToManyField(CustomUser, null=True, blank=True, related_name='bookmarked_by')
 
 	
+
+
+
 
 	def __str__(self):
 		return str(self.title)

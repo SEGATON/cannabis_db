@@ -39,7 +39,7 @@
 				<div class="card p-3">
 					<h1 id="page_heading">{{strain.title|title}}</h1>
 					<hr>
-					<h4 id="headline_heading">{{strain.lineage}}</h4>
+					<h4 id="tagline_heading">{{strain.lineage}}</h4>
 					<hr>
 					<h6 id="headline_heading">{{strain.headline}}</h6>
 					<hr>
@@ -71,20 +71,23 @@
 {% endif %}
 
 {% if strain.tac %}
-	<b class="zoobyzooby">TAC</b><span class="zabyzaby">{{strain.tac}}%</span></p> 
+	<b class="zoobyzooby">TAC</b><span class="zabyzaby">{{strain.tac}}%</span> / 
 {% endif %}
 {% if strain.cnbnd %}
-	<b class="zoobyzooby">Total cannabinoids </b><span class="zabyzaby">{{strain.cnbnd}}%</span></p> 
+	<b class="zoobyzooby">Total cannabinoids </b><span class="zabyzaby">{{strain.cnbnd}}%</span>
 {% endif %}
+</p>
 <hr>
 </div></div></div>
 
 <style type="text/css">
 	.zabyzaby{
 		font-weight: 300;
+		background: var(--bkg-color);
 	}
 	.zoobyzooby{
 		font-weight: 800;
+		background: var(--bkg-color);
 	}
 </style>
 				<div class="card p-3">
@@ -234,7 +237,7 @@
 
 <style>
 .accordion {
-  background-color: #fff;
+background: var(--bkg-color);
   color: #444;
   cursor: pointer;
   padding:5px 0px;
@@ -242,7 +245,7 @@
   border-top: none;
   border-left: none;
   border-right:none;
-  border-bottom: 1px solid #ddd;
+  border-bottom: 1px dotted var(--page-border-color);
   text-align: left;
   outline: none;
   font-size: 15px;
@@ -250,7 +253,7 @@
 }
 
 .active, .accordion:hover {
-  background-color: #fff;
+background: var(--bkg-color);
 }
 
 .accordion:after {
@@ -267,19 +270,19 @@
 
 .panel {
   padding-top: 15px;
-  background-color: white;
+background: var(--bkg-color);
   max-height: 0;
   overflow: hidden;
   transition: max-height 0.2s ease-out;
 }
 </style>
 <div class="p-3">
-<button class="accordion">Description</button>
+<button class="accordion" id="kajak">Description</button>
 <div class="panel">
 					{% if strain.description %}<p>{{strain.description|safe}}</p>{% else %}	<p>Not available.</p>{% endif %}	
 </div>
 
-<button class="accordion">Potency</button>
+<button class="accordion" id="kajak">Potency</button>
 <div class="panel">
 			<h5>Strain potency</h5>
 			{{strain.get_potency_display}}
@@ -409,13 +412,39 @@
 	<div class="panel">
 
 					{% if strain.terpenes_reports %}
-					{% for terpene in strain.terpenes_reports.all %}
-						{{terpene.title}}
 
-					{% endfor %}
+
+
+						
+						<b>{{strain.terpenes_reports.tds_UNIQUE_ID}}</b><br>
+							<b>{{strain.terpenes_reports.title}}</b>
+						{{strain.description|truncatechars:50|safe}}<br>
+						<hr>
+						{% for t_r in strain.terpenes_reports.terpenes_reports.all %}
+
+
+								{% for t_r_i in t_r.terpene_icon.all %}
+										{{t_r_i.terpene_icon.url}}
+								{% endfor %}
+
+
+
+								{% for t_r_v in t_r.terpene_values.all %}
+										{{t_r_v.terpene_value}}
+										{{t_r_v.terpene_value_lbl}}
+								{% endfor %}
+
+
+						{% endfor %}
+						<hr>
+
+
+
+
 					{% else %}				
 						<p>Not available.</p>
 					{% endif %}
+					<br>
 					<a href="" class="" data-toggle="modal" data-target="#exampleModalCenter">
   View all Terpenes Profiles
 </a>

@@ -68,6 +68,7 @@ urlpatterns = [
 	path('newsletter-subscription-form-process/', views.newsletter_subscription_form_process, name='newsletter_subscription_form_process'),
 	path('ai-tools/', views.ai_tools, name='ai_tools'),
 	path('search-dispensaries/', views.search_dispensaries, name='search_dispensaries'),
+	path('strain-ai/', views.strain_ai_testing, name='strain_ai_testing'),
 
 ]
 

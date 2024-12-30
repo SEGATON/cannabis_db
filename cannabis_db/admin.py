@@ -15,8 +15,23 @@ from .models import DispensarySocialFollowURLICON
 
 from .models import StrainSpecification
 
+from .models import TerpeneDetailsSet
 from .models import TerpeneDetails
-
+from .models import TerpeneValue
+@admin.register(TerpeneValue)
+class TerpeneValueAdmin(admin.ModelAdmin):
+	pass
+from .models import TerpeneIcon
+@admin.register(TerpeneIcon)
+class TerpeneIconAdmin(admin.ModelAdmin):
+	pass
+from .models import TerpeneDetailsItem
+@admin.register(TerpeneDetailsSet)
+class TerpeneDetailsSetAdmin(admin.ModelAdmin):
+	pass
+@admin.register(TerpeneDetailsItem)
+class TerpeneDetailsItemAdmin(admin.ModelAdmin):
+	pass
 
 from .models import FlavorsDetailsListSet
 from .models import FlavorsDetailsList

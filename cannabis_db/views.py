@@ -600,6 +600,21 @@ def ai_tools(request):
 
 
 
+def strain_ai_testing(request):
+
+
+	
+
+
+
+
+
+	return render(request, 'views/strain_ai_testing.html', {
+			'title':'AI Tools'
+		})
+
+
+
 
 def search_dispensaries(request):
 	form = DispensariesSearchForm()
