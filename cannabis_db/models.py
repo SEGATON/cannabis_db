@@ -344,6 +344,7 @@ class TerpeneDetails(models.Model):
 	TERPENE = (
 			('beta-myrcene','Beta-Myrcene'),
 			('ocimene','Ocimene'),
+			('alpha-pinene','Alpha-Pinene'),
 		)
 
 	terpene 	= models.CharField(choices=TERPENE, max_length=1000)
