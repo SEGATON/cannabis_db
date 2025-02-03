@@ -1,5 +1,6 @@
 from django.db import models
 from django.urls import reverse
+from django.utils import timezone
 
 
 from ckeditor.fields import RichTextField
@@ -737,8 +738,8 @@ class Dispensary(models.Model):
 
 	followers = models.ManyToManyField(CustomUser, null=True, blank=True)
 
+	date_created = date = timezone.now()
 
-	
 
 	def get_absolute_url(self):
 		return reverse('cannabis_db:dispensary', args=[self.slug])

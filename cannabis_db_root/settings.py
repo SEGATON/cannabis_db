@@ -161,7 +161,7 @@ DATABASES = {
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.mysql',
-        'NAME': 'pashash',
+        'NAME': 'cdb_testing_2',
         'USER': 'root',
         'PASSWORD': 'pass',
         'HOST': '',
@@ -171,6 +171,9 @@ DATABASES = {
         }
     }
 }
+
+
+DATA_UPLOAD_MAX_NUMBER_FIELDS = 10000
 
 
 EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend'

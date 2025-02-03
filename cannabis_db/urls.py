@@ -3,7 +3,7 @@ from . import views
 from .views import Strains
 from .views import *
 from django.contrib.sitemaps.views import sitemap
-from .sitemaps import StrainsSitemap, DispensarySitemap,BrandSitemap, ProductSitemap
+from .sitemaps import StrainsSitemap, DispensarySitemap,BrandSitemap, ProductSitemap,StaticViewsSitemap
 app_name = 'cannabis_db'
 
 
@@ -20,8 +20,8 @@ sitemaps = {
 	'strains_sitemap':StrainsSitemap,
 	'dispensary_sitemap':DispensarySitemap,
 	'brand_sitemap':BrandSitemap,
-	'product_sitemap':ProductSitemap
-
+	'product_sitemap':ProductSitemap,
+	'static_views_sitemap':StaticViewsSitemap
 
 }
 
@@ -35,6 +35,7 @@ urlpatterns = [
 	path('strains/', views.strains, name='strains'),
 
 	path('strains/', Strains.as_view(), name='strains'),
+	path('about-us/', views.about_us, name='about_us'),
 
 	path('strain/<slug:slug>/', views.strain, name='strain'),
 	path('dispensaries/', views.dispensaries, name='dispensaries'),

@@ -5,6 +5,19 @@ from .models import Strain, Dispensary, Brand, Product
 from django.urls import reverse
 
 
+
+
+
+class StaticViewsSitemap(Sitemap):
+	changefreq = "always"
+	priority = 0.8
+
+	def items(self):
+		return ["strains", "about_us"]
+
+
+
+
 class StrainsSitemap(Sitemap):
 	changefreq = "always"
 	priority = 0.8

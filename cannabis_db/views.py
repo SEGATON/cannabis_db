@@ -567,7 +567,11 @@ def follow_dispensary(request, pk):
 
 
 
+def about_us(request):
 
+	return render(request, 'views/static_views/about-us.html', {
+		
+		})
 
 
 
