@@ -21,7 +21,7 @@ body{
     background:#fff;
     --page-heading-color:#000;
     --page-border-color:#999;
-
+    position: relative;
     height: 100%;
     width: 100%;
 }
@@ -29,6 +29,7 @@ body.dark-theme{
     --bkg-color:#000;
     --bkg-color-dark-grey:#07090d;
     --bkg-color-gr:#106600;
+    --border-color-l-gr:#014511;
      --text-color-green: #39FF14;
      --text-color-lightgrey: #777;
      --text-color-lightgrey-max: #eee;
@@ -177,7 +178,7 @@ border: none;
 
 
 .border_right{
-    border-right:1px dotted #999;
+border-right: 1px dotted var(--border-color-l-gr);
 }
 
 

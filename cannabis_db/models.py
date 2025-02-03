@@ -826,7 +826,14 @@ STRAIN MODEL
 
 '''
 
-
+class Terpene(models.Model):
+	trpn_UNIQUIE_ID = models.CharField(max_length=50, null=True,blank=True)
+	title = models.CharField(max_length=50, null=True,blank=True)
+	slug = models.SlugField(max_length=50)	
+	description = RichTextField(max_length=5000, null=True,blank=True)
+	terpene_icon = models.ImageField(default='media/CANNABIS_DB/STRAINS/TERPENES_REPORTS/TERPENE_ICONS/default.jpg/', upload_to='media/CANNABIS_DB/STRAINS/TERPENES_REPORTS/TERPENE_ICONS/', null=True, blank=True, max_length=500)
+	def __str__(self):
+		return str(self.title)
 
 class Potency(models.Model):
 	title = models.CharField(max_length=50, null=True,blank=True)
@@ -864,6 +871,7 @@ class Strain(models.Model):
 
 	lineage = models.CharField(max_length=300, null=True, blank=True)
 
+	terpenes = models.ManyToManyField(Terpene, null=True, blank=True)
 
 	potency = models.ForeignKey(Potency,on_delete=models.CASCADE, null=True, blank=True)
 	seeds = models.ManyToManyField(Brand, related_name='seed_bank_brands')

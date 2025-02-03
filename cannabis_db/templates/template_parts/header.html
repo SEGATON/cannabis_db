@@ -173,7 +173,24 @@
 </head>
 <body>
 
+<div id="mainkoko">
+
+
 {% include 'template_parts/elements/menus/menu.html' %}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 <br>
 
@@ -390,7 +407,7 @@ The information on this site is provided as a resource only, and is not to be us
 
 
 
-<button class="btn-toggle">Toggle Dark-Mode</button>
+
 <script type="text/javascript">
 const btn = document.querySelector(".btn-toggle");
 
@@ -409,4 +426,214 @@ btn.addEventListener("click", function () {
   localStorage.setItem("theme", theme);
 });
 
+</script>
+
+
+
+<nav aria-labelledby="hamburger">
+  <button id="hamburger" class="hamburger" aria-label="Show Navigation Menu" aria-expanded="false" tabindex="0">☰</button>
+
+  <div id="navMenu" class="navMenu hidden vh">
+    <button id="closeNavMenu" class="closeBtn" aria-label="Hide Navigation Menu">×</button>
+    <ul>
+      <li><a href="#">Company</a></li>
+      <li><a href="#">Services</a></li>
+      <li><a href="#">Portfolio</a></li>
+      <li><a href="#">Contact</a></li>
+    </ul>
+  </div>
+</nav>
+
+
+<style>
+
+  :root {
+  --side-panel: 400px;
+  --side-color: white;
+}
+
+*, ::before, ::after {
+  box-sizing: border-box;
+}
+
+:focus {
+  outline: 3px solid #3d68a7;
+}
+
+::-moz-focus-inner {
+  border: 0;
+}
+
+
+
+
+.navMenu {
+  width: var(--side-panel);
+  color: var(--side-color);
+  background: #fff;
+  overflow: hidden;
+  position: fixed;
+  height: 100%;
+  padding: 0;
+  margin: 0;
+  top: 0;
+  left: 0;
+
+  transition: width .4s linear;
+  z-index: 10;
+}
+
+.closeBtn {
+  position: absolute;
+  top: 5px;
+  right: 10px;
+  color: black;
+  padding: 0 5px;
+
+
+}
+
+.hamburger {
+  position: absolute;
+  top: 10px;
+  left: 12px;
+  padding: 0 5px 4px;
+  z-index: 12;
+  transition: margin .4s linear;
+}
+
+.hamburger-z {
+  z-index: 1;
+}
+
+.hidden {
+  width: 0;
+}
+
+.vh {
+  visibility: hidden;
+}
+
+button {
+  font-size: 2em;
+  background: none;
+  border: none;
+  cursor: pointer;
+}
+
+
+.navMenu a {
+  text-decoration: none;
+  font-weight: bold;
+  color: inherit;
+  font-size: 1.2em;
+}
+
+.navMenu a:hover {
+  border-bottom: solid 1px;
+}
+
+#mainkoko {
+  padding: 1.2em;
+  transition: margin-left .4s linear;
+  position: relative;
+  z-index: 1;
+}
+
+h1 {
+  margin: 0;  
+}
+
+.main-right {
+  padding-left: 4em;  
+}
+
+.menuOpen {
+  margin-left: var(--side-panel);
+}
+
+.overlay {
+  position: fixed;
+  z-index: 8;
+  top: 0;
+  right: 0;
+  left: var(--side-panel);
+  bottom: 0;
+  background: rgba(0,0,0,0);
+  height: 100%;
+  border-left:1px solid #ddd;
+}
+
+@media (max-width: 280px) {
+  .navMenu {
+    width: 100%;
+  }
+
+  .menuOpen {
+    margin-left: 0;
+  }
+
+}
+
+</style>
+
+<script type="text/javascript">
+  let myHamburger = document.getElementById('hamburger'),
+    myNavMenu = document.getElementById('navMenu'),
+    closeNavMenu = document.getElementById('closeNavMenu'),
+    main = document.getElementById('mainkoko'),
+    myMenuLinks = document.querySelectorAll('nav button, nav a'),
+    transitionTime = 400, // This matches what's in the CSS for the transition
+    overlay = document.createElement('div');
+
+document.body.appendChild(overlay);
+
+function doMenuOpen () {
+  myHamburger.setAttribute('aria-expanded', true);
+  myNavMenu.classList.remove('vh');
+  myNavMenu.classList.remove('hidden');
+  main.classList.add('menuOpen');
+  myHamburger.classList.add('menuOpen');
+  myHamburger.classList.add('hamburger-z');
+  window.setTimeout(function () {
+    closeNavMenu.focus();
+    overlay.classList.add('overlay');
+    overlay.addEventListener('click', function () {
+      doMenuClose();
+    }, false);
+
+    document.addEventListener('keyup', function (e) {
+      // 27 = ESC key
+      if (e.keyCode === 27) {
+        doMenuClose();
+      }
+    }, false);
+  }, transitionTime);
+}
+
+function doMenuClose () {
+  myHamburger.setAttribute('aria-expanded', false);
+  myNavMenu.classList.add('hidden');
+  main.classList.remove('menuOpen');
+  myHamburger.classList.remove('menuOpen');
+  overlay.classList.remove('overlay');
+  window.setTimeout(function () {
+    myNavMenu.classList.add('vh');
+    myHamburger.focus();
+    overlay.classList.remove('overlay');
+    myHamburger.classList.remove('hamburger-z');
+  }, transitionTime);
+}
+
+myHamburger.addEventListener('click', function () {
+  if (myNavMenu.classList.contains('hidden')) {
+    doMenuOpen();
+  } else {
+    doMenuClose();
+  }
+}, false);
+
+closeNavMenu.addEventListener('click', function () {
+  doMenuClose();
+}, false);
 </script>

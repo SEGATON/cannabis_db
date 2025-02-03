@@ -18,20 +18,10 @@ from .models import StrainSpecification
 from .models import TerpeneDetailsSet
 from .models import TerpeneDetails
 from .models import TerpeneValue
-@admin.register(TerpeneValue)
-class TerpeneValueAdmin(admin.ModelAdmin):
-	pass
+from .models import Terpene
 from .models import TerpeneIcon
-@admin.register(TerpeneIcon)
-class TerpeneIconAdmin(admin.ModelAdmin):
-	pass
 from .models import TerpeneDetailsItem
-@admin.register(TerpeneDetailsSet)
-class TerpeneDetailsSetAdmin(admin.ModelAdmin):
-	pass
-@admin.register(TerpeneDetailsItem)
-class TerpeneDetailsItemAdmin(admin.ModelAdmin):
-	pass
+
 
 from .models import FlavorsDetailsListSet
 from .models import FlavorsDetailsList
@@ -78,6 +68,35 @@ from .models import Product
 from .models import  NewslettersSubscriptions
 
 from import_export.admin import ImportExportModelAdmin
+
+
+
+
+
+
+
+@admin.register(Terpene)
+class TerpeneAdmin(ImportExportModelAdmin):
+	pass
+@admin.register(TerpeneValue)
+class TerpeneValueAdmin(admin.ModelAdmin):
+	pass
+
+@admin.register(TerpeneIcon)
+class TerpeneIconAdmin(admin.ModelAdmin):
+	pass
+
+@admin.register(TerpeneDetailsSet)
+class TerpeneDetailsSetAdmin(admin.ModelAdmin):
+	pass
+@admin.register(TerpeneDetailsItem)
+class TerpeneDetailsItemAdmin(admin.ModelAdmin):
+	pass
+
+
+
+
+
 
 @admin.register(NewslettersSubscriptions)
 class NewslettersSubscriptionsAdmin(ImportExportModelAdmin):
