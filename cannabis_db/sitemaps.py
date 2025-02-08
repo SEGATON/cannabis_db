@@ -1,20 +1,22 @@
 from django.contrib.sitemaps import Sitemap
 from .models import Strain, Dispensary, Brand, Product
 
-
+from django.contrib import sitemaps
 from django.urls import reverse
 
 
 
 
 
-class StaticViewsSitemap(Sitemap):
-	changefreq = "always"
-	priority = 0.8
+class StaticViewSitemap(sitemaps.Sitemap):
+    priority = 0.5
+    changefreq = 'daily'
 
-	def items(self):
-		return ["strains", "about_us"]
+    def items(self):
+        return [ 'cannabis_db:browse_strains', 'cannabis_db:about_us','cannabis_db:contact']
 
+    def location(self, item):
+        return reverse(item)
 
 
 
