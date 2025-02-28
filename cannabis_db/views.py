@@ -190,8 +190,10 @@ def brands(request):
 
 def brand(request, slug):
 	brand = get_object_or_404(Brand, slug=slug)
+	strains = Strain.objects.filter(brand=brand)
 	return render(request, 'views/brand.html', {
-		'brand':brand
+		'brand':brand,
+		'strains':strains
 		})
 
 def brands_menu(request):

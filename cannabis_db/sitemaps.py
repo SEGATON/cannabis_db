@@ -1,14 +1,14 @@
 from django.contrib.sitemaps import Sitemap
 from .models import Strain, Dispensary, Brand, Product
 
-from django.contrib import sitemaps
+
 from django.urls import reverse
 
 
 
 
 
-class StaticViewSitemap(sitemaps.Sitemap):
+class StaticViewSitemap(Sitemap):
     priority = 0.5
     changefreq = 'daily'
 

@@ -161,7 +161,7 @@ DATABASES = {
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.mysql',
-        'NAME': 'cdb_testing_2',
+        'NAME': 'zobypython manage.py makemigrations',
         'USER': 'root',
         'PASSWORD': 'pass',
         'HOST': '',

@@ -738,7 +738,11 @@ class Dispensary(models.Model):
 
 	followers = models.ManyToManyField(CustomUser, null=True, blank=True)
 
-	date_created = date = timezone.now()
+	
+
+
+	date_created = models.DateTimeField(auto_now_add=True, null=True,blank=True)
+	date_updated = models.DateTimeField(auto_now_add=True, null=True,blank=True)
 
 
 	def get_absolute_url(self):

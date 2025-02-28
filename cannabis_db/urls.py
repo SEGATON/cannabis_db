@@ -32,9 +32,9 @@ sitemaps = {
 
 urlpatterns = [
 	path('', views.front_page, name='front_page'),
-	#path('strains/', views.strains, name='strains'),
+	path('strains/', views.strains, name='browse_strains'),
 
-	path('strains/', Strains.as_view(), name='browse_strains'),
+	#path('strains/', Strains.as_view(), name='browse_strains'),
 	path('about-us/', views.about_us, name='about_us'),
 
 	path('strain/<slug:slug>/', views.strain, name='strain'),
