@@ -1,18 +1,30 @@
 {% load thumbnail %}
 
-<div class="container ">
+
+<section id="browse_section">
+<div class="container-full p-3">
 	<div class="row ">
 		<div class="col-md-2">
 			{% include 'filters/filters.html' %}
 		</div>
 		<div class="col-md-10">
-			<div class="filler"></div>
-			{% include 'filters/sorting.html' %}
-			<div class="row g-2">
+	
+
+<div class="row">
+<div class="col-md-4"></div>
+<div class="col-md-4">
+	{% include 'filters/view_layouts_menu.html' %}
+
+</div>
+<div class="col-md-4">{% include 'filters/sorting.html' %}</div>
+			
+
+		</div>
+			<div class="row g-1">
 				{% for strain in strains %}			
 					<div class="col-md-2 ">
-						<div class="card">
-
+						<div class="card no_border card_white">
+<div class="keke">
 							{% if strain.strain_type_label == 'indica' %}
 
 								<mark class="strain_type_label" id="strain_label_indica">In</mark>
@@ -26,7 +38,7 @@
 								<mark class="strain_type_label" id="strain_label_hybrid">Hy</mark>
 
 							{% endif %}
-
+</div>
 							<div class="koko">
 							{% include 'components/buttons/bookmarking.html' %}
 						</div>
@@ -37,7 +49,7 @@
 	}
 </style>
 							<a href="{{strain.get_absolute_url}}">
-								<img src="{% thumbnail strain.featured_image 700x700 crop %}" class="img-fluid radius_md lazy">
+								<img src="{% thumbnail strain.featured_image 700x700 crop %}" class="img-fluid catalog_image_radius_md lazy">
 							</a>
 							<a href="{{strain.get_absolute_url}}"  class="catalog_item_link">{{strain.title}}</a>
 
@@ -78,3 +90,4 @@
 		</div>
 	</div>
 </div>
+</section>

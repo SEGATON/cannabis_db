@@ -15,4 +15,5 @@ gunicorn
 django-dynamic-breadcrumbs
 django-chatbot
 django-avatar
-django-star-ratings 0.9.2
+django-star-ratings==0.9.2
+django-widget-tweaks==1.5.0

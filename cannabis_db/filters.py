@@ -58,14 +58,14 @@ from .models import FeelingReportListSet
 from .models import FeelingReportList
 from .models import FeelingReport
 from .models import Potency
-
+from django import forms
 class StrainFilter(django_filters.FilterSet):
 
 
 	
 	title = django_filters.CharFilter(lookup_expr='icontains')
 
-	brand = django_filters.ModelMultipleChoiceFilter(queryset=Brand.objects.all())
+	brand = django_filters.ModelMultipleChoiceFilter(queryset=Brand.objects.all(),  widget=forms.CheckboxSelectMultiple(attrs={'class': 'custom-checkbox'}))
 	strain_type = django_filters.ModelMultipleChoiceFilter(queryset=StrainType.objects.all())
 	dispensaries = django_filters.ModelMultipleChoiceFilter(queryset=Dispensary.objects.all())
 	feelings = django_filters.ModelMultipleChoiceFilter(queryset=FeelingReport.objects.all())

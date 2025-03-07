@@ -1,6 +1,8 @@
 html{
     height: 100%;
-width: 100%;
+    width: 100%;
+    padding: 0;
+    margin: 0;
 }
 
 
@@ -8,6 +10,17 @@ width: 100%;
 
 .catalog_item_link{
     text-decoration: none;
+    margin: 5px;
+    font-size: 12px;
+    transition: all .5s;
+}
+
+.catalog_item_link:hover{
+    text-decoration: none;
+    margin: 5px;
+    font-size: 12px;
+    transition: all .5s;
+    color: #222;
 }
 
 
@@ -24,6 +37,8 @@ body{
     position: relative;
     height: 100%;
     width: 100%;
+    padding: 0;
+    margin: 0;
 }
 body.dark-theme{
     --bkg-color:#000;
@@ -107,6 +122,7 @@ p{
 
 a{
     color: var(--text-color-lightgrey);
+    text-decoration: none;
 }
 
 
@@ -181,8 +197,13 @@ border: none;
 border-right: 1px dotted var(--border-color-l-gr);
 }
 
+.koko{
+    z-index: 9999;
+}
 
-
+.keke{
+    z-index: 9999;
+}
 
 
 ::placeholder{
@@ -479,12 +500,15 @@ font-size: 10px;
 	border-radius: 3px;
 }
 .radius_md{
-	border-radius: 5px;
+	border-radius: 10px;
 }
 .radius_lg{
 
 }
-
+.catalog_image_radius_md{
+    border-top-left-radius: 10px;
+    border-top-right-radius: 10px;
+}
 
 .nav-tabs {
     --bs-nav-tabs-border-width: var(--bs-border-width);
@@ -700,4 +724,81 @@ border: 1px solid #ddd;
 }
 #dispensaries_search_tf{
     float: left;
+}
+
+
+#browse_section{
+    background: #fafafa;
+    padding: 20px 0px;
+}
+
+.card_white{
+    background: #fff;
+
+    margin-bottom: 20px;
+    border-radius: 10px;
+    transition:  .1s;
+box-shadow: rgba(0, 0, 0, 0.1) 0px 1px 2px 0px;
+}
+.card_white:hover{
+    background: #fff;
+  transition:  .1s;
+box-shadow: rgba(0, 0, 0, 0.6) 0px 1px 2px 0px;
+    border-radius: 10px;
+
+}
+
+.no_border{
+    border: none;
+}
+
+
+.filter_heading{
+    font-size: 13px;
+    font-weight: 600;
+}
+
+select .sort_by_filter{
+        padding: 0;
+}
+
+
+/* Style all checkboxes */
+input[type="checkbox"] {
+    width: 20px;
+    height: 20px;
+    accent-color: #4CAF50; /* Change checkbox color */
+    cursor: pointer;
+   float: left;
+}
+
+/* Custom checkbox styling */
+.custom-checkbox label {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    cursor: pointer;
+font-size: 12px;
+    color: #333;
+    float: left;
+    margin-left: 10px;
+}
+
+/* Space between checkboxes */
+.form-check {
+    margin-bottom: 10px;
+}
+
+.view_layouts_menu{
+    padding: 0;
+    margin:0;
+    list-style: none;
+}
+.view_layouts_menu li {
+    display: inline;
+
+}
+.view_layouts_menu li a{
+   border: 1px solid green;
+   border-radius: 3px;
 }

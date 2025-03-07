@@ -87,6 +87,7 @@ INSTALLED_APPS = [
     'django_comments_xtd',
     'django_comments',
     'dynamic_breadcrumbs',
+    'widget_tweaks',
 
     'django_countries',
 
@@ -161,7 +162,7 @@ DATABASES = {
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.mysql',
-        'NAME': 'zobypython manage.py makemigrations',
+        'NAME': 'pashash',
         'USER': 'root',
         'PASSWORD': 'pass',
         'HOST': '',
