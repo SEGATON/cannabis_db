@@ -1,5 +1,5 @@
 from django import forms
-from .models import Rating
+
 from .models import Dispensary
 from .models import Category
 from .models import ContactMessage,NewslettersSubscriptions

@@ -44,7 +44,7 @@ from .models import HelpsWithReportList
 from .models import HelpsWithReportListSet
 from .models import Vendor
 # Create your views here.
-from .models import Rating
+
 
 from memberships.models import Profile
 
@@ -137,37 +137,15 @@ class Strains(generic.ListView):
 
 def strain(request, slug):
 	strain = get_object_or_404(Strain, slug=slug)
-	ratings = Rating.objects.filter(strain_to_rate=strain)
-	ratings_values = Rating.objects.filter(strain_to_rate=strain)
-
-	saved = bool
-	if strain.saves.filter(id=request.user.id).exists():
-		saved = True
-
-	liked = bool
-	if strain.likes.filter(id=request.user.id).exists():
-		liked = True
-
-	disliked = bool
-	if strain.dislikes.filter(id=request.user.id).exists():
-		disliked = True
-
-	for rating_value in ratings_values:
-		rating_value
 
 
-	if strain.headline:
-		headline = strain.headline
-	else:
-		headline = ''
 
-		
 
 
 	return render(request, 'strains/strain.html', {
 			'strain':strain,
-			'ratings':ratings,
-			'ratings_values':ratings_values,
+\
+\
 			'title': strain.title + ' | ' + str(strain.thc)+'% thc, ' + str(strain.cbd)+'% cbd, ' + str(strain.tac)+'% tac |  '  + str(strain.get_strain_type_label_display()) + ' | Cannabis strain',
 
 			'saved':saved,

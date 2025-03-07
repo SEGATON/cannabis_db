@@ -33,7 +33,7 @@ class Profile(models.Model):
           verified = models.BooleanField(default=False)
 
 
-          address = models.ForeignKey('cannabis_db.Address', on_delete=models.CASCADE,null=True, blank=True)
+          address = models.ForeignKey('accounts.Address', on_delete=models.CASCADE,null=True, blank=True)
 
           VISIBILTY_OPTIONS = (
                 ('public','Public',),

@@ -162,7 +162,7 @@ DATABASES = {
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.mysql',
-        'NAME': 'pashash',
+        'NAME': 'cdb_testing_01',
         'USER': 'root',
         'PASSWORD': 'pass',
         'HOST': '',

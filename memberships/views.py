@@ -11,7 +11,7 @@ from .forms import ChangeProfilePhotoForm, CusPasswordChangeForm
 
 from django.contrib.auth.views import PasswordChangeView
 from .models import Profile
-from cannabis_db.models import Rating
+
 from django.contrib.auth.decorators import login_required
 from django.http import HttpResponseRedirect
 from .forms import ChangeUsernameForm
@@ -170,13 +170,7 @@ def submit_strain(request, pk):
 		})
 
 
-@login_required
-def my_reviews(request, pk):
 
-	reviews = Rating.objects.filter(user=request.user)
-	return render(request, 'memberships/my_reviews.html', {
-			'reviews':reviews
-		})
 
 @login_required
 def my_strains(request, pk):

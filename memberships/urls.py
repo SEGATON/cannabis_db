@@ -14,7 +14,7 @@ urlpatterns = [
 	path('unfollow-user/<int:pk>/', views.unfollow_user, name='unfollow_user'),
 	path('submit-strain/<int:pk>/', views.submit_strain, name='submit_strain'),
 	path('my-strains/<int:pk>/', views.my_strains, name='my_strains'),
-	path('my-reviews/<int:pk>/', views.my_reviews, name='my_reviews'),
+
 	#path('settings/<int:pk>/', views.settings, name='settings'),
 	
 	path('password/', ChangePassView.as_view(template_name='memberships/settings.html'), name='settings'),

@@ -37,7 +37,7 @@ from .models import Address
 from .models import AromasListSet
 from .models import AromasDetailsList
 from .models import AromasDetails
-from .models import Rating
+
 from .models import AromasDetails
 from .models import Keywords
 from .models import KeywordsSet

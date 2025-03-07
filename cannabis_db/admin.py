@@ -41,14 +41,14 @@ from .models import ContactMessage
 from .models import AromasListSet
 from .models import AromasDetailsList
 from .models import AromasDetails
-from .models import Rating
+
 
 from .models import Keywords
 from .models import KeywordsSet
 from .models import MetasSet
 
 from .models import Dispensary
-from .models import Comment
+
 from .models import DispensarySocialFollowURL
 from .models import DispensarySocialFollowURLS
 from .models import DispensarySocialFollows
@@ -145,11 +145,6 @@ class EffectsReportListSetAdmin(admin.ModelAdmin):
 
 
 
-
-
-@admin.register(Comment)
-class CommentAdmin(ImportExportModelAdmin):
-	pass
 
 @admin.register(Address)
 class AddressAdmin(ImportExportModelAdmin):
@@ -260,12 +255,6 @@ class MetasAdmin(ImportExportModelAdmin):
 
 
 
-@admin.register(Rating)
-class RatingAdmin(admin.ModelAdmin):
-	list_display = ['title','slug']
-	prepopulated_fields = {
-		'slug':('title',)
-	}
 
 @admin.register(AromasListSet)
 class AromasListSetAdmin(admin.ModelAdmin):
@@ -345,10 +334,11 @@ class TerpeneDetailsAdmin(ImportExportModelAdmin):
 
 @admin.register(Brand)
 class BrandAdmin(ImportExportModelAdmin):
-	list_display = ['title','slug']
+	list_display = ['title','slug','brand_logo']
 	prepopulated_fields = {
 		'slug':('title',)
 	}
+	list_editable = ['brand_logo']
 @admin.register(StrainSpecificationsSets)
 class StrainSpecificationsSetsAdmin(ImportExportModelAdmin):
 	list_display = ['id','sss_UNIQUE_ID']
