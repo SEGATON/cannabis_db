@@ -15,7 +15,7 @@ from django_countries.fields import CountryField
 
 class Address(models.Model):
 
-	user = models.ForeignKey(settings.AUTH_USER_MODEL, on_delete=models.CASCADE)
+	user = models.ForeignKey(settings.AUTH_USER_MODEL, on_delete=models.CASCADE, related_name='address_user')
 
 	ADDRESS_TYPE = (
 			('billing_address','Billing Address',),

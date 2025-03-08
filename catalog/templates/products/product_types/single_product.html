@@ -1,0 +1,21 @@
+{{product.description}}
+{% for product_description_list_item in product.description_list_set.description_list_items.all %}
+	{{product_description_list_item}}
+{% endfor %}
+{{product.featured_image.url}}
+{% for product_image_gallery_item in product.product_gallery.images.all %}
+	{{product_image_gallery_item.url}}
+{% endfor %}
+{% for category in product.categories.all %}
+	{{category}}
+{% endfor %}
+{% for product_attribute in product.attributes_set.attributes.all %}
+	{{product_attribute}}
+{% endfor %}
+{{product.stock_management.stock_status}}
+{{product.stock_management.stock_quantity}}
+{{product.pricing.price_sale}}
+{{product.pricing.price_regular}}
+{{product.on_sale}}
+{{product.product_SKU}}
+{{product.product_UPC}}

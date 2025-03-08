@@ -1,0 +1,36 @@
+{% include 'root/template_parts/header.html' %}
+	{% block content  %}
+		<div class="container">
+			<div class="row">
+				<div class="col-md-3">
+				sidebar
+				</div>
+				<div class="col-md-9">
+					<div class="row">
+					<div class="col-lg-12">
+						<div class="row">
+							<div class="col-md-3">
+							3
+							</div>
+							<div class="col-md-3">
+							3
+							</div>
+							<div class="col-md-3">
+							3
+							</div>
+							<div class="col-md-3">
+								{% include 'catalog/filters/sort_by_filter.html' %}
+							</div>
+						</div>
+					</div>
+					<div class="col-lg-12">
+					col-lg-12
+					</div>
+					<div class="col-lg-12">
+					col-lg-12
+					</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	{% endblock   %}

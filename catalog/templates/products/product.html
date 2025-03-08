@@ -1,0 +1,5 @@
+{% if product_type == 'single_product' %}
+	{% include 'product_types/single_product.html' %}
+{% elif product_type == 'variable_product' %}
+	{% include 'product_types/variable_product.html' %}
+{% endif %}

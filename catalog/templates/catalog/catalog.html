@@ -1,0 +1,40 @@
+{% include 'root/template_parts/header.html' %}
+	{% block content  %}
+		<div class="container">
+			<div class="row">
+				<div class="col-md-3">
+				sidebar
+				</div>
+				<div class="col-md-9">
+					<div class="row">
+					<div class="col-lg-12">
+						<div class="row">
+							<div class="col-md-3">
+							3
+							</div>
+							<div class="col-md-3">
+							3
+							</div>
+							<div class="col-md-3">
+							3
+							</div>
+							<div class="col-md-3">
+								{% include 'sorting/sorting.html' %}
+							</div>
+						</div>
+					</div>
+					<div class="col-lg-12">
+						<hr>
+					</div>
+					<div class="col-lg-12">
+
+						{% include 'products/products.html' %}
+					</div>
+					<div class="col-lg-12">
+					col-lg-12
+					</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	{% endblock   %}

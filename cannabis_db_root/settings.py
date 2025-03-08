@@ -79,6 +79,13 @@ INSTALLED_APPS = [
     'ckeditor',
     'easy_thumbnails',
 
+    'addresses',
+    'cart',
+    'orders',
+    'checkout',
+    'vendors',
+    'catalog',
+
     'allauth.socialaccount.providers.facebook',
     'allauth.socialaccount.providers.twitter',
     'allauth.socialaccount.providers.google',

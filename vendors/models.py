@@ -18,7 +18,7 @@ class Vendor(models.Model):
 	date_updated = models.DateTimeField()
 	date_deleted = models.DateTimeField()
 
-	user = models.ForeignKey(settings.AUTH_USER_MODEL, on_delete=models.CASCADE)
+	user = models.ForeignKey(settings.AUTH_USER_MODEL, on_delete=models.CASCADE, related_name='vendor_user')
 
 	tagline = models.CharField(max_length=1255)
 
