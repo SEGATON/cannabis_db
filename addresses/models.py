@@ -37,6 +37,12 @@ class Address(models.Model):
 
 	notes = RichTextField()
 
+	date_created = models.DateTimeField(auto_now_add=True)
+	date_updated = models.DateTimeField()
+	date_deleted = models.DateTimeField()
+
+
+
 	def __str__(self):
 		return str(self.user)
 
