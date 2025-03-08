@@ -163,7 +163,7 @@ DATABASES = {
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.mysql',
-        'NAME': 'zaba4',
+        'NAME': 'zaba5',
         'USER': 'root',
         'PASSWORD': 'pass',
         'HOST': '',
@@ -243,7 +243,7 @@ LOGIN_REDIRECT_URL = 'memberships:profile'
 STAR_RATINGS_STAR_HEIGHT = 20
 STAR_RATINGS_STAR_WIDTH = 20
 
-STAR_RATINGS_RATING_MODEL = "cannabis_db.MyRating"
+
 
 
 

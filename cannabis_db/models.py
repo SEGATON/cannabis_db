@@ -267,6 +267,7 @@ class TerpeneIcon(models.Model):
 	terpene_icon = models.ImageField(default='media/CANNABIS_DB/STRAINS/TERPENES_REPORTS/TERPENE_ICONS/default.jpg/', upload_to='media/CANNABIS_DB/STRAINS/TERPENES_REPORTS/TERPENE_ICONS/', null=True, blank=True, max_length=500)
 	def __str__(self):
 		return str(self.terpene_icon)
+
 class TerpeneDetails(models.Model):
 
 	TERPENE = (
@@ -432,7 +433,8 @@ class Brand(models.Model):
 	claimed = models.BooleanField(default=False,null=True, blank=True )
 
 	date_created = models.DateTimeField(auto_now_add=True, null=True,blank=True)
-	date_updated = models.DateTimeField(auto_now_add=True, null=True,blank=True)
+	date_updated = models.DateTimeField(null=True,blank=True)
+	date_deleted = models.DateTimeField(null=True,blank=True)
 
 
 	def get_absolute_url(self):
@@ -619,18 +621,25 @@ class StrainType(models.Model):
 
 
 
-from django.contrib.contenttypes.fields import GenericForeignKey
-from django.contrib.contenttypes.models import ContentType
-class MyRating(AbstractBaseRating):
-    score = models.PositiveIntegerField()  # Explicitly define the score field (1 to 5 stars)
-    
-    content_type = models.ForeignKey(ContentType, on_delete=models.CASCADE)
-    object_id = models.PositiveIntegerField()
-    content_object = GenericForeignKey('content_type', 'object_id')
-    
-    comment = models.TextField(blank=True, null=True)  # Optional comment field
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 class Strain(models.Model):
+
+
+
+
 	STATUS = (
 			('draft','Draft',),
 			('published','Published',),
@@ -647,7 +656,6 @@ class Strain(models.Model):
 	title = models.CharField(max_length=50)
 	slug = models.SlugField(max_length=50)
 
-	ratings = GenericRelation(MyRating)	
 
 	thc = models.DecimalField(max_digits=9, decimal_places=2, null=True,blank=True)
 	tac = models.DecimalField(max_digits=9, decimal_places=2, null=True,blank=True)
@@ -710,14 +718,12 @@ class Strain(models.Model):
 	dispensaries = models.ManyToManyField(Dispensary, null=True,blank=True)
 
 	feelings = models.ManyToManyField(FeelingReport, null=True,blank=True)
-
-	
-	author_review = RichTextField(max_length=5000, null=True,blank=True)
-	
-
 	flavors = models.ManyToManyField(FlavorsDetails, null=True,blank=True)
 	may_relieve = models.ManyToManyField(HelpsWithReport, null=True,blank=True)
 	aromas = models.ManyToManyField(AromasDetails, null=True, blank=True)
+
+
+	
 
 
 	users_smoked = models.ManyToManyField(CustomUser, null=True, blank=True, related_name='users_smoked')
@@ -729,8 +735,14 @@ class Strain(models.Model):
 
 	products = models.ManyToManyField('Product',null=True, blank=True)
 
-	def get_average_rating(self):
-		return self.ratings.aggregate(average=models.Avg('score'))['average']
+
+
+
+	author_review = RichTextField(max_length=5000, null=True,blank=True)
+
+
+
+
 
 		
 	def __str__(self):
@@ -750,11 +762,6 @@ class Strain(models.Model):
 
 
 
-	def save(self, *args, **kwargs):
-		if not self.slug:
-			self.slug = slugify(self.name)
-
-			super().save(*args, **kwargs)
 #__________________________________________________________________________________________________________________________________
 
 

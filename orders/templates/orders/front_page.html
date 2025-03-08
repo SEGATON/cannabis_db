@@ -1,0 +1,17 @@
+{% extends 'root/template_parts/base.html' %}
+
+
+	{% block content  %}
+
+
+			{% if orders %}
+
+					{% for order in orders %}
+				<a href="{% url 'orders:order' order.pk %}">{{order}}</a>
+			{% endfor %}
+		{% else %}
+
+				There are no orders.
+		{% endif %}
+
+	{% endblock   %}

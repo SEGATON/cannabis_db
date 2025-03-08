@@ -71,7 +71,6 @@ urlpatterns = [
 	path('search-dispensaries/', views.search_dispensaries, name='search_dispensaries'),
 	path('strain-ai/', views.strain_ai_testing, name='strain_ai_testing'),
 
-	path('rate_strain/<slug:slug>/', views.rate_strain, name='rate_strain'),
 
 ]
 

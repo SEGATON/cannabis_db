@@ -1,0 +1,38 @@
+{% extends 'root/template_parts/base.html' %}
+{% load thumbnail %}
+	{% block content  %}
+			<h1><b>order #:</b> {{order.order_number}}</h1>
+			<h4><b>order id:</b> {{order.id}}</h4>
+			<hr>
+				<p><b>order status:</b> {{order.get_order_status_display}}</p>
+				<p><b>order date created:</b> {{order.date_created}}</p>
+				<p><b>order date updated:</b> {{order.date_updated}}</p>
+			{% if order.order_status == 'canceled' %}<p><b>order date canceled:</b> {{order.date_canceled}}</p>{% endif %}
+				<p><b>order type:</b> {{order.get_order_type_display}}</p>
+				<p><b>First name:</b> {{order.user.first_name}} &nbsp;<b>Last name:</b> {{order.user.last_name}}</p>
+				<p><b>order user:</b> (email) {{order.user}} | (username) {{order.user.username}}</p>
+			{% if order.billing_address.address_type == 'billing_address' %}
+			<p>
+				<b>billing address:</b>
+				{{order.billing_address.address_street_name_line_1}}
+				{{order.billing_address.address_street_name_line_2}}
+				{{order.billing_address.address_city}}
+				{{order.billing_address.address_state}}
+				{{order.billing_address.address_zip_code}}
+				{{order.billing_address.address_country}}
+				{{order.billing_address.notes|safe}}
+			</p>
+			{% endif %}
+			{% if order.shipping_address.address_type == 'shipping_address' %}
+			<p>
+				<b>shipping address:</b>
+				{{order.shipping_address.address_street_name_line_1}}
+				{{order.shipping_address.address_street_name_line_2}}
+				{{order.shipping_address.address_city}}
+				{{order.shipping_address.address_state}}
+				{{order.shipping_address.address_zip_code}}
+				{{order.shipping_address.address_country}}
+				{{order.shipping_address.notes|safe}}
+			</p>
+			{% endif %}
+	{% endblock   %}

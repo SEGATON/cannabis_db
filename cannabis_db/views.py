@@ -635,36 +635,3 @@ def search_dispensaries(request):
 
 
 
-from .forms import RatingForm
-from star_ratings.models import Rating
-from django.contrib.contenttypes.models import ContentType
-
-
-def rate_strain(request, slug):
-    strain = Strain.objects.get(slug=slug)  # Make sure Strain is correctly imported
-    content_type = ContentType.objects.get_for_model(strain)
-
-    if request.method == 'POST':
-        form = RatingForm(request.POST)
-        if form.is_valid():
-            rating = form.save(commit=False)
-            rating.content_type = content_type
-            rating.object_id = strain.id
-            rating.user = request.user
-            rating.save()
-
-            return redirect('cannabis_db:strain', slug=strain.slug)
-    else:
-        # If the user has already rated the strain, pre-fill the form
-        existing_rating = MyRating.objects.filter(strain=strain, user=request.user).first()
-        if existing_rating:
-            form = RatingForm(instance=existing_rating)
-        else:
-            form = RatingForm()
-
-
-    return render(request, 'components/ratings/star_ratings/ratings_template.html', {'form': form})
-
-
-
-
