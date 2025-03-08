@@ -123,7 +123,7 @@ ROOT_URLCONF = 'cannabis_db_root.urls'
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
-        'DIRS': [],
+        'DIRS': [os.path.join(BASE_DIR, 'templates')],
         'APP_DIRS': True,
         'OPTIONS': {
             'context_processors': [
@@ -140,6 +140,7 @@ TEMPLATES = [
                 'cannabis_db.views.brands_menu',
 
                 'cannabis_db.views.newsletter_subscription_form_process_form',
+                
 
 
 
@@ -162,7 +163,7 @@ DATABASES = {
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.mysql',
-        'NAME': 'cdb_testing_01',
+        'NAME': 'zaba4',
         'USER': 'root',
         'PASSWORD': 'pass',
         'HOST': '',
@@ -238,15 +239,18 @@ LOGIN_REDIRECT_URL = 'memberships:profile'
 
 
 
+
 STAR_RATINGS_STAR_HEIGHT = 20
 STAR_RATINGS_STAR_WIDTH = 20
+
+STAR_RATINGS_RATING_MODEL = "cannabis_db.MyRating"
 
 
 
 COMMENTS_XTD_API_GET_USER_AVATAR = "comp.utils.get_avatar_url"
 
 
-
+STAR_RATINGS_OBJECT_ID_PATTERN = '[a-z0-9]{32}'
 
 COMMENTS_APP = 'django_comments_xtd'
 
@@ -280,6 +284,7 @@ COMMENTS_XTD_APP_MODEL_OPTIONS = {
         'who_can_post': 'users'  # Valid values: 'all', users'
     }
 }
+
 
 
 

@@ -47,3 +47,15 @@ class DispensariesSearchForm(forms.Form):
 		self.fields['q'].label = 'Search for'
 		self.fields['q'].widget.attrs.update({'class':'form-control menudd'})
 		self.fields['q'].widget.attrs.update({'class':'dropdown'})
+
+
+from star_ratings.models import Rating
+from .models import MyRating  # If you have a custom rating model
+
+class RatingForm(forms.ModelForm):
+    class Meta:
+        model = MyRating
+        fields = ['score', 'comment']
+        widgets = {
+            'score': forms.RadioSelect(choices=[(i, f"{''}") for i in range(1, 6)]),  # Display 1 to 5 stars
+        }

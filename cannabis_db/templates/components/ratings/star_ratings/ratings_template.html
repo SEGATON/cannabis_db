@@ -1,3 +1,87 @@
 {% load ratings %}
 
-{% ratings strain %}
+{% load static %}
+<link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" rel="stylesheet">
+<link rel="stylesheet" href="{% static 'star_ratings/css/rating.css' %}">
+
+<form method="post" action="{% url 'cannabis_db:rate_strain' strain.slug %}">
+    {% csrf_token %}
+    
+
+    <div>
+        <label for="{{ form.score.id_for_label }}">Rating:</label>
+        {{  form.score }}
+    </div>
+    
+
+    <div>
+        <label for="{{ form.comment.id_for_label }}">Comment:</label>
+        {{ form.comment }} 
+    </div>
+    
+    <button type="submit">Submit Rating</button>
+</form>
+<p>Average Rating: {{ strain.get_average_rating }}</p>
+<p>Total Ratings: {{ strain.ratings.count }}</p>
+
+
+
+
+
+
+
+
+
+{% for rating in strain.ratings.all %}
+    <div class="rating-comment">
+        <div class="card">
+        <p><strong>{{ rating.user.username }}:</strong> {{ rating.score }} stars</p>
+        <p>{{ rating.comment }}</p>
+    </div>
+    </div>
+{% empty %}
+    <p>No ratings yet.</p>
+{% endfor %}
+
+
+
+
+
+
+
+
+<style>
+.star-rating {
+    display: inline; /* Align stars horizontally */
+    float: left;
+}
+
+.star-rating input[type="radio"] {
+    display: none; /* Hide the radio buttons */
+}
+
+.star-rating label {
+    font-size: 2em; /* Size of the stars */
+    color: #ccc;    /* Default color for the stars */
+    cursor: pointer;
+    transition: color 0.2s; /* Smooth transition effect */
+}
+
+/* Font Awesome: solid star */
+.star-rating label:before {
+    content: "\f005"; /* Unicode for solid star */
+    font-family: 'Font Awesome 5 Free';
+    font-weight: 900;
+}
+
+/* Change color when hovering or selecting a star */
+.star-rating input:checked + label,
+.star-rating label:hover,
+.star-rating input:checked ~ label {
+    color: #ffcc00; /* Yellow color for selected/hovered stars */
+}
+
+.star-rating label:hover {
+    color: #ffcc00; /* Yellow when hovering */
+}
+</style>

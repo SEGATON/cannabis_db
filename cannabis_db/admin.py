@@ -70,9 +70,11 @@ from .models import  NewslettersSubscriptions
 from import_export.admin import ImportExportModelAdmin
 
 
+from .models import TerpeneProfile
 
-
-
+@admin.register(TerpeneProfile)
+class TerpeneProfileAdmin(ImportExportModelAdmin):
+	pass
 
 
 @admin.register(Terpene)

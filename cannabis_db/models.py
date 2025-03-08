@@ -8,7 +8,7 @@ from accounts.models import CustomUser
 
 from django.template.defaultfilters import slugify
 
-
+from star_ratings.models import Rating
 from localflavor.us.models import USStateField
 from localflavor.us.models import USZipCodeField
 from localflavor.us.models import USPostalCodeField
@@ -20,7 +20,7 @@ from accounts.models import Address
 from star_ratings.models import AbstractBaseRating
 
 from cloudinary.forms import CloudinaryFileField
-
+from django.utils.module_loading import import_string
 
 class NewslettersSubscriptions(models.Model):
 	email = models.EmailField(max_length=50)
@@ -577,15 +577,6 @@ class Vendor(models.Model):
 
 
 
-'''
-
-
-STRAIN MODEL
-
-
-
-'''
-
 class Terpene(models.Model):
 	trpn_UNIQUIE_ID = models.CharField(max_length=50, null=True,blank=True)
 	title = models.CharField(max_length=50, null=True,blank=True)
@@ -594,12 +585,30 @@ class Terpene(models.Model):
 	terpene_icon = models.ImageField(default='media/CANNABIS_DB/STRAINS/TERPENES_REPORTS/TERPENE_ICONS/default.jpg/', upload_to='media/CANNABIS_DB/STRAINS/TERPENES_REPORTS/TERPENE_ICONS/', null=True, blank=True, max_length=500)
 	def __str__(self):
 		return str(self.title)
+
+class TerpeneProfile(models.Model):
+	trpn_UNIQUIE_ID = models.CharField(max_length=50, null=True,blank=True)
+	title = models.CharField(max_length=50, null=True,blank=True)
+	slug = models.SlugField(max_length=50)	
+	description = RichTextField(max_length=5000, null=True,blank=True)
+	terpene_profile_icon = models.ImageField(default='media/CANNABIS_DB/STRAINS/TERPENES_REPORTS/TERPENE_ICONS/default.jpg/', upload_to='media/CANNABIS_DB/STRAINS/TERPENES_REPORTS/TERPENE_ICONS/', null=True, blank=True, max_length=500)
+
+	terpenes = models.ManyToManyField(Terpene)
+	def __str__(self):
+		return str(self.title)
+
 class Potency(models.Model):
 	title = models.CharField(max_length=50, null=True,blank=True)
 	slug = models.SlugField(max_length=50)	
 	description = RichTextField(max_length=5000, null=True,blank=True)
 	def __str__(self):
 		return str(self.title)
+
+
+
+
+
+
 class StrainType(models.Model):
 	title = models.CharField(max_length=50)
 	slug = models.SlugField(max_length=50)
@@ -610,8 +619,16 @@ class StrainType(models.Model):
 
 
 
-
-
+from django.contrib.contenttypes.fields import GenericForeignKey
+from django.contrib.contenttypes.models import ContentType
+class MyRating(AbstractBaseRating):
+    score = models.PositiveIntegerField()  # Explicitly define the score field (1 to 5 stars)
+    
+    content_type = models.ForeignKey(ContentType, on_delete=models.CASCADE)
+    object_id = models.PositiveIntegerField()
+    content_object = GenericForeignKey('content_type', 'object_id')
+    
+    comment = models.TextField(blank=True, null=True)  # Optional comment field
 
 class Strain(models.Model):
 	STATUS = (
@@ -620,7 +637,7 @@ class Strain(models.Model):
 			('flagged','Flagged',),
 		)
 
-
+	from django.contrib.contenttypes.fields import GenericRelation
 
 	status = models.CharField(max_length=100, choices=STATUS, null=True, blank=True, default='draft')
 	user = models.ManyToManyField(CustomUser, null=True, blank=True)
@@ -630,23 +647,23 @@ class Strain(models.Model):
 	title = models.CharField(max_length=50)
 	slug = models.SlugField(max_length=50)
 
+	ratings = GenericRelation(MyRating)	
 
+	thc = models.DecimalField(max_digits=9, decimal_places=2, null=True,blank=True)
+	tac = models.DecimalField(max_digits=9, decimal_places=2, null=True,blank=True)
+	cbd = models.DecimalField(max_digits=9, decimal_places=2, null=True,blank=True)
+	cnbnd = models.DecimalField(max_digits=9, decimal_places=2, null=True,blank=True)
 
-	thc = models.DecimalField(max_digits=9, decimal_places=2)
-	tac = models.DecimalField(max_digits=9, decimal_places=2)
-	cbd = models.DecimalField(max_digits=9, decimal_places=2)
-	cnbnd = models.DecimalField(max_digits=9, decimal_places=2)
-
-	lineage = models.CharField(max_length=3000, null=True, blank=True)
 	headline = models.CharField(max_length=3000, null=True, blank=True)
+	intro_text = models.CharField(max_length=3000, null=True, blank=True)
 	
 
-	terpenes = models.ManyToManyField(Terpene, null=True, blank=True)
+	terpene_profile = models.ManyToManyField(TerpeneProfile, null=True, blank=True)
 
 
 	potency = models.ForeignKey(Potency,on_delete=models.CASCADE, null=True, blank=True)
 	
-	seeds = models.ManyToManyField(Brand, related_name='seed_bank_brands')
+	seeds = models.ManyToManyField(Brand, related_name='seed_bank_brands', null=True,blank=True)
 	
 
 	
@@ -656,34 +673,37 @@ class Strain(models.Model):
 	strain_details_list = models.ForeignKey(StrainDetailsList, on_delete=models.CASCADE, null=True,blank=True)	
 	strain_specifications = models.ForeignKey(StrainSpecificationsSets, on_delete=models.CASCADE, null=True,blank=True)
 	description = RichTextField(max_length=5000, null=True,blank=True)
+	
 	featured= models.BooleanField(default=False)
+	
 	featured_image = models.ImageField(default='media/CANNABIS_DB/STRAINS/FEATURED_IMAGES/default.jpg', upload_to='media/CANNABIS_DB/STRAINS/FEATURED_IMAGES/', null=True, blank=True)
 	image_gallery= models.ForeignKey(StrainImageGallery, on_delete=models.CASCADE, related_name='product_image_gallery',null=True, blank=True)
+	
+
 	feelings_reports = models.ForeignKey(FeelingReportListSet, on_delete=models.CASCADE,null=True, blank=True)
 	effects_reports = models.ForeignKey(EffectsReportListSet, on_delete=models.CASCADE,null=True, blank=True)	
 	terpenes_reports = models.ForeignKey(TerpeneDetailsSet, on_delete=models.CASCADE,null=True, blank=True)	
 	flavor_reports = models.ForeignKey(FlavorsDetailsListSet, on_delete=models.CASCADE,null=True, blank=True )	
 	aromas_reports = models.ForeignKey(AromasListSet, on_delete=models.CASCADE,null=True, blank=True )	
 	helps_with_reports = models.ForeignKey(HelpsWithReportListSet, on_delete=models.CASCADE,null=True, blank=True )
+	
+
+
+
 	strain_lineage_details_list = models.ForeignKey(StrainLineageDetailsList, on_delete=models.CASCADE, null=True,blank=True)
-
-
-
-
-
 
 
 	vendors = models.ManyToManyField(Vendor, null=True, blank=True)
 
 	likes = models.ManyToManyField(CustomUser, related_name='strain_likes', null=True,blank=True)
 	dislikes = models.ManyToManyField(CustomUser, related_name='strain_dislikes', null=True,blank=True)
+	
 	saves = models.ManyToManyField('memberships.Profile', null=True,blank=True, related_name='strain_saves')
 	
 
 	date_created = models.DateTimeField(auto_now_add=True, null=True,blank=True)
 	date_updated = models.DateTimeField(null=True,blank=True)
 	date_deleted = models.DateTimeField(null=True,blank=True)
-
 
 
 
@@ -697,9 +717,6 @@ class Strain(models.Model):
 
 	flavors = models.ManyToManyField(FlavorsDetails, null=True,blank=True)
 	may_relieve = models.ManyToManyField(HelpsWithReport, null=True,blank=True)
-	
-
-
 	aromas = models.ManyToManyField(AromasDetails, null=True, blank=True)
 
 
@@ -710,9 +727,12 @@ class Strain(models.Model):
 
 	bookmarks = models.ManyToManyField(CustomUser, null=True, blank=True, related_name='bookmarked_by')
 
-	
+	products = models.ManyToManyField('Product',null=True, blank=True)
 
+	def get_average_rating(self):
+		return self.ratings.aggregate(average=models.Avg('score'))['average']
 
+		
 	def __str__(self):
 		return str(self.title)
 
@@ -729,6 +749,12 @@ class Strain(models.Model):
 		ordering = ('-date_created',)
 
 
+
+	def save(self, *args, **kwargs):
+		if not self.slug:
+			self.slug = slugify(self.name)
+
+			super().save(*args, **kwargs)
 #__________________________________________________________________________________________________________________________________
 
 
@@ -747,3 +773,5 @@ class Product(models.Model):
 	categories = models.ManyToManyField(Category, null=True, blank=True)
 	def __str__(self):
 		return self.title
+
+
