@@ -5,4 +5,4 @@ cbd:
 cannabinoids:
 
 
-feelings: 4, 9, 
+feelings: 4, 8, 9, 11, 19, 20
