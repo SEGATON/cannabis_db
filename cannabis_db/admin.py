@@ -7,9 +7,9 @@ from .models import StrainSpecificationsSets
 from .models import StrainDetailsListItems
 from .models import StrainDetailsList
 
-from .models import StrainImageGallery
-from .models import StrainGalleryImagesSet
-from .models import StrainGalleryImage
+from .models import ImageGallery
+from .models import GalleryImagesSet
+from .models import GalleryImage
 
 from .models import DispensarySocialFollowURLICON
 
@@ -18,7 +18,7 @@ from .models import StrainSpecification
 from .models import TerpeneDetailsSet
 from .models import TerpeneDetails
 from .models import TerpeneValue
-from .models import Terpene
+#from .models import Terpene
 from .models import TerpeneIcon
 from .models import TerpeneDetailsItem
 
@@ -36,7 +36,6 @@ from .models import HelpsWithReportList
 from .models import HelpsWithReportListSet
 from .models import Vendor
 
-from .models import Address
 from .models import ContactMessage
 from .models import AromasListSet
 from .models import AromasDetailsList
@@ -76,10 +75,11 @@ from .models import TerpeneProfile
 class TerpeneProfileAdmin(ImportExportModelAdmin):
 	pass
 
-
+'''
 @admin.register(Terpene)
 class TerpeneAdmin(ImportExportModelAdmin):
 	pass
+'''
 @admin.register(TerpeneValue)
 class TerpeneValueAdmin(admin.ModelAdmin):
 	pass
@@ -148,50 +148,6 @@ class EffectsReportListSetAdmin(admin.ModelAdmin):
 
 
 
-@admin.register(Address)
-class AddressAdmin(ImportExportModelAdmin):
-	list_display = ['id','address_id_name',
-		'address_id_name',
-		'phone_number',
-		'dispensary_name',
-		'street_name_01',
-		'street_name_02',
-		'street_city',
-		'street_state',
-		'street_zip_code',
-	]
-	list_editable = ['address_id_name',
-		'address_id_name',
-		'phone_number',
-		'dispensary_name',
-		'street_name_01',
-		'street_name_02',
-		'street_city',
-		'street_state',
-		'street_zip_code',
-	]
-	search_fields = ['address_id_name',
-		'address_id_name',
-		'phone_number',
-		'dispensary_name',
-		'street_name_01',
-		'street_name_02',
-		'street_city',
-		'street_state',
-		'street_zip_code',
-	]
-	list_filter = ['address_id_name',
-		'address_id_name',
-		'phone_number',
-		'dispensary_name',
-		'street_name_01',
-		'street_name_02',
-		'street_city',
-		'street_state',
-		'street_zip_code',
-	]
-	
-
 
 
 @admin.register(StrainLineageDetailsList)
@@ -248,8 +204,8 @@ class KeywordsSetAdmin(admin.ModelAdmin):
 	pass
 @admin.register(MetasSet)
 class MetasAdmin(ImportExportModelAdmin):
-	list_display = ['id','sms_UNIQUE_ID']
-	list_editable = ['sms_UNIQUE_ID']
+	list_display = ['id','ms_UNIQUE_ID']
+	list_editable = ['ms_UNIQUE_ID']
 
 
 
@@ -336,11 +292,11 @@ class TerpeneDetailsAdmin(ImportExportModelAdmin):
 
 @admin.register(Brand)
 class BrandAdmin(ImportExportModelAdmin):
-	list_display = ['title','slug','brand_logo']
+	list_display = ['id','title','slug','brand_logo']
 	prepopulated_fields = {
 		'slug':('title',)
 	}
-	list_editable = ['brand_logo']
+	list_editable = ['brand_logo','title','slug']
 @admin.register(StrainSpecificationsSets)
 class StrainSpecificationsSetsAdmin(ImportExportModelAdmin):
 	list_display = ['id','sss_UNIQUE_ID']
@@ -354,16 +310,16 @@ class StrainSpecificationAdmin(ImportExportModelAdmin):
 	list_editable = ['title','specification_value']
 
 
-@admin.register(StrainImageGallery)
-class StrainImageGalleryAdmin(ImportExportModelAdmin):
+@admin.register(ImageGallery)
+class ImageGalleryAdmin(ImportExportModelAdmin):
 	pass
 
-@admin.register(StrainGalleryImagesSet)
-class StrainGalleryImagesSetAdmin(ImportExportModelAdmin):
+@admin.register(GalleryImagesSet)
+class GalleryImagesSetAdmin(ImportExportModelAdmin):
 	pass
 
-@admin.register(StrainGalleryImage)
-class StrainGalleryImageAdmin(ImportExportModelAdmin):
+@admin.register(GalleryImage)
+class GalleryImageAdmin(ImportExportModelAdmin):
 	pass
 
 @admin.register(StrainDetailsListItems)

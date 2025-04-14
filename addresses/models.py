@@ -14,7 +14,8 @@ from django_countries.fields import CountryField
 
 
 class Address(models.Model):
-
+	a_UNIQUE_ID = models.CharField(max_length=100)
+	
 	user = models.ForeignKey(settings.AUTH_USER_MODEL, on_delete=models.CASCADE, related_name='address_user')
 
 	ADDRESS_TYPE = (

@@ -17,3 +17,7 @@ django-chatbot
 django-avatar
 django-star-ratings==0.9.2
 django-widget-tweaks==1.5.0
+django-countries==7.6.1
+mysqlclient==2.2.7
+django-cloudinary-storage==0.3.0
+django-payments==3.0.1

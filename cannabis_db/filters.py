@@ -8,9 +8,9 @@ from .models import StrainDetailsListItem
 from .models import StrainDetailsListItems
 from .models import StrainDetailsList
 
-from .models import StrainImageGallery
-from .models import StrainGalleryImagesSet
-from .models import StrainGalleryImage
+from .models import ImageGallery
+from .models import GalleryImagesSet
+from .models import GalleryImage
 
 from .models import StrainSpecificationsSets
 

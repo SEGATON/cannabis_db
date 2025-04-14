@@ -10,9 +10,9 @@ from .models import StrainDetailsListItem
 from .models import StrainDetailsListItems
 from .models import StrainDetailsList
 
-from .models import StrainImageGallery
-from .models import StrainGalleryImagesSet
-from .models import StrainGalleryImage
+from .models import ImageGallery
+from .models import GalleryImagesSet
+from .models import GalleryImage
 
 from .models import StrainSpecificationsSets
 
@@ -151,7 +151,7 @@ def strain(request, slug):
 			'dispensaries': Dispensary.objects.filter(strain=strain)[:6],
 			'dispensaries_full_list': Dispensary.objects.filter(strain=strain),
 
-			'form': RatingForm()
+
 
 		})
 

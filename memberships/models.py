@@ -33,7 +33,7 @@ class Profile(models.Model):
   verified = models.BooleanField(default=False)
 
 
-  address = models.ForeignKey('accounts.Address', on_delete=models.CASCADE,null=True, blank=True)
+  address = models.ForeignKey('addresses.Address', on_delete=models.CASCADE,null=True, blank=True)
 
 
   date_created = models.DateTimeField(auto_now_add=True, null=True,blank=True)
