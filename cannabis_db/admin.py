@@ -62,7 +62,7 @@ from .models import EffectsReportListSet
 
 from .models import Potency
 from .models import Category
-from .models import Product
+
 
 from .models import  NewslettersSubscriptions
 
@@ -113,9 +113,7 @@ class ContactMessageAdmin(admin.ModelAdmin):
 class CategoryAdmin(admin.ModelAdmin):
 	pass
 
-@admin.register(Product)
-class ProductAdmin(admin.ModelAdmin):
-	pass
+
 
 
 

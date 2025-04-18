@@ -68,7 +68,7 @@ class Tag(models.Model):
 class TagsSet(models.Model):
 	ts_UINIQUE_ID = models.CharField(max_length=50)
 	tags = models.ManyToManyField(Tag)
-
+'''
 class Brand(models.Model):
 	title = models.CharField(max_length=255)
 	slug = models.CharField(max_length=255)
@@ -90,7 +90,7 @@ class Brand(models.Model):
 	def get_absolute_url(self):
 		return reverse('django_ecommerce:brand', args=[self.slug])
 
-
+'''
 
 
 class Category(MPTTModel):
@@ -299,7 +299,7 @@ class Product(models.Model):
 
 	description_list_set = models.ForeignKey(DescriptionList, on_delete=models.CASCADE, max_length=255, null=True, blank=True)
 
-	brands = models.ForeignKey(Brand, on_delete=models.CASCADE, null=True, blank=True)
+	brands = models.ForeignKey('cannabis_db.Brand', on_delete=models.CASCADE, null=True, blank=True)
 	
 	featured_image = models.ImageField(upload_to='media/DJANGO_ECOMMERCE/PRODUCTS/FEATURED_IMAGES/', default='')
 

@@ -21,6 +21,10 @@ from star_ratings.models import AbstractBaseRating
 from cloudinary.forms import CloudinaryFileField
 from django.utils.module_loading import import_string
 from addresses.models import Address
+
+from catalog.models import Product
+
+
 class NewslettersSubscriptions(models.Model):
 	email = models.EmailField(max_length=50)
 	
@@ -438,22 +442,35 @@ class BrandSocialProfile(models.Model):
 class Brand(models.Model):
 	title = models.CharField(max_length=1000, null=True, blank=True)
 	slug = models.SlugField(max_length=1000)
+
+	brand_metas = models.ForeignKey(MetasSet, on_delete=models.CASCADE,  null=True, blank=True)
+
 	tagline = models.CharField(max_length=1000, null=True, blank=True)
+	
 	websiteURL = models.URLField(max_length=300, null=True, blank=True)
 	phone_number = models.CharField(max_length=300, null=True, blank=True)
 	email_address = models.EmailField(max_length=300, null=True, blank=True)
+	
 	brand_logo	= models.ImageField(upload_to='media/CANNABIS_DB/BRAND_LOGOS/', null=True, blank=True)
-	brand_address = models.ManyToManyField(Address)
 	brand_cover	= models.ImageField(upload_to='media/CANNABIS_DB/BRAND_COVERS/', null=True, blank=True)
+
+	brand_address = models.ManyToManyField(Address, null=True, blank=True)
+	
 	description = RichTextField(null=True, blank=True)
+	
+	
 	brand_social_profile	= models.ForeignKey(BrandSocialProfile, on_delete=models.CASCADE, null=True, blank=True)
-	brand_products = models.ManyToManyField('Strain', related_name='brand_strains', null=True, blank=True)
+	
+
+	brand_products = models.ManyToManyField(Product, related_name='brand_products', null=True, blank=True)
+	brand_strains = models.ManyToManyField('Strain', related_name='brand_strains', null=True, blank=True)
+	
 	brand_followers	= models.ManyToManyField(CustomUser, related_name='strain_brand_followers', null=True, blank=True)
 
 	dispensary = models.ManyToManyField('Dispensary',null=True, blank=True )
 
-
 	author = models.ManyToManyField(settings.AUTH_USER_MODEL, null=True, blank=True)
+	
 	claimed = models.BooleanField(default=False,null=True, blank=True )
 
 	date_created = models.DateTimeField(auto_now_add=True, null=True,blank=True)
@@ -534,7 +551,7 @@ class Dispensary(models.Model):
 	saves = models.ManyToManyField('memberships.Profile', null=True,blank=True, related_name='dispensary_saves')
 
 
-	products = models.ManyToManyField('Product',null=True, blank=True )
+	products = models.ManyToManyField(Product,null=True, blank=True )
 
 	claimed = models.BooleanField(default=False)
 
@@ -773,7 +790,7 @@ class Strain(models.Model):
 
 	bookmarks = models.ManyToManyField(CustomUser, null=True, blank=True, related_name='bookmarked_by')
 
-	products = models.ManyToManyField('Product',null=True, blank=True)
+	products = models.ManyToManyField(Product,null=True, blank=True)
 
 
 
@@ -805,20 +822,5 @@ class Strain(models.Model):
 #__________________________________________________________________________________________________________________________________
 
 
-
-
-class Product(models.Model):
-	title = models.CharField(max_length=300)
-	slug = models.CharField(max_length=300)
-	PRODUCT_TYPE = (
-		)
-	product_type= models.CharField(max_length=50, choices=PRODUCT_TYPE)
-	
-	description = RichTextField(max_length=5000, null=True,blank=True)
-	dispensaries = models.ManyToManyField(Dispensary, null=True, blank=True)
-
-	categories = models.ManyToManyField(Category, null=True, blank=True)
-	def __str__(self):
-		return self.title
 
 

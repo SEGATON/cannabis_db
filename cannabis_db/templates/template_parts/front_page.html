@@ -165,10 +165,10 @@
 				{% for product in featured_products %}			
 					<div class="col-md-2">
 						<div class="card">
-							<a href="{{product.get_absolute_url}}">
+							<a href="">
 								<img src="{% thumbnail product.featured_image 700x700 crop %}" class="img-fluid radius_md">
 							</a>
-							<a href="{{product.get_absolute_url}}">{{product.title}}</a>
+					
 						</div>
 					</div>				
 				{% endfor %}

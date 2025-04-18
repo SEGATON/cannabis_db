@@ -4,7 +4,7 @@ from django.contrib import admin
 
 from .models import Product
 from .models import Category
-from .models import Brand
+
 
 from .models import ProductGalleryImage
 from .models import ProductGalleryImages
@@ -154,7 +154,7 @@ class CategoryAdmin(DraggableMPTTAdmin, ImportExportModelAdmin):
         'slug':('title',)
     }   
 
-admin.site.register(Brand)
+
 admin.site.register(StockManagement)
 admin.site.register(ProductGalleryImage)
 admin.site.register(ProductGalleryImages)

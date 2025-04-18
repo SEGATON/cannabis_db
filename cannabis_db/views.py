@@ -3,7 +3,7 @@ from django.shortcuts import redirect
 from django.shortcuts import get_object_or_404
 
 from .models import Strain
-from .models import Brand
+from cannabis_db.models import Brand
 from .models import StrainType, Product
 
 from .models import StrainDetailsListItem
@@ -165,10 +165,18 @@ def brands(request):
 
 def brand(request, slug):
 	brand = get_object_or_404(Brand, slug=slug)
-	strains = Strain.objects.filter(brand=brand)
+
+	brand_strains = Strain.objects.filter(brand=brand)
+
+	brand_products = Product.objects.filter(brands=brand)
+
+
 	return render(request, 'views/brand.html', {
 		'brand':brand,
-		'strains':strains
+		'brand_strains':brand_strains,
+		'brand_products':brand_products
+
+
 		})
 
 def brands_menu(request):

@@ -1,13 +1,56 @@
 {% extends 'template_parts/base.html' %}
 	{% block content %}
+
+{% if brand.brand_cover %}
+{{brand.brand_cover.url}}
+{% endif %}
+
 		<div class="container">
 			<div class="row">
-				<div class="col-md-2">
-					2
-				</div>
-				<div class="col-md-10">
+				<div class="col-md-6">
 					{{brand.title}}
-					{{strains.all}}
+					{{brand.brand_logo.url}}
+
+					{{brand.claimed}}
+
+
+					{{brand.date_created}}
+					{{brand.date_updated}}
+					{{brand.author.all}}
+					{{brand.dispensary.all}}
+
+					<hr>
+{% ratings brand %}
+					{{brand.tagline}}
+					{{brand.websiteURL}}
+					{{brand.phone_number}}
+					{{brand.email_address}}
+
+					{{brand.brand_address.all}}
+
+					{{brand.description}}
+
+					{{brand.brand_social_profile}}
+
+				</div>
+				<div class="col-md-6">
+
+				</div>
+				
+			</div>
+		</div>
+
+<hr>
+				<div class="container">
+			<div class="row">
+
+				<div class="col-lg-12">
+					
+					<h6>Brand strains</h6>
+	
+{{brand.brand_strains.all}}
+<h6>Brand products</h6>
+{{brand.brand_products.all}}
 				</div>
 				
 			</div>
