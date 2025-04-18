@@ -122,10 +122,15 @@
 				{% for brand in featured_brands %}			
 					<div class="col-md-2">
 						<div class="card">
+
+							<div class="">
 							<a href="{{brand.get_absolute_url}}">
 								<img src="{% thumbnail brand.featured_image 700x700 crop %}" class="img-fluid radius_md">
 							</a>
+						</div>
+						<div class="">
 							<a href="{{strain.get_absolute_url}}">{{brand.title}}</a>
+						</div>
 						</div>
 					</div>				
 				{% endfor %}
@@ -211,7 +216,7 @@
 			<div class="row g-2">
 				{% for strain in latest_strains %}			
 					<div class="col-md-2 ">
-						<div class="card">
+						<div class="card waydo">
 
 							{% if strain.strain_type_label == 'indica' %}
 

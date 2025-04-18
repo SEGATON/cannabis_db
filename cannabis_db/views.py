@@ -369,6 +369,12 @@ def remove_dispensary(request, pk):
 
 
 
+
+def about_us(request):
+	return render(request, 'views/static_views/about_us.html', {
+			
+		})
+
 def faq_page(request):
 	return render(request, 'static_pages/faq.html', {
 			'title':'F.A.Q'
@@ -552,11 +558,7 @@ def follow_dispensary(request, pk):
 
 
 
-def about_us(request):
 
-	return render(request, 'views/static_views/about-us.html', {
-		
-		})
 
 
 
