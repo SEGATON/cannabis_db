@@ -170,11 +170,13 @@ def brand(request, slug):
 
 	brand_products = Product.objects.filter(brands=brand)
 
+	brand_dispensaries = Dispensary.objects.filter(brand=brand)
 
 	return render(request, 'views/brand.html', {
 		'brand':brand,
 		'brand_strains':brand_strains,
-		'brand_products':brand_products
+		'brand_products':brand_products,
+		'brand_dispensaries':brand_dispensaries
 
 
 		})

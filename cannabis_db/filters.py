@@ -17,7 +17,7 @@ from .models import StrainSpecificationsSets
 from .models import StrainSpecification
 
 from .models import TerpeneDetails
-
+from .models import TerpeneProfile
 
 from .models import FlavorsDetailsListSet
 from .models import FlavorsDetailsList
@@ -69,7 +69,7 @@ class StrainFilter(django_filters.FilterSet):
 	strain_type = django_filters.ModelMultipleChoiceFilter(queryset=StrainType.objects.all())
 	dispensaries = django_filters.ModelMultipleChoiceFilter(queryset=Dispensary.objects.all())
 	feelings = django_filters.ModelMultipleChoiceFilter(queryset=FeelingReport.objects.all())
-	terpenes_reports = django_filters.ModelMultipleChoiceFilter(queryset=TerpeneDetails.objects.all())
+	terpenes_reports = django_filters.ModelMultipleChoiceFilter(queryset=TerpeneProfile.objects.all())
 	may_relieve = django_filters.ModelMultipleChoiceFilter(queryset=HelpsWithReport.objects.all())
 	flavors = django_filters.ModelMultipleChoiceFilter(queryset=FlavorsDetails.objects.all())
 

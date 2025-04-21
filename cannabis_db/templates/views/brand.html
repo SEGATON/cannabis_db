@@ -1,58 +1,86 @@
 {% extends 'template_parts/base.html' %}
 	{% block content %}
 
-{% if brand.brand_cover %}
-{{brand.brand_cover.url}}
-{% endif %}
+	{% load thumbnail %}
 
-		<div class="container">
-			<div class="row">
-				<div class="col-md-6">
-					{{brand.title}}
-					{{brand.brand_logo.url}}
+	{% if brand.brand_cover %}
+		{{brand.brand_cover.url}}
+	{% endif %}
 
-					{{brand.claimed}}
+	<div class="container">
+		<div class="row">
+			<div class="col-md-4">
+				<h6>{{brand.title}}</h6>
+				<img src="{{brand.brand_logo.url}}" width="120">
+				{% if brand.claimed %}
+					<p class="xs">{{brand.claimed}}
+				{% else %}
+					<a href="">Claim brand</a></p>
+				{% endif %}
+			</div>
+			<div class="col-md-8">
+				<p class="xs"><b>Date created:</b> {{brand.date_created}} <b>Date updated: </b> {{brand.date_updated}}</p>
 
 
-					{{brand.date_created}}
-					{{brand.date_updated}}
-					{{brand.author.all}}
-					{{brand.dispensary.all}}
-
-					<hr>
-{% ratings brand %}
-					{{brand.tagline}}
-					{{brand.websiteURL}}
-					{{brand.phone_number}}
-					{{brand.email_address}}
-
-					{{brand.brand_address.all}}
-
-					{{brand.description}}
-
-					{{brand.brand_social_profile}}
-
-				</div>
-				<div class="col-md-6">
-
-				</div>
-				
+				<ul class="brand_profile_misc_menu">
+					<li><a href="{{brand.websiteURL}}"><svg xmlns="http://www.w3.org/2000/svg" width="12" height="12" viewBox="0 0 512 512"><path fill="none" stroke="currentColor" stroke-miterlimit="10" stroke-width="44" d="M256 48C141.13 48 48 141.13 48 256s93.13 208 208 208s208-93.13 208-208S370.87 48 256 48Z"/><path fill="none" stroke="currentColor" stroke-miterlimit="10" stroke-width="44" d="M256 48c-58.07 0-112.67 93.13-112.67 208S197.93 464 256 464s112.67-93.13 112.67-208S314.07 48 256 48Z"/><path fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="44" d="M117.33 121.33c38.24 27.15 86.38 43.34 138.67 43.34s100.43-16.19 138.67-43.34m0 269.34c-38.24-27.15-86.38-43.34-138.67-43.34s-100.43 16.19-138.67 43.34"/><path fill="none" stroke="currentColor" stroke-miterlimit="10" stroke-width="44" d="M256 48v416m208-208H48"/></svg> {{brand.websiteURL}}</a></li> | 
+					<li><svg xmlns="http://www.w3.org/2000/svg" width="12" height="12" viewBox="0 0 24 24"><path fill="currentColor" d="M6.62 10.79c1.44 2.83 3.76 5.14 6.59 6.59l2.2-2.2c.27-.27.67-.36 1.02-.24c1.12.37 2.33.57 3.57.57c.55 0 1 .45 1 1V20c0 .55-.45 1-1 1c-9.39 0-17-7.61-17-17c0-.55.45-1 1-1h3.5c.55 0 1 .45 1 1c0 1.25.2 2.45.57 3.57c.11.35.03.74-.25 1.02z"/></svg> {{brand.phone_number}}</li> | 
+					<li><a href=""><svg xmlns="http://www.w3.org/2000/svg" width="12" height="12" viewBox="0 0 36 36"><path fill="currentColor" d="M32 6H4a2 2 0 0 0-2 2v20a2 2 0 0 0 2 2h28a2 2 0 0 0 2-2V8a2 2 0 0 0-2-2m-1.54 22H5.66l7-7.24l-1.44-1.39L4 26.84V9.52l12.43 12.37a2 2 0 0 0 2.82 0L32 9.21v17.5l-7.36-7.36l-1.41 1.41ZM5.31 8h25.07L17.84 20.47Z" class="clr-i-outline clr-i-outline-path-1"/><path fill="none" d="M0 0h36v36H0z"/></svg> {{brand.email_address}}</a></li>
+				</ul>
 			</div>
 		</div>
+	</div>
 
 <hr>
-				<div class="container">
-			<div class="row">
+	<div class="container">
 
-				<div class="col-lg-12">
-					
-					<h6>Brand strains</h6>
-	
-{{brand.brand_strains.all}}
-<h6>Brand products</h6>
-{{brand.brand_products.all}}
-				</div>
-				
+
+							<div class="row g-1">
+
+								<h6>Where to find <b>{{brand.title}}</b> products</h6>
+				{% for dispensary in brand_dispensaries %}			
+					<div class="col-md-2 P-3">
+						<div class="card P-3">
+							<div class="row">
+								<div class="col-md-3 border_right">
+									<a href="{{dispensary.get_absolute_url}}">
+								<img src="{% thumbnail dispensary.dispensary_logo 1200x1200 crop %}" class="img-fluid radius_md" style="width:100%; text-align: center;">
+							</a>
+								</div>
+								<div class="col-md-9">
+									<a href="{{dispensary.get_absolute_url}}" class="small_link">{{dispensary.title|truncatechars:23}}</a>
+								</div>
+							</div>
+							<style type="text/css">
+								.small_link{
+									font-size: 11px;
+									text-decoration: none;
+								}
+								.small_link:hover{
+									font-size: 11px;
+									text-decoration: none;
+									color: #666;
+								}
+
+							</style>
+							
+						</div>
+					</div>				
+				{% endfor %}
+<a href="{% url 'cannabis_db:dispensaries' %}" class="sm p-0">view all</a>	
 			</div>
+	</div>
+
+
+	<div class="container">
+		<div class="row">
+			{% for product in brand_products.all %}
+			<div class="col-md-4">
+				{{product}}
+			</div>
+			{% endfor %}
 		</div>
+	</div>
+
+
 	{% endblock %}

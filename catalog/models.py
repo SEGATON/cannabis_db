@@ -331,7 +331,7 @@ class Product(models.Model):
 
 	shipping_settings = models.ForeignKey(ShippingSettings, on_delete=models.CASCADE, null=True, blank=True)
 
-
+	dispensaries = models.ManyToManyField('cannabis_db.Dispensary', null=True, blank=True)
 
 	def __str__(self):
 

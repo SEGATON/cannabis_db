@@ -89,10 +89,10 @@ class TerpeneIconAdmin(admin.ModelAdmin):
 	pass
 
 @admin.register(TerpeneDetailsSet)
-class TerpeneDetailsSetAdmin(admin.ModelAdmin):
+class TerpeneDetailsSetAdmin(ImportExportModelAdmin):
 	pass
 @admin.register(TerpeneDetailsItem)
-class TerpeneDetailsItemAdmin(admin.ModelAdmin):
+class TerpeneDetailsItemAdmin(ImportExportModelAdmin):
 	pass
 
 

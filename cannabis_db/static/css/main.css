@@ -5,7 +5,10 @@ html{
     margin: 0;
 }
 
-
+h1,h2,h3,h4,h5,h6{
+    padding: 0;
+    margin:0;
+}
 
 
 .catalog_item_link{
@@ -22,8 +25,19 @@ html{
     transition: all .5s;
     color: #222;
 }
-
-
+.brand_profile_misc_menu{
+    padding: 0;
+    margin:0;
+    list-style: none;
+}
+.brand_profile_misc_menu li {
+    display: inline;
+    font-size: 12px;
+}
+.brand_profile_misc_menu li  a{
+    display: inline;
+    font-size: 12px;
+}
 .waydo{
     background: white;
     border-radius: 14px;
@@ -626,7 +640,7 @@ img:active{
 }
 
 .xs{
-    font-size: 10px;
+    font-size: 8px;
 }
 .front_page_section_heading{
     font-size: 13px;

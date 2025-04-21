@@ -1,74 +1,48 @@
-
-
-
-
 {% load widget_tweaks %}
 
-    <form method="get">
+<form method="get">
 
 
 
-fdfd
+    
 
-
-<div class="filter_section">
-    <div id="filter_section_header">
-  <h6 class="filter_heading">{{ filter.form.brand.label}}s</h6>
-   </div>
-   <div id="filter_section_body" style="height: 200px; overflow-y: scroll; border: 1px solid green; border-radius: 10px;">
-
-
-{% for checkbox in filter.form.brand %}
- <div class="form-check  custom-checkbox">
-    {{checkbox.tag}}
-    <label class="form-check-label" for="{{ checkbox.id_for_label }}">
-    <p style="font-size:12px;">{{checkbox.choice_label}}</p>
-</label>
-</div>
-{% endfor %}
-
-
-
-
+<div class="accordion accordion-flush" id="accordionFlushExample-brand"> 
+  <div class="accordion-item">
+    <h2 class="accordion-header" id="heading-brand">
+      <button class="accordion-button collapsed" type="button"
+              data-bs-toggle="collapse"
+              data-bs-target="#flush-collapse-brand"
+              aria-expanded="false"
+              aria-controls="flush-collapse-brand">
+        {{ filter.form.brand.label }}
+      </button>
+    </h2>
+    <div id="flush-collapse-brand"
+         class="accordion-collapse collapse"
+         aria-labelledby="heading-brand">
+      <div class="accordion-body">
+        {{ filter.form.brand }}
+      </div>
     </div>
-    <br>
-
-        <h6 class="filter_heading">{{ filter.form.strain_type.label}}</h6>
-       {{ filter.form.strain_type|add_class:"form-control"}}
- <br><br>
-       <h6 class="filter_heading">{{ filter.form.dispensaries.label}}</h6>
-       {{ filter.form.dispensaries|add_class:"form-control"}}</td></tr>
- <br><br>
-    <h6 class="filter_heading">{{ filter.form.aromas.label}}</h6>
-   {{ filter.form.aromas|add_class:"form-control"}}
- <br><br>
-     <h6 class="filter_heading">{{ filter.form.feelings.label}}</h6>
-      {{ filter.form.feelings|add_class:"form-control"}}
- <br><br>
-    <h6 class="filter_heading">{{ filter.form.terpenes_reports.label}}</h6>
- {{ filter.form.terpenes_reports|add_class:"form-control"}}
- <br><br>
-   <h6  class="filter_heading" >May help relieve</h6>
- {{ filter.form.may_relieve|add_class:"form-control"}}
- <br><br>
-
-    <h6 class="filter_heading">{{ filter.form.flavors.label}}</h6>
-   {{ filter.form.flavors|add_class:"form-control"}}
- <br><br>
-
-       <h6 class="filter_heading">{{ filter.form.potency.label}}</h6>
-   {{ filter.form.potency|add_class:"form-control"}}
- <br><br>
-
-
- <input class="button sm green" type="submit" />
-    </form>
-
-
+  </div>
 </div>
 
 
 
+    <div class="accordion accordion-flush" id="accordionFlushExample">
+      <div class="accordion-item">
+        <h2 class="accordion-header">
+          <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#flush-collapseOne-strain_type" aria-expanded="false" aria-controls="flush-collapseOne">
+            {{filter.form.strain_type.label}}
+          </button>
+        </h2>
+        <div id="flush-collapseOne-strain_type" class="accordion-collapse collapse" data-bs-parent="#accordionFlushExample">
+          <div class="accordion-body">
+                {{filter.form.strain_type}}
+          </div>
+        </div>
+      </div>
+    </div>
 
 
 
@@ -76,24 +50,79 @@ fdfd
 
 
 
+    <div class="accordion accordion-flush" id="accordionFlushExample">
+      <div class="accordion-item">
+        <h2 class="accordion-header">
+          <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#flush-collapseOne-dispensaries" aria-expanded="false" aria-controls="flush-collapseOne">
+            {{filter.form.dispensaries.label}}
+          </button>
+        </h2>
+        <div id="flush-collapseOne-dispensaries" class="accordion-collapse collapse" data-bs-parent="#accordionFlushExample">
+          <div class="accordion-body">
+                {{filter.form.dispensaries}}
+          </div>
+        </div>
+      </div>
+    </div>
 
 
 
 
 
-<br>
 
 
 
+    <div class="accordion accordion-flush" id="accordionFlushExample">
+      <div class="accordion-item">
+        <h2 class="accordion-header">
+          <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#flush-collapseOne-feelings" aria-expanded="false" aria-controls="flush-collapseOne">
+            {{filter.form.feelings.label}}
+          </button>
+        </h2>
+        <div id="flush-collapseOne-feelings" class="accordion-collapse collapse" data-bs-parent="#accordionFlushExample">
+          <div class="accordion-body">
+                {{filter.form.feelings}}
+          </div>
+        </div>
+      </div>
+    </div>
 
 
 
 
+    <div class="accordion accordion-flush" id="accordionFlushExample">
+      <div class="accordion-item">
+        <h2 class="accordion-header">
+          <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#flush-collapseOne-terpenes_reports" aria-expanded="false" aria-controls="flush-collapseOne">
+            Terpenes profiles
+          </button>
+        </h2>
+        <div id="flush-collapseOne-terpenes_reports" class="accordion-collapse collapse" data-bs-parent="#accordionFlushExample">
+          <div class="accordion-body">
+                {{filter.form.terpenes_reports}}
+          </div>
+        </div>
+      </div>
+    </div>
 
 
 
 
 
+    <div class="accordion accordion-flush" id="accordionFlushExample">
+      <div class="accordion-item">
+        <h2 class="accordion-header">
+          <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#flush-collapseOne-may_relieve" aria-expanded="false" aria-controls="flush-collapseOne">
+            {{filter.form.may_relieve.label}}
+          </button>
+        </h2>
+        <div id="flush-collapseOne-may_relieve" class="accordion-collapse collapse" data-bs-parent="#accordionFlushExample">
+          <div class="accordion-body">
+                {{filter.form.may_relieve}}
+          </div>
+        </div>
+      </div>
+    </div>
 
 
 
@@ -105,15 +134,57 @@ fdfd
 
 
 
+    <div class="accordion accordion-flush" id="accordionFlushExample">
+      <div class="accordion-item">
+        <h2 class="accordion-header">
+          <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#flush-collapseOne-flavors" aria-expanded="false" aria-controls="flush-collapseOne">
+            {{filter.form.flavors.label}}
+          </button>
+        </h2>
+        <div id="flush-collapseOne-flavors" class="accordion-collapse collapse" data-bs-parent="#accordionFlushExample">
+          <div class="accordion-body">
+                {{filter.form.flavors}}
+          </div>
+        </div>
+      </div>
+    </div>
 
 
 
 
 
+    <div class="accordion accordion-flush" id="accordionFlushExample">
+      <div class="accordion-item">
+        <h2 class="accordion-header">
+          <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#flush-collapseOne-potency" aria-expanded="false" aria-controls="flush-collapseOne">
+            {{filter.form.potency.label}}
+          </button>
+        </h2>
+        <div id="flush-collapseOne-potency" class="accordion-collapse collapse" data-bs-parent="#accordionFlushExample">
+          <div class="accordion-body">
+                {{filter.form.potency}}
+          </div>
+        </div>
+      </div>
+    </div>
 
 
 
 
+    <div class="accordion accordion-flush" id="accordionFlushExample">
+      <div class="accordion-item">
+        <h2 class="accordion-header">
+          <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#flush-collapseOne-aromas" aria-expanded="false" aria-controls="flush-collapseOne">
+            {{filter.form.aromas.label}}
+          </button>
+        </h2>
+        <div id="flush-collapseOne-aromas" class="accordion-collapse collapse" data-bs-parent="#accordionFlushExample">
+          <div class="accordion-body">
+                {{filter.form.aromas}}
+          </div>
+        </div>
+      </div>
+    </div>
 
 
 
@@ -134,22 +205,6 @@ fdfd
 
 
 
+    <input class="button sm green" type="submit" />
 
-
-
-
-
-
-
-
-
-
-
-
-
-<!-- title filter section starts -->
-
-
-
-
-
+</form>

@@ -21,6 +21,9 @@
 								
 							</td>
 							<td>
+								
+							</td>
+							<td>
 								Title
 							</td>
 							<td>
@@ -37,6 +40,11 @@
 							</td>
 							<td>
 								<input type="checkbox">
+							</td>
+							<td>
+								{% if brand.brand_logo %}
+								<img src="{{brand.brand_logo.url}}" width="20">
+								{% endif %}
 							</td>
 							<td>
 								<a href="{{brand.get_absolute_url}}">{{brand.title}}</a>
