@@ -84,16 +84,83 @@
 				<br>
 	
 							<div class="row g-2">
-				{% for category in featured_categories %}			
-					<div class="col-md-2">
-						<div class="card">
-							<a href="{{category.get_absolute_url}}">
-								<img src="{% thumbnail category.featured_image 700x700 crop %}" class="img-fluid radius_md">
-							</a>
-							<a href="{{category.get_absolute_url}}">{{category.title}}</a>
-						</div>
-					</div>				
-				{% endfor %}
+<script src="https://cdn.jsdelivr.net/npm/@splidejs/splide@4.1.4/dist/js/splide.min.js"></script><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@splidejs/splide@4.1.4/dist/css/splide.min.css">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@splidejs/splide@4.1.4/dist/css/splide.min.css">
+
+<section class="splide" aria-labelledby="carousel-heading">
+
+
+
+  <div class="splide__track">
+  	
+		<ul class="splide__list">
+			{% for category in featured_categories.all %}
+			<li class="splide__slide">
+				<div class="row">
+
+<div class="col-lg-12 center"><img src="{% thumbnail category.category_icon 50x50 crop %}"></div>
+
+			<div class="col-lg-12 center">{{category.title}}</div>
+</div>
+		</li>
+ {% endfor %}		
+		</ul>
+
+  </div>
+ 
+</section>
+
+<style type="text/css">
+	.splide__slide{
+
+	}
+</style>
+<script>
+  document.addEventListener('DOMContentLoaded', function () {
+    new Splide('.splide', {
+      type   : 'loop',
+
+      perPage: 5,
+      perMove: 1,
+
+    }).mount();
+  });
+</script>
+<style type="text/css">
+	.splide__arrow--prev {
+    left: -1em;
+}
+.splide__arrow--next {
+    right: -1em;
+}
+.splide__arrow {
+    -ms-flex-align: center;
+    align-items: center;
+    background: #ccc;
+    border: 0;
+    border-radius: 50%;
+    cursor: pointer;
+    display: -ms-flexbox;
+    display: flex;
+    -ms-flex-pack: center;
+    justify-content: center;
+    opacity: .7;
+    padding: 5px;
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+height: 20px;
+width: 20px;
+    z-index: 1;
+
+}
+.splide__arrow svg {
+    fill: green;
+    height: 15px;
+    width: 15px;
+    padding: 0;
+}
+</style>
 <a href="" class="sm">view all</a>
 			</div>
 				</div>
@@ -334,4 +401,16 @@
 				
 			</div>
 		</div>
+
+
+
+
+
+
+
+
+
+
+
+
 	{% endblock %}

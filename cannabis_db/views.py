@@ -79,6 +79,8 @@ def front_page(request):
 	featured_dispensaries = Dispensary.objects.all()[:12]
 	featured_categories = Category.objects.all()[:12]
 
+
+
 	return render(request, 'template_parts/front_page.html', {
 			'strains':strains,
 			'title':'Browse All Marijuana/Cannabis Strains, Dispensaries, Brands, and Products',
@@ -88,7 +90,7 @@ def front_page(request):
 			'featured_brands':featured_brands,
 			'featured_products':featured_products,
 			'featured_dispensaries':featured_dispensaries,
-			'featured_categories':featured_categories
+			'featured_categories':featured_categories,
 		})
 
 def strains(request):
@@ -647,3 +649,7 @@ def search_dispensaries(request):
 
 
 
+def category(request, slug):
+	return render(request, 'catalog/category.html', {
+
+		})

@@ -50,6 +50,8 @@ class ContactMessage(models.Model):
 	date_created = models.DateTimeField(auto_now_add=True, null=True,blank=True)
 	date_updated = models.DateTimeField(null=True,blank=True)
 	date_deleted = models.DateTimeField(null=True,blank=True)
+
+	
 class Category(models.Model):
 	title = models.CharField(max_length=1000)
 	slug = models.SlugField(max_length=1000)

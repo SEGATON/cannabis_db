@@ -64,6 +64,7 @@ urlpatterns = [
 	path('contact/', views.contact, name='contact'),
 	path('follow-dispensary/<int:pk>/', views.follow_dispensary, name='follow_dispensary'),
 	path('about/', views.about_us, name='about'),
+	path('category/<slug:slug>/', views.category, name='category'),
 	path('terms-and-conditions/', views.terms_conditions, name='terms_conditions'),
 	path('process-search-form/', views.search, name='search'),
 	path('privacy-policy/', views.privacy_policy, name='privacy_policy'),
