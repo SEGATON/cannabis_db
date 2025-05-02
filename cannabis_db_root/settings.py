@@ -254,7 +254,7 @@ STAR_RATINGS_STAR_WIDTH = 20
 COMMENTS_XTD_API_GET_USER_AVATAR = "comp.utils.get_avatar_url"
 
 
-STAR_RATINGS_OBJECT_ID_PATTERN = '[a-z0-9]{32}'
+
 
 COMMENTS_APP = 'django_comments_xtd'
 

@@ -1,7 +1,7 @@
 {% load thumbnail %}
 
 {% load static %}
-
+{% load ratings %}
 
 
 <div class="container">
@@ -35,7 +35,7 @@
 				</div>
 
 
-{% ratings strain %}
+
 
 				<div class="card">
 					{% include 'commenting_system/commenting_system.html' %}
@@ -191,7 +191,7 @@
 
 
 
-
+{% ratings strain %}
 
 {% include 'components/ratings/star_ratings/ratings_template.html' with form=form %}
 
@@ -291,16 +291,16 @@ background: var(--bkg-color);
   transition: max-height 0.2s ease-out;
 }
 </style>
-<div class="p-3">
+<div class="p-0">
 <button class="accordion" id="kajak">Description</button>
 <div class="panel">
-					{% if strain.description %}<p>{{strain.description|safe}}</p>{% else %}	<p>Not available.</p>{% endif %}	
+					{% if strain.description %}<p class="xs">{{strain.description|safe}}</p>{% else %}	<p>Not available.</p>{% endif %}	
 </div>
 
 <button class="accordion" id="kajak">Potency</button>
 <div class="panel">
 			<h5>Strain potency</h5>
-			{{strain.get_potency_display}}
+			{{strain.potency.title}}
 </div>
 
 <button class="accordion">Flavors</button>
@@ -325,10 +325,29 @@ background: var(--bkg-color);
 
 
 
-<!---------------------------------------------->
+
+
+
+
+
+
+
+
+
+<!--------------------------------------------------------------------------------------------------------------------------------------------->
+
+
+
+
+
+
+
+
+
+
 <button class="accordion">Feelings</button>
 	<div class="panel">
-
+<div class="row">
 					{% if strain.feelings %}
 
 
@@ -361,29 +380,51 @@ background: var(--bkg-color);
 
 
 					{% endif %}		
-
+</div>
 	</div>
-	<!---------------------------------------------->
-<button class="accordion">Effects</button>
-	<div class="panel">
-					<div class="row">
-					<h5>Effects</h5>
-						<br>
-					{% if strain.effects_reports %}
-					{% for strain_effect in strain.effects_reports.effect_report_list_set.effect_report_list.all %}
-						{{strain_effect.get_type_of_effects_display}}
-						{{strain_effect.title}}
-						{{strain_effect.description|safe}}
-						{{strain_effect.effect_icon}}
-					{% endfor %}	
-					{% else %}				
-						<p>Not available.</p>
-					{% endif %}
-				</div>
 
 
-	</div>
-	<!---------------------------------------------->
+
+
+
+
+
+
+
+
+
+
+<!--------------------------------------------------------------------------------------------------------------------------------------------->
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<!--------------------------------------------------------------------------------------------------------------------------------------------->
+
+
+
+
+
+
+
+
+
+
 <button class="accordion">Aromas</button>
 	<div class="panel">
 
@@ -401,7 +442,29 @@ background: var(--bkg-color);
 					</div>	
 
 	</div>
-	<!---------------------------------------------->
+
+
+
+
+
+
+
+
+
+
+
+
+<!--------------------------------------------------------------------------------------------------------------------------------------------->
+
+
+
+
+
+
+
+
+
+
 <button class="accordion">May help relieve</button>
 	<div class="panel">
 
@@ -422,7 +485,29 @@ background: var(--bkg-color);
 					</div>	
 
 	</div>
-	<!---------------------------------------------->
+
+
+
+
+
+
+
+
+
+
+
+
+<!--------------------------------------------------------------------------------------------------------------------------------------------->
+
+
+
+
+
+
+
+
+
+
 <button class="accordion">Terpenes profile</button>
 	<div class="panel">
 
@@ -588,7 +673,29 @@ button.active, .accordion  {
   View all Terpenes Profiles
 </a>
 	</div>
-	<!---------------------------------------------->
+
+
+
+
+
+
+
+
+
+
+
+
+<!--------------------------------------------------------------------------------------------------------------------------------------------->
+
+
+
+
+
+
+
+
+
+
 <button class="accordion">Lineage profile</button>
 	<div class="panel">
 
@@ -601,7 +708,29 @@ button.active, .accordion  {
 					{% endfor %}		
 
 	</div>
-	<!---------------------------------------------->
+
+
+
+
+
+
+
+
+
+
+
+
+<!--------------------------------------------------------------------------------------------------------------------------------------------->
+
+
+
+
+
+
+
+
+
+
 <button class="accordion">Poster's review</button>
 	<div class="panel">
 					{% if strain.author_review %}
@@ -612,7 +741,29 @@ button.active, .accordion  {
 
 
 	</div>
-	<!---------------------------------------------->
+
+
+
+
+
+
+
+
+
+
+
+
+<!--------------------------------------------------------------------------------------------------------------------------------------------->
+
+
+
+
+
+
+
+
+
+
 <button class="accordion">Details</button>
 	<div class="panel">
 
@@ -627,7 +778,29 @@ button.active, .accordion  {
 					{% endif %}	
 
 	</div>
-	<!---------------------------------------------->
+
+
+
+
+
+
+
+
+
+
+
+
+<!--------------------------------------------------------------------------------------------------------------------------------------------->
+
+
+
+
+
+
+
+
+
+
 <button class="accordion">Brands</button>
 	<div class="panel">
 
@@ -644,7 +817,29 @@ button.active, .accordion  {
 					{% endif %}
 
 	</div>
-	<!---------------------------------------------->
+
+
+
+
+
+
+
+
+
+
+
+
+<!--------------------------------------------------------------------------------------------------------------------------------------------->
+
+
+
+
+
+
+
+
+
+
 <button class="accordion">Where to buy</button>
 	<div class="panel">
 
