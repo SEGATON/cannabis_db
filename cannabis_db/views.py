@@ -92,44 +92,37 @@ def front_page(request):
 			'featured_dispensaries':featured_dispensaries,
 			'featured_categories':featured_categories,
 		})
-
 def strains(request):
-    sort_option = request.GET.get('sort')
+    qs = Strain.objects.all()
+    f = StrainFilter(request.GET, queryset=qs)
 
-    # Start with all strains
-    strains = Strain.objects.all()
+    sort = request.GET.get("sort")
+    qs = f.qs  # Apply filters first
 
-    # Apply filtering
-    f = StrainFilter(request.GET, queryset=strains)
+    if sort == 'az':
+        qs = qs.order_by('title', 'id')
+    elif sort == 'za':
+        qs = qs.order_by('-title', 'id')
+    elif sort == 'featured':
+        qs = qs.order_by('-featured', 'id')
+    elif sort == 'top-rated':
+        qs = qs.annotate(num_likes=Count('likes')).order_by('-num_likes', 'id')
+    elif sort == 'most-rated':
+        qs = qs.annotate(total_ratings=Count('likes') + Count('dislikes')).order_by('-total_ratings', 'id')
+    elif sort == 'price-low':
+        qs = qs.order_by('products__price', 'id')
+    elif sort == 'price-high':
+        qs = qs.order_by('-products__price', 'id')
+    elif sort == 'brand-az':
+        qs = qs.order_by('brand__name', 'id')
+    elif sort == 'brand-za':
+        qs = qs.order_by('-brand__name', 'id')
+    elif sort == 'newest':
+        qs = qs.order_by('-date_created', 'id')
+    elif sort == 'oldest':
+        qs = qs.order_by('date_created', 'id')
 
-    # Then apply sorting to the filtered queryset
-    strains_sorted = f.qs  # don't assign to f.qs
-
-    if sort_option == 'a-z':
-        strains_sorted = strains_sorted.order_by('title')
-    elif sort_option == 'z-a':
-        strains_sorted = strains_sorted.order_by('-title')
-    elif sort_option == 'featured':
-        strains_sorted = strains_sorted.order_by('-featured')
-    elif sort_option == 'top-rated':
-        strains_sorted = strains_sorted.annotate(avg_rating=Avg('review__rating')).order_by('-avg_rating')
-    elif sort_option == 'most-rated':
-        strains_sorted = strains_sorted.annotate(num_reviews=Count('review')).order_by('-num_reviews')
-    elif sort_option == 'price-low-high':
-        strains_sorted = strains_sorted.order_by('products__price')
-    elif sort_option == 'price-high-low':
-        strains_sorted = strains_sorted.order_by('-products__price')
-    elif sort_option == 'brand-a-z':
-        strains_sorted = strains_sorted.order_by('brand__name')
-    elif sort_option == 'brand-z-a':
-        strains_sorted = strains_sorted.order_by('-brand__name')
-    elif sort_option == 'newest':
-        strains_sorted = strains_sorted.order_by('-date_created')
-    elif sort_option == 'oldest':
-        strains_sorted = strains_sorted.order_by('date_created')
-
-    # Pagination
-    paginator = Paginator(strains_sorted, 50)
+    paginator = Paginator(qs, 50)
     page_number = request.GET.get("page")
     strains_qs = paginator.get_page(page_number)
 
@@ -139,7 +132,7 @@ def strains(request):
         'strains': strains_qs,
         'filter': f,
         'title': 'StrainsDB | An Online Cannabis Strains Database',
-        'view_preference': view_preference
+        'view_preference': view_preference,
     })
 
 
