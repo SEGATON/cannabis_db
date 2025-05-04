@@ -49,9 +49,18 @@
 
 
 			<div class="col-md-5 border_right">
-	
+	<br><br>
 				<div class="card no_border">
+					<div class="row">
+						<div class="col-md-9">
 					<h1 id="page_heading">{{strain.title|title}}</h1>
+				</div>
+				<div class="col-md-3">
+					<div class="fafa">
+			{% include 'components/buttons/bookmarking.html' %}
+</div>
+				</div>
+				</div>
 				</div>
 					
 					<div class="card no_border">
@@ -81,11 +90,20 @@
 <br>
 
 
-	<div class="card no_border">
 
+
+
+
+
+
+
+
+
+				<div class="card no_border">
 					<div class="row">
 						<div class="col-lg-12">
-				{% if strain.thc %}
+
+	{% if strain.thc %}
 					<mark class="percentage_mark_lbl">THC<span class="zabyzaby"></span></mark>
 					<mark class="percentage_mark">{{strain.thc}}%</mark></span>  
 				{% endif %}
@@ -104,17 +122,9 @@
 					<mark class="percentage_mark">{{strain.cnbnd}}%</mark></span>
 				{% endif %}
 
-				<hr>
-</div></div>
-
 </div>
-
-
-
-
-
-
-
+</div>
+</div>
 
 
 
@@ -142,10 +152,10 @@
 
 
 
-
+<br>
 
 				<div class="card no_border">
-
+<div class="" style="margin: 5px 0px;">
 					<div class="row">
 						{% for user in strain.user.all %}
 
@@ -196,7 +206,7 @@
 					<hr>
 				</div>
 
-
+</div>
 
 
 
@@ -219,7 +229,7 @@
 						<div class="col-md-3"></div>
 						<div class="col-md-3"></div>
 						<div class="col-md-3">
-							{% include 'components/buttons/bookmarking.html' %}
+				
 						</div>
 					</div>
 				</div>

@@ -28,6 +28,7 @@ urlpatterns = [
     path('blog/', include('blog.urls')),
     path('memberships/', include('memberships.urls')),
     path('avatar/', include('avatar.urls')),
+    path('catalog/', include('catalog.urls')),
     path('ratings/', include('star_ratings.urls', namespace='ratings')),
 
 ]

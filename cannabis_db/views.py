@@ -94,18 +94,54 @@ def front_page(request):
 		})
 
 def strains(request):
-	strains = Strain.objects.all()
-	f = StrainFilter(request.GET, queryset=strains)
-	paginator = Paginator(f.qs, 50)
-	page_number = request.GET.get("page")
-	strains_qs = paginator.get_page(page_number)
-	
-	return render(request, 'strains/strains.html', {
-			'strains':strains_qs,
-			'filter':f,
-			'title':'StrainsDB | An Online Cannabis Strains Database'
+    sort_option = request.GET.get('sort')
 
-		})
+    # Start with all strains
+    strains = Strain.objects.all()
+
+    # Apply filtering
+    f = StrainFilter(request.GET, queryset=strains)
+
+    # Then apply sorting to the filtered queryset
+    strains_sorted = f.qs  # don't assign to f.qs
+
+    if sort_option == 'a-z':
+        strains_sorted = strains_sorted.order_by('title')
+    elif sort_option == 'z-a':
+        strains_sorted = strains_sorted.order_by('-title')
+    elif sort_option == 'featured':
+        strains_sorted = strains_sorted.order_by('-featured')
+    elif sort_option == 'top-rated':
+        strains_sorted = strains_sorted.annotate(avg_rating=Avg('review__rating')).order_by('-avg_rating')
+    elif sort_option == 'most-rated':
+        strains_sorted = strains_sorted.annotate(num_reviews=Count('review')).order_by('-num_reviews')
+    elif sort_option == 'price-low-high':
+        strains_sorted = strains_sorted.order_by('products__price')
+    elif sort_option == 'price-high-low':
+        strains_sorted = strains_sorted.order_by('-products__price')
+    elif sort_option == 'brand-a-z':
+        strains_sorted = strains_sorted.order_by('brand__name')
+    elif sort_option == 'brand-z-a':
+        strains_sorted = strains_sorted.order_by('-brand__name')
+    elif sort_option == 'newest':
+        strains_sorted = strains_sorted.order_by('-date_created')
+    elif sort_option == 'oldest':
+        strains_sorted = strains_sorted.order_by('date_created')
+
+    # Pagination
+    paginator = Paginator(strains_sorted, 50)
+    page_number = request.GET.get("page")
+    strains_qs = paginator.get_page(page_number)
+
+    view_preference = request.COOKIES.get('catalog_view', 'grid')
+
+    return render(request, 'strains/strains.html', {
+        'strains': strains_qs,
+        'filter': f,
+        'title': 'StrainsDB | An Online Cannabis Strains Database',
+        'view_preference': view_preference
+    })
+
 
 
 '''

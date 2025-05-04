@@ -1,1 +1,16 @@
 
+<div class="container">
+
+{% load thumbnail %}
+{% for strain in strains %}
+<div class="jojo" style="margin-bottom: 3px; border: 1px solid #f8f8f8;">
+<div class="row">
+	<div class="col-auto"><img style="margin:10px;" src="{% thumbnail strain.featured_image 50x50 crop %}" style="border-radius:4px;"></div>
+	<div class="col-md-6">{{strain.title}}</div>
+	<div class="col-md-2">{{strain.thc}} {{strain.tac}} {{strain.thca}} {{strain.cbd}} {{strain.cnbnd}} </div>
+	<div class="col-md-2">strain type label</div>
+</div>
+</div>
+
+{% endfor %}
+</div>

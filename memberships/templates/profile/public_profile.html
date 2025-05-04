@@ -19,7 +19,7 @@
 							<div class="card p-3">
 								
 								
-<h1 id="profile_heading">{{object.koko.user.username}} </h1>
+<h1 id="profile_heading">{{object.koko.user.first_name}} {{object.koko.user.last_name}} </h1>
 
 									  <p>
 													{% if request.user in object.koko.user.profile.followers.all %}

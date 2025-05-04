@@ -1,0 +1,53 @@
+
+
+
+{% load thumbnail %}
+<div class="jojo" id="list_view" style="margin-bottom: 3px; border: 1px solid #f8f8f8;">
+{% for strain in strains %}
+	<div class="card p-2">
+<div class="row">
+
+	<div class="col-auto"><a href="{{strain.get_absolute_url}}"><img style="border-radius: 4px; margin-left: 10px;" src="{% thumbnail strain.featured_image 50x50 crop %}" style="border-radius:4px;"></a></div>
+	<div class="col-md-8">
+		<a href="{{strain.get_absolute_url}}"><b>{{strain.title}}</b></a>
+
+		<p style="font-size: 8px; padding: 0; margin: 0;" >{{strain.description|safe|truncatechars:100}}</p>
+	</div>
+	<div class="col-md-1">
+
+
+{% if strain.thc %}
+	{{strain.thc}} 
+{% elif strain.tac %}
+	{{strain.tac}} 
+{% elif strain.thca %}
+	{{strain.thca}} 
+{% elif strain.cbd %}
+	{{strain.cbd}} 
+{% elif strain.cnbnd %}
+	{{strain.cnbnd}}
+{% endif %}
+
+
+ </div>
+	<div class="col-md-1"><div class="keke">
+							{% if strain.strain_type_label == 'indica' %}
+
+								<mark class="strain_type_label" id="strain_label_indica">In</mark>
+
+							{% elif strain.strain_type_label == 'sativa' %}
+
+								<mark class="strain_type_label" id="strain_label_sativa">St</mark>
+
+							{% elif strain.strain_type_label == 'hybrid' %}
+
+								<mark class="strain_type_label" id="strain_label_hybrid">Hy</mark>
+
+							{% endif %}
+</div></div>
+</div>
+</div>
+
+
+{% endfor %}
+</div>

@@ -1,93 +1,109 @@
 {% load thumbnail %}
 
+<div class="container-fluid">
+	<div class="row">
 
-<section id="browse_section">
-<div class="container-full p-3">
-	<div class="row ">
-		<div class="col-md-2">
-			{% include 'filters/filters.html' %}
+		<div class="col-md-2 border_right">
+		{% include 'filters/filters.html' %}
+
 		</div>
-		<div class="col-md-10">
-	
-
-<div class="row">
-<div class="col-md-4"></div>
-<div class="col-md-4">
-	{% include 'filters/view_layouts_menu.html' %}
-
-</div>
-<div class="col-md-4">{% include 'filters/sorting.html' %}</div>
+		<div class="col-md-8">
+			<div class="row">
+				<div class="col-lg-12">
+					<div class="row">
+						<div class="col-md-3"></div>
+						<div class="col-md-3"></div>
+						<div class="col-md-3">
+							{% include 'filters/view_layouts_menu.html' %}
+						</div>
+						<div class="col-md-3">
+							{% include 'filters/sorting.html' %}</div>
+						</div>
+					</div>
+					
+				</div>
 			
-
-		</div>
-			<div class="row g-1">
-				{% for strain in strains %}			
-					<div class="col-md-2 ">
-						<div class="card no_border card_white">
-<div class="keke">
-							{% if strain.strain_type_label == 'indica' %}
-
-								<mark class="strain_type_label" id="strain_label_indica">In</mark>
-
-							{% elif strain.strain_type_label == 'sativa' %}
-
-								<mark class="strain_type_label" id="strain_label_sativa">St</mark>
-
-							{% elif strain.strain_type_label == 'hybrid' %}
-
-								<mark class="strain_type_label" id="strain_label_hybrid">Hy</mark>
-
-							{% endif %}
-</div>
-							<div class="koko">
-							{% include 'components/buttons/bookmarking.html' %}
-						</div>
-<style type="text/css">
-	.koko{
-		position: absolute;
-		right: 3px;
-	}
-</style>
-							<a href="{{strain.get_absolute_url}}">
-								<img src="{% thumbnail strain.featured_image 700x700 crop %}" class="img-fluid catalog_image_radius_md lazy">
-							</a>
-							<a href="{{strain.get_absolute_url}}"  class="catalog_item_link">{{strain.title}}</a>
-
-							
-						</div>
-					</div>		
-							
-				{% endfor %}
+				<div class="col-lg-12">
+					
+					{% include 'catalog/layout_views/grid_view_layout.html' %}
+					
+				</div>
+		
+				<div class="col-lg-12">
+					{% include 'catalog/layout_views/list_view_layout.html' %}
+				</div>
+			
+				<div class="col-lg-12">
+					{% include 'catalog/layout_views/card_view_layout.html' %}
+				</div>
+		
 			</div>
-			{% for contact in page_obj %}
-    {# Each "strain" is a Strain model object. #}
-    {{ contact.full_name|upper }}<br>
-    
-{% endfor %}
-<br>
-<hr>
-<br>
-<div class="pagination">
-    <span class="step-links">
-        {% if strains.has_previous %}
-            <a href="?page=1">&laquo; first</a>
-            <a href="?page={{ strains.previous_page_number }}">previous</a>
-        {% endif %}
+		</div>
+		<div class="col-md-2">
+			<style type="text/css">
+#grid_view, #list_view, #card_view {
+  display: none;
+}
 
-        <span class="current">
-            Page {{ strains.number }} of {{ strains.paginator.num_pages }}.
-        </span>
+.view-grid #grid_view {
+  display: block;
+}
 
-        {% if strains.has_next %}
-            <a href="?page={{ strains.next_page_number }}">next</a>
-            <a href="?page={{ strains.paginator.num_pages }}">last &raquo;</a>
-        {% endif %}
-    </span>
-</div>
-<div class="filler"></div>
-<div class="filler"></div>
+.view-list #list_view {
+  display: block;
+}
 
+.view-card #card_view {
+  display: block;
+}
+
+			</style>
+			<script>
+  (function() {
+    const view = localStorage.getItem('preferredView') || 'grid';
+    document.documentElement.classList.add('view-' + view);
+  })();
+</script>
+
+<script type="text/javascript">
+    function showView(view) {
+        $('#grid_view, #list_view, #card_view').hide();
+        if (view === 'grid') {
+            $('#grid_view').fadeIn(100);
+        } else if (view === 'list') {
+            $('#list_view').fadeIn(100);
+        } else if (view === 'card') {
+            $('#card_view').fadeIn(100);
+        }
+        localStorage.setItem('preferredView', view);
+    }
+
+    $("#toggle_to_grid_view").on("click", function () {
+        showView('grid');
+    });
+
+    $("#toggle_to_list_view").on("click", function () {
+        showView('list');
+    });
+
+    $("#toggle_to_card_view").on("click", function () {
+        showView('card');
+    });
+
+    // On page load, check and apply stored preference
+    $(document).ready(function () {
+        const savedView = localStorage.getItem('preferredView') || 'grid';
+        showView(savedView);
+    });
+</script>
 		</div>
 	</div>
+
 </div>
-</section>
+
+
+
+
+
+
+
