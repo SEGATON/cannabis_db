@@ -9,11 +9,11 @@
 
 
 <div class="container">
-<div class="row">
+<div class="row g-2">
 	<div class="col-md-2">
-		<div class="card">
-<img src="{{  dispensary.dispensary_logo.url }}" class="img-fluid radius_md">
-</div>
+		<div class="card no_border">
+			<img src="{{  dispensary.dispensary_logo.url }}" class="img-fluid radius_md">
+		</div>
 		<div class="card">
 			{% if dispensary in request.user.profile.saved_dispensaries.all %}
 			<a href="{% url 'cannabis_db:follow_dispensary' dispensary.pk %}" class=""><svg xmlns="http://www.w3.org/2000/svg" width="1em" height="1em" viewBox="0 0 20 20"><path fill="#018223" d="M2 2c0-1.1.9-2 2-2h12a2 2 0 0 1 2 2v18l-8-4l-8 4z"/></svg> following</a>
@@ -87,21 +87,22 @@
 	</div>
 
 
-	<div class="card">
+<div class="card">
 		<div class="row">
 			<div class="col-md-4 border_right">
-				<ul class="">
+				<ul class="dispensary_details_list no_bullets">
 					<li>
-						<svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 512 512">
+						<svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 512 512">
 							<path fill="none" stroke="#000" stroke-miterlimit="10" stroke-width="44" d="M256 48C141.13 48 48 141.13 48 256s93.13 208 208 208s208-93.13 208-208S370.87 48 256 48Z" />
 							<path fill="none" stroke="#000" stroke-miterlimit="10" stroke-width="44" d="M256 48c-58.07 0-112.67 93.13-112.67 208S197.93 464 256 464s112.67-93.13 112.67-208S314.07 48 256 48Z" />
 							<path fill="none" stroke="#000" stroke-linecap="round" stroke-linejoin="round" stroke-width="44" d="M117.33 121.33c38.24 27.15 86.38 43.34 138.67 43.34s100.43-16.19 138.67-43.34m0 269.34c-38.24-27.15-86.38-43.34-138.67-43.34s-100.43 16.19-138.67 43.34" />
 							<path fill="none" stroke="#000" stroke-miterlimit="10" stroke-width="44" d="M256 48v416m208-208H48" />
 						</svg>
-						{{dispensary.websiteURL}}
+						&nbsp;
+						<a href="{{dispensary.websiteURL}}">{{dispensary.websiteURL}}</a>
 					</li>
 					<li>
-						<svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 48 48">
+						<svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 48 48">
 							<defs>
 								<mask id="ipSPhoneTwo0">
 									<g fill="none">
@@ -112,54 +113,172 @@
 							</defs>
 							<path fill="#000" d="M0 0h48v48H0z" mask="url(#ipSPhoneTwo0)" />
 						</svg>
+						&nbsp;
 						{{dispensary.phone_number}}
 					</li>
 					<li>
-						<svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" viewBox="0 0 20 20">
+						<svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 20 20">
 							<path fill="#000" d="M14.608 12.172c0 .84.239 1.175.864 1.175c1.393 0 2.28-1.775 2.28-4.727c0-4.512-3.288-6.672-7.393-6.672c-4.223 0-8.064 2.832-8.064 8.184c0 5.112 3.36 7.896 8.52 7.896c1.752 0 2.928-.192 4.727-.792l.386 1.607c-1.776.577-3.674.744-5.137.744c-6.768 0-10.393-3.72-10.393-9.456c0-5.784 4.201-9.72 9.985-9.72c6.024 0 9.215 3.6 9.215 8.016c0 3.744-1.175 6.6-4.871 6.6c-1.681 0-2.784-.672-2.928-2.161c-.432 1.656-1.584 2.161-3.145 2.161c-2.088 0-3.84-1.609-3.84-4.848c0-3.264 1.537-5.28 4.297-5.28c1.464 0 2.376.576 2.782 1.488l.697-1.272h2.016v7.057zm-2.951-3.168c0-1.319-.985-1.872-1.801-1.872c-.888 0-1.871.719-1.871 2.832c0 1.68.744 2.616 1.871 2.616c.792 0 1.801-.504 1.801-1.896z" />
 						</svg>
+						&nbsp;
 						{{dispensary.email_address}}
 					</li>
 					<li>
-						<svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" viewBox="0 0 256 256">
+						<svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 256 256">
 							<path fill="#000" d="m229.66 58.34l-32-32a8 8 0 0 0-11.32 0l-96 96A8 8 0 0 0 88 128v32a8 8 0 0 0 8 8h32a8 8 0 0 0 5.66-2.34l96-96a8 8 0 0 0 0-11.32M124.69 152H104v-20.69l64-64L188.69 88ZM200 76.69L179.31 56L192 43.31L212.69 64ZM224 128v80a16 16 0 0 1-16 16H48a16 16 0 0 1-16-16V48a16 16 0 0 1 16-16h80a8 8 0 0 1 0 16H48v160h160v-80a8 8 0 0 1 16 0" />
 						</svg>
+						&nbsp;
 						{% for author in dispensary.author.all %}
 							{{author}}
 						{% endfor %}
 					</li>
-					<li></li>
+					
 				</ul>
 			</div>
 			<div class="col-md-4 border_right">
-				<ul class="">
-					<li><b>Type of dispensary</b><br> {{dispensary.get_type_of_dispensary_display}}</li>
-					<li><b>Shopping options</b><br> {{dispensary.get_shopping_options_display}}</li>
-					<li><b>Payments accepted</b><br> {{dispensary.get_accepted_payment_methods_display}}</li>
-					<li><b>Card types</b><br> {{dispensary.get_card_types_display}}</li>
-					<li></li>
+				<ul class="dispensary_details_list">
+					<li class="no_bullets"><b>Type of dispensary</b><br> {{dispensary.get_type_of_dispensary_display}}</li>
+					<li class="no_bullets"><b>Shopping options</b><br> {{dispensary.get_shopping_options_display}}</li>
+					<li class="no_bullets"><b>Payments accepted</b><br> {{dispensary.get_accepted_payment_methods_display}}</li>
+					<li class="no_bullets"><b>Card types</b><br> {{dispensary.get_card_types_display}}</li>
+					
 				</ul>
 			</div>
 			<div class="col-md-4">
-				<ul class="">
-					<li></li>
-					<li></li>
-					<li></li>
-					<li></li>
-					<li></li>
+				<ul class="dispensary_details_list">
+					<li class="no_bullets"><b>Locations</b><br></li>
+					
+					{% for address in dispensary.dispensary_address.all %}
+					<li>
+
+						{{address.address_type}}<br>
+						{{address.address_street_name_line_1}}<br>
+						{{address.address_street_name_line_2}}<br>
+						{{address.address_city}}
+						{{address.address_state}}
+						{{address.address_zip_code}}
+						{{address.address_country}}
+					</li>
+					{% endfor %}
+					
+
 				</ul>
 			</div>
 		</div>
 	</div>
+	{% if dispensary.dispensary_description %}
+	<div class="card p-3">
+		<b>About {{dispensary.title}}</b>
+		<p class="p_md">{{dispensary.dispensary_description|safe}}</p>
+	</div>
+	{% endif %}
+
+	<div class="card">
+		<div class="row">
+			<p>Products</p>
+			{% for product in dispensary.products.all %}
+				<div class="col-md-2">
+					<div class="row">
+						<div class="col-lg-12">
+							{{product.featured_image.url}}
+						</div>
+						<div class="col-lg-12">
+							{{product.title}}
+						</div>
+						<div class="col-lg-12">
+							misc
+						</div>
+					</div>
+				</div>
+			{% endfor %}
+		</div>
+	</div>
+
+
+
+
+	<div class="card">
+		<div class="row">
+			<p>Strains you can find at <b>{{dispensary}}</b></p>
+			{% for strain in dispensary.dispensary_strains.all %}
+				<div class="col-md-2">
+					<div class="row">
+						<div class="col-lg-12">
+							{{strain.featured_image.url}}
+						</div>
+						<div class="col-lg-12">
+							{{strain.title}}
+						</div>
+						<div class="col-lg-12">
+							misc
+						</div>
+					</div>
+				</div>
+			{% endfor %}
+		</div>
+	</div>
+
+
+
+
+</div>
+</div>
+</div>
+
+
+
+
+
+
+
+
+<div class="container">
+<div class="row">
+	<div class="col-md-2">
+
+<b>Followers</b><br><br>
+{% if dispensary.followers == true %}
+	
+	{% for follower in followers %}
+		<img src="{% thumbnail follower.profile.profile_photo 30x30 crop %}">
+		&nbsp;
+		{{follower.username}}
+	<hr>
+	{% endfor %}
+{% else %}
+	<p>No followers yet</p>
+{% endif %}
+	</div>
+	<div class="col-md-10">
+
+
+	</div>
 
 </div>
 
 </div>
 
+
+
+
+
+
+
+
+<div class="container">
+<div class="row">
+	<div class="col-md-2">
+
+		saved {{dispensary.saves.count}} time
+	</div>
+	<div class="col-md-10">
+
+
+	</div>
+
 </div>
 
-
-
+</div>
 
 
 
@@ -187,48 +306,39 @@
 
 
 
-<div class="container">
-<div class="row">
-	<div class="col-md-2">
-
-
-	</div>
-	<div class="col-md-10">
-
-
-	</div>
-
+<div class="modal fade" id="exampleModalToggle" aria-hidden="true" aria-labelledby="exampleModalToggleLabel" tabindex="-1">
+  <div class="modal-dialog modal-dialog-centered">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h1 class="modal-title fs-5" id="exampleModalToggleLabel">Modal 1</h1>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+        Show a second modal and hide this one with the button below.
+      </div>
+      <div class="modal-footer">
+        <button class="btn btn-primary" data-bs-target="#exampleModalToggle2" data-bs-toggle="modal">Open second modal</button>
+      </div>
+    </div>
+  </div>
 </div>
-
+<div class="modal fade" id="exampleModalToggle2" aria-hidden="true" aria-labelledby="exampleModalToggleLabel2" tabindex="-1">
+  <div class="modal-dialog modal-dialog-centered">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h1 class="modal-title fs-5" id="exampleModalToggleLabel2">Modal 2</h1>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+        Hide this modal and show the first with the button below.
+      </div>
+      <div class="modal-footer">
+        <button class="btn btn-primary" data-bs-target="#exampleModalToggle" data-bs-toggle="modal">Back to first</button>
+      </div>
+    </div>
+  </div>
 </div>
-
-
-
-
-
-<div class="container">
-<div class="row">
-	<div class="col-md-2">
-
-
-	</div>
-	<div class="col-md-10">
-
-
-	</div>
-
-</div>
-
-</div>
-
-
-
-
-
-
-
-
-
+<button class="btn btn-primary" data-bs-target="#exampleModalToggle" data-bs-toggle="modal">Open first modal</button>
 
 
 

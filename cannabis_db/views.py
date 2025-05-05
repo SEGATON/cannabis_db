@@ -370,13 +370,14 @@ def dispensary(request, slug):
 	brands = Brand.objects.filter(dispensary=dispensary)
 	strains = Strain.objects.filter(dispensaries=dispensary)
 	products = Product.objects.filter(dispensaries=dispensary)
-
+	followers = dispensary.followers.all()[:6]
 	return render(request, 'views/dispensary.html', {
 				'dispensary':dispensary,
 				'brands':brands,
 				'strains':strains,
 				'products':products,
-				'title': dispensary.title + ' | ' + str(dispensary.get_type_of_dispensary_display()) + ' dispensary for ' + dispensary.get_shopping_options_display()
+				'title': dispensary.title + ' | ' + str(dispensary.get_type_of_dispensary_display()) + ' dispensary for ' + dispensary.get_shopping_options_display(),
+				'followers':followers
 			
 		})
 
