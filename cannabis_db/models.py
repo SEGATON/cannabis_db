@@ -509,6 +509,8 @@ class DispensarySocialFollows(models.Model):
 
 	def __str__(self):
 		return self.dispensary_social_follows_name
+
+		
 class Dispensary(models.Model):
 	TYPE_OF_DISPENSARY = {
 		('medical','Medical'),
@@ -550,6 +552,7 @@ class Dispensary(models.Model):
 	dispensary_brands = models.ManyToManyField(Brand, related_name='dispensary_brands', null=True, blank=True)
 
 	dispensary_address = models.ManyToManyField(Address, null=True, blank=True)
+	
 	saves = models.ManyToManyField('memberships.Profile', null=True,blank=True, related_name='dispensary_saves')
 
 

@@ -22,6 +22,7 @@ from .models import TerpeneDetails
 
 from .models import Category
 
+from django.db.models import Avg, Count, Min, Max
 
 
 from .models import FlavorsDetailsListSet

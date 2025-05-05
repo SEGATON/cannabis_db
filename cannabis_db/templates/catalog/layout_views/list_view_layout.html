@@ -2,16 +2,23 @@
 
 
 {% load thumbnail %}
-<div class="jojo" id="list_view" style="margin-bottom: 3px; border: 1px solid #f8f8f8;">
+<div class="jojo" id="list_view" style="margin-bottom: 3px; ">
 {% for strain in strains %}
-	<div class="card p-2">
+	<div class="card p-2" style=" ">
 <div class="row">
 
-	<div class="col-auto"><a href="{{strain.get_absolute_url}}"><img style="border-radius: 4px; margin-left: 10px;" src="{% thumbnail strain.featured_image 50x50 crop %}" style="border-radius:4px;"></a></div>
+	<div class="col-auto">
+		<a href="{{strain.get_absolute_url}}">
+			<img style="border-radius: 4px; margin-left: 15px;" src="{% thumbnail strain.featured_image 40x40 crop %}" style="border-radius:4px;">
+		</a>
+	</div>
+
 	<div class="col-md-8">
+
 		<a href="{{strain.get_absolute_url}}"><b>{{strain.title}}</b></a>
 
 		<p style="font-size: 8px; padding: 0; margin: 0;" >{{strain.description|safe|truncatechars:100}}</p>
+
 	</div>
 	<div class="col-md-1">
 
@@ -30,24 +37,47 @@
 
 
  </div>
-	<div class="col-md-1"><div class="keke">
-							{% if strain.strain_type_label == 'indica' %}
+	<div class="col-md-1">
+		<div class="keke">
+		{% if strain.strain_type_label == 'indica' %}
 
-								<mark class="strain_type_label" id="strain_label_indica">In</mark>
+			<mark class="strain_type_label" id="strain_label_indica">In</mark>
 
-							{% elif strain.strain_type_label == 'sativa' %}
+		{% elif strain.strain_type_label == 'sativa' %}
 
-								<mark class="strain_type_label" id="strain_label_sativa">St</mark>
+			<mark class="strain_type_label" id="strain_label_sativa">St</mark>
 
-							{% elif strain.strain_type_label == 'hybrid' %}
+		{% elif strain.strain_type_label == 'hybrid' %}
 
-								<mark class="strain_type_label" id="strain_label_hybrid">Hy</mark>
+			<mark class="strain_type_label" id="strain_label_hybrid">Hy</mark>
 
-							{% endif %}
-</div></div>
+		{% endif %}
+</div>
+</div>
 </div>
 </div>
 
 
 {% endfor %}
+
+
+<div class="pagination">
+    <span class="step-links">
+        {% if strains.has_previous %}
+            <a href="?page=1">&laquo; first</a>
+            <a href="?page={{ strains.previous_page_number }}">previous</a>
+        {% endif %}
+
+        <span class="current">
+            Page {{ strains.number }} of {{ strains.paginator.num_pages }}.
+        </span>
+
+        {% if strains.has_next %}
+            <a href="?page={{ strains.next_page_number }}">next</a>
+            <a href="?page={{ strains.paginator.num_pages }}">last &raquo;</a>
+        {% endif %}
+    </span>
+</div>
+
+
 </div>

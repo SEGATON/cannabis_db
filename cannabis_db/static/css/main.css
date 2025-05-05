@@ -128,13 +128,11 @@ body{
     width: 100%;
 }
 
-
-#profile_heading  {
-  color: var(--text-color-green);
+#profile_heading{
+     color: var(--text-color-green);
   font-weight: 900;
-  letter-spacing: -1px;
+  letter-spacing: -2px;
 }
-
 #page_heading  {
   color: var(--text-color-green);
   font-weight: 900;
