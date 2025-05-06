@@ -14,6 +14,99 @@ from mptt.models import MPTTModel, TreeForeignKey
 
 
 
+
+
+
+
+
+
+class BrandSocialFollowURL(models.Model):
+
+	brand_social_profile_name		= models.CharField(max_length=300, null=True, blank=True)
+	brand_social_profile_URL		= models.URLField(null=True, blank=True)
+class BrandSocialFollowURLS(models.Model):
+	social_profiles_URLS 		= models.ManyToManyField(BrandSocialFollowURL,  blank=True)
+
+	def __str__(self):
+		return str(self.social_profiles_URLS)
+class BrandSocialProfile(models.Model):
+	brand_social_follows_name	= models.CharField(max_length=300, null=True, blank=True)
+	social_profiles_URLS 		= models.ForeignKey(BrandSocialFollowURLS, on_delete=models.CASCADE, blank=True)
+
+	def __str__(self):
+		return str(self.social_profiles_URLS)
+
+
+
+class Brand(models.Model):
+	title = models.CharField(max_length=1000, null=True, blank=True)
+	slug = models.SlugField(max_length=1000)
+
+	brand_metas = models.ForeignKey('cannabis_db.MetasSet', on_delete=models.CASCADE,  null=True, blank=True, related_name='brand_meta_set')
+
+	tagline = models.CharField(max_length=1000, null=True, blank=True)
+	
+	websiteURL = models.URLField(max_length=300, null=True, blank=True)
+	phone_number = models.CharField(max_length=300, null=True, blank=True)
+	email_address = models.EmailField(max_length=300, null=True, blank=True)
+	
+	brand_logo	= models.ImageField(upload_to='media/CANNABIS_DB/BRAND_LOGOS/', null=True, blank=True)
+	brand_cover	= models.ImageField(upload_to='media/CANNABIS_DB/BRAND_COVERS/', null=True, blank=True)
+
+	brand_address = models.ManyToManyField('addresses.Address', null=True, blank=True, related_name='catalog_brand_address')
+	
+	description = RichTextField(null=True, blank=True)
+	
+	
+	brand_social_profile	= models.ForeignKey(BrandSocialProfile, on_delete=models.CASCADE, null=True, blank=True)
+	
+
+	brand_products = models.ManyToManyField('catalog.Product', null=True, blank=True, related_name='catalog_brand_products')
+	brand_strains = models.ManyToManyField('cannabis_db.Strain', null=True, blank=True, related_name='catalog_brand_strains')
+	
+	brand_followers	= models.ManyToManyField('memberships.Profile',  null=True, blank=True, related_name='catalog_brand_followers')
+
+	dispensary = models.ManyToManyField('cannabis_db.Dispensary',null=True, blank=True , related_name='catalog_brand_dispensary')
+
+	author = models.ManyToManyField(settings.AUTH_USER_MODEL, null=True, blank=True, related_name='catalog_brand_author')
+	
+	claimed = models.BooleanField(default=False,null=True, blank=True )
+
+	date_created = models.DateTimeField(auto_now_add=True, null=True,blank=True)
+	date_updated = models.DateTimeField(null=True,blank=True)
+	date_deleted = models.DateTimeField(null=True,blank=True)
+
+
+	def get_absolute_url(self):
+		return reverse('cannabis_db:brand', args=[self.slug])
+	def __str__(self):
+		return str(self.title)
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 class Keywords(models.Model):
 	keyword 			= models.CharField(max_length=300)
 
@@ -283,6 +376,8 @@ class Product(models.Model):
 			('variable_product','Variable product'),
 			('digital_product','Digital product'),
 			('dropship_product','Dropship product'),
+
+
 		)
 
 	product_type = models.CharField(max_length=255, choices=PRODUCT_TYPE, null=True, blank=True )

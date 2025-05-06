@@ -23,6 +23,7 @@ from .models import TerpeneDetails
 from .models import Category
 
 from django.db.models import Avg, Count, Min, Max
+from django.contrib.contenttypes.models import ContentType
 
 
 from .models import FlavorsDetailsListSet
@@ -505,31 +506,34 @@ def bookmarks(request):
 			'strains':strains
 		})
 
-
 def add_to_bookmarks(request, pk):
 
 	strain = get_object_or_404(Strain, pk=pk)
 	profile = Profile.objects.filter(user=request.user)
 
+	if strain not in request.user.profile.saved_strains.all():
+		request.user.profile.saved_strains.add(strain)
+	else:
+		request.user.profile.saved_strains.remove(strain)
+	return HttpResponseRedirect(request.META['HTTP_REFERER'])
 
 
 
+def add_to_bookmarks_we(request, pk):
+
+	strain = get_object_or_404(Strain, pk=pk)
+	profile = Profile.objects.filter(user=request.user)
 
 	if strain not in request.user.profile.saved_strains.all():
 		request.user.profile.saved_strains.add(strain)
 	else:
 		request.user.profile.saved_strains.remove(strain)
-
 	return HttpResponseRedirect(request.META['HTTP_REFERER'])
-
 
 
 
 @login_required
 def remove_from_bookmarks(request, id):
-
-	
-	
 	return HttpResponseRedirect(request.META['HTTP_REFERER'])
 
 

@@ -7,80 +7,274 @@
 		{{brand.brand_cover.url}}
 	{% endif %}
 
-	<div class="container">
-		<div class="row">
-			<div class="col-md-4">
-				<h6>{{brand.title}}</h6>
-				<img src="{{brand.brand_logo.url}}" width="120">
-				{% if brand.claimed %}
-					<p class="xs">{{brand.claimed}}
-				{% else %}
-					<a href="">Claim brand</a></p>
-				{% endif %}
+
+
+<div class="container">
+	<div class="row">
+		<div class="col-md-2">
+				<div class="card">
+			<img src="{{brand.brand_logo.url}}" width="120">
+</div>
+
+
+
+		<div class="card">
+<b>Followers</b>
+{% if brand.brand_followers == true %}
+	
+	{% for brand in brand_followers %}
+		<img src="{% thumbnail follower.profile.profile_photo 30x30 crop %}">
+		&nbsp;
+		{{follower.username}}
+	<hr>
+	{% endfor %}
+{% else %}
+	<p>No followers yet</p>
+{% endif %}
+		</div>
+		</div>
+		<div class="col-md-10">
+			
+			<div class="card">
+				<h1 id="profile_heading">
+					{{brand.title}} 
+					{% if brand.claimed == True %}
+						<svg xmlns="http://www.w3.org/2000/svg" width=".7em" height=".7em" viewBox="0 0 24 24"><path fill="#018223" d="m8.6 22.5l-1.9-3.2l-3.6-.8l.35-3.7L1 12l2.45-2.8l-.35-3.7l3.6-.8l1.9-3.2L12 2.95l3.4-1.45l1.9 3.2l3.6.8l-.35 3.7L23 12l-2.45 2.8l.35 3.7l-3.6.8l-1.9 3.2l-3.4-1.45zm2.35-6.95L16.6 9.9l-1.4-1.45l-4.25 4.25l-2.15-2.1L7.4 12z"/></svg>
+					{% else %}
+						<svg xmlns="http://www.w3.org/2000/svg" width=".7em" height=".7em" viewBox="0 0 24 24"><path fill="#0c6b00" d="m8.6 22.5l-1.9-3.2l-3.6-.8l.35-3.7L1 12l2.45-2.8l-.35-3.7l3.6-.8l1.9-3.2L12 2.95l3.4-1.45l1.9 3.2l3.6.8l-.35 3.7L23 12l-2.45 2.8l.35 3.7l-3.6.8l-1.9 3.2l-3.4-1.45zm.85-2.55l2.55-1.1l2.6 1.1l1.4-2.4l2.75-.65l-.25-2.8l1.85-2.1l-1.85-2.15l.25-2.8l-2.75-.6l-1.45-2.4L12 5.15l-2.6-1.1L8 6.45l-2.75.6l.25 2.8L3.65 12l1.85 2.1l-.25 2.85l2.75.6zm1.5-4.4L16.6 9.9l-1.4-1.45l-4.25 4.25l-2.15-2.1L7.4 12z"/></svg>							
+					{% endif %}
+					<a href="#" style="font-size: 12px; letter-spacing:0; font-weight:300;" id="trigger_claim_form_to_open" data-bs-target="#exampleModalToggleClaimForm" data-bs-toggle="modal">Claim brand</a>
+				</h1>
 			</div>
-			<div class="col-md-8">
-				<p class="xs"><b>Date created:</b> {{brand.date_created}} <b>Date updated: </b> {{brand.date_updated}}</p>
 
+			<div class="card">
 
-				<ul class="brand_profile_misc_menu">
-					<li><a href="{{brand.websiteURL}}"><svg xmlns="http://www.w3.org/2000/svg" width="12" height="12" viewBox="0 0 512 512"><path fill="none" stroke="currentColor" stroke-miterlimit="10" stroke-width="44" d="M256 48C141.13 48 48 141.13 48 256s93.13 208 208 208s208-93.13 208-208S370.87 48 256 48Z"/><path fill="none" stroke="currentColor" stroke-miterlimit="10" stroke-width="44" d="M256 48c-58.07 0-112.67 93.13-112.67 208S197.93 464 256 464s112.67-93.13 112.67-208S314.07 48 256 48Z"/><path fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="44" d="M117.33 121.33c38.24 27.15 86.38 43.34 138.67 43.34s100.43-16.19 138.67-43.34m0 269.34c-38.24-27.15-86.38-43.34-138.67-43.34s-100.43 16.19-138.67 43.34"/><path fill="none" stroke="currentColor" stroke-miterlimit="10" stroke-width="44" d="M256 48v416m208-208H48"/></svg> {{brand.websiteURL}}</a></li> | 
-					<li><svg xmlns="http://www.w3.org/2000/svg" width="12" height="12" viewBox="0 0 24 24"><path fill="currentColor" d="M6.62 10.79c1.44 2.83 3.76 5.14 6.59 6.59l2.2-2.2c.27-.27.67-.36 1.02-.24c1.12.37 2.33.57 3.57.57c.55 0 1 .45 1 1V20c0 .55-.45 1-1 1c-9.39 0-17-7.61-17-17c0-.55.45-1 1-1h3.5c.55 0 1 .45 1 1c0 1.25.2 2.45.57 3.57c.11.35.03.74-.25 1.02z"/></svg> {{brand.phone_number}}</li> | 
-					<li><a href=""><svg xmlns="http://www.w3.org/2000/svg" width="12" height="12" viewBox="0 0 36 36"><path fill="currentColor" d="M32 6H4a2 2 0 0 0-2 2v20a2 2 0 0 0 2 2h28a2 2 0 0 0 2-2V8a2 2 0 0 0-2-2m-1.54 22H5.66l7-7.24l-1.44-1.39L4 26.84V9.52l12.43 12.37a2 2 0 0 0 2.82 0L32 9.21v17.5l-7.36-7.36l-1.41 1.41ZM5.31 8h25.07L17.84 20.47Z" class="clr-i-outline clr-i-outline-path-1"/><path fill="none" d="M0 0h36v36H0z"/></svg> {{brand.email_address}}</a></li>
+				{% if brand.tagline %}<h4 class="tagline">{{brand.tagline}}</h4>{% endif %}
+			</div>
+<div class="card">
+		<div class="row">
+			<div class="col-md-4 border_right">
+				<ul class="dispensary_details_list no_bullets">
+					<li>
+						<svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 512 512">
+							<path fill="none" stroke="#000" stroke-miterlimit="10" stroke-width="44" d="M256 48C141.13 48 48 141.13 48 256s93.13 208 208 208s208-93.13 208-208S370.87 48 256 48Z" />
+							<path fill="none" stroke="#000" stroke-miterlimit="10" stroke-width="44" d="M256 48c-58.07 0-112.67 93.13-112.67 208S197.93 464 256 464s112.67-93.13 112.67-208S314.07 48 256 48Z" />
+							<path fill="none" stroke="#000" stroke-linecap="round" stroke-linejoin="round" stroke-width="44" d="M117.33 121.33c38.24 27.15 86.38 43.34 138.67 43.34s100.43-16.19 138.67-43.34m0 269.34c-38.24-27.15-86.38-43.34-138.67-43.34s-100.43 16.19-138.67 43.34" />
+							<path fill="none" stroke="#000" stroke-miterlimit="10" stroke-width="44" d="M256 48v416m208-208H48" />
+						</svg>
+						&nbsp;
+						<a href="{{brand.websiteURL}}">{{brand.websiteURL}}</a>
+					</li>
+					<li>
+						<svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 48 48">
+							<defs>
+								<mask id="ipSPhoneTwo0">
+									<g fill="none">
+										<path fill="#fff" stroke="#fff" stroke-width="4" d="M39 6H9a3 3 0 0 0-3 3v30a3 3 0 0 0 3 3h30a3 3 0 0 0 3-3V9a3 3 0 0 0-3-3Z" />
+										<path fill="#000" stroke="#000" stroke-linejoin="round" stroke-width="3.918" d="M19.44 14c.444 0 .854.241 1.07.63l1.496 2.695c.196.353.205.78.024 1.14L21 21s.252 2.252 2 4s4 2 4 2l2.527-1.038c.36-.18.788-.17 1.141.025l2.703 1.503c.388.216.629.625.629 1.07v3.103c0 1.58-1.468 2.721-2.965 2.216c-3.076-1.038-7.85-3.013-10.875-6.04c-3.026-3.025-5.001-7.798-6.039-10.874c-.505-1.497.636-2.965 2.216-2.965z" />
+									</g>
+								</mask>
+							</defs>
+							<path fill="#000" d="M0 0h48v48H0z" mask="url(#ipSPhoneTwo0)" />
+						</svg>
+						&nbsp;
+						{{brand.phone_number}}
+					</li>
+					<li>
+						<svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 20 20">
+							<path fill="#000" d="M14.608 12.172c0 .84.239 1.175.864 1.175c1.393 0 2.28-1.775 2.28-4.727c0-4.512-3.288-6.672-7.393-6.672c-4.223 0-8.064 2.832-8.064 8.184c0 5.112 3.36 7.896 8.52 7.896c1.752 0 2.928-.192 4.727-.792l.386 1.607c-1.776.577-3.674.744-5.137.744c-6.768 0-10.393-3.72-10.393-9.456c0-5.784 4.201-9.72 9.985-9.72c6.024 0 9.215 3.6 9.215 8.016c0 3.744-1.175 6.6-4.871 6.6c-1.681 0-2.784-.672-2.928-2.161c-.432 1.656-1.584 2.161-3.145 2.161c-2.088 0-3.84-1.609-3.84-4.848c0-3.264 1.537-5.28 4.297-5.28c1.464 0 2.376.576 2.782 1.488l.697-1.272h2.016v7.057zm-2.951-3.168c0-1.319-.985-1.872-1.801-1.872c-.888 0-1.871.719-1.871 2.832c0 1.68.744 2.616 1.871 2.616c.792 0 1.801-.504 1.801-1.896z" />
+						</svg>
+						&nbsp;
+						{{brand.email_address}}
+					</li>
+					<li>
+						<svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 256 256">
+							<path fill="#000" d="m229.66 58.34l-32-32a8 8 0 0 0-11.32 0l-96 96A8 8 0 0 0 88 128v32a8 8 0 0 0 8 8h32a8 8 0 0 0 5.66-2.34l96-96a8 8 0 0 0 0-11.32M124.69 152H104v-20.69l64-64L188.69 88ZM200 76.69L179.31 56L192 43.31L212.69 64ZM224 128v80a16 16 0 0 1-16 16H48a16 16 0 0 1-16-16V48a16 16 0 0 1 16-16h80a8 8 0 0 1 0 16H48v160h160v-80a8 8 0 0 1 16 0" />
+						</svg>
+						&nbsp;
+						{% for author in brand.author.all %}
+							{{author}}
+						{% endfor %}
+					</li>
+					
+				</ul>
+			</div>
+			<div class="col-md-4 border_right">
+
+			</div>
+			<div class="col-md-4">
+				<ul class="dispensary_details_list">
+					<li class="no_bullets"><b>Locations</b><br></li>
+					
+					{% for address in brand.brand_address.all %}
+					<li>
+
+						{{address.address_type}}<br>
+						{{address.address_street_name_line_1}}<br>
+						{{address.address_street_name_line_2}}<br>
+						{{address.address_city}}
+						{{address.address_state}}
+						{{address.address_zip_code}}
+						{{address.address_country}}
+					</li>
+					{% endfor %}
+					
+
 				</ul>
 			</div>
 		</div>
 	</div>
-
-<hr>
-	<div class="container">
-
-
-							<div class="row g-1">
-
-								<h6>Where to find <b>{{brand.title}}</b> products</h6>
-				{% for dispensary in brand_dispensaries %}			
-					<div class="col-md-2 P-3">
-						<div class="card P-3">
-							<div class="row">
-								<div class="col-md-3 border_right">
-									<a href="{{dispensary.get_absolute_url}}">
-								<img src="{% thumbnail dispensary.dispensary_logo 1200x1200 crop %}" class="img-fluid radius_md" style="width:100%; text-align: center;">
-							</a>
-								</div>
-								<div class="col-md-9">
-									<a href="{{dispensary.get_absolute_url}}" class="small_link">{{dispensary.title|truncatechars:23}}</a>
-								</div>
-							</div>
-							<style type="text/css">
-								.small_link{
-									font-size: 11px;
-									text-decoration: none;
-								}
-								.small_link:hover{
-									font-size: 11px;
-									text-decoration: none;
-									color: #666;
-								}
-
-							</style>
-							
-						</div>
-					</div>				
-				{% endfor %}
-<a href="{% url 'cannabis_db:dispensaries' %}" class="sm p-0">view all</a>	
-			</div>
+		{% if brand.description %}
+	<div class="card p-3">
+		<b>About {{brand.title}}</b>
+		<p class="p_md">{{brand.description|safe}}</p>
 	</div>
+	{% endif %}		
 
 
-	<div class="container">
+	<div class="card">
 		<div class="row">
-			{% for product in brand_products.all %}
-			<div class="col-md-4">
-				{{product}}
-			</div>
+			<p>Products</p>
+			{% for product in brand.brand_products.all %}
+				<div class="col-md-2">
+					<div class="row">
+						<div class="col-lg-12">
+							{{product.featured_image.url}}
+						</div>
+						<div class="col-lg-12">
+							{{product.title}}
+						</div>
+						<div class="col-lg-12">
+							misc
+						</div>
+					</div>
+				</div>
 			{% endfor %}
 		</div>
 	</div>
+
+
+
+	<div class="card">
+		<div class="row">
+			<p>Strains you can find at <b>{{brand}}</b></p>
+			{% for strain in brand.brand_strains.all %}
+				<div class="col-md-2">
+					<div class="row">
+						<div class="col-lg-12">
+							{{strain.featured_image.url}}
+						</div>
+						<div class="col-lg-12">
+							{{strain.title}}
+						</div>
+						<div class="col-lg-12">
+							misc
+						</div>
+					</div>
+				</div>
+			{% endfor %}
+		</div>
+	</div>
+
+
+
+
+
+<div class="card p-0">
+
+	{% include 'commenting_system/brand_commenting_system.html' %}
+
+
+</div>
+
+
+
+		</div>
+	</div>
+</div>
+
+
+
+
+
+<div class="container">
+<div class="row">
+	<div class="col-md-2">
+
+
+	</div>
+	<div class="col-md-10">
+
+
+	</div>
+
+</div>
+
+</div>
+
+
+
+
+
+
+<div class="container">
+<div class="row">
+	<div class="col-md-2">
+
+
+	</div>
+	<div class="col-md-10">
+
+
+	</div>
+
+</div>
+
+</div>
+
+
+
+
+
+
+<div class="container">
+<div class="row">
+	<div class="col-md-2">
+
+
+	</div>
+	<div class="col-md-10">
+
+
+	</div>
+
+</div>
+
+</div>
+
+
+
+
+
+
+<div class="container">
+<div class="row">
+	<div class="col-md-2">
+
+
+	</div>
+	<div class="col-md-10">
+
+
+	</div>
+
+</div>
+
+</div>
+
+
+
+
 
 
 	{% endblock %}

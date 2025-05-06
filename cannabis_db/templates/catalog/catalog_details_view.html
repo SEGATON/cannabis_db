@@ -210,7 +210,10 @@
 
 
 
+<div class="card">
 
+
+</div>
 
 
 
@@ -813,25 +816,7 @@
 					<h5>Buy <b>{{strain.title}}</b> seeds</h5>
 					<br>
 
-					{% if dispensary.type_of_dispensary == 'seed_bank' %}
-					{% if strain.dispensaries %}
-					{% for strain_dispensary_sold_in in dispensaries.all %}
-					<div class="col-auto">
-						<img src="{% thumbnail strain_dispensary_sold_in.dispensary_logo 20x20  crop %}" class="img-fluid">
-					</div>
-					<div class="col-md-11">
-						<a href="{{strain_dispensary_sold_in.get_absolute_url}}" class="">{{strain_dispensary_sold_in.title}}</a>
-					</div>
-				
-					{% endfor %}
-					{% else %}				
-						<p>Not available.</p>
-					{% endif %}
-
-					{% endif %}
-
-
-
+{{strain.seeds.all}}
 
 
 

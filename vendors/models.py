@@ -2,7 +2,7 @@ from django.db import models
 
 from django.conf import settings
 from ckeditor.fields import RichTextField
-from catalog.models import Product
+from catalog.models import Product, Category
 from addresses.models import Address
 # Create your models here.
 
@@ -33,3 +33,6 @@ class Vendor(models.Model):
 	addresses = models.ManyToManyField(Address, null=True, blank=True)
 
 	products = models.ManyToManyField(Product, null=True, blank=True)
+
+
+	categories = models.ManyToManyField(Category, null=True, blank=True)

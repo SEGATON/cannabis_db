@@ -22,6 +22,7 @@ class Address(models.Model):
 			('billing_address','Billing Address',),
 			('shipping_address','Shipping Address',),
 			('p_o_box','P.O Box',),
+			('physical','Physical',),
 		)
 
 	address_type = models.CharField(max_length=255, choices=ADDRESS_TYPE, null=True, blank=True)
@@ -38,9 +39,9 @@ class Address(models.Model):
 
 	notes = RichTextField()
 
-	date_created = models.DateTimeField(auto_now_add=True)
-	date_updated = models.DateTimeField()
-	date_deleted = models.DateTimeField()
+	date_created = models.DateTimeField(auto_now_add=True,null=True, blank=True )
+	date_updated = models.DateTimeField(auto_now_add=True,null=True, blank=True)
+	date_deleted = models.DateTimeField(auto_now_add=True,null=True, blank=True)
 
 
 

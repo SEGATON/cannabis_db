@@ -295,6 +295,10 @@ class BrandAdmin(ImportExportModelAdmin):
 		'slug':('title',)
 	}
 	list_editable = ['brand_logo','title','slug']
+	search_fields = ['title','slug']
+
+
+
 @admin.register(StrainSpecificationsSets)
 class StrainSpecificationsSetsAdmin(ImportExportModelAdmin):
 	list_display = ['id','sss_UNIQUE_ID']

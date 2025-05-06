@@ -65,6 +65,8 @@ INSTALLED_APPS = [
 
     'avatar',
 
+    'django_social_share',
+
 
     'blog.apps.BlogConfig',
     'accounts.apps.AccountsConfig',

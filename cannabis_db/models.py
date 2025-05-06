@@ -424,7 +424,10 @@ class StrainSpecificationsSets(models.Model):
 
 
 
+
+
 class BrandSocialFollowURL(models.Model):
+
 	brand_social_profile_name		= models.CharField(max_length=300, null=True, blank=True)
 	brand_social_profile_URL		= models.URLField(null=True, blank=True)
 class BrandSocialFollowURLS(models.Model):
@@ -467,7 +470,7 @@ class Brand(models.Model):
 	brand_products = models.ManyToManyField(Product, related_name='brand_products', null=True, blank=True)
 	brand_strains = models.ManyToManyField('Strain', related_name='brand_strains', null=True, blank=True)
 	
-	brand_followers	= models.ManyToManyField(CustomUser, related_name='strain_brand_followers', null=True, blank=True)
+	brand_followers	= models.ManyToManyField('memberships.Profile', related_name='strain_brand_followers', null=True, blank=True)
 
 	dispensary = models.ManyToManyField('Dispensary',null=True, blank=True )
 
@@ -733,7 +736,7 @@ class Strain(models.Model):
 
 	potency = models.ForeignKey(Potency,on_delete=models.CASCADE, null=True, blank=True)
 	
-	seeds = models.ManyToManyField(Brand, related_name='seed_bank_brands', null=True,blank=True)
+	seeds = models.ManyToManyField(Product, related_name='seed_bank_brands', null=True,blank=True)
 	
 
 
