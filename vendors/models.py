@@ -13,6 +13,12 @@ class Vendor(models.Model):
 	title = models.CharField(max_length=255)
 	slug = models.CharField(max_length=255)
 
+	tagline = models.CharField(max_length=1000, null=True, blank=True)
+	
+	websiteURL = models.URLField(max_length=300, null=True, blank=True)
+	phone_number = models.CharField(max_length=300, null=True, blank=True)
+	email_address = models.EmailField(max_length=300, null=True, blank=True)
+
 
 	date_created = models.DateTimeField(auto_now_add=True)
 	date_updated = models.DateTimeField()
@@ -33,6 +39,5 @@ class Vendor(models.Model):
 	addresses = models.ManyToManyField(Address, null=True, blank=True)
 
 	products = models.ManyToManyField(Product, null=True, blank=True)
-
 
 	categories = models.ManyToManyField(Category, null=True, blank=True)

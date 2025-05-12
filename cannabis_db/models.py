@@ -725,6 +725,7 @@ class Strain(models.Model):
 	tac = models.DecimalField(max_digits=9, decimal_places=2, null=True,blank=True)
 	thca = models.DecimalField(max_digits=9, decimal_places=2, null=True,blank=True)
 	cbd = models.DecimalField(max_digits=9, decimal_places=2, null=True,blank=True)
+	cbda = models.DecimalField(max_digits=9, decimal_places=2, null=True,blank=True)
 	cnbnd = models.DecimalField(max_digits=9, decimal_places=2, null=True,blank=True)
 
 	headline = models.CharField(max_length=3000, null=True, blank=True)

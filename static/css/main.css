@@ -1,8 +1,5 @@
 html{
-    height: 100%;
-    width: 100%;
-    padding: 0;
-    margin: 0;
+
 }
 
 h1,h2,h3,h4,h5,h6{
@@ -128,13 +125,11 @@ body{
     width: 100%;
 }
 
-
-#profile_heading  {
-  color: var(--text-color-green);
+#profile_heading{
+     color: var(--text-color-green);
   font-weight: 900;
-  letter-spacing: -1px;
+  letter-spacing: -2px;
 }
-
 #page_heading  {
   color: var(--text-color-green);
   font-weight: 900;
@@ -367,7 +362,7 @@ background: var(--bkg-color-dark-grey);
     border-radius: 3px;
 }
 .md{
-    font-size: 13px;
+    font-size: 12px;
     padding: 9px 19px;
     border-radius: 5px;
 }
@@ -1076,3 +1071,24 @@ border-bottom-left-radius: 3px;
 border-bottom-right-radius: 3px;
     }
 
+
+
+.dispensary_details_list{
+    margin:  20px 0px;
+    list-style:  square;
+    width: 100%;
+
+}
+.dispensary_details_list li{
+    margin-bottom: 10px;
+    font-size: 13px;
+
+
+}
+
+.no_bullets{
+    list-style: none;
+}
+.p_md{
+    font-size: 1px;
+}

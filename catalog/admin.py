@@ -4,7 +4,7 @@ from django.contrib import admin
 
 from .models import Product
 from .models import Category
-
+from .models import Brand
 
 from .models import ProductGalleryImage
 from .models import ProductGalleryImages
@@ -44,6 +44,10 @@ from .models import KeywordsSet
 from .models import MetasSet
 
 from .models import ShippingSettings
+
+@admin.register(Brand)
+class BrandAdmin(admin.ModelAdmin):
+    pass
 
 @admin.register(ShippingSettings)
 class ShippingSettingsAdmin(admin.ModelAdmin):
