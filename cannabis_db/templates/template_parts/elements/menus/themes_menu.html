@@ -1,0 +1,137 @@
+<select id="theme-select">
+  <option value="system">System</option>
+  <option value="light">Light</option>
+  <option value="dark">Dark</option>
+  <option value="colorful">Colorful</option>
+  <option value="cyberpunk">Cyberpunk</option>
+</select>
+
+
+
+<button id="toggle-mode"><i id="theme-icon" class="fas fa-moon"></i></button>
+
+
+
+
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" rel="stylesheet">
+
+
+  <!-- Button to toggle modes -->
+
+
+  <!-- Example of image icons to be toggled -->
+<script>
+  const body = document.body;
+  const toggleBtn = document.getElementById('toggle-mode');
+  const icon = document.getElementById('theme-icon');
+  const themeIcons = document.querySelectorAll('.theme-icon');
+  const themeSelect = document.getElementById('theme-select');
+
+  function getSystemTheme() {
+    return window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light';
+  }
+
+  function setIconAndColors(theme) {
+  if (theme === 'dark') {
+    icon.className = 'fas fa-moon';
+    icon.style.color = '#CFFF04';
+    themeIcons.forEach(img => {
+      img.src = 'sun-icon.png';
+      img.style.filter = 'invert(1)';
+    });
+    body.style.color = '#fff';
+  } else if (theme === 'light') {
+    icon.className = 'fas fa-sun';
+    icon.style.color = '#000';
+    themeIcons.forEach(img => {
+      img.src = 'moon-icon.png';
+      img.style.filter = 'none';
+    });
+    body.style.color = '#000';
+  } else if (theme === 'colorful') {
+    icon.className = 'fas fa-star';
+    icon.style.color = '#ff00ff';
+    themeIcons.forEach(img => {
+      img.src = 'star-icon.png';
+      img.style.filter = 'hue-rotate(90deg)';
+    });
+    body.style.color = '#222';
+  } else if (theme === 'cyberpunk') {
+    icon.className = 'fas fa-bolt';
+    icon.style.color = '#00ffff';
+    themeIcons.forEach(img => {
+      img.src = 'cyberpunk-icon.png'; // Use your own cyberpunk-themed icon
+      img.style.filter = 'hue-rotate(200deg) brightness(1.2)';
+    });
+    body.style.color = '#0ff';
+  }
+  toggleBtn.textContent = '';
+  toggleBtn.prepend(icon);
+}
+
+function applyTheme(theme) {
+  const allThemes = ['light-mode', 'dark-mode', 'colorful-mode', 'cyberpunk-mode'];
+  body.classList.remove(...allThemes);
+
+  let effectiveTheme = theme === 'system' ? getSystemTheme() : theme;
+  body.classList.add(`${effectiveTheme}-mode`);
+  setIconAndColors(effectiveTheme);
+}
+
+  function applyTheme(theme) {
+    const allThemes = ['light-mode', 'dark-mode', 'colorful-mode'];
+    body.classList.remove(...allThemes);
+
+    let effectiveTheme = theme === 'system' ? getSystemTheme() : theme;
+    body.classList.add(`${effectiveTheme}-mode`);
+    setIconAndColors(effectiveTheme);
+  }
+
+  function applySavedMode() {
+    const savedTheme = localStorage.getItem('theme') || 'system';
+    if (themeSelect) themeSelect.value = savedTheme;
+    applyTheme(savedTheme);
+  }
+
+  toggleBtn.addEventListener('click', () => {
+    let savedTheme = localStorage.getItem('theme') || 'system';
+    if (savedTheme === 'colorful') return;
+
+    let currentTheme = savedTheme === 'system' ? getSystemTheme() : savedTheme;
+    let newTheme = currentTheme === 'light' ? 'dark' : 'light';
+
+    body.classList.add('transition');
+
+    setTimeout(() => {
+      body.classList.remove(`${currentTheme}-mode`);
+      body.classList.add(`${newTheme}-mode`);
+      localStorage.setItem('theme', newTheme);
+      themeSelect.value = newTheme;
+      setIconAndColors(newTheme);
+    }, 100);
+
+    setTimeout(() => body.classList.remove('transition'), 1000);
+  });
+
+  if (themeSelect) {
+    themeSelect.addEventListener('change', () => {
+      const selectedTheme = themeSelect.value;
+      localStorage.setItem('theme', selectedTheme);
+      body.classList.add('transition');
+
+      setTimeout(() => {
+        applyTheme(selectedTheme);
+      }, 100);
+
+      setTimeout(() => body.classList.remove('transition'), 1000);
+    });
+  }
+
+  // React to system changes dynamically
+  window.matchMedia('(prefers-color-scheme: dark)').addEventListener('change', e => {
+    const savedTheme = localStorage.getItem('theme') || 'system';
+    if (savedTheme === 'system') applyTheme('system');
+  });
+
+  applySavedMode();
+</script>
