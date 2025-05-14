@@ -125,64 +125,38 @@
 
 
 
-<style type="text/css">
-  
-.sidenav {
-    height: 100%;
-    width: 0;
-    position: fixed;
-    z-index: 1;
-    top: 0;
-    left: 0;
-    background-color: #dcf2ed;
-    overflow-x: hidden;
-    transition: 0.5s;
-    padding-top: 60px;
-}
- 
-.sidenav a {
-    padding: 8px 8px 8px 32px;
-    text-decoration: none;
-    font-size: 25px;
-    color: black;
-    display: block;
-    transition: 0.3s;
-}
- 
-.sidenav a:hover, .offcanvas a:focus{
-    color: orangered;
-}
- 
-.sidenav .closebtn {
-    position: absolute;
-    top: 0;
-    right: 25px;
-    font-size: 36px;
-    margin-left: 50px;
-}
- 
-#main {
-    transition: margin-left .5s;
-    padding: 0px;
-}
- 
-@media screen and (max-height: 450px) {
-  .sidenav {padding-top: 15px;}
-  .sidenav a {font-size: 18px;}
-}
-    .overlay {
-      position: fixed;
-      top: 0; left: 0;
-      width: 100%; height: 100%;
-      background-color: rgba(0, 0, 0, 0.4);
-      display: none;
-      z-index: 999;
-    }
-</style>
 
 <div id="mySidenav" class="sidenav">
+  <div id="mySidenavHeader">
+
+    <div class="row">
+      <div class="col-md-6"></div>
+         <div class="col-md-6">
   <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>
+</div>
+
+</div>
+
+</div>
+
+
+
+
 {% include 'template_parts/elements/menus/themes_menu.html' %}
+
+
+
+<div class="card">
+<ul class="side_menu">
+  <li><a href="{% url 'cannabis_db:strains' %}">Browse strains</a></li>
+  <li><a href="{% url 'cannabis_db:dispensaries' %}">Browse dispensaries</a></li>
+  <li><a href="{% url 'cannabis_db:brands' %}">Browse brands</a></li>
+</ul>
+</div>
+
+
+
+
 </div>
 
 

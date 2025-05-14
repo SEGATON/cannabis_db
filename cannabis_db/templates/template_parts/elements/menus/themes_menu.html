@@ -1,9 +1,13 @@
+Select theme: 
+
 <select id="theme-select">
   <option value="system">System</option>
   <option value="light">Light</option>
   <option value="dark">Dark</option>
   <option value="colorful">Colorful</option>
   <option value="cyberpunk">Cyberpunk</option>
+    <option value="candyland">candyland</option>
+     <option value="solaris">solaris</option>
 </select>
 
 
@@ -64,13 +68,29 @@
       img.style.filter = 'hue-rotate(200deg) brightness(1.2)';
     });
     body.style.color = '#0ff';
+  } else if (theme === 'candyland') {
+    icon.className = 'fas fa-bolt';
+    icon.style.color = '#f10';
+    themeIcons.forEach(img => {
+      img.src = 'candyland-icon.png'; // Use your own cyberpunk-themed icon
+      img.style.filter = 'hue-rotate(200deg) brightness(1.2)';
+    });
+    body.style.color = '#555';
+  } else if (theme === 'solaris') {
+    icon.className = 'fas fa-bolt';
+    icon.style.color = '#f10';
+    themeIcons.forEach(img => {
+      img.src = 'solaris-icon.png'; // Use your own cyberpunk-themed icon
+      img.style.filter = 'hue-rotate(200deg) brightness(1.2)';
+    });
+    body.style.color = '#555';
   }
   toggleBtn.textContent = '';
   toggleBtn.prepend(icon);
 }
 
 function applyTheme(theme) {
-  const allThemes = ['light-mode', 'dark-mode', 'colorful-mode', 'cyberpunk-mode'];
+  const allThemes = ['light-mode', 'dark-mode', 'colorful-mode', 'cyberpunk-mode', 'candyland-mode', 'solaris-mode'];
   body.classList.remove(...allThemes);
 
   let effectiveTheme = theme === 'system' ? getSystemTheme() : theme;
@@ -79,7 +99,7 @@ function applyTheme(theme) {
 }
 
   function applyTheme(theme) {
-    const allThemes = ['light-mode', 'dark-mode', 'colorful-mode'];
+    const allThemes = ['light-mode', 'dark-mode', 'colorful-mode', 'candyland-mode', 'solaris-mode'];
     body.classList.remove(...allThemes);
 
     let effectiveTheme = theme === 'system' ? getSystemTheme() : theme;
