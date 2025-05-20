@@ -1,4 +1,112 @@
 body.cyberpunk-mode {
-  background: #0d0d0d;
-  color: #0ff;
+  background: #14141c;
+  color: #000;
+  
+}
+body.cyberpunk-mode p {
+
+  color: #fff;
+  
+}
+body.cyberpunk-mode .card{
+  background: #111;
+}
+
+
+body.cyberpunk-mode .side_menu{
+  padding: 0;
+  margin: 0;
+  list-style: none;
+}
+body.cyberpunk-mode .side_menu li{
+  border-bottom: 1px solid #111;
+  background: #000;
+}
+body.cyberpunk-mode .side_menu li a{
+  font-size: 12px;
+  color: #ddd;
+}
+body.cyberpunk-mode .side_menu li a:hover{
+  font-size: 12px;
+  color: #ff00d9;
+}
+body.cyberpunk-mode .main-nav {
+    padding: 10px;
+    border-bottom: 1px solid #ff00d9;
+}
+
+body.cyberpunk-mode a {
+  color: #ff00d9;
+}
+
+body.cyberpunk-mode .form-control{
+  border: 1px solid #ff00d9;
+}
+
+
+
+body.cyberpunk-mode #page_heading {
+    color: #FF13F0;
+    font-weight: 900;
+    letter-spacing: -2px;
+}
+
+body.cyberpunk-mode #profile_heading {
+    color: #FF13F0;
+    font-weight: 900;
+    letter-spacing: -2px;
+}
+body.cyberpunk-mode  .border_right{
+  border-right: 1px dotted #48014a;
+}
+
+
+body.cyberpunk-mode hr {
+    padding: 0;
+    border-top: 2px dotted #48014a;
+    margin: 0;
+}
+
+
+body.cyberpunk-mode .accordion-button {
+    position: relative;
+    display: flex
+;
+    align-items: center;
+    width: 100%;
+    padding: var(--bs-accordion-btn-padding-y) var(--bs-accordion-btn-padding-x);
+    font-size: 1rem;
+    color:#575775;
+    text-align: left;
+    background-color:#0e0e14;
+    border: 0;
+    border-radius: 0;
+    overflow-anchor: none;
+    transition: var(--bs-accordion-transition);
+}
+
+
+body.cyberpunk-mode  .accordion-item {
+    color: var(--bs-accordion-color);
+    background-color: black;
+    border: black;
+}
+
+
+body.cyberpunk-mode  .accordion {
+    background: var(--bkg-color);
+    color: #444;
+    font-weight: 700;
+    cursor: pointer;
+    padding: 5px 0px;
+    width: 100%;
+    border-top: none;
+    border-left: none;
+    border-right: none;
+    border-bottom: 1px dotted black;
+    text-align: left;
+    outline: none;
+    font-size: 15px;
+    transition: 0.4s;
+    font-family: "Mona Sans", sans-serif;
 }
