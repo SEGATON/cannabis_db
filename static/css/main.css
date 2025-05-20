@@ -116,15 +116,7 @@ body{
 }
 
 
-body{
-    font-family: "Mona Sans", sans-serif;
-    background: var(--bkg-color);
-    --page-heading-color:#000;
-    --page-border-color:#999;
-    
-    height: 100%;
-    width: 100%;
-}
+
 
 #profile_heading{
      color: var(--text-color-green);

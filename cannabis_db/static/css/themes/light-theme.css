@@ -1,3 +1,6 @@
-.light-mode .card{
-	background: white;
+body.light-mode {
+  background: #fff;
+  color: #000;
+  
 }
+

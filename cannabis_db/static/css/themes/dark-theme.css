@@ -1,3 +1,4 @@
-.dark-mode .card{
-	background: black;
+body.dark-mode {
+  background: #121212;
+  color: #fff;
 }

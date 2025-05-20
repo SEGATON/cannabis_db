@@ -1,6 +1,22 @@
 html{
 
 }
+body{
+    font-family: "Mona Sans", sans-serif;
+
+    --page-heading-color:#000;
+    --page-border-color:#999;
+    position: relative;
+    height: 100%;
+    width: 100%;
+    padding: 0;
+    margin: 0;
+
+
+
+      overflow-x: hidden;
+}
+
 #page-content {
   transition: transform 0.3s ease;
 }
@@ -99,32 +115,15 @@ h1,h2,h3,h4,h5,h6{
 
 
 
-body{
-    font-family: "Mona Sans", sans-serif;
-    background:#fff;
-    --page-heading-color:#000;
-    --page-border-color:#999;
-    position: relative;
-    height: 100%;
-    width: 100%;
-    padding: 0;
-    margin: 0;
 
 
 
-      overflow-x: hidden;
-}
 
 
-body{
-    font-family: "Mona Sans", sans-serif;
-    background: var(--bkg-color);
-    --page-heading-color:#000;
-    --page-border-color:#999;
-    
-    height: 100%;
-    width: 100%;
-}
+
+
+
+
 
 #profile_heading{
      color: var(--text-color-green);
@@ -1198,22 +1197,6 @@ border-bottom-right-radius: 3px;
 
 
 
-
-.navMenu {
-  width: var(--side-panel);
-  color: var(--side-color);
-  background: #fff;
-  overflow: hidden;
-  position: fixed;
-  height: 100%;
-  padding: 0;
-  margin: 0;
-  top: 0;
-  left: 0;
-
-  transition: width .4s linear;
-  z-index: 10;
-}
 
 .closeBtn {
   position: absolute;
