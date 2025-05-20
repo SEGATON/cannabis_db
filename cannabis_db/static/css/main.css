@@ -114,17 +114,7 @@ body{
 
       overflow-x: hidden;
 }
-body.dark-theme{
-    --bkg-color:#000;
-    --bkg-color-dark-grey:#07090d;
-    --bkg-color-gr:#106600;
-    --border-color-l-gr:#014511;
-     --text-color-green: #39FF14;
-     --text-color-lightgrey: #777;
-     --text-color-lightgrey-max: #eee;
-     --page-border-color:#39FF14;
-     --page-heading-darker-color:#189900;
-}
+
 
 body{
     font-family: "Mona Sans", sans-serif;
@@ -156,12 +146,8 @@ font-weight: 300;
 font-weight: 300;
 }
 
-.card.dark-theme{
-    --bkg-color:#0f1824;
-}
-.card {
-  background:var(--bkg-color);
-}
+
+
 
 
 .nav-tabs .nav-link {
@@ -562,18 +548,18 @@ font-size: 10px;
 
 
 .logo{
-	text-transform: uppercase;
-	letter-spacing: -1px;
+    text-transform: uppercase;
+    letter-spacing: -1px;
 }
 .db_logo_style {
-	color:#105700;
-	font-weight: 900;
+    color:#105700;
+    font-weight: 900;
 }
 .radius_sm{
-	border-radius: 3px;
+    border-radius: 3px;
 }
 .radius_md{
-	border-radius: 10px;
+    border-radius: 10px;
 }
 .radius_lg{
 
@@ -929,9 +915,6 @@ font-size: 12px;
 
 
 
-
-
-
 .accordion {
 background: var(--bkg-color);
   color: #444;
@@ -1150,100 +1133,10 @@ border-bottom-right-radius: 3px;
 
 
 
-.dark-mode .accordion-body {
-    padding: var(--bs-accordion-body-padding-y) var(--bs-accordion-body-padding-x);
-    background: black;
-}
-
-
-.dark-mode .accordion-header {
-    margin-bottom: 0;
-    background: #111;
-}
-.dark-mode .accordion{
-  background: #111;
-}
 
 
 
 
-
-
-    body {
-      background-color: #ffffff;
-      color: #000000;
-    }
-
-    body.dark-mode {
-      background-color: #111;
-      color: #ffffff;
-    }
-
-    body.transition {
-      transition: background-color 1.8s ease, color 1.8s ease;
-    }
-    .dark-mode p{
-      color: #999;
-    }
-.dark-mode .main_menu  li a {
-  color: #999;
-}
-.dark-mode  .main_menu_right li a {
-  color: #999;
-}
-    #toggle-mode {
-      padding: 0px;
-      font-size: 16px;
-      margin: 0px;
-      border: none;
-      border-radius: 6px;
-      cursor: pointer;
-    
-      color: #000;
-    }
-
-    #toggle-mode.dark {
-      background-color: #333;
-      color: #fff;
-    }
-
-    #toggle-mode i {
-      margin-right: 8px;
-    }
-      .dark-mode .card {
-   
-    color: #f0f0f0;
-
-         transition: background-color 1.8s ease, color 1.8s ease;
-  }
-
-  .dark-mode .main-nav {
-    padding: 10px;
-    border-bottom: 1px solid #39FF14;
-}
-  .dark-mode .border_right {
-    border-right: 1px dotted #111;
-}
-
-
-
-.dark-mode #page_heading {
-    color: #39FF14;
-    font-weight: 900;
-    letter-spacing: -2px;
-}
-
-.dark-mode .accordion {
-
-    border-bottom: 1px dotted #222;
-
-}
-
-.dark-mode  .accordion-button {
-
-    background-color: var(--bs-accordion-btn-bg);
-
-}
     /* Space between the icon and text */
     #toggle-mode i {
 
@@ -1412,17 +1305,6 @@ h1 {
 
 
 
-.colorful-mode .card {
-    background: pink;
-}
-
-.candyland-mode .card {
-    background: #000;
-}
-
-.solaris-mode .card {
-    background: #000080;
-}
 
 
 
@@ -1447,47 +1329,12 @@ h1 {
 
 
 
-.dark-mode  #mySidenavHeader{
-    background: #000;
-    border-bottom: 1px solid #018223;
-    height: 66px;
-    top: 0;
-    margin-bottom: 20px;
-}
-.dark-mode .sidenav{
-    background: #000;
-}
 
-.dark-mode .sidenav .closebtn {
-    position: absolute;
-    top: 0;
-    right: 25px;
-    font-size: 36px;
-    margin-left: 50px;
-    color: #018223;
-}
 #theme-select{
     width: 50%;
 }
-.dark-mode #theme-select{
-    background: #111;
-    padding: 5px 25px;
-    color: #ccc;
-    border-radius: 25px;
-    border:1px solid #015717;
-}
-.sidenav {
-    height: 100%;
-    width: 0;
-    position: fixed;
-    z-index: 1;
-    top: 0;
-    left: 0;
-    background-color: #dcf2ed;
-    overflow-x: hidden;
-    transition: 0.5s;
-    padding-top: 0px;
-}
+
+
  
 .sidenav a {
     padding: 8px 8px 8px 32px;
@@ -1526,4 +1373,13 @@ h1 {
       background-color: rgba(0, 0, 0, 0.4);
       display: none;
       z-index: 999;
+    }
+
+
+
+
+
+    .ko{
+        bottom: 0;
+        position: absolute;
     }

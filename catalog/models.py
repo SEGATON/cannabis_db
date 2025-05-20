@@ -376,6 +376,7 @@ class Product(models.Model):
 			('variable_product','Variable product'),
 			('digital_product','Digital product'),
 			('dropship_product','Dropship product'),
+			('seeds','Seeds'),
 
 
 		)
@@ -427,6 +428,8 @@ class Product(models.Model):
 	shipping_settings = models.ForeignKey(ShippingSettings, on_delete=models.CASCADE, null=True, blank=True)
 
 	dispensaries = models.ManyToManyField('cannabis_db.Dispensary', null=True, blank=True)
+
+	brands = models.ManyToManyField('cannabis_db.Brand', related_name='product_brand')
 
 	def __str__(self):
 
