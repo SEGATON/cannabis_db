@@ -5,7 +5,7 @@ body.cyberpunk-mode {
 }
 body.cyberpunk-mode p {
 
-  color: #fff;
+  color: #ddd;
   
 }
 body.cyberpunk-mode .card{
@@ -24,7 +24,7 @@ body.cyberpunk-mode .side_menu li{
 }
 body.cyberpunk-mode .side_menu li a{
   font-size: 12px;
-  color: #ddd;
+  color: #cb71d1;
 }
 body.cyberpunk-mode .side_menu li a:hover{
   font-size: 12px;
@@ -36,11 +36,15 @@ body.cyberpunk-mode .main-nav {
 }
 
 body.cyberpunk-mode a {
-  color: #ff00d9;
+  color: #ad82b0;
 }
 
 body.cyberpunk-mode .form-control{
   border: 1px solid #ff00d9;
+  color: #cb71d1;
+}
+body.cyberpunk-mode ::placeholder{
+  color: #ad82b0;
 }
 
 
@@ -76,7 +80,7 @@ body.cyberpunk-mode .accordion-button {
     width: 100%;
     padding: var(--bs-accordion-btn-padding-y) var(--bs-accordion-btn-padding-x);
     font-size: 1rem;
-    color:#575775;
+    color:#ad82b0;
     text-align: left;
     background-color:#0e0e14;
     border: 0;
@@ -87,7 +91,7 @@ body.cyberpunk-mode .accordion-button {
 
 
 body.cyberpunk-mode  .accordion-item {
-    color: var(--bs-accordion-color);
+    color:#ad82b0;
     background-color: black;
     border: black;
 }
@@ -95,7 +99,7 @@ body.cyberpunk-mode  .accordion-item {
 
 body.cyberpunk-mode  .accordion {
     background: var(--bkg-color);
-    color: #444;
+    color:#ff00d9;
     font-weight: 700;
     cursor: pointer;
     padding: 0px 0px;
@@ -109,4 +113,39 @@ body.cyberpunk-mode  .accordion {
     font-size: 15px;
     transition: 0.4s;
     font-family: "Mona Sans", sans-serif;
+}
+
+
+body.cyberpunk-mode .dispensary_details_list {
+    margin: 20px 0px;
+    list-style: square;
+    width: 100%;
+    color: #ad82b0;
+}
+body.cyberpunk-mode .dispensary_details_list lu {
+
+    color: #ad82b0;
+}
+
+body.cyberpunk-mode svg{
+  fill: #ad82b0;
+}
+
+body.cyberpunk-mode b{
+  color: #FF13F0;
+  font-weight: 800;
+}
+
+body.cyberpunk-mode .no_bullets{
+  list-style: none;
+}
+
+
+
+body.cyberpunk-mode .login_form_card {
+  background: black;
+}
+
+body.cyberpunk-mode .percentage_mark_lbl {
+
 }

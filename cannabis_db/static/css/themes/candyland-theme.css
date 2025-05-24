@@ -1,5 +1,51 @@
 body.candyland-mode {
-  background: #fff0f5;
+  background: #fff;
   color: #4b0082;
   
 }
+
+body.candyland-mode body {
+
+  color: #4b0082;
+  
+}
+
+
+body.candyland-mode .sidenav{
+  background-color:#f7f9fa;
+}
+
+
+
+
+
+body.candyland-mode .side_menu{
+  background:none;
+}
+
+
+body.candyland-mode #panel_menu_card {
+background:none;
+}
+
+body.candyland-mode .side_menu{
+  padding: 0;https://www.strainsdb.com/
+  margin: 0;
+  list-style: none;
+}
+body.candyland-mode .side_menu li{
+  border-bottom: 1px solid #ddd;
+  background: #f5f5f5;
+}
+body.candyland-mode .side_menu li a{
+  font-size: 12px;
+  color: #030bff;
+}
+/*
+
+yellow :          #b2f507
+hot pink:         #f700e3
+blue              #030bff
+green             #00d111
+
+*/

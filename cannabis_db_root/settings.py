@@ -12,6 +12,7 @@ https://docs.djangoproject.com/en/4.2/ref/settings/
 
 from pathlib import Path
 import os  
+from google.oauth2 import service_account
 
 '''
 
@@ -43,6 +44,8 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 # See https://docs.djangoproject.com/en/4.2/howto/deployment/checklist/
 
 # SECURITY WARNING: keep the secret key used in production secret!
+
+
 SECRET_KEY = 'django-insecure-!dg1#=bh7t@qljzuct5m=@v_1xr_$q5hr)tfa1v$8s(3+!15v('
 
 # SECURITY WARNING: don't run with debug turned on in production!
@@ -104,6 +107,8 @@ INSTALLED_APPS = [
     'rest_framework',
 
     'star_ratings',
+
+    'storages'
 
 ]
 
@@ -294,3 +299,30 @@ COMMENTS_XTD_APP_MODEL_OPTIONS = {
 
 
 
+###############
+
+
+GS_CREDENTIALS = service_account.Credentials.from_service_account_file(
+    BASE_DIR / "cannabis-445603-605037397823.json"
+)
+
+STORAGES = {
+    "default": {
+        "BACKEND": "storages.backends.gcloud.GoogleCloudStorage",
+        "OPTIONS": {
+            "project_id": "cannabis-445603",
+            "bucket_name": "cannabis-db",         
+        },
+    },
+    "staticfiles": {
+        "BACKEND": "django.contrib.staticfiles.storage.StaticFilesStorage",
+    },
+}
+
+
+
+
+
+
+
+################
